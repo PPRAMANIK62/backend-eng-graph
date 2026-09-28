@@ -26,14 +26,12 @@ const loadRaw = cache((): Map<string, RawNode> => {
     for (const file of fs.readdirSync(dir).filter(f => f.endsWith(".md"))) {
       const { data, content } = matter(fs.readFileSync(path.join(dir, file), "utf8"));
       const text = content.replace(COMMENT, "");
-      const updated = data.updated instanceof Date ? data.updated.toISOString().slice(0, 10) : String(data.updated ?? "");
       nodes.set(data.id, {
         id: data.id,
         title: data.title,
         note: data.note,
         depth: data.depth as Depth,
         phase: Number(data.phase),
-        updated,
         words: text.replace(IMAGE, "").split(/\s+/).filter(Boolean).length,
         readable: /\S/.test(text.replace(HEADING, "")),
         needs: data.needs ?? [],
@@ -56,7 +54,7 @@ export const getGraph = cache((): Graph => {
   }
   const nodes: NodeSummary[] = raw
     .sort((a, b) => a.id.localeCompare(b.id))
-    .map(({ id, title, note, depth, phase, updated, words, readable }) => ({ id, title, note, depth, phase, updated, words, readable }));
+    .map(({ id, title, note, depth, phase, words, readable }) => ({ id, title, note, depth, phase, words, readable }));
   return { nodes, edges: [...edges.values()] };
 });
 
@@ -80,7 +78,7 @@ export const getPhases = cache((): PhaseInfo[] => {
 });
 
 export type RecordKind = "experiments" | "decisions";
-export type RecordDoc = { kind: RecordKind; id: string; title: string; phase: number; date: string; about: string; body: string };
+export type RecordDoc = { kind: RecordKind; id: string; title: string; phase: number; about: string; body: string };
 
 /** Experiment write-ups and decision records: one page each on the site. */
 export const getRecords = cache((kind: RecordKind): RecordDoc[] => {
@@ -92,13 +90,11 @@ export const getRecords = cache((kind: RecordKind): RecordDoc[] => {
     .sort()
     .map(f => {
       const { data, content } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
-      const date = data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? "");
       return {
         kind,
         id: String(data.id ?? f.slice(0, -3)),
         title: String(data.title ?? ""),
         phase: Number(data.phase),
-        date,
         about: String(kind === "experiments" ? (data.component ?? "") : (data.status ?? "")),
         body: content,
       };

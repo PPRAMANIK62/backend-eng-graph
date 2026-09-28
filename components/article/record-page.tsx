@@ -38,7 +38,6 @@ export function RecordPage({ doc }: { doc: RecordDoc }) {
             <p className={s.meta}>
               <span>Phase {doc.phase}</span>
               {doc.about && <span>{doc.about}</span>}
-              {doc.date && <span>{doc.date}</span>}
             </p>
             {cited.length > 0 && (
               <div className={s.rel}>

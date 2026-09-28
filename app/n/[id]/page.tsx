@@ -76,7 +76,6 @@ export default async function ArticlePage({ params }: PageProps<"/n/[id]">) {
               <span>
                 Step {place.level + 1} of {steps} in phase {phase.n}
               </span>
-              <span>Updated {node.updated}</span>
             </p>
             {(needs.length > 0 || unlocks.length > 0) && (
               <div className={s.rel}>

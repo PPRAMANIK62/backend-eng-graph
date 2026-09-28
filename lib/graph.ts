@@ -8,7 +8,6 @@ export type NodeSummary = {
   note: string;
   depth: Depth;
   phase: number;
-  updated: string;
   words: number;
   /** Written, so it has a page. A planned node (headings and template comments only) stays off the site. */
   readable: boolean;

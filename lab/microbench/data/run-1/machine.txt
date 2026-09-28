@@ -1,5 +1,4 @@
-date: 2026-09-28T13:51:39+05:30
-Linux omarchy 7.1.9-arch1-2 #1 SMP PREEMPT_DYNAMIC Fri, 21 Aug 2026 22:18:59 +0000 x86_64 GNU/Linux
+Linux 7.1.9-arch1-2 x86_64
 CPU(s):                                  16
 Model name:                              13th Gen Intel(R) Core(TM) i5-13500H
 CPU(s) scaling MHz:                      76%

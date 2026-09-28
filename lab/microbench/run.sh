@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Runs every measurement for experiment 0001 and writes raw results to data/<date>/.
-# Usage: lab/microbench/run.sh
+# Runs every measurement for experiment 0001 and writes raw results to data/<run>/.
+# Usage: lab/microbench/run.sh <run>   (e.g. run-2)
 set -euo pipefail
 cd "$(dirname "$0")"
 
 CPU=2          # a P-core on the i5-13500H (CPUs 0-7 are P-cores); not CPU 0, which takes more interrupts
 RUNS=11
-OUT="data/$(date +%F)"
+OUT="data/${1:?usage: run.sh <run>, e.g. run-2}"
 SCRATCH="out"  # gitignored: holds the 2 GiB test file
 mkdir -p "$OUT" "$SCRATCH"
 
@@ -15,8 +15,7 @@ BIN="$SCRATCH/latency"
 PIN="taskset -c $CPU"
 
 {
-  echo "date: $(date -Is)"
-  uname -a
+  uname -srm
   lscpu | grep -E 'Model name|^CPU\(s\)|L1d|L1i|L2|L3'
   echo "governor: $(cat /sys/devices/system/cpu/cpu$CPU/cpufreq/scaling_governor)"
   gcc --version | head -1

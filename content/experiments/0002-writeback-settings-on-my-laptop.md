@@ -3,7 +3,6 @@ id: 0002-writeback-settings-on-my-laptop
 title: When does this machine start writing dirty pages to disk?
 phase: 1
 component: lab/microbench
-date: 2026-09-28
 ---
 
 ## Question
@@ -19,9 +18,9 @@ off the machine instead.
 - Same machine as experiment 0001
   (`0001-latency-numbers-on-my-laptop.md`): i5-13500H,
   16 GB RAM, Linux 7.1.9-arch1-2, Arch with Omarchy.
-- Command, run 2026-09-28:
+- Command:
   `cd /proc/sys/vm && for f in dirty_ratio dirty_bytes dirty_background_ratio dirty_background_bytes dirty_expire_centisecs dirty_writeback_centisecs; do echo "$f = $(cat $f)"; done`
-- Raw output: `lab/microbench/data/2026-09-28/vm-writeback.txt`.
+- Raw output: `lab/microbench/data/run-1/vm-writeback.txt`.
 
 ## Harness
 

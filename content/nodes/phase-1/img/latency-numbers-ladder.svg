@@ -75,6 +75,6 @@
   <text x="218" y="345.0" text-anchor="end" class="ink n">TCP handshake, AWS Virginia</text>
   <circle cx="657.7" cy="341.0" r="5" class="dot"/>
   <text x="670.7" y="345.0" text-anchor="start" class="ink n">319 ms</text>
-  <circle cx="236" cy="22" r="5" class="dot"/><text x="248" y="26" class="ink n">This laptop, 2026-09-28 (median)</text>
+  <circle cx="236" cy="22" r="5" class="dot"/><text x="248" y="26" class="ink n">This laptop (median)</text>
   <circle cx="486" cy="22" r="8" class="ring"/><text x="498" y="26" class="ink n">Dean's 2009 table, same operation</text>
 </svg>

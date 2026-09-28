@@ -6,7 +6,7 @@ depends on it.
 
 - `latency.c`: one binary, one mode per measurement (see the top of the file).
 - `run.sh`: builds it, runs every mode pinned to CPU 2, writes raw data to
-  `data/<date>/`. Needs gcc, taskset, chattr (for btrfs), curl, ping.
+  `data/<run>/` (`run.sh run-2`). Needs gcc, taskset, chattr (for btrfs), curl, ping.
   Creates a 2 GiB scratch file in `out/` (gitignored); delete it after.
 - `summarize.py`: prints the tables in the experiment write-up.
 

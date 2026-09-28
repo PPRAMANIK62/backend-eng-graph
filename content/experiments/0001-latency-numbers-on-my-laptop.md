@@ -3,7 +3,6 @@ id: 0001-latency-numbers-on-my-laptop
 title: How long do basic operations take on my laptop?
 phase: 1
 component: lab/microbench
-date: 2026-09-28
 ---
 
 ## Question
@@ -32,8 +31,8 @@ and the SSD and network to be thousands of times slower than RAM.
 - Compiler: gcc 16.2.1, `-O2`.
 - Code: `lab/microbench/latency.c`, driven by `lab/microbench/run.sh`,
   summarized by `lab/microbench/summarize.py`.
-- Command: `lab/microbench/run.sh`, then
-  `python3 lab/microbench/summarize.py lab/microbench/data/2026-09-28`.
+- Command: `lab/microbench/run.sh run-1`, then
+  `python3 lab/microbench/summarize.py lab/microbench/data/run-1`.
 - Every CPU test pinned to CPU 2 with `taskset -c 2`.
 
 What each test does:
@@ -66,7 +65,7 @@ the shape of the chase curve should step up near each cache size.
 
 ## Results
 
-Raw data: `lab/microbench/data/2026-09-28/` (machine details in
+Raw data: `lab/microbench/data/run-1/` (machine details in
 `machine.txt`).
 
 **Dependent loads (chase)**, ns per load, median of 11 runs (min–max):

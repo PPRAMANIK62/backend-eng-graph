@@ -3,7 +3,6 @@ id: 0003-what-my-ssd-reports-to-the-kernel
 title: What does my SSD tell the kernel about caching, flushes and atomic writes?
 phase: 1
 component: lab/microbench
-date: 2026-09-28
 ---
 
 ## Question
@@ -20,7 +19,7 @@ drive doesn't say.
   Linux 7.1.9-arch1-2, one WD PC SN740 512 GB NVMe
   (`SDDQNQD-512G-1014`, firmware `73101100`). Root and home are btrfs on
   a dm-crypt (LUKS) device, `dm-0`, on top of `nvme0n1`.
-- Read on 2026-09-28, no root needed:
+- Read with no root needed:
   `cd /sys/block/nvme0n1/queue && for f in logical_block_size physical_block_size minimum_io_size write_cache fua atomic_write_max_bytes atomic_write_unit_min_bytes atomic_write_unit_max_bytes atomic_write_boundary_bytes discard_granularity discard_max_bytes scheduler; do echo "$f = $(cat $f)"; done`
   and the same for `discard_max_bytes`, `discard_max_hw_bytes`,
   `write_cache`, `fua` and `atomic_write_max_bytes` under

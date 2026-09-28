@@ -1,7 +1,7 @@
 """Generate the phase 1 data charts from experiment 0001's raw data.
 
 Usage: python3 visuals/charts.py
-Reads lab/microbench/data/2026-09-28/, writes SVGs to content/nodes/phase-1/img/.
+Reads lab/microbench/data/run-1/, writes SVGs to content/nodes/phase-1/img/.
 Every number drawn comes from the raw data or, for Dean's 2009 values, from
 content/sources/dean-ladis-2009.md.
 """
@@ -12,7 +12,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "lab/microbench/data/2026-09-28"
+DATA = ROOT / "lab/microbench/data/run-1"
 OUT = ROOT / "content/nodes/phase-1/img"
 
 # The shared style block, copied from the reference figure so the charts match.
@@ -101,7 +101,7 @@ for i, (label, ns, dean) in enumerate(ladder):
         tx, anchor = x(ns) - 10, "end"
     b.append(f'  <text x="{tx:.1f}" y="{y + 4:.1f}" text-anchor="{anchor}" class="ink n">{fmt_ns(ns)}</text>')
 b.append(f'  <circle cx="{left + 6}" cy="22" r="5" class="dot"/>'
-         f'<text x="{left + 18}" y="26" class="ink n">This laptop, 2026-09-28 (median)</text>')
+         f'<text x="{left + 18}" y="26" class="ink n">This laptop (median)</text>')
 b.append(f'  <circle cx="{left + 256}" cy="22" r="8" class="ring"/>'
          f'<text x="{left + 268}" y="26" class="ink n">Dean\'s 2009 table, same operation</text>')
 (OUT / "latency-numbers-ladder.svg").write_text(svg(W, H, "\n".join(b)))

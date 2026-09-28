@@ -1,4 +1,4 @@
-"""Summarize the raw data from run.sh. Usage: python3 lab/microbench/summarize.py lab/microbench/data/<date>"""
+"""Summarize the raw data from run.sh. Usage: python3 lab/microbench/summarize.py lab/microbench/data/<run>"""
 import statistics
 import sys
 from collections import defaultdict

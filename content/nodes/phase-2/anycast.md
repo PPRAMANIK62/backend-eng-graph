@@ -9,7 +9,6 @@ note: >-
 needs: [bgp, tcp]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Anycast
@@ -36,7 +35,7 @@ client.*
 
 The DNS root is the best-known example. There are 13 root server
 identifiers, the letters A to M, run by 12 organizations, and each letter
-is one IPv4 and one IPv6 address. On 2026-09-28 root-servers.org counted
+is one IPv4 and one IPv6 address. When this was written, root-servers.org counted
 2,045 instances behind those addresses.
 
 In IPv6 an anycast address looks exactly like a normal unicast one; the

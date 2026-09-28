@@ -3,8 +3,6 @@ id: kernel-tuntap
 title: Universal TUN/TAP device driver
 author: Maxim Krasnyansky, Maksim Yevmenkin, Florian Thiel and kernel developers
 url: https://docs.kernel.org/networking/tuntap.html
-published: 2002 (document revision), served as part of the 7.3.0-rc5 docs
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -42,7 +40,7 @@ is easy to draw.
 
 ## My notes
 
-- The docs build showed 7.3.0-rc5 on 2026-09-28. The lab machine runs
+- The docs build showed 7.3.0-rc5. The lab machine runs
   Linux 7.1.9; IFF_BACKPRESSURE may not be there. Check
   include/uapi/linux/if_tun.h on the machine before using it.
 - The quoted apostrophe in "aren't" is a curly one on the page.

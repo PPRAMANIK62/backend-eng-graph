@@ -3,8 +3,6 @@ id: root-servers-org
 title: Root Server Technical Operations Association (root-servers.org)
 author: Root server operators
 url: https://root-servers.org/
-published: 2026-09-28
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -20,13 +18,13 @@ per-letter map of sites.
 
 - 13 root name servers, 12 operators. "The 13 root name servers are operated by 12 independent organisations." (front page)
 - The root servers are listed by letter, A to M, each with its operator and sites. (front page, Root Servers list)
-- Instance count, live figure read 2026-09-28. "As of 2026-09-28T17:45:42Z, the root server system consists of 2045 operational instances operated by the 12 independent root server operators." (front page)
+- Instance count, live figure read when this was written. "… the root server system consists of 2045 operational instances operated by the 12 independent root server operators." (front page)
 
-Added 2026-09-28 for `anycast` (FAQ page, https://root-servers.org/faq/):
+Added for `anycast` (FAQ page, https://root-servers.org/faq/):
 
 - Each of the 13 identifiers is one IPv4 and one IPv6 address, no matter how many instances serve it. "There are 13 Root Server Identifiers (RSI, the letters \"A\" through \"M\"). Each RSI operates at one IPv4 and one IPv6 address." (FAQ, How many Root Server Identifiers are there?)
 - The instance count changes, generally upward. "The number of root server instances changes (generally increases) over time." (FAQ, How many root servers are there?)
-- Per letter, the front page lists sites; e.g. the A root (Verisign) showed "Sites: 56, Operational: 56" on 2026-09-28. (front page, A)
+- Per letter, the front page lists sites; e.g. the A root (Verisign) showed "Sites: 56, Operational: 56" when this was written. (front page, A)
 
 ## Visuals worth redrawing
 

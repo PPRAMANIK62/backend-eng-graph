@@ -9,7 +9,6 @@ note: >-
 needs: [tcp-retransmission]
 leads_to: [bandwidth-delay-product, bufferbloat, pacing]
 compare_with: [tcp-flow-control]
-updated: 2026-09-29
 ---
 
 # Congestion control
@@ -24,7 +23,7 @@ congestion even looks like.
 
 ## Why TCP needs it: the collapses of 1986
 
-In October 1986 the internet had the first of a series of congestion
+In 1986 the internet had the first of a series of congestion
 collapses. Between Lawrence Berkeley Laboratory and UC Berkeley, two
 sites 400 yards apart, throughput fell from 32 Kbps to 40 bps. The
 protocol wasn't the main problem. The way TCP implementations behaved
@@ -140,7 +139,7 @@ grow slower than Reno, CUBIC just follows Reno's growth.
 
 CUBIC's predecessor BIC-TCP became Linux's default in 2005. CUBIC is now
 the default in Linux, Windows and Apple's stacks, and RFC 9438 moved it
-to the Standards Track in August 2023, calling it the most widely
+to the Standards Track in 2023, calling it the most widely
 deployed TCP congestion control. It still treats loss (or an ECN mark)
 as the congestion signal.
 

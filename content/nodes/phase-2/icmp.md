@@ -9,7 +9,6 @@ note: >-
 needs: [ip-routing]
 leads_to: []
 compare_with: [mtu-and-fragmentation]
-updated: 2026-09-29
 ---
 
 # ICMP

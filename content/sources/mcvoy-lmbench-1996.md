@@ -3,8 +3,6 @@ id: mcvoy-lmbench-1996
 title: "lmbench: Portable Tools for Performance Analysis"
 author: Larry McVoy, Carl Staelin
 url: https://www.usenix.org/legacy/publications/library/proceedings/sd96/full_papers/mcvoy.pdf
-published: 1996-01
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

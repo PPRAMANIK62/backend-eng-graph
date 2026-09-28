@@ -9,7 +9,6 @@ note: >-
 needs: [block-device]
 leads_to: [torn-writes]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Inside an SSD
@@ -166,7 +165,7 @@ Getting from `write()` to that Flush is the job of [[fsync]].
 that keeps the drive alive long enough to save its volatile state when
 power drops. Enterprise drives often have it; consumer drives mostly
 don't, and some only promise a best effort. It also changes what a
-flush costs. In one engineer's fio tests (January 2026,
+flush costs. In one engineer's fio tests (2026,
 16 KB `O_DIRECT` writes, one fsync per write, ext4 on Ubuntu 24.04), an
 fsync took 2,974 µs on a Samsung 990 Pro and 891 µs on a Crucial T500,
 both consumer drives, against 12.4 µs on a pair of Intel D7-P5520s in
@@ -210,7 +209,7 @@ is described online as having capacitor-backed PLP, yet its fsync still
 took almost 1 ms in the tests above, far from the enterprise drives.
 Measure your own drive rather than trusting a feature list.
 
-**The spec moves.** NVMe Base Specification 2.4 was ratified in July 2026.
+**The spec moves.** NVMe Base Specification 2.4 was ratified in 2026.
 My drive implements NVMe 1.4b, an older revision.
 
 ## What this means when you build

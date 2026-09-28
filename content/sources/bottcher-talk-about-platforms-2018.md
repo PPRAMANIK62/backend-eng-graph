@@ -3,8 +3,6 @@ id: bottcher-talk-about-platforms-2018
 title: What I Talk About When I Talk About Platforms
 author: Evan Bottcher
 url: https://martinfowler.com/articles/talk-about-platforms.html
-published: 2018-03-05
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

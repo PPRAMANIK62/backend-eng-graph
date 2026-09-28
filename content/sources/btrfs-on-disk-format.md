@@ -3,8 +3,6 @@ id: btrfs-on-disk-format
 title: Btrfs on-disk format
 author: btrfs developers (btrfs documentation)
 url: https://btrfs.readthedocs.io/en/latest/dev/On-disk-format.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -30,6 +28,6 @@ None.
 
 ## My notes
 
-- The btrfs Introduction page (opened 2026-09-28) lists more checksum
+- The btrfs Introduction page lists more checksum
   choices (crc32c, xxhash, sha256, blake2b), so "currently CRC32c" here
   may be the default or out of date. Don't state it as the only option.

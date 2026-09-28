@@ -3,8 +3,6 @@ id: dumazet-tcp-internal-pacing-2017
 title: "tcp: internal implementation for pacing (Linux commit 218af599fa63)"
 author: Eric Dumazet
 url: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=218af599fa635b107cfe10acf3249c4dfe5e4123
-published: 2017-05-16
-accessed: 2026-09-29
 kind: code
 primary: true
 ---
@@ -31,5 +29,4 @@ None.
 
 ## My notes
 
-- Version from https://kernelnewbies.org/Linux_4.13 (opened
-  2026-09-29), which lists the commit under TCP changes.
+- Version from https://kernelnewbies.org/Linux_4.13, which lists the commit under TCP changes.

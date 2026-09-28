@@ -3,8 +3,6 @@ id: baumann-fork-in-the-road-2019
 title: A fork() in the road
 author: Andrew Baumann, Jonathan Appavoo, Orran Krieger, Timothy Roscoe
 url: https://www.microsoft.com/en-us/research/wp-content/uploads/2019/04/fork-hotos19.pdf
-published: 2019-05
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

@@ -3,8 +3,6 @@ id: evans-updating-dns-2020
 title: What happens when you update your DNS?
 author: Julia Evans
 url: https://jvns.ca/blog/how-updating-dns-works/
-published: 2020-06-17
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
@@ -35,7 +33,7 @@ and resolvers and programs that ignore TTLs.
 - NS records from .com had a TTL of 172800 seconds, 48 hours, which is why changing name servers is slow. "172800 seconds is 48 hours!" (nameserver TTLs are much longer)
 - Programs may cache DNS answers in memory forever; the JVM can be configured to. "some programs will also cache DNS records indefinitely in memory (until the program is restarted)." (your program's DNS resolver library might also cache DNS records)
 
-Added 2026-09-28 for `dns-caching` audit:
+Added for `dns-caching` audit:
 
 - People may pin the old address by hand. "And people can always hardcode the old IP address in their /etc/hosts." (you can't always rely on the TTL)
 - The JVM example is an AWS article on setting the JVM's DNS TTL. "For example, AWS has an article on Setting the JVM TTL for DNS Name Lookups ." (your program's DNS resolver library might also cache DNS records)

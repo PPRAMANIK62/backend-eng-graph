@@ -9,7 +9,6 @@ note: >-
 needs: [binary-encoding, checksums, crash-consistency]
 leads_to: []
 compare_with: []
-updated: 2026-09-28
 ---
 
 # The append-only log

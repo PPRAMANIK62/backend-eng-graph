@@ -3,8 +3,6 @@ id: cardwell-bbr-2016
 title: "BBR: Congestion-Based Congestion Control"
 author: Neal Cardwell, Yuchung Cheng, C. Stephen Gunn, Soheil Hassas Yeganeh, Van Jacobson
 url: https://web.stanford.edu/class/cs244/papers/bbr.pdf
-published: 2016-10 (ACM Queue vol. 14 no. 5, September-October 2016)
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---
@@ -15,8 +13,8 @@ Google's article introducing BBR (now called BBRv1). It argues loss is
 the wrong congestion signal, models the path by its bottleneck bandwidth
 and round-trip propagation time, and paces sending to keep about one
 BDP in flight. Includes results from Google's B4 WAN and YouTube. The
-ACM Queue page (queue.acm.org) returned a Cloudflare block page on
-2026-09-28, so this note is from the PDF of the same ACM Queue article
+ACM Queue page (queue.acm.org) returned a Cloudflare block page,
+so this note is from the PDF of the same ACM Queue article
 hosted for Stanford's CS244.
 
 ## Key claims
@@ -45,14 +43,14 @@ hosted for Stanford's CS244.
 - Token-bucket policers cause steady moderate losses under ProbeBW; they added policer detection. (Token-Bucket Policers)
 - Against loss-based flows, deep unmanaged buffers let the loss-based flows take more than their share. "Unmanaged router buffers exceeding several BDPs, however, cause long-lived loss-based competitors to bloat the queue and grab more than their fair share." (Competition with Loss-Based Congestion Control)
 
-Added 2026-09-28 for `congestion-control` audit:
+Added for `congestion-control` audit:
 
 - Authors: Neal Cardwell, Yuchung Cheng, C. Stephen Gunn, Soheil Hassas Yeganeh, Van Jacobson (byline, p. 1).
 - Figure 1 splits data in flight into three regions. "three different regions (app-limited, bandwidth-limited, and bufferlimited)" (p. 4)
 - The 8 MB B4 receive buffer was set low on purpose. "which the network operations team had deliberately set low (8 MB) to prevent CUBIC flooding the network with megabytes of excess inflight" (Google B4 WAN Deployment Experience)
 - ProbeRTT triggers after 10 seconds without a new minimum. "for more than 10 seconds, then BBR enters ProbeRTT and reduces the cwnd to a very small value (four packets)." (p. 18)
 
-Added 2026-09-29 for `pacing` and `bufferbloat` (re-read the PDF):
+Added for `pacing` and `bufferbloat` (re-read the PDF):
 
 - BBR paces every packet; pacing is part of the design, not an add-on. "To match the packet-arrival rate to the bottleneck link’s departure rate, BBR paces every data packet." (Matching the Packet Flow to the Delivery Path)
 - The send routine schedules the next packet at packet size divided by pacing_gain times the bandwidth estimate. "nextSendTime = now + packet.size / (pacing_gain * BtlBwFilter.currentMax)" (send() pseudocode, pp. 10-11)
@@ -71,6 +69,6 @@ Added 2026-09-29 for `pacing` and `bufferbloat` (re-read the PDF):
 
 ## My notes
 
-- Mainline Linux net/ipv4/tcp_bbr.c (7.3-rc5, read 2026-09-28) still
+- Mainline Linux net/ipv4/tcp_bbr.c (7.3-rc5) still
   cites this 2016 article in its header. BBRv3 is specified in the IETF
   draft (ietf-ccwg-bbr-draft).

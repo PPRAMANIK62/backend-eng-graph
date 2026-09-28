@@ -9,7 +9,6 @@ note: >-
 needs: [block-device, ssd-internals]
 leads_to: [crash-consistency]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Torn writes

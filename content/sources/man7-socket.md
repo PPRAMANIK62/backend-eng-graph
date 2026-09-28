@@ -3,8 +3,6 @@ id: man7-socket
 title: socket(2), Linux manual page
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man2/socket.2.html
-published: 2025-10-29
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

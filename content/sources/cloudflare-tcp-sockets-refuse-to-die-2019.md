@@ -3,8 +3,6 @@ id: cloudflare-tcp-sockets-refuse-to-die-2019
 title: When TCP sockets refuse to die
 author: Marek Majkowski, Cloudflare
 url: https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die/
-published: 2019-09-20
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---
@@ -30,7 +28,7 @@ TCP_USER_TIMEOUT.
 - TCP_USER_TIMEOUT overrides tcp_retries2. "With the user timeout set the tcp_retries2 value is ignored." (Busy ESTAB socket is not forever)
 - Recommendation: keepalives plus TCP_USER_TIMEOUT. "Set TCP_USER_TIMEOUT to TCP_KEEPIDLE + TCP_KEEPINTVL * TCP_KEEPCNT." (Note about using application timeouts)
 
-Added 2026-09-29 for `tcp-keepalive` (re-opened):
+Added for `tcp-keepalive` (re-opened):
 
 - Keepalive trace with TCP_KEEPIDLE 5, TCP_KEEPINTVL 3, TCP_KEEPCNT 3: probes at about 5, 8 and 11 s, RST at about 14 s, ETIMEDOUT. "After a total of three sent probes, and a further three seconds of delay, the connection dies with ETIMEDOUT, and final the RST is transmitted." (Idle ESTAB is forever)
 - Keepalives only run when the send buffer is empty. "For keepalives to work, the send buffer must be empty." (Idle ESTAB is forever)

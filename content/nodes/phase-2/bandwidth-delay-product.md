@@ -9,7 +9,6 @@ note: >-
 needs: [congestion-control, network-latency, tcp-flow-control]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # The bandwidth-delay product

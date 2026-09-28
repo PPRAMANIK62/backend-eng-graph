@@ -3,8 +3,6 @@ id: ostep-beyond-physical-memory
 title: "Operating Systems: Three Easy Pieces, ch. 21: Beyond Physical Memory: Mechanisms"
 author: Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

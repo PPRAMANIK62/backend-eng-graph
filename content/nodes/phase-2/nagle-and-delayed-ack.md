@@ -9,7 +9,6 @@ note: >-
 needs: [tcp]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Nagle's algorithm and delayed ACKs

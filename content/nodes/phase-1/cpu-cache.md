@@ -8,7 +8,6 @@ note: >-
 needs: [memory-hierarchy]
 leads_to: [garbage-collection]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # CPU caches

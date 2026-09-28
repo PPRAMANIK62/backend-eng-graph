@@ -3,8 +3,6 @@ id: cloudflare-ephemeral-ports-2022
 title: How to stop running out of ephemeral ports and start to love long-lived connections
 author: Marek Majkowski, Cloudflare
 url: https://blog.cloudflare.com/how-to-stop-running-out-of-ephemeral-ports-and-start-to-love-long-lived-connections/
-published: 2022-02-02
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

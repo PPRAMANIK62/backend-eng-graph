@@ -3,8 +3,6 @@ id: man7-syscall
 title: syscall(2) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man2/syscall.2.html
-published: 2026-02-02
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

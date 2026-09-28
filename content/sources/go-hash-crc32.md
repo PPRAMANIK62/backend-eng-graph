@@ -3,8 +3,6 @@ id: go-hash-crc32
 title: "crc32 package: hash/crc32"
 author: The Go Authors
 url: https://pkg.go.dev/hash/crc32
-published: 2026
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

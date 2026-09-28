@@ -3,8 +3,6 @@ id: ostep-crash-consistency
 title: "Crash Consistency: FSCK and Journaling (Operating Systems: Three Easy Pieces, chapter 42)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf
-published: 2023-11
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

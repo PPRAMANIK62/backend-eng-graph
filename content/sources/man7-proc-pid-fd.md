@@ -3,8 +3,6 @@ id: man7-proc-pid-fd
 title: proc_pid_fd(5) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man5/proc_pid_fd.5.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -27,6 +25,6 @@ None.
 
 ## My notes
 
-- Companion page proc_pid(5) (opened 2026-09-28) says there is one
+- Companion page proc_pid(5), also opened, says there is one
   numbered directory under /proc for each running process, named by its
   PID. Not cited separately.

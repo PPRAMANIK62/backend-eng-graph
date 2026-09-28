@@ -3,8 +3,6 @@ id: kernel-dm-log-writes
 title: dm-log-writes
 author: Linux kernel documentation (device-mapper)
 url: https://docs.kernel.org/admin-guide/device-mapper/log-writes.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -36,5 +34,5 @@ file system developers testing crash behavior.
 
 ## My notes
 
-- Status checked via GitHub API on 2026-09-28: `drivers/md/dm-log-writes.c` is in mainline Linux; `josefbacik/log-writes` last commit 2024-07-09.
+- Status checked via GitHub API: `drivers/md/dm-log-writes.c` is in mainline Linux; `josefbacik/log-writes` last commit in 2024.
 - It works under a real file system, so the file system's own metadata writes are in the log along with data.

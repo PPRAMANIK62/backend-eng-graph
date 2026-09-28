@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [thread, system-call, signals, virtual-memory]
 compare_with: [thread]
-updated: 2026-09-28
 ---
 
 # Processes

@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [latency-numbers, cpu-cache]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # The memory hierarchy

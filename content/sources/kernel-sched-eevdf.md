@@ -3,8 +3,6 @@ id: kernel-sched-eevdf
 title: EEVDF Scheduler
 author: Linux kernel documentation
 url: https://docs.kernel.org/scheduler/sched-eevdf.html
-published: living document (read at 7.3.0-rc5 on docs.kernel.org)
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -33,9 +31,9 @@ example worth redrawing as a timeline.
 
 ## My notes
 
-- The "(as a new option in 2024)" wording clashes with 6.6's release date
-  (2023-10-29) and with Kernel Newbies saying 6.6 replaced CFS. Treat 6.6
+- The "(as a new option in 2024)" wording clashes with 6.6's release year
+  (2023) and with Kernel Newbies saying 6.6 replaced CFS. Treat 6.6
   (2023) as the switch; the lag-on-sleep work came later (LWN 969062, 2024).
 - The companion CFS page (sched-design-CFS) says "CFS is making room for
   EEVDF". man-pages 6.19 sched(7) still says CFS is the default (seen
-  2026-09-28 during candidate research).
+  during candidate research).

@@ -3,8 +3,6 @@ id: ostrovsky-cache-effects
 title: Gallery of Processor Cache Effects
 author: Igor Ostrovsky
 url: http://igoro.com/archive/gallery-of-processor-cache-effects/
-published: 2010-01-19
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
@@ -13,7 +11,7 @@ primary: false
 
 Seven small C# experiments that make cache behavior visible: cache lines,
 cache sizes, instruction-level parallelism, associativity, false sharing.
-Page shows "July 22, 2010 January 19, 2010" (updated and published dates).
+Page shows it was published and updated in 2010.
 His machine: quad-core, 32 KB L1 data per core, 4 MB L2 shared per pair.
 
 ## Key claims

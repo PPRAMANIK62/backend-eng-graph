@@ -3,8 +3,6 @@ id: kernel-vm-sysctl
 title: Documentation for /proc/sys/vm/
 author: Linux kernel developers
 url: https://docs.kernel.org/admin-guide/sysctl/vm.html
-published: unknown            # living doc, served as the kernel 7.3.0-rc5 docs
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

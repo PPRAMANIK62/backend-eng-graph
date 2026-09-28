@@ -3,8 +3,6 @@ id: man7-tcp
 title: tcp(7), Linux manual page
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man7/tcp.7.html
-published: 2026-04-19
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -32,7 +30,7 @@ control algorithm per socket.
 - tcp_autocorking coalesces small consecutive writes when a packet is already queued. "Coalescing is done if at least one prior packet for the flow is waiting in Qdisc queues or device transmit queue." (tcp_autocorking, since Linux 3.14)
 - TCP_CONGESTION picks the congestion control algorithm per socket. "This option allows the caller to set the TCP congestion control algorithm to be used, on a per-socket basis." (TCP_CONGESTION, since Linux 2.6.13)
 
-Added 2026-09-28 for the transport core nodes (tcp, time-wait):
+Added for the transport core nodes (tcp, time-wait):
 
 - Linux TCP implements RFC 793, 1122 and 2001 with NewReno and SACK. "This is an implementation of the TCP protocol defined in RFC 793, RFC 1122 and RFC 2001 with the NewReno and SACK extensions." (DESCRIPTION)
 - In order, retransmitted, checksummed. "TCP guarantees that the data arrives in order and retransmits lost packets. It generates and checks a per-packet checksum to catch transmission errors." (DESCRIPTION)
@@ -46,13 +44,13 @@ Added 2026-09-28 for the transport core nodes (tcp, time-wait):
 - tcp_tw_reuse is listed as a Boolean, "default: disabled"; the kernel doc now says default 2 (loopback only). "Allow to reuse TIME_WAIT sockets for new connections when it is safe from protocol viewpoint." (tcp_tw_reuse)
 - SYN cookies are a last resort. "This should be used as a last resort, if at all." (tcp_syncookies)
 
-Added 2026-09-28 for `nagle-and-delayed-ack` audit:
+Added for `nagle-and-delayed-ack` audit:
 
 - TCP_CORK is useful for putting headers in front of sendfile data, and isn't portable. "This is useful for prepending headers before calling sendfile(2) , or for throughput optimization." and "This option should not be used in code intended to be portable." (TCP_CORK)
 - After TCP_QUICKACK, the kernel moves in and out of quickack mode on its own. "Subsequent operation of the TCP protocol will once again enter/leave quickack mode depending on internal protocol processing" (TCP_QUICKACK)
 - tcp_autocorking is on by default. "tcp_autocorking (Boolean; default: enabled; since Linux 3.14)" (tcp_autocorking)
 
-Added 2026-09-29 for `tcp-keepalive`:
+Added for `tcp-keepalive`:
 
 - tcp_keepalive_time: idle seconds before the first probe, default 7200, only with SO_KEEPALIVE. "The number of seconds a connection needs to be idle before TCP begins sending out keep-alive probes. Keep-alives are sent only when the SO_KEEPALIVE socket option is enabled." (tcp_keepalive_time, since Linux 2.2)
 - With the defaults, a dead idle connection is dropped about 11 minutes after probing starts. "An idle connection is terminated after approximately an additional 11 minutes (9 probes an interval of 75 seconds apart) when keep-alive is enabled." (tcp_keepalive_time)

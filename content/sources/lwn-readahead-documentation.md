@@ -3,8 +3,6 @@ id: lwn-readahead-documentation
 title: "Readahead: the documentation I wanted to read"
 author: Neil Brown
 url: https://lwn.net/Articles/888715/
-published: 2022-04-08
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

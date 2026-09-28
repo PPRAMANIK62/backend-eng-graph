@@ -3,8 +3,6 @@ id: clark-design-philosophy-1988
 title: The Design Philosophy of the DARPA Internet Protocols
 author: David D. Clark
 url: http://ccr.sigcomm.org/archive/1995/jan95/ccr-9501-clark.pdf
-published: 1988-08
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---
@@ -30,7 +28,7 @@ layers, and "fate-sharing".
 - By 1988 TCP/IP ran over long-haul nets, local area nets like Ethernet, satellite nets, packet radio and serial links. "local area nets (Ethernet, ringnet, etc.), broadcast satellite nets" (5, list of networks)
 - The split into IP and TCP wasn't in the original proposal. "This seems basic to the design, but was also not a part of the original proposal." (abstract column, on the TCP/IP split)
 
-Added 2026-09-28 (audit) for `network-layers`:
+Added (audit) for `network-layers`:
 
 - A reliable transport holds back later packets until a lost one is retransmitted. "A typical reliable transport protocol responds to a missing packet by requesting a retransmission and delaying the delivery of any subsequent packets until the lost packet has been retransmitted." (5)
 - A lost speech packet can be covered with silence. "The missing speech can simply be replaced by a short period of silence" (5)

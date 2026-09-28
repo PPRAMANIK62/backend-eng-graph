@@ -3,8 +3,6 @@ id: man7-systemd-resolved
 title: systemd-resolved.service(8), Linux manual page
 author: systemd project
 url: https://man7.org/linux/man-pages/man8/systemd-resolved.service.8.html
-published: 2026-08-03
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -12,7 +10,7 @@ primary: true
 ## Summary
 
 The man page for systemd-resolved (systemd 262~devel, from the upstream
-repo as of 2026-08-03). A system service that gives local programs name
+repo). A system service that gives local programs name
 resolution through D-Bus, Varlink, glibc's getaddrinfo (via
 nss-resolve) and a local DNS stub listener on 127.0.0.53. It caches
 answers, and differs from the classic glibc stub in how it treats search

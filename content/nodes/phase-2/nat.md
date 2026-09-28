@@ -9,7 +9,6 @@ note: >-
 needs: [ip-addressing, ports-and-sockets]
 leads_to: [tcp-keepalive]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # NAT

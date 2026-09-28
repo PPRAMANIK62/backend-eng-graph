@@ -9,7 +9,6 @@ note: >-
 needs: [tcp, nat]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # TCP keepalive and dead peers
@@ -34,7 +33,7 @@ idle established TCP binding for at least 2 hours 4 minutes (RFC 5382,
 2008), but some reap idle ones sooner. Load balancers are often much
 shorter: an AWS Network Load Balancer forgets a TCP flow after 350
 seconds of silence by default (configurable from 60 to 6000, per its
-docs read 2026-09-29), and a client that sends after that gets a reset.
+docs when this was written), and a client that sends after that gets a reset.
 
 ## Keepalive probes
 

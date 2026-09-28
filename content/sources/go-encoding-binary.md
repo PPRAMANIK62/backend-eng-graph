@@ -3,8 +3,6 @@ id: go-encoding-binary
 title: "binary package: encoding/binary"
 author: The Go Authors
 url: https://pkg.go.dev/encoding/binary
-published: 2026
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

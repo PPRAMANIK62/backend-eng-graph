@@ -9,7 +9,6 @@ note: >-
 needs: [fsync]
 leads_to: []
 compare_with: []
-updated: 2026-09-28
 ---
 
 # What happens when fsync fails?

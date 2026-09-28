@@ -3,8 +3,6 @@ id: kubernetes-pod-lifecycle
 title: Pod Lifecycle
 author: Kubernetes documentation
 url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
-published: living document (page mentions features up to Kubernetes v1.36)
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -24,7 +22,7 @@ taken out of service endpoints while it shuts down.
 - When the grace period ends, remaining processes get KILL. "Once the grace period has expired, the KILL signal is sent to any remaining processes" (Termination of Pods)
 - The default grace period is 30 seconds. "The default terminationGracePeriodSeconds setting is 30 seconds." (Pod Termination Flow)
 - A preStop hook runs before TERM is sent; if it overruns, it gets a one-off 2 s extension. "the kubelet requests a small, one-off grace period extension of 2 seconds." (Pod Termination Flow)
-- The preStop hook's time counts against the grace period. "If the preStop hook needs longer to complete than the default grace period allows, you must modify terminationGracePeriodSeconds to suit this." (Pod Termination Flow, note; added 2026-09-28 in figure review)
+- The preStop hook's time counts against the grace period. "If the preStop hook needs longer to complete than the default grace period allows, you must modify terminationGracePeriodSeconds to suit this." (Pod Termination Flow, note; added in figure review)
 - TERM goes to process 1 in each container. "The kubelet triggers the container runtime to send a TERM signal to process 1 inside each container." (Pod Termination Flow)
 - At the same time, the control plane starts taking the pod out of service endpoints; terminating endpoints are marked not ready so load balancers stop sending regular traffic. "Terminating endpoints always have their ready status as false" (Pod Termination Flow)
 - A shutting-down pod should finish open connections. "Pods that shut down slowly should not continue to serve regular traffic and should start terminating and finish processing open connections." (Pod Termination Flow)

@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [ethernet-and-arp, ip-addressing, network-latency, packet-capture]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # The layer model

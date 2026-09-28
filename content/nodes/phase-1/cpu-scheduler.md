@@ -9,7 +9,6 @@ note: >-
 needs: [thread]
 leads_to: [context-switch]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # The CPU scheduler
@@ -38,8 +37,8 @@ should get about a quarter of it over time.
 
 From Linux 2.6.23 until 6.6, the algorithm doing this was CFS, the
 Completely Fair Scheduler. CFS used heuristics and a set of tunable knobs
-to guess which threads needed attention. Linux 6.6, released on
-2023-10-29, replaced it with **EEVDF**, Earliest Eligible Virtual Deadline
+to guess which threads needed attention. Linux 6.6, released in
+2023, replaced it with **EEVDF**, Earliest Eligible Virtual Deadline
 First, an algorithm first published in 1995. Many of the old CFS knobs
 went away with it. The kernel on the lab machine is 7.1.9, so EEVDF is what
 runs there.
@@ -89,7 +88,7 @@ long while comes back with its lag reset; one that naps briefly doesn't.
 **Descriptions of 6.6 don't match.** The 6.6 release notes describe CFS as
 replaced outright. The kernel's own EEVDF page describes 6.6 as the start
 of a transition and calls it a new option in 2024, though 6.6 came out in
-October 2023. Either way, from 6.6 on you're running EEVDF. Many CFS
+2023. Either way, from 6.6 on you're running EEVDF. Many CFS
 tunables were removed, so if you read an older article about tuning CFS,
 check whether those knobs still exist on your kernel.
 

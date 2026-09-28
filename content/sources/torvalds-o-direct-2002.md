@@ -3,8 +3,6 @@ id: torvalds-o-direct-2002
 title: "Re: O_DIRECT performance impact on 2.4.18"
 author: Linus Torvalds
 url: https://static.lwn.net/2002/0516/a/lt-deranged-monkey.php3
-published: 2002-05-11
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

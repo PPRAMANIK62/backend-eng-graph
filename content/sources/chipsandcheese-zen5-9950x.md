@@ -3,8 +3,6 @@ id: chipsandcheese-zen5-9950x
 title: "AMD's Ryzen 9950X: Zen 5 on Desktop"
 author: Chester Lam (Chips and Cheese)
 url: https://chipsandcheese.com/p/amds-ryzen-9950x-zen-5-on-desktop
-published: 2024-08-14
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

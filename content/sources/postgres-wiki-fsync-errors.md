@@ -3,8 +3,6 @@ id: postgres-wiki-fsync-errors
 title: Fsync Errors (PostgreSQL wiki)
 author: PostgreSQL developers (maintained by Thomas Munro)
 url: https://wiki.postgresql.org/wiki/Fsync_Errors
-published: 2023-07-05            # last edit
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

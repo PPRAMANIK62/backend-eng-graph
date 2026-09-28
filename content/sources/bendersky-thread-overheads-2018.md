@@ -3,8 +3,6 @@ id: bendersky-thread-overheads-2018
 title: Measuring context switching and memory overheads for Linux threads
 author: Eli Bendersky
 url: https://eli.thegreenplace.net/2018/measuring-context-switching-and-memory-overheads-for-linux-threads/
-published: 2018-09-04
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

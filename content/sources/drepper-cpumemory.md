@@ -3,8 +3,6 @@ id: drepper-cpumemory
 title: What Every Programmer Should Know About Memory
 author: Ulrich Drepper
 url: https://www.akkadia.org/drepper/cpumemory.pdf
-published: 2007-11-21
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

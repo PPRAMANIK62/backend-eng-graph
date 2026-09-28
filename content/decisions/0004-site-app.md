@@ -3,7 +3,6 @@ id: 0004-site-app
 title: Build the site on ai-eng-graph's stack, with a zoom map instead of a metro map
 phase: 1
 status: decided
-date: 2026-09-28
 replaced_by:
 ---
 
@@ -30,7 +29,7 @@ the stack with a different way to move through the graph.
 ## What I measured
 
 Nothing was benchmarked. The map design was chosen by building throwaway
-HTML and CSS prototypes on 2026-09-28 and comparing them in the browser:
+HTML and CSS prototypes and comparing them in the browser:
 a reading-order board, a card catalog, a lens, a drawer laid out as a
 graph, a card lens, and a zoom map. The first three were rejected because
 none of them drew the links between concepts. The zoom map was picked

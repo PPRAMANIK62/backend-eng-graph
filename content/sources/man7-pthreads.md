@@ -3,8 +3,6 @@ id: man7-pthreads
 title: pthreads(7) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man7/pthreads.7.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

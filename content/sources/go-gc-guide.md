@@ -3,8 +3,6 @@ id: go-gc-guide
 title: A Guide to the Go Garbage Collector
 author: The Go team
 url: https://go.dev/doc/gc-guide
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

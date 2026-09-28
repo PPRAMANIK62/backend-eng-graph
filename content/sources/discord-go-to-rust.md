@@ -3,8 +3,6 @@ id: discord-go-to-rust
 title: Why Discord is switching from Go to Rust
 author: Jesse Howarth
 url: https://discord.com/blog/why-discord-is-switching-from-go-to-rust
-published: 2020-02-04
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---
@@ -37,5 +35,5 @@ rewrote it in Rust. Graphs are from Go 1.9.2.
 
 ## My notes
 
-- The 2-minute forced GC is a Go runtime constant; I saw `var forcegcperiod int64 = 2 * 60 * 1e9` in runtime/proc.go on master (2026-09-28), but that source has no note here.
+- The 2-minute forced GC is a Go runtime constant; I saw `var forcegcperiod int64 = 2 * 60 * 1e9` in runtime/proc.go on master, but that source has no note here.
 - Predates GOMEMLIMIT (1.19) and Green Tea (1.26); no newer Go was tested.

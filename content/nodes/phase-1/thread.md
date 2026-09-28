@@ -8,7 +8,6 @@ note: >-
 needs: [process]
 leads_to: [cpu-scheduler]
 compare_with: [process]
-updated: 2026-09-28
 ---
 
 # Threads

@@ -3,8 +3,6 @@ id: gregg-strace-overhead-2014
 title: strace Wow Much Syscall
 author: Brendan Gregg
 url: https://www.brendangregg.com/blog/2014-05-11/strace-wow-much-syscall.html
-published: 2014-05-11
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

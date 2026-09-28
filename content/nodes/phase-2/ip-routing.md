@@ -8,7 +8,6 @@ note: >-
 needs: [ip-addressing]
 leads_to: [bgp, mtu-and-fragmentation, icmp, tun-tap]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # How a packet finds its way

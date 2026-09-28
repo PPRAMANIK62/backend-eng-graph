@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [append-only-log]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Checksums
@@ -48,7 +47,7 @@ The reason CRC32C won is hardware. Intel added a CRC32 instruction for the Casta
 
 Go's standard library has it in `hash/crc32`. You build a table once with `crc32.MakeTable(crc32.Castagnoli)` and then call `crc32.Checksum(data, table)`, or `crc32.Update` to feed data in pieces.
 
-As of the Go source on 2026-09-28, the package checks the CPU at run time. On amd64 with SSE 4.2, and on arm64 with the CRC32 feature, Castagnoli uses the hardware instruction. Otherwise it falls back to a software method called slicing-by-8, which uses lookup tables. The same binary gets the fast path wherever the CPU supports it.
+In the Go source when this was written, the package checks the CPU at run time. On amd64 with SSE 4.2, and on arm64 with the CRC32 feature, Castagnoli uses the hardware instruction. Otherwise it falls back to a software method called slicing-by-8, which uses lookup tables. The same binary gets the fast path wherever the CPU supports it.
 
 Watch the default: `crc32.ChecksumIEEE` and `crc32.NewIEEE` use the IEEE polynomial. If a file format says CRC32C and you call the IEEE function, every checksum will fail.
 

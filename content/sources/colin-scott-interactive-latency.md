@@ -3,8 +3,6 @@ id: colin-scott-interactive-latency
 title: Latency Numbers Every Programmer Should Know (interactive)
 author: Colin Scott
 url: https://colin-scott.github.io/personal_website/research/interactive_latency.html
-published: undated (year slider to 2020)
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
@@ -35,5 +33,5 @@ numbers come from, and that many are extrapolations, not measurements.
 ## My notes
 
 - Norvig's page (norvig.com/21-days.html, section "Answers") was opened
-  2026-09-28 during candidate research: main memory 100 ns, disk seek 8 ms,
+  during candidate research: main memory 100 ns, disk seek 8 ms,
   US to Europe and back 150 ms, "on a typical PC". Not cited separately.

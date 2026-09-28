@@ -9,7 +9,6 @@ note: >-
 needs: [tcp]
 leads_to: [time-wait]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # The TCP handshake

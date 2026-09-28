@@ -3,8 +3,6 @@ id: man7-fork
 title: fork(2) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man2/fork.2.html
-published: 2026-06-05
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

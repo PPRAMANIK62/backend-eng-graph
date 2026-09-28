@@ -3,8 +3,6 @@ id: cloudflare-tcp-wan-throughput-2022
 title: Optimizing TCP for high WAN throughput while preserving low latency
 author: Mike Freemon (Cloudflare)
 url: https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency/
-published: 2022-07-01
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

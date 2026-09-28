@@ -3,8 +3,6 @@ id: man7-open
 title: open(2), Linux manual page
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man2/open.2.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -55,5 +53,5 @@ None.
 ## My notes
 
 - Linus Torvalds's famous 2002 criticism of O_DIRECT used to be quoted
-  here; it's not on the 6.19 page (grepped 2026-09-28). Use
+  here; it's not on the 6.19 page (grepped). Use
   torvalds-o-direct-2002 for it.

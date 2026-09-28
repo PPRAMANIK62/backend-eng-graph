@@ -3,8 +3,6 @@ id: callaghan-ssd-plp-fsync
 title: SSDs, power loss protection and fsync latency
 author: Mark Callaghan
 url: http://smalldatum.blogspot.com/2026/01/ssds-power-loss-protection-and-fsync.html
-published: 2026-01-07
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

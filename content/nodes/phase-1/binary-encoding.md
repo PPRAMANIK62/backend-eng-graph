@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [append-only-log]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Binary encoding

@@ -3,8 +3,6 @@ id: danluu-files-are-hard
 title: Files are hard
 author: Dan Luu
 url: https://danluu.com/file-consistency/
-published: 2015-12
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

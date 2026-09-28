@@ -3,8 +3,6 @@ id: ostep-memory-api
 title: "Operating Systems: Three Easy Pieces, ch. 14: Interlude: Memory API"
 author: Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/vm-api.pdf
-published: 2025
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

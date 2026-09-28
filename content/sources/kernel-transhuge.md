@@ -3,8 +3,6 @@ id: kernel-transhuge
 title: Transparent Hugepage Support
 author: Linux kernel developers
 url: https://docs.kernel.org/admin-guide/mm/transhuge.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

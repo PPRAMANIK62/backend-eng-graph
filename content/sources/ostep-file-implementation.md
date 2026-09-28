@@ -3,8 +3,6 @@ id: ostep-file-implementation
 title: "File System Implementation (Operating Systems: Three Easy Pieces, chapter 40)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/file-implementation.pdf
-published: 2026
-accessed: 2026-09-28
 kind: book
 primary: false
 ---
@@ -38,7 +36,7 @@ creation cost in disk I/Os. PDF footer says © 2008–26.
 - Creating a file in the example takes 10 I/Os. "10 I/Os in this case, to walk the pathname and then finally create the file" (§40.6)
 - Most file systems buffer writes in memory for 5 to 30 seconds. "most modern file systems buffer writes in memory for anywhere between five and thirty seconds" (§40.7)
 - (added in review) Extents work well when there is free space to lay files out contiguously. "they work well when there is enough free space on the disk and files can be laid out contiguously" (§40.3, Tip)
-- The worked example file system (vsfs) sits on a tiny disk of 64 blocks. "Assume we have a really small disk, with just 64 blocks" (§40.2; added 2026-09-28 in figure review)
+- The worked example file system (vsfs) sits on a tiny disk of 64 blocks. "Assume we have a really small disk, with just 64 blocks" (§40.2; added in figure review)
 
 ## Visuals worth redrawing
 

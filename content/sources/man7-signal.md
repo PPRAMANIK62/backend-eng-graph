@@ -3,8 +3,6 @@ id: man7-signal
 title: signal(7) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man7/signal.7.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

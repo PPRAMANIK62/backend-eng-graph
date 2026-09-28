@@ -9,7 +9,6 @@ note: >-
 needs: [congestion-control]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Pacing
@@ -79,7 +78,7 @@ the rate decides when each packet leaves.
 BBR is built around this. Its pacing rate, its bottleneck bandwidth
 estimate times a gain, is its main control; the window is a secondary
 cap. Without pacing, BBR doesn't work as designed. The BBRv3 draft
-(draft-ietf-ccwg-bbr-06, July 2026) paces 1% below its bandwidth
+(draft-ietf-ccwg-bbr-06, 2026) paces 1% below its bandwidth
 estimate on average, to keep queues low.
 
 ## How Linux paces

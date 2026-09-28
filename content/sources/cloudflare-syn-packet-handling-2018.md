@@ -3,8 +3,6 @@ id: cloudflare-syn-packet-handling-2018
 title: SYN packet handling in the wild
 author: Marek Majkowski, Cloudflare
 url: https://blog.cloudflare.com/syn-packet-handling-in-the-wild/
-published: 2018-01-15
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

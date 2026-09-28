@@ -3,8 +3,6 @@ id: bornholt-ferrite-2016
 title: Specifying and Checking File System Crash-Consistency Models
 author: James Bornholt, Antoine Kaufmann, Jialin Li, Arvind Krishnamurthy, Emina Torlak, Xi Wang
 url: https://jamesbornholt.com/papers/ferrite-asplos16.pdf
-published: 2016-04
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

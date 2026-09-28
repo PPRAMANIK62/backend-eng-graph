@@ -3,8 +3,6 @@ id: kernel-page-tables
 title: Page Tables
 author: Linux kernel developers
 url: https://docs.kernel.org/mm/page_tables.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -43,4 +41,4 @@ Faults"). Living doc.
 
 ## My notes
 
-- Page is served under the kernel 7.3.0-rc5 docs build as of 2026-09-28.
+- Page is served under the kernel 7.3.0-rc5 docs build.

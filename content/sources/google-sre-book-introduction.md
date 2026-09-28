@@ -3,8 +3,6 @@ id: google-sre-book-introduction
 title: "Introduction (Site Reliability Engineering, ch. 1)"
 author: Benjamin Treynor Sloss, edited by Betsy Beyer
 url: https://sre.google/sre-book/introduction/
-published: 2016
-accessed: 2026-09-28
 kind: book
 primary: true
 ---

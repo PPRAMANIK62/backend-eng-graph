@@ -3,8 +3,6 @@ id: lwn-anatomy-of-a-system-call
 title: Anatomy of a system call, part 1
 author: David Drysdale
 url: https://lwn.net/Articles/604287/
-published: 2014-07-09
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

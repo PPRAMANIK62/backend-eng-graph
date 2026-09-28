@@ -3,8 +3,6 @@ id: kernel-ext4-admin
 title: ext4 General Information
 author: Linux kernel documentation (ext4 developers)
 url: https://docs.kernel.org/admin-guide/ext4.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

@@ -3,8 +3,6 @@ id: kernel-page-table-isolation
 title: Page Table Isolation (PTI)
 author: Linux kernel documentation
 url: https://docs.kernel.org/arch/x86/pti.html
-published: living document (read at 7.3.0-rc5 on docs.kernel.org)
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

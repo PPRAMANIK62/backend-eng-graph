@@ -3,8 +3,6 @@ id: kernel-xfs-delayed-logging
 title: XFS Logging Design (XFS Delayed Logging Design)
 author: Linux kernel documentation (XFS developers)
 url: https://docs.kernel.org/filesystems/xfs/xfs-delayed-logging-design.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

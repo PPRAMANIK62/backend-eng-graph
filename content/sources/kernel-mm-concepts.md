@@ -3,8 +3,6 @@ id: kernel-mm-concepts
 title: Concepts overview (memory management)
 author: Linux kernel developers
 url: https://docs.kernel.org/admin-guide/mm/concepts.html
-published: unknown            # living doc, served as the kernel 7.3.0-rc5 docs
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

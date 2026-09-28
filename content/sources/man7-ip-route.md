@@ -3,8 +3,6 @@ id: man7-ip-route
 title: ip-route(8), Linux manual page
 author: iproute2 developers (original man page by Michail Litvak)
 url: https://man7.org/linux/man-pages/man8/ip-route.8.html
-published: 2026-08-04
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -12,9 +10,9 @@ primary: true
 ## Summary
 
 The man page for `ip route`, the iproute2 tool that reads and changes the
-kernel's routing tables. The man7.org rendering (2026-09-09) was built
-from the iproute2 git repository as fetched on 2026-08-04; the page's
-own footer date is 13 Dec 2012. Used for route types, the table IDs, and
+kernel's routing tables. The man7.org rendering was built
+from the iproute2 git repository as fetched when this was written; the
+page's own footer date is from 2012. Used for route types, the table IDs, and
 `ip route get`.
 
 ## Key claims
@@ -32,7 +30,7 @@ own footer date is 13 Dec 2012. Used for route types, the table IDs, and
 - With no proto given, ip assumes "boot", and a routing daemon purges boot routes when it starts. "boot - the route was installed during the bootup sequence.  If a routing daemon starts, it will purge all of them." (protocol)
 - `ip route get` shows the route the kernel would really use. "Essentially, get is equivalent to sending a packet along this path." (ip route get)
 
-Added 2026-09-28 (audit) for `ip-routing`:
+Added (audit) for `ip-routing`:
 
 - The kernel maintains the local table itself. "The kernel maintains this table automatically and the administrator usually need not modify it or even look at it." (Route tables)
 

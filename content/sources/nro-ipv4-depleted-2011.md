@@ -3,8 +3,6 @@ id: nro-ipv4-depleted-2011
 title: Free Pool of IPv4 Address Space Depleted
 author: Number Resource Organization (NRO)
 url: https://www.nro.net/ipv4-free-pool-depleted/
-published: 2011-02-03
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---
@@ -12,7 +10,7 @@ primary: true
 ## Summary
 
 The five Regional Internet Registries' announcement that IANA's central
-pool of IPv4 addresses ran out on 2011-02-03, when the last five /8
+pool of IPv4 addresses ran out in 2011, when the last five /8
 blocks went one to each registry.
 
 ## Key claims
@@ -22,9 +20,9 @@ blocks went one to each registry.
 - The last five /8s were split equally among the five RIRs. "these blocks were to be simultaneously and equally distributed to the five RIRs." (paragraph 2)
 - Each RIR's last /8 could last "anywhere from a few weeks to many months". (quote from Raúl Echeberría)
 
-Added 2026-09-28 (audit) for `ip-addressing`:
+Added (audit) for `ip-addressing`:
 
-- Dated 3 February 2011. "Montevideo, 3 February 2011" (dateline)
+- Dated 2011, from Montevideo. (dateline)
 - The rule was to split the last five /8s equally. "when the IANA IPv4 free pool reached five remaining /8 blocks, these blocks were to be simultaneously and equally distributed to the five RIRs." (paragraph 2)
 
 ## Visuals worth redrawing

@@ -3,8 +3,6 @@ id: biriukov-page-cache-theory
 title: Essential Page Cache theory (Linux Page Cache for SRE, chapter 2)
 author: Viacheslav Biriukov
 url: https://biriukov.dev/docs/page-cache/2-essential-page-cache-theory/
-published: 2025-10              # "Last updated: Oct 2025"
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

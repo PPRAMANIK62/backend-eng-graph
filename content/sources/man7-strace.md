@@ -3,8 +3,6 @@ id: man7-strace
 title: strace(1) — Linux manual page
 author: strace project (Paul Kranenburg, Dmitry V. Levin and others), on man7.org
 url: https://man7.org/linux/man-pages/man1/strace.1.html
-published: 2026-07-15
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -15,7 +13,7 @@ The manual for strace, the Linux tool that records every system call a
 process makes and every signal it receives. Covers the output format,
 attaching to running processes, following threads and children, filtering,
 timing and summary modes, and the overhead warning. Page generated from
-the strace git repository as of 2026-07-15.
+the strace git repository as of when this was written.
 
 ## Key claims
 
@@ -42,4 +40,4 @@ None.
 
 ## My notes
 
-- strace is not installed on the lab machine (2026-09-28). No run made.
+- strace is not installed on the lab machine (when this was written). No run made.

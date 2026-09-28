@@ -9,7 +9,6 @@ note: >-
 needs: [page-cache]
 leads_to: []
 compare_with: [mmap]
-updated: 2026-09-28
 ---
 
 # Direct I/O
@@ -73,7 +72,7 @@ need [[fsync]], or `O_SYNC` together with `O_DIRECT`.
 
 ## Where it gets tricky
 
-**Linus Torvalds has never liked it.** In a May 2002 kernel mailing list
+**Linus Torvalds has never liked it.** In a 2002 kernel mailing list
 reply, he called the interface stupid and said it performed badly
 because of its design: every read and write is synchronous, and it has
 to walk page tables for each transfer. He called it an "Oracleism", a

@@ -3,7 +3,6 @@ id: NNNN-short-name          # file name in content/experiments/, numbered in or
 title: The question, as a plain sentence ("Does fsync on ext4 survive power loss?")
 phase: 1
 component: lab/<dir>         # the part of the lab this ran against
-date: YYYY-MM-DD             # the day it was run
 ---
 
 ## Question

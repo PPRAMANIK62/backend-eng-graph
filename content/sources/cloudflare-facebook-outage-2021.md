@@ -3,15 +3,13 @@ id: cloudflare-facebook-outage-2021
 title: Understanding how Facebook disappeared from the Internet
 author: Celso Martinho and Tom Strickx (Cloudflare)
 url: https://blog.cloudflare.com/october-2021-facebook-outage/
-published: 2021-10-04
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---
 
 ## Summary
 
-Cloudflare's same-day account of the 2021-10-04 Facebook outage, from
+Cloudflare's same-day account of the 2021 Facebook outage, from
 their own BGP and DNS data. Facebook withdrew the BGP routes to the
 prefixes holding its DNS servers, so resolvers everywhere couldn't reach
 them and facebook.com stopped resolving. Facebook's own posts (linked,

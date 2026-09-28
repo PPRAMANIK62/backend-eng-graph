@@ -3,8 +3,6 @@ id: wd-pc-sn740-brief
 title: "Product Brief: Western Digital PC SN740 NVMe SSD"
 author: Western Digital
 url: https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/western-digital/product/internal-drives/pc-sn740-nvme-ssd/product-brief-pc-sn740-nvme-ssd.pdf
-published: 2024
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

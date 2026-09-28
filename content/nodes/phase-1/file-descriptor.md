@@ -9,7 +9,6 @@ note: >-
 needs: [system-call]
 leads_to: [filesystem, ports-and-sockets]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # File descriptors

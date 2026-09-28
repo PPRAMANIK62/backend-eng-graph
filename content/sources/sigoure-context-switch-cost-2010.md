@@ -3,8 +3,6 @@ id: sigoure-context-switch-cost-2010
 title: How long does it take to make a context switch?
 author: Benoit Sigoure (tsuna)
 url: https://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html
-published: 2010-11-14
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

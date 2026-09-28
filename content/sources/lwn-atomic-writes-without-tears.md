@@ -3,8 +3,6 @@ id: lwn-atomic-writes-without-tears
 title: Atomic writes without tears
 author: Jake Edge (LWN.net)
 url: https://lwn.net/Articles/974578/
-published: 2024-05-24
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
@@ -21,7 +19,7 @@ proposal, and the harder buffered-I/O case PostgreSQL needs.
 - MySQL and PostgreSQL write chunks up to 16KB, larger than the usual 4KB block. "MySQL and PostgreSQL both use larger chunks, up to 16KB." (Garry's overview)
 - PostgreSQL uses 16KB buffered I/O and does extra work to keep data safe. "The goal is to help PostgreSQL, which writes its data using 16KB buffered I/O; it currently has to do a lot of extra work to ensure that its data is safe on disk." (intro)
 - An untorn-write promise would let databases skip double writes. "A promise of non-torn, 16KB buffered writes would allow the database to avoid doing double writes." (intro)
-- The kernel didn't guarantee atomic 16KB writes, even with direct I/O (as of May 2024). "The kernel does not guarantee atomic 16KB writes, even for direct I/O, however." (Garry's overview)
+- The kernel didn't guarantee atomic 16KB writes, even with direct I/O (as of 2024). "The kernel does not guarantee atomic 16KB writes, even for direct I/O, however." (Garry's overview)
 - NVMe has no atomic write command; writes under the device limit that don't cross a boundary are atomic. "NVMe implicitly does atomic writes; there is no dedicated command to request them." (Hardware)
 - Cloud vendors already sell torn-write protection for MySQL, with "sharp edges". "there are \"lots of sharp edges\"" (Hardware / Ts'o)
 - Skipping the double write can give MySQL a 60–100% gain (Ts'o's figure). "The feature can provide a 60-100% improvement in database performance, he said, because MySQL can avoid doing a double write" (Hardware)

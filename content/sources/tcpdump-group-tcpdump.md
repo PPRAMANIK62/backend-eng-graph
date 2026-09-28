@@ -3,15 +3,13 @@ id: tcpdump-group-tcpdump
 title: tcpdump(1) man page
 author: The Tcpdump Group
 url: https://www.tcpdump.org/manpages/tcpdump.1.html
-published: 2026-07-31
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
 
 ## Summary
 
-The official tcpdump manual (page updated 2026-07-31, documents the
+The official tcpdump manual (the page documents the
 5.0.0 development version; 4.99.x is the release line). What tcpdump
 does, its options for saving and reading capture files, and how to read
 its output, including the traps: kernel timestamps, checksum and

@@ -3,8 +3,6 @@ id: kernel-writeback-cache-control
 title: Explicit volatile write back cache control
 author: Linux kernel developers
 url: https://docs.kernel.org/block/writeback_cache_control.html
-published: unknown            # living doc, served as the kernel 7.3.0-rc5 docs
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

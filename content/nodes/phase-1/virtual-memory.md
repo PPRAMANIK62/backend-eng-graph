@@ -9,7 +9,6 @@ note: >-
 needs: [process]
 leads_to: [page-faults, heap-and-stack, page-cache, mmap, huge-pages]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Virtual memory

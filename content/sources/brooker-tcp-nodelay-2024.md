@@ -3,8 +3,6 @@ id: brooker-tcp-nodelay-2024
 title: It's always TCP_NODELAY. Every damn time.
 author: Marc Brooker
 url: https://brooker.co.za/blog/2024/05/09/nagle.html
-published: 2024-05-09
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

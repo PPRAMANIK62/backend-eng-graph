@@ -10,7 +10,6 @@ note: >-
 needs: [crash-consistency]
 leads_to: []
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Crash testing
@@ -45,7 +44,7 @@ That makes "power loss" easy to fake: tell LazyFS to drop its cache, and everyth
 - tear a run of writes with no fsync between them, keeping only some,
 - crash itself before or after a given system call on paths matching a pattern, including rename and link.
 
-Its 2024 paper used it to reproduce known data-loss bugs and find eight new ones in systems including PostgreSQL, etcd, ZooKeeper, Redis and LevelDB. As of 2026-09-28, its latest release is 0.3.1 (2026-05-07), and its README marks it a research prototype. It needs FUSE 3, a C++17 compiler and CMake.
+Its 2024 paper used it to reproduce known data-loss bugs and find eight new ones in systems including PostgreSQL, etcd, ZooKeeper, Redis and LevelDB. When this was written, its latest release was 0.3.1 (2026) and its README marked it a research prototype. It needs FUSE 3, a C++17 compiler and CMake.
 
 LazyFS has two limits that matter here. It only models data that goes through the page cache, so programs using `O_DIRECT` are out of scope. And it can't test whether metadata is durable. It uses file names to decide where to inject faults, but it doesn't model whether a new file, a rename, or other inode changes actually reached disk. So a program that forgets to fsync a directory after a rename, the classic [[atomic-rename]] mistake, can't be caught with LazyFS alone.
 
@@ -59,7 +58,7 @@ The logging follows what a drive would really have on disk. An ordinary write is
 
 Afterwards, a userspace tool called `replay-log` writes the log back onto a device, up to any mark or one FUA write at a time, and can run a checker such as fsck at each point. Replay to a point, mount, check: that's "what if the power had failed here?"
 
-The cost is setup. You need two block devices, `dmsetup`, and the separate replay tool. The kernel target is in mainline Linux. The replay tool's last commit was on 2024-07-09.
+The cost is setup. You need two block devices, `dmsetup`, and the separate replay tool. The kernel target is in mainline Linux. The replay tool's last commit was in 2024.
 
 ## Where it gets tricky
 

@@ -9,7 +9,6 @@ note: >-
 needs: [fsync, torn-writes]
 leads_to: [atomic-rename, append-only-log, crash-testing]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Crash consistency

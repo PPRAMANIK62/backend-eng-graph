@@ -3,8 +3,6 @@ id: ostep-flash-ssds
 title: "Flash-based SSDs (Operating Systems: Three Easy Pieces, chapter 44)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---
@@ -46,7 +44,7 @@ wear leveling, and the TRIM command.
 - One fix is to cache only the active part of the map; misses cost an extra flash read. "each access will minimally require an extra flash read to first bring in the missing mapping" (§44.9, Page Mapping Plus Caching)
 - Summary: blocks are 128KB–2MB. "Blocks are large (128KB–2MB) and contain many pages" (§44.12)
 - (added in review) Wear out: each erase/program leaves extra charge until 0 and 1 can't be told apart. "as that extra charge builds up, it becomes increasingly difficult to differentiate between a 0 and a 1." (§44.4)
-- The log-structured FTL example writes logical blocks 100, 101, 2000 and 2001. "Write(2000) with contents b1" (§44.7; added 2026-09-28 in figure review)
+- The log-structured FTL example writes logical blocks 100, 101, 2000 and 2001. "Write(2000) with contents b1" (§44.7; added in figure review)
 
 ## Visuals worth redrawing
 

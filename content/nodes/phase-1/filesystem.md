@@ -9,7 +9,6 @@ note: >-
 needs: [file-descriptor, block-device]
 leads_to: [page-cache]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Filesystems

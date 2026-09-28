@@ -3,15 +3,13 @@ id: dean-ladis-2009
 title: Designs, Lessons and Advice from Building Large Distributed Systems
 author: Jeff Dean
 url: https://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf
-published: 2009-10
-accessed: 2026-09-28
 kind: talk
 primary: true
 ---
 
 ## Summary
 
-Keynote slides from LADIS 2009 (held 10–11 October 2009) by Google's Jeff
+Keynote slides from LADIS 2009 (held in 2009) by Google's Jeff
 Dean. Contains the "Numbers Everyone Should Know" slide, the version of the
 latency table most people quote, followed by a back-of-the-envelope
 example of using it to compare two designs.

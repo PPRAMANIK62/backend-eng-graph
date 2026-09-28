@@ -10,7 +10,6 @@ note: >-
 needs: [udp, tcp]
 leads_to: [dns-records, dns-caching, dnssec, encrypted-dns]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # DNS
@@ -152,7 +151,7 @@ An extension called EDNS lifted that cap: the client advertises a
 buffer size, the largest UDP answer it will take. That raised a new
 problem. A big UDP answer gets split into IP fragments, and fragments
 are unreliable on today's internet and can be spoofed ([[mtu-and-fragmentation]] explains
-why). So on DNS Flag Day 2020 (2020-10-01), a community effort of DNS
+why). So on DNS Flag Day 2020, a community effort of DNS
 software and service providers, DNS software moved to a default EDNS
 buffer size of 1232 bytes: the IPv6 minimum
 link MTU of 1280 bytes minus 48 bytes of IPv6 and UDP headers, which
@@ -172,7 +171,7 @@ victim.
 Everything starts at the root, so it's reasonable to worry about how
 much load it takes. There are 13 root servers, lettered A to M, run by
 12 independent organizations. But each letter is served from many
-places at once. On 2026-09-28 the operators' own site counted 2,045
+places at once. When this was written, the operators' own site counted 2,045
 operational instances around the world. The trick that lets one address
 live in many places at once is [[anycast]].
 

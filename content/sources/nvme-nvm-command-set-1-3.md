@@ -3,8 +3,6 @@ id: nvme-nvm-command-set-1-3
 title: NVM Express NVM Command Set Specification, Revision 1.3
 author: NVM Express, Inc.
 url: https://nvmexpress.org/wp-content/uploads/NVM-Express-NVM-Command-Set-Specification-Revision-1.3-Ratified-2026.07.31.pdf
-published: 2026-07-31
-accessed: 2026-09-28
 kind: spec
 primary: true
 ---
@@ -39,6 +37,6 @@ atomic boundaries.
 - Because AWUPF is 0's based, the minimum any compliant drive promises on
   power fail is one logical block. That's the spec's version of "a sector
   is atomic".
-- Revision 1.2 (2025-08-01) has the same section and was opened too.
+- Revision 1.2 (2025) has the same section and was opened too.
 - nvme-cli isn't installed on my machine, so my drive's AWUN/AWUPF are
   unknown (experiment 0003).

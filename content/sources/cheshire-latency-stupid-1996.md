@@ -3,15 +3,13 @@ id: cheshire-latency-stupid-1996
 title: It's the Latency, Stupid
 author: Stuart Cheshire
 url: http://www.stuartcheshire.org/rants/latency.html
-published: 1996-05
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
 
 ## Summary
 
-A classic essay (May 1996, revised up to 2001) arguing that bandwidth
+A classic essay (1996, revised up to 2001) arguing that bandwidth
 can always be bought but latency can't. Its worked example compares the
 speed-of-light round trip from Stanford to Boston with a real ping, and
 shows why small messages are ruled by latency, not bandwidth.

@@ -3,8 +3,6 @@ id: chu-mmap-response
 title: Are You Sure You Want to Use MMAP in Your DBMS?
 author: Howard Chu (Symas, LMDB author)
 url: https://www.symas.com/post/are-you-sure-you-want-to-use-mmap-in-your-dbms
-published: 2024-02-09
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

@@ -3,8 +3,6 @@ id: man7-resolv-conf
 title: resolv.conf(5), Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man5/resolv.conf.5.html
-published: 2026-08-22
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

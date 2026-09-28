@@ -3,8 +3,6 @@ id: he-unwritten-contract-2017
 title: The Unwritten Contract of Solid State Drives
 author: Jun He, Sudarsun Kannan, Andrea C. Arpaci-Dusseau, Remzi H. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~jhe/eurosys17-he.pdf
-published: 2017
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

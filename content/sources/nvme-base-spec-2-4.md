@@ -3,15 +3,13 @@ id: nvme-base-spec-2-4
 title: NVM Express Base Specification, Revision 2.4
 author: NVM Express, Inc.
 url: https://nvmexpress.org/wp-content/uploads/NVM-Express-Base-Specification-Revision-2.4-Ratified-2026.07.31.pdf
-published: 2026-07-31
-accessed: 2026-09-28
 kind: spec
 primary: true
 ---
 
 ## Summary
 
-The core NVMe specification, released August 2026. Used here only for the
+The core NVMe specification, released in 2026. Used here only for the
 volatile write cache: how a drive says it has one, how the host turns it
 on or off, and what the Flush command promises.
 

@@ -3,8 +3,6 @@ id: ostep-limited-direct-execution
 title: "Mechanism: Limited Direct Execution (Operating Systems: Three Easy Pieces, ch. 6)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

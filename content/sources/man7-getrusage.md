@@ -3,8 +3,6 @@ id: man7-getrusage
 title: getrusage(2) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man2/getrusage.2.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -13,7 +11,7 @@ primary: true
 
 The system call that returns resource usage for a process, its children,
 or a thread, including minor and major page fault counts. Page footer:
-"Linux man-pages 6.19 2026-02-08".
+"Linux man-pages 6.19 …".
 
 ## Key claims
 

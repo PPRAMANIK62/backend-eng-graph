@@ -3,8 +3,6 @@ id: drepper-molnar-nptl-2005
 title: The Native POSIX Thread Library for Linux
 author: Ulrich Drepper, Ingo Molnar
 url: https://akkadia.org/drepper/nptl-design.pdf
-published: 2005-02-21
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

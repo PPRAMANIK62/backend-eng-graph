@@ -3,8 +3,6 @@ id: openjdk-zgc
 title: "ZGC: The Z Garbage Collector (OpenJDK wiki)"
 author: OpenJDK ZGC project
 url: https://wiki.openjdk.org/display/zgc/Main
-published: 2026-07-02
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -13,7 +11,7 @@ primary: true
 
 The ZGC project's main page: what ZGC is, platforms, tuning (heap size,
 threads, uncommit, large pages), and a per-JDK change log. "last updated
-by Erik Österlund on Jul 02, 2026".
+by Erik Österlund on …" (in 2026).
 
 ## Key claims
 

@@ -3,8 +3,6 @@ id: ostep-address-spaces
 title: "Operating Systems: Three Easy Pieces, ch. 13: The Abstraction: Address Spaces"
 author: Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/vm-intro.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

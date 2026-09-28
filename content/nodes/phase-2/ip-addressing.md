@@ -9,7 +9,6 @@ note: >-
 needs: [network-layers]
 leads_to: [ip-routing, nat, ports-and-sockets]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # IP addresses and subnets
@@ -99,7 +98,7 @@ more than twelve years in use, and it's still how addresses work.
 
 Addresses flow down a hierarchy. IANA hands /8 blocks to the five
 Regional Internet Registries; the registries hand smaller blocks to
-internet providers; providers hand them to customers. On 2011-02-03 IANA
+internet providers; providers hand them to customers. In 2011 IANA
 gave out its last five /8 blocks, one to each registry, and its free pool
 of IPv4 addresses was empty. CIDR slowed the third problem down but never
 claimed to solve it.

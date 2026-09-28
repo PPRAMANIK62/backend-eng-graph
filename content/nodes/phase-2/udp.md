@@ -9,7 +9,6 @@ note: >-
 needs: [ports-and-sockets]
 leads_to: [dns]
 compare_with: [tcp]
-updated: 2026-09-29
 ---
 
 # UDP
@@ -23,7 +22,7 @@ makes it cheap and fast for small request-and-reply traffic like
 ## Eight bytes of header
 
 The whole protocol is RFC 768, a short document Jon Postel wrote in
-August 1980. The header is four 16-bit fields:
+1980. The header is four 16-bit fields:
 
 ![The UDP header: four 16-bit fields in two rows of 32 bits. Row one holds source port and destination port, row two holds length and checksum. The data follows.](img/udp-header.svg)
 

@@ -9,7 +9,6 @@ note: >-
 needs: [ip-routing, ethernet-and-arp]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # TUN and TAP devices

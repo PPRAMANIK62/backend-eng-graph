@@ -9,7 +9,6 @@ note: >-
 needs: [ports-and-sockets]
 leads_to: [tcp-handshake, tcp-retransmission, tcp-flow-control, nagle-and-delayed-ack, dns, anycast, tcp-keepalive]
 compare_with: [udp]
-updated: 2026-09-29
 ---
 
 # TCP
@@ -48,7 +47,7 @@ It doesn't promise:
 - **Timing.** "Reliable" means TCP keeps trying. It can keep trying for
   a very long time.
 
-The current specification is RFC 9293, published in August 2022. It
+The current specification is RFC 9293, published in 2022. It
 replaced RFC 793 from 1981 and gathered in decades of fixes that had
 been spread over other documents.
 

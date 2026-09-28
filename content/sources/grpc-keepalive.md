@@ -3,8 +3,6 @@ id: grpc-keepalive
 title: Keepalive (gRPC guide)
 author: gRPC authors
 url: https://grpc.io/docs/guides/keepalive/
-published: 2025-11-10
-accessed: 2026-09-29
 kind: docs
 primary: true
 ---
@@ -14,7 +12,7 @@ primary: true
 gRPC's guide to its HTTP/2 PING-based keepalive: an application-level
 heartbeat that runs over the HTTP/2 connection instead of in the
 kernel. Lists the settings and defaults, the server-side limits, and
-how it relates to TCP_USER_TIMEOUT. Page last modified 2025-11-10.
+how it relates to TCP_USER_TIMEOUT. Page last modified in 2025.
 
 ## Key claims
 

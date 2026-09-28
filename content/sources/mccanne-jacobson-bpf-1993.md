@@ -3,15 +3,13 @@ id: mccanne-jacobson-bpf-1993
 title: "The BSD Packet Filter: A New Architecture for User-level Packet Capture"
 author: Steven McCanne and Van Jacobson
 url: https://www.tcpdump.org/papers/bpf-usenix93.pdf
-published: 1993-01
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---
 
 ## Summary
 
-The Winter USENIX 1993 paper (preprint dated 1992-12-19) that introduced
+The Winter USENIX 1993 paper (preprint dated 1992) that introduced
 BPF, the in-kernel packet filter under tcpdump and libpcap. It splits
 capture into a network tap, which gets a look at every packet from the
 driver, and a filter, which decides in the kernel whether to copy a

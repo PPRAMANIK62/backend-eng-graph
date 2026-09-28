@@ -3,8 +3,6 @@ id: man7-ip
 title: ip(7), Linux manual page
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man7/ip.7.html
-published: 2026-02-08
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

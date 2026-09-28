@@ -3,8 +3,6 @@ id: sqlite-file-format
 title: Database File Format (section 4, The Write-Ahead Log)
 author: SQLite developers
 url: https://www.sqlite.org/fileformat2.html
-published: 2026
-accessed: 2026-09-28
 kind: spec
 primary: true
 ---

@@ -9,7 +9,6 @@ note: >-
 needs: [heap-and-stack, cpu-cache]
 leads_to: []
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Garbage collection
@@ -100,8 +99,8 @@ of the heap.
 
 Getting there took years. In 2015 Go's pauses were around 300 to 400 ms.
 A series of releases cut that to 30 to 40 ms, then to 4 or 5 ms, well
-under the team's 10 ms goal. By August 2016 that held on an 18 GB heap,
-and by March 2017 pauses were under 1 ms. The team's 2018 goal was 500 µs
+under the team's 10 ms goal. By 2016 that held on an 18 GB heap,
+and by 2017 pauses were under 1 ms. The team's 2018 goal was 500 µs
 of stop-the-world time per GC cycle.
 
 Sub-millisecond pauses matter because users feel the slowest request,
@@ -167,7 +166,7 @@ objects together. Work done close together in memory has a much better
 chance of hitting the cache.
 
 It shipped as an experiment in Go 1.25 and became the default collector in
-Go 1.26, released in February 2026. The expected saving is 10 to 40% of GC
+Go 1.26, released in 2026. The expected saving is 10 to 40% of GC
 overhead for programs that lean on the GC, with about 10% more on newer
 x86 CPUs (Intel Ice Lake, AMD Zen 4 and later) that it can use vector
 instructions on. A program that spends 10% of its time in the GC would

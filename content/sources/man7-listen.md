@@ -3,8 +3,6 @@ id: man7-listen
 title: listen(2), Linux manual page
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man2/listen.2.html
-published: 2026-02-11
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

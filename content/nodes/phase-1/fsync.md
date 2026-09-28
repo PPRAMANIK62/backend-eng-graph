@@ -9,7 +9,6 @@ note: >-
 needs: [page-cache]
 leads_to: [crash-consistency, fsync-errors]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # What does fsync actually promise?
@@ -121,7 +120,7 @@ orders and pay for one flush; each write pays its own.
 
 **The file's name.** fsync on a file makes its data and inode durable,
 but not necessarily the directory entry that points to it. If the order
-service creates `orders-2026-09-28.log` and fsyncs it, a crash can still
+service creates `orders-0001.log` and fsyncs it, a crash can still
 leave a directory with no such name. You have to open the directory and
 fsync that too. Whether it's needed depends on the filesystem and mount
 options, so portable code always does it. The full pattern for replacing
@@ -145,7 +144,7 @@ durability. You still need fsync, or `O_SYNC`/`O_DSYNC` on top.
 fsync costs whatever the drive takes to make data durable, and that
 varies enormously between drives.
 
-Mark Callaghan measured this in January 2026 on his own machines: fio
+Mark Callaghan measured this in 2026 on his own machines: fio
 writing 16 KB blocks with `O_DIRECT` and calling fsync after each write,
 one job, Ubuntu 24.04, mostly ext4. These are his numbers on his drives,
 not a rule for yours:

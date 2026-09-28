@@ -3,8 +3,6 @@ id: protobuf-encoding
 title: Encoding (Protocol Buffers programming guide)
 author: Google (Protocol Buffers team)
 url: https://protobuf.dev/programming-guides/encoding/
-published: 2026
-accessed: 2026-09-28
 kind: spec
 primary: true
 ---

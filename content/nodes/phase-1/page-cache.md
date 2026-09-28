@@ -9,7 +9,6 @@ note: >-
 needs: [virtual-memory, filesystem]
 leads_to: [mmap, direct-io, fsync]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # The page cache

@@ -3,8 +3,6 @@ id: evanjones-checksums
 title: More Than You Wanted to Know About Checksums
 author: Evan Jones
 url: https://www.evanjones.ca/crc32c.html
-published: 2010-07-16
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

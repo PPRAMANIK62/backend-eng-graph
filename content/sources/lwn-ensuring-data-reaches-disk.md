@@ -3,8 +3,6 @@ id: lwn-ensuring-data-reaches-disk
 title: Ensuring data reaches disk
 author: Jeff Moyer
 url: https://lwn.net/Articles/457667/
-published: 2011-09-07
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

@@ -9,7 +9,6 @@ note: >-
 needs: [process]
 leads_to: []
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Signals

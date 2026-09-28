@@ -3,8 +3,6 @@ id: gregg-kpti-meltdown-2018
 title: KPTI/KAISER Meltdown Initial Performance Regressions
 author: Brendan Gregg
 url: https://www.brendangregg.com/blog/2018-02-09/kpti-kaiser-meltdown-performance.html
-published: 2018-02-09
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

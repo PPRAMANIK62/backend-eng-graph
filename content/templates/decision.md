@@ -3,7 +3,6 @@ id: NNNN-short-name          # file name in content/decisions/, numbered in orde
 title: The choice, as a plain sentence
 phase: 1
 status: decided              # proposed | decided | replaced
-date: YYYY-MM-DD
 replaced_by:                 # id of the later decision, if status is replaced
 ---
 

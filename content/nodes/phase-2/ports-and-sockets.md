@@ -9,7 +9,6 @@ note: >-
 needs: [file-descriptor, ip-addressing]
 leads_to: [udp, tcp, nat]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Ports and sockets

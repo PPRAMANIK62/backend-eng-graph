@@ -3,8 +3,6 @@ id: aws-nlb-docs
 title: Network Load Balancers (Elastic Load Balancing user guide)
 author: Amazon Web Services
 url: https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html
-published: 2026 (living page, no date shown)
-accessed: 2026-09-29
 kind: docs
 primary: true
 ---

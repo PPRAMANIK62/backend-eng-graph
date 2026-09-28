@@ -3,8 +3,6 @@ id: crotty-mmap-cidr-2022
 title: Are You Sure You Want to Use MMAP in Your Database Management System?
 author: Andrew Crotty, Viktor Leis, Andrew Pavlo
 url: https://www.cidrdb.org/cidr2022/papers/p13-crotty.pdf
-published: 2022-01-09            # CIDR 2022, January 9-12
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

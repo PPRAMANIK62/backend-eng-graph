@@ -3,8 +3,6 @@ id: rebello-fsync-failures-2020
 title: Can Applications Recover from fsync Failures?
 author: Anthony Rebello, Yuvraj Patel, Ramnatthan Alagappan, Andrea C. Arpaci-Dusseau, Remzi H. Arpaci-Dusseau
 url: https://www.usenix.org/conference/atc20/presentation/rebello
-published: 2020-07-15
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

@@ -3,8 +3,6 @@ id: author-short-title       # must match the file name in content/sources/
 title: Full title of the source
 author: Name(s)
 url: https://...
-published: YYYY-MM-DD        # or YYYY if that's all that's known
-accessed: YYYY-MM-DD         # the day I read it
 kind: blog                   # blog | paper | docs | spec | talk | book | code
 primary: true                # true if written by the people who built the thing
 ---

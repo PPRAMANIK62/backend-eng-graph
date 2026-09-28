@@ -3,8 +3,6 @@ id: go-green-tea-gc
 title: The Green Tea Garbage Collector
 author: Michael Knyszek and Austin Clements
 url: https://go.dev/blog/greenteagc
-published: 2025-10-29
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---

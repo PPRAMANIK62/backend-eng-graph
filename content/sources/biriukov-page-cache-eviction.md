@@ -3,8 +3,6 @@ id: biriukov-page-cache-eviction
 title: Page Cache eviction and page reclaim (Linux Page Cache for SRE, chapter 4)
 author: Viacheslav Biriukov
 url: https://biriukov.dev/docs/page-cache/4-page-cache-eviction-and-page-reclaim/
-published: 2025-10              # "Last updated: Oct 2025"
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

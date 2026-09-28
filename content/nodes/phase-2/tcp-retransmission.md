@@ -9,7 +9,6 @@ note: >-
 needs: [tcp]
 leads_to: [congestion-control, head-of-line-blocking]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # TCP retransmission
@@ -206,8 +205,7 @@ timeouts itself; it works alongside F-RTO and Eifel.
 
 ## What Linux does today
 
-From the kernel's sysctl documentation (the page built from 7.3.0-rc5,
-read 2026-09-29):
+From the kernel's sysctl documentation (the page built from 7.3.0-rc5):
 
 - **RACK is the only loss detection.** `tcp_recovery` can't turn it
   off. One bit makes the reordering window a fixed quarter of the

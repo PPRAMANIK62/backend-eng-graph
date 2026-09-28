@@ -3,8 +3,6 @@ id: zheng-ssd-power-fault-2013
 title: Understanding the Robustness of SSDs under Power Fault
 author: Mai Zheng, Joseph Tucek, Feng Qin, Mark Lillibridge
 url: https://www.usenix.org/system/files/conference/fast13/fast13-final80.pdf
-published: 2013-02
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

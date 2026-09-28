@@ -3,8 +3,6 @@ id: ietf-ccwg-bbr-draft
 title: "BBR Congestion Control (draft-ietf-ccwg-bbr-06)"
 author: N. Cardwell, I. Swett, J. Beshay (editors), IETF CCWG
 url: https://www.ietf.org/archive/id/draft-ietf-ccwg-bbr-06.txt
-published: 2026-07-06
-accessed: 2026-09-28
 kind: spec
 primary: true
 ---
@@ -12,9 +10,9 @@ primary: true
 ## Summary
 
 The IETF working-group draft specifying BBRv3, intended status
-Experimental, version -06 (dated 2026-07-06, expires 2027-01-07). Not
+Experimental, version -06 (from 2026, expires in 2027). Not
 an RFC. It adds the loss rate to BBR's model and lists where BBRv3 code
-lives. Datatracker showed -06 as the latest revision on 2026-09-28.
+lives. Datatracker showed -06 as the latest revision when this was written.
 
 ## Key claims
 
@@ -26,9 +24,9 @@ lives. Datatracker showed -06 as the latest revision on 2026-09-28.
 - A design goal is full throughput with average loss up to 1%. "Achieved with average packet loss rates of up to 1%." (3.1)
 - Objectives: keep the queue at or below 1.5 estimated BDP, and per-round-trip loss under 2%. "packet loss rate of BBR.LossThresh=2%" (3.2)
 - Intended status is Experimental. (header)
-- The Linux TCP BBRv3 implementation is in Google's repo (github.com/google/bbr, v3 branch), marked production, last updated 2023-11-22. (Implementation Status)
+- The Linux TCP BBRv3 implementation is in Google's repo (github.com/google/bbr, v3 branch), marked production, last updated in 2023. (Implementation Status)
 
-Added 2026-09-29 for `pacing`:
+Added for `pacing`:
 
 - Two things must match the path: rate and volume. Getting the rate wrong with unpaced sending bursts a whole BDP into the queue. "the sender transmits a BDP of data in an unpaced fashion, at the sender's link rate), then up to a full BDP of data can burst into the bottleneck queue, causing high delay and/or high loss." (3.1, rate mismatch)
 - The pacing rate controls the spacing between packets. "C.pacing_rate: The current pacing rate for a BBR flow, which controls inter-packet spacing." (2.4)

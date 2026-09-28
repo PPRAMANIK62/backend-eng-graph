@@ -3,8 +3,6 @@ id: ostep-process
 title: "The Abstraction: The Process (Operating Systems: Three Easy Pieces, ch. 4)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-intro.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

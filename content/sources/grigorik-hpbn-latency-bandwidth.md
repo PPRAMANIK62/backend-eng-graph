@@ -3,8 +3,6 @@ id: grigorik-hpbn-latency-bandwidth
 title: "Primer on Latency and Bandwidth (High Performance Browser Networking, ch. 1)"
 author: Ilya Grigorik
 url: https://hpbn.co/primer-on-latency-and-bandwidth/
-published: 2013
-accessed: 2026-09-28
 kind: book
 primary: false
 ---
@@ -31,7 +29,7 @@ at the last mile as a large, often ignored part of the total.
 - Bufferbloat: routers ship with large buffers to avoid drops, which breaks TCP congestion avoidance and adds high, variable delay; CoDel is in Linux 3.5 and later. "introduces high and variable latency delays into the network." (Bufferbloat in Your Local Router, sidebar)
 - A traceroute example: 11 hops from Sunnyvale to a Google server, about 18 ms on average. (Last-Mile Latency)
 - Speed of light in a vacuum. "The good news is the speed of light is high: 299,792,458 meters per second, or 186,282 miles per second." (Speed of Light and Propagation Latency)
-- CoDel in Linux (checked 2026-09-28). "is now implemented within the Linux 3.5+ kernels." (Bufferbloat in Your Local Router, sidebar)
+- CoDel in Linux. "is now implemented within the Linux 3.5+ kernels." (Bufferbloat in Your Local Router, sidebar)
 
 ## Visuals worth redrawing
 

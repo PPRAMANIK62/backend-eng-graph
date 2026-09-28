@@ -3,8 +3,6 @@ id: man7-ip-rule
 title: ip-rule(8), Linux manual page
 author: iproute2 developers
 url: https://man7.org/linux/man-pages/man8/ip-rule.8.html
-published: 2026-08-04
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -14,7 +12,7 @@ primary: true
 The man page for `ip rule`, which edits Linux's routing policy database
 (RPDB): an ordered list of rules that decides which routing table to
 look in. The man7.org rendering was built from iproute2 git fetched
-2026-08-04; the page's own footer date is 20 Dec 2011.
+when this was written; the page's own footer date is from 2011.
 
 ## Key claims
 

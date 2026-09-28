@@ -3,8 +3,6 @@ id: pillai-alice-2014
 title: "All File Systems Are Not Created Equal: On the Complexity of Crafting Crash-Consistent Applications"
 author: Thanumalayan Sankaranarayana Pillai, Vijay Chidambaram, Ramnatthan Alagappan, Samer Al-Kiswany, Andrea C. Arpaci-Dusseau, Remzi H. Arpaci-Dusseau
 url: https://www.usenix.org/conference/osdi14/technical-sessions/presentation/pillai
-published: 2014-10
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---
@@ -46,4 +44,4 @@ and finds 60 vulnerabilities. Read from the PDF linked on the USENIX page
 
 ## My notes
 
-- The PDF footer reads "October 6–8, 2014 • Broomfield, CO". The USENIX session page shows August 7, 2014 (likely the posting date).
+- The PDF footer reads "… • Broomfield, CO" with the 2014 conference dates. The USENIX session page shows an earlier 2014 date (likely the posting date).

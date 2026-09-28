@@ -3,8 +3,6 @@ id: linux-tcp-h
 title: include/net/tcp.h (Linux kernel source)
 author: Linux kernel developers
 url: https://raw.githubusercontent.com/torvalds/linux/master/include/net/tcp.h
-published: 2026 (master at 7.3.0-rc5)
-accessed: 2026-09-28
 kind: code
 primary: true
 ---
@@ -12,7 +10,7 @@ primary: true
 ## Summary
 
 The Linux TCP header with the stack's timing constants. Read at
-torvalds/linux master, whose Makefile said 7.3.0-rc5 on 2026-09-28.
+torvalds/linux master, whose Makefile said 7.3.0-rc5.
 Used for the delayed-ACK timer bounds and the initial congestion
 window.
 
@@ -23,7 +21,7 @@ window.
 - The minimum retransmission timeout is also HZ/5 (200 ms). "#define TCP_RTO_MIN	((unsigned)(HZ / 5))" (line 162)
 - The initial congestion window is 10 segments, following RFC 6928. "/* TCP initial congestion window as per rfc6928 */" then "#define TCP_INIT_CWND		10" (lines 268-269)
 
-Added 2026-09-28 for `time-wait`:
+Added for `time-wait`:
 
 - TIME-WAIT lasts a fixed 60 seconds, set at compile time (60*HZ jiffies), with no sysctl. "#define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT" (line 140; the comment goes on "state, about 60 seconds")
 

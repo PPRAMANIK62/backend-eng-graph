@@ -3,8 +3,6 @@ id: redis-latency
 title: Diagnosing latency issues
 author: Redis
 url: https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

@@ -3,8 +3,6 @@ id: kernel-ip-sysctl
 title: IP Sysctl (Linux kernel documentation)
 author: Linux kernel developers
 url: https://docs.kernel.org/networking/ip-sysctl.html
-published: 2026 (page built from 7.3.0-rc5)
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -13,7 +11,7 @@ primary: true
 
 The kernel's own list of /proc/sys/net/ipv4 settings with their
 defaults. Used for receive buffer autotuning, window scaling and the
-congestion control setting. The page served on 2026-09-28 was built
+congestion control setting. The page served was built
 from 7.3.0-rc5.
 
 ## Key claims
@@ -30,7 +28,7 @@ from 7.3.0-rc5.
 - tcp_available_congestion_control lists the registered algorithms; more may exist as unloaded modules. "Shows the available congestion control choices that are registered." (tcp_available_congestion_control)
 - tcp_slow_start_after_idle (default 1) times out the congestion window after an idle period of one RTO. "If enabled, provide RFC2861 behavior and time out the congestion window after an idle period." (tcp_slow_start_after_idle)
 
-Added 2026-09-28 for the transport core nodes (ports-and-sockets, tcp-handshake, time-wait, tcp-retransmission):
+Added for the transport core nodes (ports-and-sockets, tcp-handshake, time-wait, tcp-retransmission):
 
 - The ephemeral port range defaults to 32768-60999. "The default values are 32768 and 60999 respectively." (ip_local_port_range)
 - ip_local_reserved_ports keeps listed ports out of automatic assignment. "These ports will not be used by automatic port assignments (e.g. when calling connect() or bind() with port number 0)." (ip_local_reserved_ports)
@@ -57,7 +55,7 @@ Added 2026-09-28 for the transport core nodes (ports-and-sockets, tcp-handshake,
 - SACK is on by default. (tcp_sack, "Default: 1 (enabled)")
 - TCP Fast Open: client side on by default, server side off. "The client support is enabled by flag 0x1 (on by default)." and "The server support is enabled by flag 0x2 (off by default)." (tcp_fastopen)
 
-Added 2026-09-28 for `ip-routing`:
+Added for `ip-routing`:
 
 - A Linux box doesn't forward packets between interfaces unless you turn it on. "Forward Packets between interfaces." and "Default: 0 (disabled)" (ip_forward)
 - Changing ip_forward switches between host and router defaults. "This variable is special, its change resets all configuration parameters to their default state (RFC1122 for hosts, RFC1812 for routers)" (ip_forward)
@@ -66,7 +64,7 @@ Added 2026-09-28 for `ip-routing`:
 - Loose mode is recommended for asymmetric routing. "If using asymmetric routing or other complicated routing, then loose mode is recommended." (rp_filter)
 - rp_filter defaults to 0, but distributions may turn it on. "Default value is 0. Note that some distributions enable it in startup scripts." (rp_filter)
 
-Added 2026-09-29 for `pacing` and `bufferbloat`:
+Added for `pacing` and `bufferbloat`:
 
 - TCP sets each socket's pacing rate from its current rate, with a ratio. "sk->sk_pacing_rate is set by TCP stack using a ratio applied to current rate. (current_rate = cwnd * mss / srtt)" (tcp_pacing_ss_ratio)
 - In slow start the ratio is 200%, so the pace can keep up with a window that doubles. "If TCP is in slow start, tcp_pacing_ss_ratio is applied to let TCP probe for bigger speeds" and "Default: 200" (tcp_pacing_ss_ratio)
@@ -75,7 +73,7 @@ Added 2026-09-29 for `pacing` and `bufferbloat`:
 - A bulk sender left alone queues a lot on its own machine. "TCP bulk sender tends to increase packets in flight until it gets losses notifications." (tcp_limit_output_bytes)
 - Slow start after idle times out the congestion window after an idle period of one RTO. "If enabled, provide RFC2861 behavior and time out the congestion window after an idle period." (tcp_slow_start_after_idle)
 
-Added 2026-09-29 for `tcp-retransmission` (deep) and `tcp-keepalive` (re-opened; page still built from 7.3.0-rc5):
+Added for `tcp-retransmission` (deep) and `tcp-keepalive` (re-opened; page still built from 7.3.0-rc5):
 
 - The RTO floor can be set per route and per socket, which beat the sysctl; 200 ms or less is called the recommended practice. "Note that the rto_min route option has the highest precedence for configuring this setting, followed by the TCP_BPF_RTO_MIN and TCP_RTO_MIN_US socket options, followed by this tcp_rto_min_us sysctl." and "The recommended practice is to use a value less or equal to 200000 microseconds." (tcp_rto_min_us)
 - TCP_RTO_MAX_MS socket option beats tcp_rto_max_ms; changing it may need tcp_retries2 changed too. "Note that TCP_RTO_MAX_MS socket option has higher precedence." (tcp_rto_max_ms)

@@ -3,8 +3,6 @@ id: btrfs-design
 title: Btrfs design
 author: btrfs developers (btrfs documentation)
 url: https://btrfs.readthedocs.io/en/latest/dev/dev-btrfs-design.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -44,4 +42,4 @@ reference counts.
 - The page doesn't mention the log tree used for fsync. Don't describe it
   without a source.
 - The main btrfs paper (Rodeh, Bacik, Mason, ACM TOS 2013) couldn't be
-  opened on 2026-09-28.
+  opened.

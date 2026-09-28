@@ -9,7 +9,6 @@ note: >-
 needs: [network-latency, congestion-control]
 leads_to: []
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Bufferbloat
@@ -79,7 +78,7 @@ so most operators left it off. Newer ones watch time instead:
   separate queues, 1024 by default, serves them in turn, puts flows
   that aren't building a queue first, and runs CoDel on each, so a DNS
   query doesn't wait behind an upload. It has been in Linux
-  as the `fq_codel` qdisc since 3.5 (July 2012), and some distributions
+  as the `fq_codel` qdisc since 3.5 (2012), and some distributions
   made it their default queueing discipline.
 - **PIE** (RFC 8033, 2017) estimates queuing delay and drops arriving
   packets at random, with a probability it adjusts to hold the delay

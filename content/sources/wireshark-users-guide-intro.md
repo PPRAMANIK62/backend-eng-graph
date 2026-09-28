@@ -3,8 +3,6 @@ id: wireshark-users-guide-intro
 title: "Wireshark User's Guide, Chapter 1: Introduction"
 author: The Wireshark project
 url: https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html
-published: undated (current guide as served 2026-09-28)
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

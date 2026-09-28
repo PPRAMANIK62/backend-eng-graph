@@ -3,8 +3,6 @@ id: man7-tc-fq
 title: "tc-fq(8): Fair Queue traffic policing"
 author: iproute2 project (FQ written by Eric Dumazet)
 url: https://man7.org/linux/man-pages/man8/tc-fq.8.html
-published: 2015-09-10 (page date; man7 copy from iproute2 git, 2026-08-04)
-accessed: 2026-09-29
 kind: docs
 primary: true
 ---
@@ -35,7 +33,7 @@ None.
 
 ## My notes
 
-- socket(7) on man7.org (checked 2026-09-29) doesn't document
+- socket(7) on man7.org (checked) doesn't document
   SO_MAX_PACING_RATE; this page is where it's named.
 - Enabling: `tc qdisc add dev eth0 root fq` (EXAMPLES shows the form
   with ce_threshold).

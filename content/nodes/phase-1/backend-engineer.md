@@ -9,7 +9,6 @@ note: >-
 needs: []
 leads_to: [latency-numbers]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # What a backend engineer owns

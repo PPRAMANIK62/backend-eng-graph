@@ -3,8 +3,6 @@ id: ostep-paging
 title: "Operating Systems: Three Easy Pieces, ch. 18: Paging: Introduction"
 author: Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf
-published: 2025
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

@@ -8,7 +8,6 @@ note: >-
 needs: [virtual-memory]
 leads_to: [garbage-collection]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # The heap and the stack

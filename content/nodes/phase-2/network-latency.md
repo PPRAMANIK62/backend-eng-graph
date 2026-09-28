@@ -9,7 +9,6 @@ note: >-
 needs: [network-layers, latency-numbers]
 leads_to: [bandwidth-delay-product, bufferbloat]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Network latency
@@ -217,7 +216,7 @@ work on top.
 - Measure the tail. A median RTT hides queuing.
 - Measure latency direction by direction when it matters, and write
   down where you measured from. Cloud backbone numbers (Azure's East
-  US to West US is 69 ms in its July 2026 data) aren't what a user on
+  US to West US is 69 ms in its 2026 data) aren't what a user on
   home Wi-Fi sees.
 
 ## Further reading

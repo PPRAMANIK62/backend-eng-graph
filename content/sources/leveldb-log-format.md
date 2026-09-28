@@ -3,8 +3,6 @@ id: leveldb-log-format
 title: leveldb Log format
 author: LevelDB authors (Google)
 url: https://github.com/google/leveldb/blob/main/doc/log_format.md
-published: 2017-03-01
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -15,8 +13,8 @@ The in-repo spec for LevelDB's write-ahead log file. The file is a series
 of 32 KB blocks; each record has a CRC32C, a length, a type and the data.
 Records that don't fit in a block are split into FIRST, MIDDLE and LAST
 fragments. Short and exact, the model for a simple checksummed log. The
-file has no date; `published` is the only commit touching
-`doc/log_format.md` on GitHub (2017-03-01, checked via the GitHub API).
+file has no date; the only commit touching `doc/log_format.md` on
+GitHub is from 2017 (checked via the GitHub API).
 The format may be older under another file name; not checked.
 
 ## Key claims

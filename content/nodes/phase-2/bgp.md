@@ -9,7 +9,6 @@ note: >-
 needs: [ip-routing]
 leads_to: [anycast]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # BGP
@@ -63,7 +62,7 @@ more specific prefix beats a shorter one, whichever AS announced it.
 
 **BGP believes what it's told.** The security section of RFC 4271 only
 protects the TCP session between two routers. Nothing in the base
-protocol checks that an AS is allowed to announce a prefix. On 2019-06-24
+protocol checks that an AS is allowed to announce a prefix. In 2019
 an ISP's "BGP optimizer" in Pennsylvania split prefixes into more-specific halves,
 turning Cloudflare's `104.20.0.0/20` into two /21s. Those leaked through a
 customer to Verizon, which announced them to the whole Internet. Because
@@ -76,7 +75,7 @@ originate its prefixes and the maximum prefix length, and receiving
 networks drop anything that doesn't fit. RPKI only helps where networks
 turn on origin validation.
 
-**Withdrawing your own routes is just as fatal.** On 2021-10-04, Facebook
+**Withdrawing your own routes is just as fatal.** In 2021, Facebook
 withdrew the BGP routes to the prefixes holding its DNS servers. Cloudflare
 saw a burst of Facebook routing changes around 15:40 UTC and the DNS routes
 gone by 15:58 UTC. With no route to the name servers, resolvers everywhere

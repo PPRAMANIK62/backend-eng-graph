@@ -3,8 +3,6 @@ id: kernel-blk-mq
 title: Multi-Queue Block IO Queueing Mechanism (blk-mq)
 author: Linux kernel documentation
 url: https://docs.kernel.org/block/blk-mq.html
-published: unknown
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

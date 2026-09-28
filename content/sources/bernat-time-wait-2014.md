@@ -3,8 +3,6 @@ id: bernat-time-wait-2014
 title: Coping with the TCP TIME-WAIT state on busy Linux servers
 author: Vincent Bernat
 url: https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux
-published: 2014-02-24
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---
@@ -14,7 +12,7 @@ primary: false
 A network engineer's careful look at TIME-WAIT on Linux: why it
 exists, the three costs it has (a slot in the connection table, memory,
 CPU), and what the fixes really do, including why tcp_tw_recycle was
-dangerous. Written in 2014, updated in September 2017 when
+dangerous. Written in 2014, updated in 2017 when
 tcp_tw_recycle was removed.
 
 ## Key claims
@@ -40,7 +38,7 @@ tcp_tw_recycle was removed.
 - SO_LINGER with a zero timeout closes with a RST, skipping TIME-WAIT but throwing away unsent data. "the connection will be closed with a RST (and therefore, the peer will detect an error) and will be immediately destroyed. No TIME-WAIT state in this case." (Socket lingering)
 - tcp_tw_reuse lets an outgoing connection reuse a TIME-WAIT slot after 1 s, relying on TCP timestamps. "an outgoing connection in the TIME-WAIT state can be reused after just one second." (net.ipv4.tcp_tw_reuse)
 - Old duplicates are then rejected by their stale timestamps. "Thanks to the use of timestamps, such duplicate segments will come with an outdated timestamp and therefore be discarded." (net.ipv4.tcp_tw_reuse)
-- tcp_tw_recycle broke clients behind NAT, and after Linux 4.10's random timestamp offsets it broke everyone; removed in 4.12. "When the remote host is a NAT device, the condition on timestamps will forbid all the hosts except one behind the NAT device to connect during one minute" (net.ipv4.tcp_tw_recycle); "It has been completely removed from Linux 4.12." (Update 2017-09)
+- tcp_tw_recycle broke clients behind NAT, and after Linux 4.10's random timestamp offsets it broke everyone; removed in 4.12. "When the remote host is a NAT device, the condition on timestamps will forbid all the hosts except one behind the NAT device to connect during one minute" (net.ipv4.tcp_tw_recycle); "It has been completely removed from Linux 4.12." (2017 update)
 - tcp_tw_reuse does nothing for incoming connections. "Enabling net.ipv4.tcp_tw_reuse is useless for incoming connections." (Summary)
 - Protocol design advice: let the server close first. "Moreover, when designing protocols, do not let clients close first." (Summary)
 

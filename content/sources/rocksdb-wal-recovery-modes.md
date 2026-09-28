@@ -3,8 +3,6 @@ id: rocksdb-wal-recovery-modes
 title: WAL Recovery Modes
 author: RocksDB team (Meta)
 url: https://github.com/facebook/rocksdb/wiki/WAL-Recovery-Modes
-published: 2026
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

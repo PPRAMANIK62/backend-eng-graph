@@ -9,7 +9,6 @@ note: >-
 needs: [network-layers]
 leads_to: [tun-tap]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Ethernet and ARP

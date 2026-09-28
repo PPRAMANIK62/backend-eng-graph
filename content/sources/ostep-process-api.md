@@ -3,8 +3,6 @@ id: ostep-process-api
 title: "Interlude: Process API (Operating Systems: Three Easy Pieces, ch. 5)"
 author: Remzi H. Arpaci-Dusseau, Andrea C. Arpaci-Dusseau
 url: https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-api.pdf
-published: 2023
-accessed: 2026-09-28
 kind: book
 primary: false
 ---

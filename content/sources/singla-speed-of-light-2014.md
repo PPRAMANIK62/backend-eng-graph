@@ -3,8 +3,6 @@ id: singla-speed-of-light-2014
 title: The Internet at the Speed of Light
 author: Ankit Singla, Balakrishnan Chandrasekaran, P. Brighten Godfrey, Bruce Maggs
 url: http://conferences.sigcomm.org/hotnets/2014/papers/hotnets-XIII-final111.pdf
-published: 2014
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

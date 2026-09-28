@@ -10,7 +10,6 @@ note: >-
 needs: [backend-engineer, memory-hierarchy]
 leads_to: [network-latency]
 compare_with: []
-updated: 2026-09-29
 ---
 
 # Latency numbers
@@ -62,7 +61,7 @@ Wi-Fi in India. The full setup and raw data are in
 [experiment 0001](../../experiments/0001-latency-numbers-on-my-laptop.md).
 All CPU tests were pinned to one core; values are medians.
 
-| Operation | This laptop (2026-09-28) |
+| Operation | This laptop |
 |---|---|
 | Load from L1 (16 KiB working set) | 1.1 ns |
 | Load from L2 (256 KiB – 1 MiB) | 3.8 – 6.1 ns |
@@ -132,8 +131,8 @@ to travel.
 Our numbers are from a home connection: Wi-Fi, the ISP, then the internet
 to each AWS region's public endpoint. We assumed each endpoint answers from
 inside the region it's named for, and didn't verify it. For comparison, Microsoft publishes median round trips between Azure regions, measured by
-probes on its own network over 30 days (the set read here ends on
-2026-07-30):
+probes on its own network over 30 days (the set read here is from
+2026):
 
 | Azure regions | Median round trip |
 |---|---|

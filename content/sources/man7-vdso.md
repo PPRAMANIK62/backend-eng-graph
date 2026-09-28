@@ -3,8 +3,6 @@ id: man7-vdso
 title: vdso(7) — Linux manual page
 author: Linux man-pages project
 url: https://man7.org/linux/man-pages/man7/vdso.7.html
-published: 2025-12-25
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---

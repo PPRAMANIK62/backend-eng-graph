@@ -3,8 +3,6 @@ id: ramos-lazyfs-2024
 title: "When Amnesia Strikes: Understanding and Reproducing Data Loss Bugs with Fault Injection"
 author: Maria Ramos, João Azevedo, Kyle Kingsbury, José Pereira, Tânia Esteves, Ricardo Macedo, João Paulo
 url: https://www.vldb.org/pvldb/vol17/p3017-ramos.pdf
-published: 2024-07
-accessed: 2026-09-28
 kind: paper
 primary: true
 ---

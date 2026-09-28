@@ -3,8 +3,6 @@ id: lwn-ext4-data-loss
 title: ext4 and data loss
 author: Jonathan Corbet
 url: https://lwn.net/Articles/322823/
-published: 2009-03-11
-accessed: 2026-09-28
 kind: blog
 primary: false
 ---

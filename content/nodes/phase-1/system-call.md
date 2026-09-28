@@ -9,7 +9,6 @@ note: >-
 needs: [process]
 leads_to: [strace, file-descriptor]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # System calls

@@ -3,8 +3,6 @@ id: lazyfs-github
 title: "LazyFS: A FUSE Filesystem with an internal dedicated page cache"
 author: INESC TEC HASLab (dsrhaslab)
 url: https://github.com/dsrhaslab/lazyfs
-published: 2026-05-07
-accessed: 2026-09-28
 kind: code
 primary: true
 ---
@@ -29,7 +27,7 @@ chosen system call. `published` is the date of the latest release, 0.3.1.
 - Commands are sent by writing lines to a FIFO, e.g. `echo "lazyfs::clear-cache" > /tmp/faults.fifo`. (README, commands)
 - After a LazyFS crash the mount may need `fusermount -uz`. (README, end)
 - Status badge on the README: "research prototype". (README, badges)
-- Maintenance, from the GitHub API on 2026-09-28: latest release 0.3.1 on 2026-05-07 (previous 0.3.0 on 2024-03-08); last commit 2026-08-24; not archived.
+- Maintenance, from the GitHub API: latest release 0.3.1 in 2026 (previous 0.3.0 in 2024); last commit in 2026; not archived.
 
 ## Visuals worth redrawing
 

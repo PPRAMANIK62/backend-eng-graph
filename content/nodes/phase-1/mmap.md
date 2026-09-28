@@ -9,7 +9,6 @@ note: >-
 needs: [virtual-memory, page-cache]
 leads_to: []
 compare_with: [direct-io]
-updated: 2026-09-28
 ---
 
 # mmap

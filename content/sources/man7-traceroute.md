@@ -3,8 +3,6 @@ id: man7-traceroute
 title: traceroute(8), Linux manual page
 author: Traceroute for Linux (Dmitry Butskoy and contributors), hosted by man7.org
 url: https://man7.org/linux/man-pages/man8/traceroute.8.html
-published: 2006-10-11
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -26,7 +24,7 @@ because firewalls drop the classic UDP probes.
 - Firewalls break the classic method, so TCP and other methods exist. "Such firewalls filter the "unlikely" UDP ports, or even ICMP echoes." (DESCRIPTION)
 - Default probe size 60 bytes for IPv4, 80 for IPv6. (DESCRIPTION)
 
-Added 2026-09-28 (audit) for `icmp`:
+Added (audit) for `icmp`:
 
 - Each line shows the address of the gateway that answered. "a line is printed showing the ttl, address of the gateway and round trip time of each probe." (DESCRIPTION)
 - The TCP method sends a SYN, like the start of a connection. "Normally, a tcp syn is sent." (LIST OF AVAILABLE METHODS, tcp)
@@ -37,6 +35,6 @@ None; the TTL ladder is easy to draw from the description.
 
 ## My notes
 
-- The page date (2006-10-11) is the tool's own; man7.org still serves it.
+- The page date (2006) is the tool's own; man7.org still serves it.
 - tracepath(8) from iputils does the same without root and reports the
   path MTU as it goes; opened but not used.

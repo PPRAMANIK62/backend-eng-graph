@@ -3,8 +3,6 @@ id: man7-pwritev2
 title: readv(2) / pwritev2(2), Linux manual page (RWF_ATOMIC)
 author: Michael Kerrisk and man-pages contributors
 url: https://man7.org/linux/man-pages/man2/pwritev2.2.html
-published: 2026-02-22
-accessed: 2026-09-28
 kind: docs
 primary: true
 ---
@@ -34,5 +32,5 @@ None.
 
 - The URL is the pwritev2 alias; the page itself is titled readv(2).
 - The page says "regular files in block-based filesystems", not which
-  filesystems. LWN (2025-02-20) says ext4 and XFS support came in 6.13;
+  filesystems. LWN (2025) says ext4 and XFS support came in 6.13;
   I haven't found anything on btrfs.

@@ -8,7 +8,6 @@ note: >-
 needs: []
 leads_to: [filesystem, ssd-internals, torn-writes]
 compare_with: []
-updated: 2026-09-28
 ---
 
 # Block devices

@@ -3,15 +3,13 @@ id: cloudflare-verizon-route-leak-2019
 title: How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today
 author: Tom Strickx (Cloudflare)
 url: https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/
-published: 2019-06-24
-accessed: 2026-09-28
 kind: blog
 primary: true
 ---
 
 ## Summary
 
-Cloudflare's same-day write-up of the 2019-06-24 route leak. A "BGP
+Cloudflare's same-day write-up of the 2019 route leak. A "BGP
 optimizer" at a small ISP split prefixes into more-specific halves; they
 leaked through a customer to Verizon, which announced them to the whole
 Internet. Because more-specific routes win, traffic for Cloudflare,
@@ -30,7 +28,7 @@ Amazon and others went through networks that couldn't carry it.
 - RPKI lets an origin sign its prefixes with a maximum length, so longer (more specific) announcements are rejected. "The prefixes Cloudflare announces are signed for a maximum size of 20." (How could this leak have been prevented?)
 - RPKI only works if receiving networks turn on origin validation. "In order for this mechanism to take action, a network needs to enable BGP Origin Validation." (How could this leak have been prevented?)
 
-Added 2026-09-28 (audit) for `bgp`:
+Added (audit) for `bgp`:
 
 - The optimizer ran at an ISP in Pennsylvania. "An Internet Service Provider in Pennsylvania  (AS33154 - DQE Communications) was using a BGP optimizer in their network" (What happened?)
 

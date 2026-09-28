@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- the hop -->
+  <rect x="40" y="30" width="170" height="80" rx="6" class="box"/>
+  <text x="125" y="56" text-anchor="middle" class="ink t b">Router A</text>
+  <rect x="70" y="72" width="22" height="22" class="old"/>
+  <rect x="96" y="72" width="22" height="22" class="old"/>
+  <rect x="122" y="72" width="22" height="22" class="old"/>
+  <rect x="148" y="72" width="22" height="22" class="focus"/>
+  <text x="125" y="128" text-anchor="middle" class="ink2 n">queue, then this packet</text>
+  <rect x="510" y="30" width="170" height="80" rx="6" class="box"/>
+  <text x="595" y="75" text-anchor="middle" class="ink t b">Router B</text>
+  <line x1="210" y1="70" x2="507" y2="70" class="line" marker-end="url(#arrow)"/>
+  <text x="360" y="60" text-anchor="middle" class="ink2 n">fibre, thousands of km</text>
+
+  <!-- timeline -->
+  <text x="40" y="170" class="ink t b">Time for one packet to cross this hop</text>
+  <rect x="40" y="186" width="110" height="44" class="box"/>
+  <text x="95" y="213" text-anchor="middle" class="ink n b">processing</text>
+  <rect x="150" y="186" width="150" height="44" class="lost"/>
+  <text x="225" y="213" text-anchor="middle" class="ink t b">queuing</text>
+  <rect x="300" y="186" width="160" height="44" class="box"/>
+  <text x="380" y="213" text-anchor="middle" class="ink t b">transmission</text>
+  <rect x="460" y="186" width="220" height="44" class="focus"/>
+  <text x="570" y="213" text-anchor="middle" class="ink t b">propagation</text>
+
+  <text x="95" y="252" text-anchor="middle" class="ink2 n">the router</text>
+  <text x="225" y="252" text-anchor="middle" class="ink2 n">the load right now</text>
+  <text x="380" y="252" text-anchor="middle" class="ink2 n">size ÷ link rate</text>
+  <text x="570" y="252" text-anchor="middle" class="ink2 n">distance ÷ signal speed</text>
+  <text x="40" y="284" class="ink2 n">Widths are not to scale. Every hop adds all four; the round trip adds the reply's too.</text>
+  <line x1="40" y1="300" x2="676" y2="300" class="line" marker-end="url(#arrow)"/>
+  <text x="680" y="318" text-anchor="end" class="ink2 n">time</text>
+</svg>

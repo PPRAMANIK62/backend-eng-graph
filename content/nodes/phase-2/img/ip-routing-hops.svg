@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="230" viewBox="0 0 720 230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- nodes -->
+  <rect x="10" y="60" width="100" height="44" rx="6" class="box"/>
+  <text x="60" y="87" text-anchor="middle" class="ink t b">Server</text>
+  <rect x="162" y="60" width="100" height="44" rx="6" class="box"/>
+  <text x="212" y="87" text-anchor="middle" class="ink t">Router 1</text>
+  <rect x="314" y="60" width="100" height="44" rx="6" class="box"/>
+  <text x="364" y="87" text-anchor="middle" class="ink t">Router 2</text>
+  <rect x="466" y="60" width="100" height="44" rx="6" class="box"/>
+  <text x="516" y="87" text-anchor="middle" class="ink t">Router 3</text>
+  <rect x="618" y="60" width="100" height="44" rx="6" class="box"/>
+  <text x="668" y="87" text-anchor="middle" class="ink t b">Destination</text>
+
+  <!-- links with TTL -->
+  <line x1="112" y1="82" x2="158" y2="82" class="line" marker-end="url(#arrow)"/>
+  <text x="136" y="50" text-anchor="middle" class="focus n mono b">TTL 64</text>
+  <line x1="264" y1="82" x2="310" y2="82" class="line" marker-end="url(#arrow)"/>
+  <text x="288" y="50" text-anchor="middle" class="focus n mono b">TTL 63</text>
+  <line x1="416" y1="82" x2="462" y2="82" class="line" marker-end="url(#arrow)"/>
+  <text x="440" y="50" text-anchor="middle" class="focus n mono b">TTL 62</text>
+  <line x1="568" y1="82" x2="614" y2="82" class="line" marker-end="url(#arrow)"/>
+  <text x="592" y="50" text-anchor="middle" class="focus n mono b">TTL 61</text>
+
+  <!-- what each router does -->
+  <text x="212" y="126" text-anchor="middle" class="ink2 n">longest match</text>
+  <text x="212" y="142" text-anchor="middle" class="ink2 n">in its own table,</text>
+  <text x="212" y="158" text-anchor="middle" class="ink2 n">TTL minus 1</text>
+  <text x="364" y="126" text-anchor="middle" class="ink2 n">longest match</text>
+  <text x="364" y="142" text-anchor="middle" class="ink2 n">in its own table,</text>
+  <text x="364" y="158" text-anchor="middle" class="ink2 n">TTL minus 1</text>
+  <text x="516" y="126" text-anchor="middle" class="ink2 n">longest match</text>
+  <text x="516" y="142" text-anchor="middle" class="ink2 n">in its own table,</text>
+  <text x="516" y="158" text-anchor="middle" class="ink2 n">TTL minus 1</text>
+
+  <!-- zero TTL note -->
+  <text x="364" y="206" text-anchor="middle" class="lost n">If the TTL hit 0 at a router, it would drop the packet and send ICMP time exceeded back to the server.</text>
+</svg>

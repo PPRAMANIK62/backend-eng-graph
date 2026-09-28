@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="286" viewBox="0 0 720 286" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.12;stroke:#2a78d6;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="22" class="ink t b">What the receiver holds after segment 8000 arrives</text>
+
+  <!-- cumulative ACK pointer -->
+  <text x="135" y="44" text-anchor="middle" class="focus n mono b">ACK 5500</text>
+  <line x1="135" y1="49" x2="135" y2="62" class="line" marker-end="url(#arrow)"/>
+
+  <!-- eight 500-byte segments, x = 60 + 75*i -->
+  <rect x="60"  y="66" width="75" height="48" rx="6" class="safe-box"/>
+  <rect x="135" y="66" width="75" height="48" rx="6" class="lost-box"/>
+  <rect x="210" y="66" width="75" height="48" rx="6" class="safe-box"/>
+  <rect x="285" y="66" width="75" height="48" rx="6" class="lost-box"/>
+  <rect x="360" y="66" width="75" height="48" rx="6" class="safe-box"/>
+  <rect x="435" y="66" width="75" height="48" rx="6" class="lost-box"/>
+  <rect x="510" y="66" width="75" height="48" rx="6" class="safe-box"/>
+  <rect x="585" y="66" width="75" height="48" rx="6" class="lost-box"/>
+
+  <g class="ink n mono" text-anchor="middle">
+    <text x="97"  y="86">5000</text>
+    <text x="172" y="86">5500</text>
+    <text x="247" y="86">6000</text>
+    <text x="322" y="86">6500</text>
+    <text x="397" y="86">7000</text>
+    <text x="472" y="86">7500</text>
+    <text x="547" y="86">8000</text>
+    <text x="622" y="86">8500</text>
+  </g>
+  <g class="n" text-anchor="middle">
+    <text x="97"  y="104" class="ink2">received</text>
+    <text x="172" y="104" class="lost b">lost</text>
+    <text x="247" y="104" class="ink2">received</text>
+    <text x="322" y="104" class="lost b">lost</text>
+    <text x="397" y="104" class="ink2">received</text>
+    <text x="472" y="104" class="lost b">lost</text>
+    <text x="547" y="104" class="ink2">received</text>
+    <text x="622" y="104" class="lost b">lost</text>
+  </g>
+
+  <!-- SACK block brackets -->
+  <path d="M212,122 L212,130 L283,130 L283,122" class="focus-s"/>
+  <path d="M362,122 L362,130 L433,130 L433,122" class="focus-s"/>
+  <path d="M512,122 L512,130 L583,130 L583,122" class="focus-s"/>
+  <g class="n" text-anchor="middle">
+    <text x="247" y="148" class="focus b">block 3</text>
+    <text x="247" y="164" class="ink2 mono">6000–6500</text>
+    <text x="397" y="148" class="focus b">block 2</text>
+    <text x="397" y="164" class="ink2 mono">7000–7500</text>
+    <text x="547" y="148" class="focus b">block 1 (newest)</text>
+    <text x="547" y="164" class="ink2 mono">8000–8500</text>
+  </g>
+
+  <!-- the ACK on the wire -->
+  <rect x="60" y="184" width="600" height="34" rx="6" class="focus-box"/>
+  <text x="76" y="206" class="ink n b">ACK sent back:</text>
+  <text x="182" y="206" class="ink n mono">ack 5500, SACK 8000–8500, 7000–7500, 6000–6500</text>
+
+  <text x="60" y="248" class="ink n">Holes below the highest SACKed byte: 5500, 6500, 7500. The sender resends only those.</text>
+  <text x="60" y="270" class="ink2 n">8500 has nothing after it, so no ACK can show it's missing yet. That's a tail loss.</text>
+</svg>

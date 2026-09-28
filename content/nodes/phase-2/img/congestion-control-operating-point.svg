@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- region labels -->
+  <text x="200" y="36" text-anchor="middle" class="ink2 n">app limited</text>
+  <text x="430" y="36" text-anchor="middle" class="ink2 n">bandwidth limited</text>
+  <text x="620" y="36" text-anchor="middle" class="ink2 n">buffer limited</text>
+
+  <!-- dividers -->
+  <line x1="300" y1="46" x2="300" y2="346" class="line" stroke-dasharray="4 4"/>
+  <line x1="560" y1="46" x2="560" y2="346" class="line" stroke-dasharray="4 4"/>
+
+  <!-- top panel: RTT -->
+  <line x1="100" y1="170" x2="680" y2="170" class="line"/>
+  <line x1="100" y1="170" x2="100" y2="50" class="line"/>
+  <text x="90" y="112" text-anchor="end" class="ink t">round-trip</text>
+  <text x="90" y="130" text-anchor="end" class="ink t">time</text>
+  <path d="M100,150 H300 L560,70" class="focus-s" style="stroke-width:2.5"/>
+  <text x="110" y="142" class="ink2 n">RTprop</text>
+  <text x="440" y="150" text-anchor="middle" class="ink2 n">extra data waits in a queue</text>
+  <circle cx="560" cy="70" r="5" class="lost"/>
+  <text x="574" y="74" class="lost n b">packets dropped</text>
+
+  <!-- bottom panel: delivery rate -->
+  <line x1="100" y1="346" x2="680" y2="346" class="line" marker-end="url(#arrow)"/>
+  <line x1="100" y1="346" x2="100" y2="226" class="line"/>
+  <text x="90" y="288" text-anchor="end" class="ink t">delivery</text>
+  <text x="90" y="306" text-anchor="end" class="ink t">rate</text>
+  <path d="M100,336 L300,250 H680" class="focus-s" style="stroke-width:2.5"/>
+  <text x="440" y="242" text-anchor="middle" class="ink2 n">BtlBw: the link is full</text>
+
+  <!-- operating points -->
+  <circle cx="300" cy="250" r="5" class="focus"/>
+  <circle cx="300" cy="150" r="5" class="focus"/>
+  <text x="300" y="200" text-anchor="middle" class="focus n b">BBR aims here</text>
+  <circle cx="560" cy="250" r="5" class="lost"/>
+  <text x="560" y="200" text-anchor="middle" class="lost n b">loss-based control ends up here</text>
+
+  <!-- x labels -->
+  <text x="300" y="366" text-anchor="middle" class="ink t b">BDP</text>
+  <text x="560" y="366" text-anchor="middle" class="ink t b">BDP + buffer</text>
+  <text x="680" y="390" text-anchor="end" class="ink2 n">data in flight</text>
+
+</svg>

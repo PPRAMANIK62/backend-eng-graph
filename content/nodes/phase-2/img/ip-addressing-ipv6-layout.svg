@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="230" viewBox="0 0 720 230" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+    }
+  </style>
+
+  <!-- top bracket: whole address -->
+  <path d="M40,40 V32 H680 V40" class="line"/>
+  <text x="360" y="24" text-anchor="middle" class="ink2 n">128 bits</text>
+
+  <!-- the three fields -->
+  <rect x="40" y="48" width="200" height="56" rx="6" class="focus-box"/>
+  <text x="140" y="72" text-anchor="middle" class="ink t b">global routing prefix</text>
+  <text x="140" y="92" text-anchor="middle" class="ink2 n">n bits, assigned to a site</text>
+  <rect x="240" y="48" width="120" height="56" rx="6" class="focus-box"/>
+  <text x="300" y="72" text-anchor="middle" class="ink t b">subnet ID</text>
+  <text x="300" y="92" text-anchor="middle" class="ink2 n">m bits</text>
+  <rect x="360" y="48" width="320" height="56" rx="6" class="box"/>
+  <text x="520" y="72" text-anchor="middle" class="ink t b">interface ID</text>
+  <text x="520" y="92" text-anchor="middle" class="ink2 n">64 bits, one interface on the subnet</text>
+
+  <!-- bottom brackets -->
+  <path d="M40,112 V120 H360 V112" class="focus-s"/>
+  <text x="200" y="140" text-anchor="middle" class="focus t b">subnet prefix: n + m = 64 bits</text>
+  <path d="M360,112 V120 H680 V112" class="line"/>
+  <text x="520" y="140" text-anchor="middle" class="ink t">which interface on that link</text>
+
+  <!-- example -->
+  <text x="40" y="184" class="ink2 n">Example</text>
+  <text x="200" y="208" text-anchor="middle" class="focus t mono">2001:db8:0:cd30</text>
+  <text x="360" y="208" text-anchor="middle" class="ink t mono">:</text>
+  <text x="520" y="208" text-anchor="middle" class="ink t mono">123:4567:89ab:cdef</text>
+</svg>

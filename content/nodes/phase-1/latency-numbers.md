@@ -1,6 +1,6 @@
 ---
 id: latency-numbers
-title: Latency numbers every design sits on
+title: Latency numbers
 depth: deep
 phase: 1
 note: >-
@@ -8,12 +8,12 @@ note: >-
   across a region and across the world, measured on my own machine. The
   numbers every design sits on.
 needs: [backend-engineer, memory-hierarchy]
-leads_to: []
+leads_to: [network-latency]
 compare_with: []
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
-# Latency numbers every design sits on
+# Latency numbers
 
 A cache hit takes about a nanosecond. A round trip to another continent
 takes a few hundred milliseconds. That's a factor of a hundred million, and

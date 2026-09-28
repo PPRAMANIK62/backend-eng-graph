@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- private network -->
+  <text x="114" y="46" text-anchor="middle" class="ink2 n">private network 10.0.0.0/8</text>
+  <rect x="44" y="64" width="140" height="44" rx="6" class="box"/>
+  <text x="114" y="91" text-anchor="middle" class="ink t mono">10.0.0.1</text>
+  <rect x="44" y="124" width="140" height="44" rx="6" class="box"/>
+  <text x="114" y="151" text-anchor="middle" class="ink t mono">10.0.0.2</text>
+  <rect x="44" y="200" width="140" height="44" rx="6" class="box"/>
+  <text x="114" y="227" text-anchor="middle" class="focus t b mono">10.0.0.10</text>
+
+  <!-- router -->
+  <rect x="300" y="190" width="140" height="64" rx="6" class="box"/>
+  <text x="370" y="216" text-anchor="middle" class="ink t b">NAT router</text>
+  <text x="370" y="238" text-anchor="middle" class="ink2 n mono">138.76.28.4</text>
+
+  <!-- server -->
+  <text x="630" y="46" text-anchor="middle" class="ink2 n">internet</text>
+  <rect x="570" y="190" width="120" height="64" rx="6" class="box"/>
+  <text x="630" y="216" text-anchor="middle" class="ink t b">server</text>
+  <text x="630" y="238" text-anchor="middle" class="ink2 n mono">138.76.29.7:23</text>
+
+  <!-- outgoing -->
+  <line x1="184" y1="214" x2="297" y2="214" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="240" y="182" text-anchor="middle" class="focus n mono">src 10.0.0.10:3017</text>
+  <line x1="440" y1="206" x2="567" y2="206" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="504" y="180" text-anchor="middle" class="focus n mono">src 138.76.28.4:1024</text>
+
+  <!-- reply -->
+  <line x1="570" y1="240" x2="443" y2="240" class="line" marker-end="url(#arrow)"/>
+  <text x="504" y="272" text-anchor="middle" class="ink2 n mono">dst 138.76.28.4:1024</text>
+  <line x1="300" y1="234" x2="187" y2="234" class="line" marker-end="url(#arrow)"/>
+  <text x="240" y="272" text-anchor="middle" class="ink2 n mono">dst 10.0.0.10:3017</text>
+
+  <!-- table -->
+  <rect x="240" y="300" width="260" height="60" rx="6" class="safe-box"/>
+  <text x="370" y="322" text-anchor="middle" class="ink n b">NAT table</text>
+  <text x="370" y="346" text-anchor="middle" class="ink n mono">10.0.0.10:3017 ↔ 138.76.28.4:1024</text>
+  <line x1="370" y1="254" x2="370" y2="297" class="line" stroke-dasharray="3 3"/>
+</svg>

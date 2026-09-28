@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- layer names -->
+  <text x="24" y="67" class="ink t b">Application</text>
+  <text x="24" y="137" class="ink t b">Transport</text>
+  <text x="24" y="207" class="ink t b">Internet</text>
+  <text x="24" y="277" class="ink t b">Link</text>
+
+  <!-- row 1: data -->
+  <rect x="460" y="40" width="140" height="44" rx="6" class="box"/>
+  <text x="530" y="67" text-anchor="middle" class="ink t">HTTP request</text>
+  <text x="616" y="67" class="ink2 t">data</text>
+
+  <!-- row 2: segment -->
+  <rect x="350" y="110" width="110" height="44" rx="6" class="focus-box"/>
+  <text x="405" y="129" text-anchor="middle" class="focus t b">TCP header</text>
+  <text x="405" y="146" text-anchor="middle" class="ink2 n">20+ bytes</text>
+  <rect x="460" y="110" width="140" height="44" rx="6" class="box"/>
+  <text x="530" y="137" text-anchor="middle" class="ink t">HTTP request</text>
+  <text x="616" y="137" class="ink2 t">segment</text>
+
+  <!-- row 3: packet -->
+  <rect x="240" y="180" width="110" height="44" rx="6" class="focus-box"/>
+  <text x="295" y="199" text-anchor="middle" class="focus t b">IP header</text>
+  <text x="295" y="216" text-anchor="middle" class="ink2 n">20+ bytes (v4)</text>
+  <rect x="350" y="180" width="110" height="44" rx="6" class="box"/>
+  <text x="405" y="207" text-anchor="middle" class="ink t">TCP header</text>
+  <rect x="460" y="180" width="140" height="44" rx="6" class="box"/>
+  <text x="530" y="207" text-anchor="middle" class="ink t">HTTP request</text>
+  <text x="616" y="207" class="ink2 t">packet</text>
+
+  <!-- row 4: frame -->
+  <rect x="130" y="250" width="110" height="44" rx="6" class="focus-box"/>
+  <text x="185" y="269" text-anchor="middle" class="focus t b">Ethernet</text>
+  <text x="185" y="286" text-anchor="middle" class="ink2 n">14 bytes</text>
+  <rect x="240" y="250" width="110" height="44" rx="6" class="box"/>
+  <text x="295" y="277" text-anchor="middle" class="ink t">IP header</text>
+  <rect x="350" y="250" width="110" height="44" rx="6" class="box"/>
+  <text x="405" y="277" text-anchor="middle" class="ink t">TCP header</text>
+  <rect x="460" y="250" width="140" height="44" rx="6" class="box"/>
+  <text x="530" y="277" text-anchor="middle" class="ink t">HTTP request</text>
+  <text x="616" y="277" class="ink2 t">frame</text>
+
+  <!-- sending direction -->
+  <line x1="690" y1="44" x2="690" y2="290" class="line" marker-end="url(#arrow)"/>
+  <text x="684" y="318" text-anchor="end" class="ink2 n">sending: each layer adds a header</text>
+</svg>

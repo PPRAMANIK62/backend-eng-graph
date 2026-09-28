@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="338" viewBox="0 0 720 338" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="30" class="ink t b">Unpaced: the whole window leaves at the sender's link rate</text>
+  <text x="50" y="68" text-anchor="end" class="ink2 n">sent</text>
+  <rect x="60" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="74" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="88" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="102" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="116" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="130" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="144" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="158" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="172" y="50" width="12" height="26" rx="2" class="focus"/>
+  <rect x="186" y="50" width="12" height="26" rx="2" class="focus"/>
+  <text x="420" y="68" text-anchor="middle" class="ink2 n">nothing more until the ACKs come back</text>
+  <text x="190" y="118" text-anchor="end" class="ink2 n">bottleneck buffer</text>
+  <rect x="200" y="96" width="180" height="36" rx="6" class="box"/>
+  <rect x="206" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="230" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="254" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="278" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="302" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="326" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="350" y="101" width="12" height="26" rx="2" class="focus"/>
+  <rect x="392" y="101" width="12" height="26" rx="2" class="lost"/>
+  <rect x="410" y="101" width="12" height="26" rx="2" class="lost"/>
+  <text x="434" y="112" class="lost n b">dropped: shallow buffer is full</text>
+  <text x="434" y="128" class="ink2 n">(a deep one holds them, adding delay)</text>
+  <text x="40" y="170" class="ink t b">Paced: the same ten packets spread over the round trip</text>
+  <text x="50" y="208" text-anchor="end" class="ink2 n">sent</text>
+  <rect x="60" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="122" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="184" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="246" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="308" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="370" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="432" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="494" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="556" y="190" width="12" height="26" rx="2" class="focus"/>
+  <rect x="618" y="190" width="12" height="26" rx="2" class="focus"/>
+  <text x="190" y="258" text-anchor="end" class="ink2 n">bottleneck buffer</text>
+  <rect x="200" y="236" width="180" height="36" rx="6" class="box"/>
+  <text x="392" y="252" class="ink n">no queue: packets arrive as fast</text>
+  <text x="392" y="268" class="ink n">as the bottleneck sends them</text>
+  <line x1="60" y1="306" x2="680" y2="306" class="line" marker-end="url(#arrow)"/>
+  <text x="60" y="326" class="ink2 n">time: first packet sent</text>
+  <text x="672" y="326" text-anchor="end" class="ink2 n">one round trip later</text>
+</svg>

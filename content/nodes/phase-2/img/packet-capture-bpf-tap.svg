@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="370" viewBox="0 0 720 370" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- bands -->
+  <text x="24" y="30" class="ink2 n">user space</text>
+  <line x1="24" y1="110" x2="696" y2="110" class="line" stroke-dasharray="4 4"/>
+  <text x="24" y="132" class="ink2 n">kernel</text>
+
+  <!-- user space -->
+  <rect x="40" y="44" width="200" height="48" rx="6" class="box"/>
+  <text x="140" y="73" text-anchor="middle" class="ink t">your applications</text>
+  <rect x="480" y="44" width="200" height="48" rx="6" class="box"/>
+  <text x="580" y="73" text-anchor="middle" class="focus t b">tcpdump</text>
+
+  <!-- kernel -->
+  <rect x="40" y="170" width="200" height="48" rx="6" class="box"/>
+  <text x="140" y="199" text-anchor="middle" class="ink t">protocol stack</text>
+  <rect x="480" y="130" width="200" height="40" rx="6" class="safe-box"/>
+  <text x="580" y="155" text-anchor="middle" class="ink t">buffer</text>
+  <rect x="480" y="196" width="200" height="44" rx="6" class="box"/>
+  <text x="580" y="223" text-anchor="middle" class="ink t">filter</text>
+  <rect x="300" y="196" width="130" height="44" rx="6" class="box"/>
+  <text x="365" y="223" text-anchor="middle" class="focus t b">BPF tap</text>
+  <rect x="240" y="280" width="220" height="44" rx="6" class="box"/>
+  <text x="350" y="307" text-anchor="middle" class="ink t b">network driver</text>
+
+  <!-- arrows -->
+  <path d="M290,280 V240 L140,240 V221" class="line" marker-end="url(#arrow)"/>
+  <line x1="140" y1="170" x2="140" y2="95" class="line" marker-end="url(#arrow)"/>
+  <line x1="380" y1="280" x2="372" y2="243" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="430" y1="218" x2="477" y2="218" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="580" y1="196" x2="580" y2="173" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="580" y1="130" x2="580" y2="95" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="480" y="260" class="lost n">no match: not copied</text>
+  <text x="486" y="186" class="ink2 n">match: copy</text>
+  <text x="594" y="121" class="ink2 n">read</text>
+  <line x1="350" y1="352" x2="350" y2="327" class="line" marker-end="url(#arrow)"/>
+  <text x="360" y="350" class="ink2 n">packet from the network</text>
+</svg>

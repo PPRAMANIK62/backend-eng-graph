@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="272" viewBox="0 0 720 272" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="32" class="ink t b">One socket's receive buffer on the receiver</text>
+
+  <!-- three parts of the buffer -->
+  <rect x="40" y="80" width="240" height="56" class="box"/>
+  <rect x="280" y="80" width="300" height="56" class="safe-box"/>
+  <rect x="580" y="80" width="100" height="56" class="box" stroke-dasharray="4 4"/>
+
+  <text x="160" y="104" text-anchor="middle" class="ink t">Received and ACKed,</text>
+  <text x="160" y="122" text-anchor="middle" class="ink t">not yet read by the app</text>
+  <text x="430" y="104" text-anchor="middle" class="ink t b">Advertised window</text>
+  <text x="430" y="122" text-anchor="middle" class="ink t">the sender may fill this</text>
+  <text x="630" y="104" text-anchor="middle" class="ink2 n">free, not yet</text>
+  <text x="630" y="120" text-anchor="middle" class="ink2 n">advertised</text>
+
+  <!-- RCV.NXT marker -->
+  <line x1="280" y1="66" x2="280" y2="150" class="focus-s"/>
+  <text x="280" y="60" text-anchor="middle" class="focus n b mono">ACK number (RCV.NXT)</text>
+  <line x1="580" y1="66" x2="580" y2="150" class="line"/>
+  <text x="580" y="60" text-anchor="middle" class="ink2 n">right edge</text>
+
+  <!-- arrows -->
+  <line x1="120" y1="176" x2="60" y2="176" class="line" marker-end="url(#arrow)"/>
+  <text x="130" y="180" class="ink2 n">app's read() drains from here</text>
+  <line x1="430" y1="198" x2="300" y2="198" class="line" marker-end="url(#arrow)"/>
+  <text x="440" y="202" class="ink2 n">new segments land here</text>
+
+  <!-- whole buffer brace -->
+  <line x1="40" y1="226" x2="680" y2="226" class="line"/>
+  <line x1="40" y1="220" x2="40" y2="232" class="line"/>
+  <line x1="680" y1="220" x2="680" y2="232" class="line"/>
+  <text x="360" y="254" text-anchor="middle" class="ink t">Whole buffer (RCV.BUFF), sized by tcp_rmem or SO_RCVBUF</text>
+</svg>

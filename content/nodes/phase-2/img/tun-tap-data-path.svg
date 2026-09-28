@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- bands -->
+  <text x="24" y="30" class="ink2 n">user space</text>
+  <line x1="24" y1="124" x2="696" y2="124" class="line" stroke-dasharray="4 4"/>
+  <text x="24" y="146" class="ink2 n">kernel</text>
+
+  <!-- user space -->
+  <rect x="40" y="44" width="170" height="52" rx="6" class="box"/>
+  <text x="125" y="67" text-anchor="middle" class="ink t b">curl</text>
+  <text x="125" y="85" text-anchor="middle" class="ink2 n">normal TCP socket</text>
+  <rect x="500" y="44" width="180" height="52" rx="6" class="box"/>
+  <text x="590" y="67" text-anchor="middle" class="focus t b">your program</text>
+  <text x="590" y="85" text-anchor="middle" class="ink2 n">e.g. a user-space TCP</text>
+
+  <!-- kernel -->
+  <rect x="40" y="170" width="170" height="60" rx="6" class="box"/>
+  <text x="125" y="196" text-anchor="middle" class="ink t b">TCP/IP stack</text>
+  <text x="125" y="215" text-anchor="middle" class="ink2 n">builds the packets</text>
+  <rect x="280" y="170" width="140" height="60" rx="6" class="box"/>
+  <text x="350" y="196" text-anchor="middle" class="ink t b mono">tun0</text>
+  <text x="350" y="215" text-anchor="middle" class="ink2 n">no hardware</text>
+  <rect x="500" y="170" width="180" height="60" rx="6" class="box"/>
+  <text x="590" y="196" text-anchor="middle" class="ink t b mono">/dev/net/tun</text>
+  <text x="590" y="215" text-anchor="middle" class="ink2 n">one file descriptor</text>
+
+  <text x="125" y="262" text-anchor="middle" class="ink2 n mono">10.0.0.0/24 dev tun0</text>
+  <text x="125" y="280" text-anchor="middle" class="ink2 n">(the route that sends it there)</text>
+
+  <!-- arrows -->
+  <line x1="118" y1="96" x2="118" y2="167" class="line" marker-end="url(#arrow)"/>
+  <line x1="132" y1="170" x2="132" y2="99" class="line" marker-end="url(#arrow)"/>
+  <line x1="210" y1="192" x2="277" y2="192" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="280" y1="210" x2="213" y2="210" class="line" marker-end="url(#arrow)"/>
+  <line x1="420" y1="192" x2="497" y2="192" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="500" y1="210" x2="423" y2="210" class="line" marker-end="url(#arrow)"/>
+  <line x1="582" y1="170" x2="582" y2="99" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="598" y1="96" x2="598" y2="167" class="line" marker-end="url(#arrow)"/>
+  <text x="572" y="140" text-anchor="end" class="focus n mono">read()</text>
+  <text x="608" y="140" class="ink2 n mono">write()</text>
+  <text x="460" y="262" text-anchor="middle" class="ink2 n">whole IP packets, headers and all</text>
+  <text x="460" y="300" class="focus n" text-anchor="middle">blue: packets curl sends · grey: replies your program writes</text>
+</svg>

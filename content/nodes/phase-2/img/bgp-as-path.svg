@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost{fill:#eb6834}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- AS boxes -->
+  <rect x="30" y="110" width="160" height="60" rx="6" class="focus-box"/>
+  <text x="110" y="134" text-anchor="middle" class="ink t b">AS1</text>
+  <text x="110" y="154" text-anchor="middle" class="ink2 n">owns 203.0.113.0/24</text>
+  <rect x="280" y="20" width="160" height="60" rx="6" class="box"/>
+  <text x="360" y="55" text-anchor="middle" class="ink t b">AS2</text>
+  <rect x="530" y="20" width="160" height="60" rx="6" class="box"/>
+  <text x="610" y="55" text-anchor="middle" class="ink t b">AS3</text>
+  <rect x="530" y="200" width="160" height="60" rx="6" class="box"/>
+  <text x="610" y="224" text-anchor="middle" class="ink t b">AS4</text>
+  <text x="610" y="244" text-anchor="middle" class="ink2 n">hears two paths</text>
+
+  <!-- announcements -->
+  <line x1="190" y1="125" x2="276" y2="72" class="line" marker-end="url(#arrow)"/>
+  <text x="206" y="88" class="focus n mono b">AS1</text>
+  <line x1="442" y1="50" x2="526" y2="50" class="line" marker-end="url(#arrow)"/>
+  <text x="484" y="40" text-anchor="middle" class="focus n mono b">AS2 AS1</text>
+  <line x1="610" y1="82" x2="610" y2="196" class="line" marker-end="url(#arrow)"/>
+  <text x="618" y="144" class="focus n mono b">AS3 AS2 AS1</text>
+  <line x1="190" y1="155" x2="526" y2="225" class="line" marker-end="url(#arrow)"/>
+  <text x="380" y="220" text-anchor="middle" class="focus n mono b">AS1</text>
+
+  <!-- loop rule -->
+  <text x="30" y="204" class="lost n">Loop check: AS1 rejects any route</text>
+  <text x="30" y="220" class="lost n">whose path already contains AS1.</text>
+
+  <text x="360" y="290" text-anchor="middle" class="ink2 n">Blue labels: the AS path each announcement for 203.0.113.0/24 carries</text>
+</svg>

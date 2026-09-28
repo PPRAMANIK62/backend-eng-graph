@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- bit ruler -->
+  <text x="140" y="38" text-anchor="middle" class="ink2 n mono">bit 0</text>
+  <text x="380" y="38" text-anchor="middle" class="ink2 n mono">16</text>
+  <text x="620" y="38" text-anchor="middle" class="ink2 n mono">31</text>
+
+  <!-- byte offsets -->
+  <text x="124" y="77" text-anchor="end" class="ink2 n">byte 0</text>
+  <text x="124" y="117" text-anchor="end" class="ink2 n">4</text>
+  <text x="124" y="157" text-anchor="end" class="ink2 n">8</text>
+  <text x="124" y="197" text-anchor="end" class="ink2 n">12</text>
+  <text x="124" y="237" text-anchor="end" class="ink2 n">16</text>
+  <text x="124" y="277" text-anchor="end" class="ink2 n">20</text>
+
+  <!-- row 1 -->
+  <rect x="140" y="52" width="240" height="40" class="box"/>
+  <rect x="380" y="52" width="240" height="40" class="box"/>
+  <text x="260" y="77" text-anchor="middle" class="ink t">Source port</text>
+  <text x="500" y="77" text-anchor="middle" class="ink t">Destination port</text>
+
+  <!-- row 2 -->
+  <rect x="140" y="92" width="480" height="40" class="box"/>
+  <text x="380" y="117" text-anchor="middle" class="focus t b">Sequence number</text>
+
+  <!-- row 3 -->
+  <rect x="140" y="132" width="480" height="40" class="box"/>
+  <text x="380" y="157" text-anchor="middle" class="focus t b">Acknowledgment number</text>
+
+  <!-- row 4 -->
+  <rect x="140" y="172" width="60" height="40" class="box"/>
+  <rect x="200" y="172" width="60" height="40" class="box"/>
+  <rect x="260" y="172" width="120" height="40" class="box"/>
+  <rect x="380" y="172" width="240" height="40" class="box"/>
+  <text x="170" y="197" text-anchor="middle" class="ink n">Offset</text>
+  <text x="230" y="197" text-anchor="middle" class="ink2 n">Rsrvd</text>
+  <text x="320" y="197" text-anchor="middle" class="ink t">8 flags</text>
+  <text x="500" y="197" text-anchor="middle" class="ink t">Window</text>
+
+  <!-- row 5 -->
+  <rect x="140" y="212" width="240" height="40" class="box"/>
+  <rect x="380" y="212" width="240" height="40" class="box"/>
+  <text x="260" y="237" text-anchor="middle" class="ink t">Checksum</text>
+  <text x="500" y="237" text-anchor="middle" class="ink t">Urgent pointer</text>
+
+  <!-- options, data -->
+  <rect x="140" y="256" width="480" height="36" rx="4" class="line" stroke-dasharray="5 4"/>
+  <text x="380" y="279" text-anchor="middle" class="ink2 t">Options (only when offset &gt; 5 words)</text>
+  <rect x="140" y="296" width="480" height="36" rx="4" class="line" stroke-dasharray="5 4"/>
+  <text x="380" y="319" text-anchor="middle" class="ink2 t">Data</text>
+
+  <text x="140" y="362" class="ink2 n">Flags: CWR ECE URG ACK PSH RST SYN FIN. Fixed part: 20 bytes.</text>
+</svg>

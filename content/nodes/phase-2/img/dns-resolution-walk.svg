@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="550" viewBox="0 0 720 550" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- actors -->
+  <rect x="20" y="20" width="120" height="50" rx="6" class="box"/>
+  <text x="80" y="41" text-anchor="middle" class="ink t b">Your program</text>
+  <text x="80" y="59" text-anchor="middle" class="ink2 n">stub resolver</text>
+  <rect x="160" y="20" width="120" height="50" rx="6" class="box"/><rect x="160" y="20" width="120" height="50" rx="6" class="focus-s"/>
+  <text x="220" y="41" text-anchor="middle" class="ink t b">Recursive</text>
+  <text x="220" y="59" text-anchor="middle" class="ink2 n">with a cache</text>
+  <rect x="300" y="20" width="120" height="50" rx="6" class="box"/>
+  <text x="360" y="41" text-anchor="middle" class="ink t b">Root server</text>
+  <text x="360" y="59" text-anchor="middle" class="ink2 n">zone "."</text>
+  <rect x="440" y="20" width="120" height="50" rx="6" class="box"/>
+  <text x="500" y="41" text-anchor="middle" class="ink t b">.com server</text>
+  <text x="500" y="59" text-anchor="middle" class="ink2 n">TLD</text>
+  <rect x="580" y="20" width="120" height="50" rx="6" class="box"/>
+  <text x="640" y="41" text-anchor="middle" class="ink t b">example.com</text>
+  <text x="640" y="59" text-anchor="middle" class="ink2 n">authoritative</text>
+
+  <!-- lifelines -->
+  <line x1="80" y1="70" x2="80" y2="490" class="line" stroke-dasharray="4 4"/>
+  <line x1="220" y1="70" x2="220" y2="490" class="line" stroke-dasharray="4 4"/>
+  <line x1="360" y1="70" x2="360" y2="490" class="line" stroke-dasharray="4 4"/>
+  <line x1="500" y1="70" x2="500" y2="490" class="line" stroke-dasharray="4 4"/>
+  <line x1="640" y1="70" x2="640" y2="490" class="line" stroke-dasharray="4 4"/>
+
+  <!-- 1 stub asks recursive -->
+  <text x="150" y="104" text-anchor="middle" class="ink n">1. A? api.example.com</text>
+  <line x1="82" y1="112" x2="217" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="150" y="128" text-anchor="middle" class="ink2 n">RD=1</text>
+
+  <!-- 2 recursive asks root -->
+  <text x="290" y="154" text-anchor="middle" class="ink n">2. same question</text>
+  <line x1="222" y1="162" x2="357" y2="162" class="line" marker-end="url(#arrow)"/>
+  <!-- 3 referral -->
+  <text x="290" y="199" text-anchor="middle" class="ink2 n">3. referral to .com</text>
+  <line x1="358" y1="207" x2="223" y2="207" class="line" marker-end="url(#arrow)"/>
+
+  <!-- 4 recursive asks .com -->
+  <text x="290" y="244" text-anchor="middle" class="ink n">4. same question</text>
+  <line x1="222" y1="252" x2="497" y2="252" class="line" marker-end="url(#arrow)"/>
+  <!-- 5 referral -->
+  <text x="430" y="281" text-anchor="middle" class="ink2 n">5. referral to</text>
+  <text x="430" y="296" text-anchor="middle" class="ink2 n">example.com NS</text>
+  <line x1="498" y1="304" x2="223" y2="304" class="line" marker-end="url(#arrow)"/>
+
+  <!-- 6 recursive asks authoritative -->
+  <text x="570" y="341" text-anchor="middle" class="ink n">6. same question</text>
+  <line x1="222" y1="349" x2="637" y2="349" class="line" marker-end="url(#arrow)"/>
+  <!-- 7 answer -->
+  <text x="570" y="378" text-anchor="middle" class="focus n b">7. answer, AA=1</text>
+  <text x="570" y="393" text-anchor="middle" class="focus n mono">A 203.0.113.10</text>
+  <text x="570" y="408" text-anchor="middle" class="focus n">TTL 300</text>
+  <line x1="638" y1="416" x2="223" y2="416" class="focus-s" marker-end="url(#arrow)"/>
+
+  <!-- 8 back to stub -->
+  <text x="150" y="453" text-anchor="middle" class="focus n b">8. answer, RA=1</text>
+  <line x1="218" y1="461" x2="83" y2="461" class="focus-s" marker-end="url(#arrow)"/>
+
+  <!-- footnote -->
+  <text x="20" y="520" class="ink2 n">Steps 2 to 7 happen only on a cold cache. The resolver caches each referral and the answer for its TTL,</text>
+  <text x="20" y="538" class="ink2 n">so the next lookup for any .com name skips steps 2 and 3, and a repeat of this one skips 2 to 7.</text>
+</svg>

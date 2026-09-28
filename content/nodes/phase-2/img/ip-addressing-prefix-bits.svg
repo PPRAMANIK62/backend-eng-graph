@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+    }
+  </style>
+
+  <!-- the address -->
+  <text x="50" y="28" class="ink t b mono">192.0.2.10/24</text>
+  <rect x="50" y="40" width="150" height="36" rx="6" class="focus-box"/>
+  <text x="125" y="63" text-anchor="middle" class="ink t mono">11000000</text>
+  <rect x="210" y="40" width="150" height="36" rx="6" class="focus-box"/>
+  <text x="285" y="63" text-anchor="middle" class="ink t mono">00000000</text>
+  <rect x="370" y="40" width="150" height="36" rx="6" class="focus-box"/>
+  <text x="445" y="63" text-anchor="middle" class="ink t mono">00000010</text>
+  <rect x="530" y="40" width="150" height="36" rx="6" class="box"/>
+  <text x="605" y="63" text-anchor="middle" class="ink t mono">00001010</text>
+  <text x="125" y="92" text-anchor="middle" class="ink2 n">192</text>
+  <text x="285" y="92" text-anchor="middle" class="ink2 n">0</text>
+  <text x="445" y="92" text-anchor="middle" class="ink2 n">2</text>
+  <text x="605" y="92" text-anchor="middle" class="ink2 n">10</text>
+
+  <!-- brackets -->
+  <path d="M50,100 V108 H520 V100" class="focus-s"/>
+  <text x="285" y="126" text-anchor="middle" class="focus t b">network: 192.0.2.0/24 (24 bits)</text>
+  <path d="M530,100 V108 H680 V100" class="line"/>
+  <text x="605" y="126" text-anchor="middle" class="ink t">host: .10 (8 bits)</text>
+
+  <!-- the mask -->
+  <text x="50" y="164" class="ink t b">Mask for /24: <tspan class="mono">255.255.255.0</tspan></text>
+  <rect x="50" y="176" width="150" height="36" rx="6" class="box"/>
+  <text x="125" y="199" text-anchor="middle" class="ink t mono">11111111</text>
+  <rect x="210" y="176" width="150" height="36" rx="6" class="box"/>
+  <text x="285" y="199" text-anchor="middle" class="ink t mono">11111111</text>
+  <rect x="370" y="176" width="150" height="36" rx="6" class="box"/>
+  <text x="445" y="199" text-anchor="middle" class="ink t mono">11111111</text>
+  <rect x="530" y="176" width="150" height="36" rx="6" class="box"/>
+  <text x="605" y="199" text-anchor="middle" class="ink t mono">00000000</text>
+
+  <!-- four /26 subnets -->
+  <text x="50" y="252" class="ink t b">Split into four /26 subnets, 64 addresses each</text>
+  <rect x="50" y="264" width="157" height="36" rx="6" class="box"/>
+  <text x="128" y="287" text-anchor="middle" class="ink t mono">192.0.2.0/26</text>
+  <rect x="211" y="264" width="157" height="36" rx="6" class="box"/>
+  <text x="289" y="287" text-anchor="middle" class="ink t mono">192.0.2.64/26</text>
+  <rect x="372" y="264" width="157" height="36" rx="6" class="box"/>
+  <text x="450" y="287" text-anchor="middle" class="ink t mono">192.0.2.128/26</text>
+  <rect x="533" y="264" width="147" height="36" rx="6" class="box"/>
+  <text x="606" y="287" text-anchor="middle" class="ink t mono">192.0.2.192/26</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="350" viewBox="0 0 720 350" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- sender -->
+  <rect x="24" y="170" width="150" height="60" rx="6" class="box"/>
+  <text x="99" y="196" text-anchor="middle" class="ink t b">Sender</text>
+  <text x="99" y="216" text-anchor="middle" class="ink2 n">1500-byte packet</text>
+
+  <!-- router -->
+  <rect x="270" y="160" width="150" height="80" rx="6" class="box"/>
+  <text x="345" y="190" text-anchor="middle" class="ink t b">Router</text>
+  <text x="345" y="210" text-anchor="middle" class="ink2 n">next link's MTU</text>
+  <text x="345" y="226" text-anchor="middle" class="ink2 n">is 1400</text>
+  <line x1="174" y1="200" x2="267" y2="200" class="line" marker-end="url(#arrow)"/>
+
+  <!-- DF = 0 -->
+  <text x="460" y="44" class="ink t b">DF = 0: the router fragments</text>
+  <path d="M420,180 C440,180 440,80 457,80" class="line" marker-end="url(#arrow)"/>
+  <rect x="460" y="60" width="240" height="36" rx="4" class="safe-box"/>
+  <text x="580" y="83" text-anchor="middle" class="ink n mono">1396 B · offset 0 · MF=1</text>
+  <rect x="460" y="104" width="240" height="36" rx="4" class="safe-box"/>
+  <text x="580" y="127" text-anchor="middle" class="ink n mono">124 B · offset 172 · MF=0</text>
+  <text x="580" y="160" text-anchor="middle" class="ink2 n">same identification on both</text>
+
+  <!-- DF = 1 -->
+  <text x="460" y="236" class="ink t b">DF = 1: the router drops it</text>
+  <path d="M420,220 C440,220 440,262 457,262" class="lost-s"/>
+  <line x1="462" y1="252" x2="482" y2="272" class="lost-s"/>
+  <line x1="482" y1="252" x2="462" y2="272" class="lost-s"/>
+  <text x="496" y="267" class="lost n b">dropped</text>
+
+  <!-- ICMP back -->
+  <path d="M345,240 V310 H99 V233" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="222" y="332" text-anchor="middle" class="focus n">ICMP fragmentation needed, MTU 1400</text>
+</svg>

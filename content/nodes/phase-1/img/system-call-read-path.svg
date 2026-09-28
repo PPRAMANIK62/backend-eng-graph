@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<g transform="translate(0,-24)">
+  <!-- user lane -->
+  <rect x="24" y="40" width="150" height="56" rx="6" class="box"/>
+  <text x="99" y="63" text-anchor="middle" class="ink t b">Your code</text>
+  <text x="99" y="82" text-anchor="middle" class="ink2 n mono">read(fd, buf, 4096)</text>
+  <rect x="190" y="40" width="218" height="56" rx="6" class="box"/>
+  <text x="206" y="63" class="ink t b">libc wrapper</text>
+  <text x="206" y="82" class="ink2 n"><tspan class="mono">rax</tspan> = 0 (read), args in <tspan class="mono">rdi rsi rdx</tspan></text>
+  <rect x="520" y="40" width="176" height="56" rx="6" class="box"/>
+  <text x="536" y="63" class="ink t b">Back in your code</text>
+  <text x="536" y="82" class="ink2 n">result in <tspan class="mono">rax</tspan></text>
+  <line x1="174" y1="68" x2="187" y2="68" class="line" marker-end="url(#arrow)"/>
+
+  <!-- the mode boundary -->
+  <text x="24" y="124" class="ink2 n">user mode</text>
+  <line x1="24" y1="132" x2="696" y2="132" class="line" stroke-dasharray="4 4"/>
+  <text x="24" y="150" class="ink2 n">kernel mode</text>
+
+  <!-- crossing down -->
+  <line x1="260" y1="96" x2="260" y2="167" class="line" marker-end="url(#arrow)"/>
+  <text x="252" y="120" text-anchor="end" class="focus t mono b">syscall</text>
+
+  <!-- kernel lane -->
+  <rect x="190" y="170" width="140" height="56" rx="6" class="box"/>
+  <text x="206" y="193" class="ink t b">Entry code</text>
+  <text x="206" y="212" class="ink2 n">save your registers</text>
+  <rect x="346" y="170" width="160" height="56" rx="6" class="box"/>
+  <text x="362" y="193" class="ink t mono b">sys_call_table[rax]</text>
+  <text x="362" y="212" class="ink2 n">entry 0 is read</text>
+  <rect x="522" y="170" width="174" height="56" rx="6" class="box"/>
+  <text x="538" y="193" class="ink t b">Kernel's read</text>
+  <text x="538" y="212" class="ink2 n">check fd, copy data</text>
+  <line x1="330" y1="198" x2="343" y2="198" class="line" marker-end="url(#arrow)"/>
+  <line x1="506" y1="198" x2="519" y2="198" class="line" marker-end="url(#arrow)"/>
+
+  <!-- crossing up -->
+  <line x1="608" y1="170" x2="608" y2="99" class="line" marker-end="url(#arrow)"/>
+  <text x="600" y="120" text-anchor="end" class="ink2 n">restore registers, return</text>
+
+  <text x="190" y="250" class="ink2 n">one fixed entry address, set at boot (<tspan class="mono">MSR_LSTAR</tspan>)</text>
+</g>
+</svg>

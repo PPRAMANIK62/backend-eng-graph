@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="462" viewBox="0 0 720 462" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="30" class="ink2 n">Shaded: what a backend engineer owns</text>
+
+  <!-- owned regions -->
+  <rect x="288" y="12" width="152" height="128" rx="6" class="focus" fill-opacity=".12"/>
+  <text x="364" y="128" text-anchor="middle" class="focus t b">The services</text>
+  <rect x="456" y="12" width="240" height="128" rx="6" class="focus" fill-opacity=".12"/>
+  <text x="576" y="128" text-anchor="middle" class="focus t b">The data</text>
+  <rect x="164" y="152" width="532" height="100" rx="6" class="focus" fill-opacity=".12"/>
+  <text x="180" y="240" class="focus t b">The systems they run on (OS, network, disk)</text>
+
+  <!-- request path -->
+  <rect x="24" y="52" width="100" height="44" rx="6" class="box"/>
+  <text x="74" y="79" text-anchor="middle" class="ink t">Client</text>
+  <rect x="180" y="166" width="110" height="44" rx="6" class="box"/>
+  <text x="235" y="193" text-anchor="middle" class="ink t">Network</text>
+  <rect x="300" y="52" width="120" height="44" rx="6" class="box"/>
+  <text x="360" y="79" text-anchor="middle" class="ink t">Service</text>
+  <rect x="470" y="52" width="100" height="44" rx="6" class="box"/>
+  <text x="520" y="79" text-anchor="middle" class="ink t">Database</text>
+  <rect x="582" y="52" width="100" height="44" rx="6" class="box"/>
+  <text x="632" y="79" text-anchor="middle" class="ink t">Queue</text>
+  <rect x="500" y="166" width="170" height="44" rx="6" class="box"/>
+  <text x="585" y="193" text-anchor="middle" class="ink t">Disk</text>
+
+  <path d="M74,96 V188 H177" class="line" marker-end="url(#arrow)"/>
+  <path d="M235,166 V74 H297" class="line" marker-end="url(#arrow)"/>
+  <line x1="420" y1="74" x2="467" y2="74" class="line" marker-end="url(#arrow)"/>
+  <path d="M360,52 V32 H632 V49" class="line" marker-end="url(#arrow)"/>
+  <line x1="530" y1="96" x2="530" y2="163" class="line" marker-end="url(#arrow)"/>
+  <line x1="640" y1="96" x2="640" y2="163" class="line" marker-end="url(#arrow)"/>
+
+  <!-- neighbouring roles -->
+  <text x="24" y="290" class="ink t b">Where neighbouring roles overlap</text>
+  <text x="24" y="324" class="ink t">SRE</text>
+  <rect x="288" y="312" width="408" height="14" rx="6" class="box"/>
+  <text x="288" y="344" class="ink2 n">keeps it up in production: availability, latency, on-call</text>
+  <text x="24" y="376" class="ink t">Platform</text>
+  <rect x="456" y="364" width="240" height="14" rx="6" class="box"/>
+  <text x="456" y="396" class="ink2 n">self-service databases, queues, deploys</text>
+  <text x="24" y="428" class="ink t">Data engineering</text>
+  <rect x="470" y="416" width="100" height="14" rx="6" class="box"/>
+  <text x="470" y="448" class="ink2 n">uses the data downstream (our framing)</text>
+</svg>

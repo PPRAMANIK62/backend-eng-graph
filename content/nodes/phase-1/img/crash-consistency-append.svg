@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="324" viewBox="0 0 720 324" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="24" class="ink t b">Appending one block needs three writes</text>
+  <text x="40" y="44" class="ink2 n">Which ones reached disk before the crash</text>
+  <text x="300" y="44" class="ink2 n">What you find after reboot</text>
+  <rect x="40" y="60" width="70" height="36" rx="6" class="safe-box"/>
+  <text x="75" y="83" text-anchor="middle" class="ink n">data</text>
+  <rect x="120" y="60" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="155" y="83" text-anchor="middle" class="ink2 n">inode</text>
+  <rect x="200" y="60" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="235" y="83" text-anchor="middle" class="ink2 n">bitmap</text>
+  <text x="300" y="75" class="ink t">Append lost, nothing corrupt</text>
+  <text x="300" y="93" class="ink2 n">the data is on disk, but nothing points to it</text>
+  <rect x="40" y="116" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="75" y="139" text-anchor="middle" class="ink2 n">data</text>
+  <rect x="120" y="116" width="70" height="36" rx="6" class="safe-box"/>
+  <text x="155" y="139" text-anchor="middle" class="ink n">inode</text>
+  <rect x="200" y="116" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="235" y="139" text-anchor="middle" class="ink2 n">bitmap</text>
+  <text x="300" y="131" class="ink t">File points at garbage</text>
+  <text x="300" y="149" class="ink2 n">and the bitmap says that block is free</text>
+  <rect x="40" y="172" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="75" y="195" text-anchor="middle" class="ink2 n">data</text>
+  <rect x="120" y="172" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="155" y="195" text-anchor="middle" class="ink2 n">inode</text>
+  <rect x="200" y="172" width="70" height="36" rx="6" class="safe-box"/>
+  <text x="235" y="195" text-anchor="middle" class="ink n">bitmap</text>
+  <text x="300" y="187" class="ink t">Space leak</text>
+  <text x="300" y="205" class="ink2 n">a block is marked used, but no file owns it</text>
+  <rect x="40" y="228" width="70" height="36" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="75" y="251" text-anchor="middle" class="ink2 n">data</text>
+  <rect x="120" y="228" width="70" height="36" rx="6" class="safe-box"/>
+  <text x="155" y="251" text-anchor="middle" class="ink n">inode</text>
+  <rect x="200" y="228" width="70" height="36" rx="6" class="safe-box"/>
+  <text x="235" y="251" text-anchor="middle" class="ink n">bitmap</text>
+  <text x="300" y="243" class="lost t">File silently holds garbage</text>
+  <text x="300" y="261" class="ink2 n">everything agrees, so no checker can spot it</text>
+  <rect x="40" y="290" width="36" height="20" rx="6" class="safe-box"/>
+  <text x="84" y="305" class="ink2 n">reached disk</text>
+  <rect x="190" y="290" width="36" height="20" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="234" y="305" class="ink2 n">lost in the crash</text>
+</svg>

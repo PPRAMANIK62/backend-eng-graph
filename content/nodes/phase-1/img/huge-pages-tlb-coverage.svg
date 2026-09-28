@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="418" viewBox="0 0 720 418" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="30" y="30" class="ink t b">4 KiB pages</text>
+  <text x="30" y="48" class="ink2 n">one 2 MiB region</text>
+  <text x="390" y="30" class="ink t b">One huge page</text>
+  <text x="390" y="48" class="ink2 n">the same 2 MiB region</text>
+  <line x1="370" y1="20" x2="370" y2="380" class="line" stroke-opacity="0.4"/>
+  <rect x="30" y="70" width="120" height="36" rx="6" class="box"/>
+  <text x="90" y="93" text-anchor="middle" class="ink t">PMD entry</text>
+  <rect x="390" y="70" width="120" height="36" rx="6" class="box"/>
+  <text x="450" y="93" text-anchor="middle" class="ink t">PMD entry</text>
+  <line x1="90" y1="106" x2="90" y2="137" class="line" marker-end="url(#arrow)"/>
+  <rect x="30" y="140" width="120" height="176" rx="6" class="box"/>
+  <text x="90" y="162.6" text-anchor="middle" class="ink n mono">PTE 0</text>
+  <line x1="30" y1="175.2" x2="150" y2="175.2" class="line" stroke-opacity="0.45"/>
+  <text x="90" y="197.79999999999998" text-anchor="middle" class="ink n mono">PTE 1</text>
+  <line x1="30" y1="210.4" x2="150" y2="210.4" class="line" stroke-opacity="0.45"/>
+  <text x="90" y="233.0" text-anchor="middle" class="ink n mono">PTE 2</text>
+  <line x1="30" y1="245.6" x2="150" y2="245.6" class="line" stroke-opacity="0.45"/>
+  <text x="90" y="268.2" text-anchor="middle" class="ink n mono">…</text>
+  <line x1="30" y1="280.8" x2="150" y2="280.8" class="line" stroke-opacity="0.45"/>
+  <text x="90" y="303.40000000000003" text-anchor="middle" class="ink n mono">PTE 511</text>
+  <text x="90" y="336" text-anchor="middle" class="ink2 n">PTE table</text>
+  <rect x="190" y="140" width="160" height="176" class="focus" fill-opacity="0.15"/>
+  <line x1="195.0" y1="140" x2="195.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="200.0" y1="140" x2="200.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="205.0" y1="140" x2="205.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="210.0" y1="140" x2="210.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="215.0" y1="140" x2="215.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="220.0" y1="140" x2="220.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="225.0" y1="140" x2="225.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="230.0" y1="140" x2="230.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="235.0" y1="140" x2="235.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="240.0" y1="140" x2="240.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="245.0" y1="140" x2="245.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="250.0" y1="140" x2="250.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="255.0" y1="140" x2="255.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="260.0" y1="140" x2="260.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="265.0" y1="140" x2="265.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="270.0" y1="140" x2="270.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="275.0" y1="140" x2="275.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="280.0" y1="140" x2="280.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="285.0" y1="140" x2="285.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="290.0" y1="140" x2="290.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="295.0" y1="140" x2="295.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="300.0" y1="140" x2="300.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="305.0" y1="140" x2="305.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="310.0" y1="140" x2="310.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="315.0" y1="140" x2="315.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="320.0" y1="140" x2="320.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="325.0" y1="140" x2="325.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="330.0" y1="140" x2="330.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="335.0" y1="140" x2="335.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="340.0" y1="140" x2="340.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="345.0" y1="140" x2="345.0" y2="316" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="151.0" x2="350" y2="151.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="162.0" x2="350" y2="162.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="173.0" x2="350" y2="173.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="184.0" x2="350" y2="184.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="195.0" x2="350" y2="195.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="206.0" x2="350" y2="206.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="217.0" x2="350" y2="217.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="228.0" x2="350" y2="228.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="239.0" x2="350" y2="239.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="250.0" x2="350" y2="250.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="261.0" x2="350" y2="261.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="272.0" x2="350" y2="272.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="283.0" x2="350" y2="283.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="294.0" x2="350" y2="294.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <line x1="190" y1="305.0" x2="350" y2="305.0" class="line" stroke-width="0.6" stroke-opacity="0.7"/>
+  <rect x="190" y="140" width="160" height="176" rx="2" class="line"/>
+  <text x="270.0" y="336" text-anchor="middle" class="ink2 n">512 pages of 4 KiB</text>
+  <line x1="150" y1="157.6" x2="187" y2="144.0" class="line" marker-end="url(#arrow)"/>
+  <line x1="150" y1="192.79999999999998" x2="187" y2="186.0" class="line" marker-end="url(#arrow)"/>
+  <line x1="150" y1="298.40000000000003" x2="187" y2="312.0" class="line" marker-end="url(#arrow)"/>
+  <path d="M 450 106 C 450 130, 500 228.0, 547 228.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="550" y="140" width="160" height="176" rx="2" class="focus" fill-opacity="0.15"/>
+  <rect x="550" y="140" width="160" height="176" rx="2" class="line"/>
+  <text x="630.0" y="233.0" text-anchor="middle" class="ink t b">2 MiB page</text>
+  <text x="630.0" y="336" text-anchor="middle" class="ink2 n">one mapping</text>
+  <text x="450" y="336" text-anchor="middle" class="ink2 n">no PTE table</text>
+  <rect x="30" y="362" width="320" height="36" rx="6" class="box"/>
+  <text x="46" y="385" class="ink t"><tspan class="b">TLB:</tspan> up to 512 entries to cover it</text>
+  <rect x="390" y="362" width="320" height="36" rx="6" class="box"/>
+  <text x="406" y="385" class="ink t"><tspan class="b">TLB:</tspan> 1 entry covers it</text>
+</svg>

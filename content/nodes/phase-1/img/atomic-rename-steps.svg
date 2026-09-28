@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="432" viewBox="0 0 720 432" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="24" class="ink2 n b">The four steps</text>
+  <text x="560" y="24" text-anchor="middle" class="ink2 n b">config.json after reboot</text>
+  <rect x="40" y="40" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="67" class="ink t">1  write <tspan class="mono">config.json.tmp</tspan></text>
+  <line x1="40" y1="110" x2="340" y2="110" class="lost-s" stroke-dasharray="6 4"/>
+  <text x="348" y="114" class="lost n">crash here</text>
+  <line x1="418" y1="110" x2="437" y2="110" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="93" width="240" height="34" rx="6" class="old"/>
+  <text x="560" y="115" text-anchor="middle" class="ink n">old version, plus a stray .tmp</text>
+  <rect x="40" y="136" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="163" class="ink t">2  fsync the temp file</text>
+  <line x1="40" y1="206" x2="340" y2="206" class="lost-s" stroke-dasharray="6 4"/>
+  <text x="348" y="210" class="lost n">crash here</text>
+  <line x1="418" y1="206" x2="437" y2="206" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="189" width="240" height="34" rx="6" class="old"/>
+  <text x="560" y="211" text-anchor="middle" class="ink n">old version, plus a stray .tmp</text>
+  <rect x="40" y="232" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="259" class="ink t">3  rename .tmp to config.json</text>
+  <line x1="40" y1="302" x2="340" y2="302" class="lost-s" stroke-dasharray="6 4"/>
+  <text x="348" y="306" class="lost n">crash here</text>
+  <line x1="418" y1="302" x2="437" y2="302" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="285" width="240" height="34" rx="6" class="box"/>
+  <text x="560" y="307" text-anchor="middle" class="ink n">old or new, whole either way</text>
+  <rect x="40" y="328" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="355" class="ink t">4  fsync the directory</text>
+  <line x1="40" y1="398" x2="340" y2="398" class="lost-s" stroke-dasharray="6 4"/>
+  <text x="348" y="402" class="lost n">crash here</text>
+  <line x1="418" y1="398" x2="437" y2="398" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="381" width="240" height="34" rx="6" class="safe-box"/>
+  <text x="560" y="403" text-anchor="middle" class="ink n">new version, durable</text>
+</svg>

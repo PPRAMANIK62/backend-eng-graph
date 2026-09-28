@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="476" viewBox="0 0 720 476" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="90" y="36" class="ink t b mono">GOGC=100</text>
+  <line x1="90" y1="170" x2="640" y2="170" class="line" marker-end="url(#arrow)"/>
+  <line x1="90" y1="170" x2="90" y2="50" class="line" marker-end="url(#arrow)"/>
+  <text x="80" y="106.0" text-anchor="middle" transform="rotate(-90 80 106.0)" class="ink2 n" dy="-4">heap size</text>
+  <text x="640" y="188" text-anchor="end" class="ink2 n">time</text>
+  <line x1="90" y1="128" x2="620" y2="128" class="line" stroke-dasharray="5 4"/>
+  <path d="M 94 128 L 189 82 L 189 128 L 284 82 L 284 128 L 379 82 L 379 128 L 474 82 L 474 128 L 569 82 L 569 128" class="focus-s" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="90" y1="82" x2="620" y2="82" class="line" stroke-dasharray="2 4" stroke-opacity="0.8"/>
+  <text x="624" y="132" class="ink2 n">live heap</text>
+  <text x="624" y="86" class="ink2 n">target heap</text>
+  <text x="90" y="210" class="ink t b mono">GOGC=200</text>
+  <line x1="90" y1="390" x2="640" y2="390" class="line" marker-end="url(#arrow)"/>
+  <line x1="90" y1="390" x2="90" y2="224" class="line" marker-end="url(#arrow)"/>
+  <text x="80" y="303.0" text-anchor="middle" transform="rotate(-90 80 303.0)" class="ink2 n" dy="-4">heap size</text>
+  <text x="640" y="408" text-anchor="end" class="ink2 n">time</text>
+  <line x1="90" y1="348" x2="620" y2="348" class="line" stroke-dasharray="5 4"/>
+  <path d="M 94 348 L 284 256 L 284 348 L 474 256 L 474 348" class="focus-s" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="90" y1="256" x2="620" y2="256" class="line" stroke-dasharray="2 4" stroke-opacity="0.8"/>
+  <text x="624" y="352" class="ink2 n">live heap</text>
+  <text x="624" y="260" class="ink2 n">target heap</text>
+  <text x="189" y="74" text-anchor="middle" class="ink2 n">GC cycle</text>
+  <text x="284" y="248" text-anchor="middle" class="ink2 n">GC cycle</text>
+  <text x="90" y="432" class="ink2 n">Same live heap and allocation rate. Doubling GOGC doubles the extra memory and halves the cycles.</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="596" viewBox="0 0 720 596" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- program and filesystem -->
+  <rect x="40" y="20" width="400" height="40" rx="6" class="box"/>
+  <text x="240" y="45" text-anchor="middle" class="ink t"><tspan class="mono">write()</tspan> to a file</text>
+  <line x1="240" y1="62" x2="240" y2="85" class="line" marker-end="url(#arrow)"/>
+  <rect x="40" y="88" width="400" height="40" rx="6" class="box"/>
+  <text x="240" y="113" text-anchor="middle" class="ink t">Filesystem picks which blocks to write</text>
+
+  <!-- block layer frame -->
+  <rect x="30" y="144" width="670" height="222" rx="6" class="line" stroke-dasharray="5 4"/>
+  <text x="470" y="168" class="ink t b">Block layer (blk-mq)</text>
+  <line x1="240" y1="130" x2="240" y2="160" class="line"/>
+  <line x1="84" y1="160" x2="396" y2="160" class="line"/>
+  <line x1="84" y1="160" x2="84" y2="193" class="line" marker-end="url(#arrow)"/>
+  <line x1="188" y1="160" x2="188" y2="193" class="line" marker-end="url(#arrow)"/>
+  <line x1="292" y1="160" x2="292" y2="193" class="line" marker-end="url(#arrow)"/>
+  <line x1="396" y1="160" x2="396" y2="193" class="line" marker-end="url(#arrow)"/>
+
+  <!-- software staging queues -->
+  <rect x="40" y="200" width="88" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="40" y="200" width="88" height="36" rx="6" class="focus-s"/>
+  <text x="84" y="223" text-anchor="middle" class="ink t">CPU 0</text>
+  <rect x="144" y="200" width="88" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="144" y="200" width="88" height="36" rx="6" class="focus-s"/>
+  <text x="188" y="223" text-anchor="middle" class="ink t">CPU 1</text>
+  <rect x="248" y="200" width="88" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="248" y="200" width="88" height="36" rx="6" class="focus-s"/>
+  <text x="292" y="223" text-anchor="middle" class="ink t">CPU 2</text>
+  <rect x="352" y="200" width="88" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="352" y="200" width="88" height="36" rx="6" class="focus-s"/>
+  <text x="396" y="223" text-anchor="middle" class="ink t">CPU 3</text>
+  <text x="470" y="200" class="ink2 n">Software staging queues,</text>
+  <text x="470" y="216" class="ink2 n">one per CPU. Merge neighbours:</text>
+  <text x="470" y="232" class="ink2 n mono">3–6, 6–7, 7–9 → 3–9</text>
+  <text x="470" y="248" class="ink2 n">Optional I/O scheduler reorders</text>
+
+  <!-- arrows into hardware queues -->
+  <line x1="84" y1="238" x2="130" y2="291" class="line" marker-end="url(#arrow)"/>
+  <line x1="188" y1="238" x2="160" y2="291" class="line" marker-end="url(#arrow)"/>
+  <line x1="292" y1="238" x2="320" y2="291" class="line" marker-end="url(#arrow)"/>
+  <line x1="396" y1="238" x2="350" y2="291" class="line" marker-end="url(#arrow)"/>
+
+  <!-- hardware dispatch queues -->
+  <rect x="80" y="294" width="130" height="36" rx="6" class="box"/>
+  <text x="145" y="317" text-anchor="middle" class="ink t">hw queue 0</text>
+  <rect x="270" y="294" width="130" height="36" rx="6" class="box"/>
+  <text x="335" y="317" text-anchor="middle" class="ink t">hw queue 1</text>
+  <text x="470" y="300" class="ink2 n">Hardware dispatch queues, never</text>
+  <text x="470" y="316" class="ink2 n">more than CPU cores. With no</text>
+  <text x="470" y="332" class="ink2 n">scheduler and nothing to merge,</text>
+  <text x="470" y="348" class="ink2 n">requests can go straight here</text>
+
+  <!-- driver to device submission queues -->
+  <line x1="145" y1="332" x2="145" y2="393" class="line" marker-end="url(#arrow)"/>
+  <line x1="335" y1="332" x2="335" y2="393" class="line" marker-end="url(#arrow)"/>
+  <text x="160" y="380" class="ink2 n">NVMe driver</text>
+  <rect x="80" y="396" width="130" height="36" rx="6" class="box"/>
+  <text x="145" y="419" text-anchor="middle" class="ink t">submission q</text>
+  <rect x="270" y="396" width="130" height="36" rx="6" class="box"/>
+  <text x="335" y="419" text-anchor="middle" class="ink t">submission q</text>
+  <text x="470" y="412" class="ink2 n">The drive's own queues</text>
+  <text x="470" y="428" class="ink2 n">Completions can come back in any order</text>
+
+  <!-- the drive -->
+  <line x1="145" y1="434" x2="145" y2="477" class="line" marker-end="url(#arrow)"/>
+  <line x1="335" y1="434" x2="335" y2="477" class="line" marker-end="url(#arrow)"/>
+  <rect x="30" y="466" width="670" height="116" rx="6" class="line"/>
+  <text x="46" y="570" class="ink2 n">Drive</text>
+  <rect x="80" y="480" width="320" height="40" rx="6" class="box"/>
+  <text x="240" y="505" text-anchor="middle" class="ink t">Volatile write cache ("write back")</text>
+  <line x1="402" y1="500" x2="487" y2="500" class="line" marker-end="url(#arrow)"/>
+  <text x="444" y="490" text-anchor="middle" class="ink2 n">flush</text>
+  <rect x="490" y="480" width="190" height="40" rx="6" class="safe-box"/>
+  <text x="585" y="505" text-anchor="middle" class="ink t">Flash</text>
+  <text x="490" y="546" class="ink2 n">FUA writes skip the cache</text>
+</svg>

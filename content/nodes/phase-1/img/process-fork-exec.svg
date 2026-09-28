@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="296" viewBox="0 0 720 296" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="28" class="ink2 n">The shell runs <tspan class="mono">./api &gt; log.txt</tspan></text>
+
+  <!-- lane labels -->
+  <text x="24" y="78" class="ink t b">Parent</text>
+  <text x="24" y="94" class="ink2 n">the shell</text>
+  <text x="24" y="200" class="ink t b">Child</text>
+  <text x="24" y="216" class="ink2 n">new PID</text>
+
+  <!-- parent lane -->
+  <rect x="130" y="60" width="90" height="44" rx="6" class="box"/>
+  <text x="175" y="87" text-anchor="middle" class="ink t">Shell</text>
+  <rect x="234" y="60" width="90" height="44" rx="6" class="box"/>
+  <text x="279" y="87" text-anchor="middle" class="focus t mono b">fork()</text>
+  <text x="279" y="50" text-anchor="middle" class="ink2 n">returns child's PID</text>
+  <line x1="220" y1="82" x2="231" y2="82" class="line" marker-end="url(#arrow)"/>
+  <rect x="340" y="60" width="350" height="44" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="356" y="87" class="ink t"><tspan class="mono">wait()</tspan> until the child exits</text>
+  <line x1="324" y1="82" x2="337" y2="82" class="line" marker-end="url(#arrow)"/>
+
+  <!-- child lane -->
+  <line x1="279" y1="104" x2="279" y2="179" class="line" marker-end="url(#arrow)"/>
+  <rect x="234" y="182" width="90" height="44" rx="6" class="box"/>
+  <text x="279" y="209" text-anchor="middle" class="ink t">Copy</text>
+  <text x="279" y="244" text-anchor="middle" class="ink2 n">fork returns 0</text>
+  <rect x="336" y="182" width="130" height="44" rx="6" class="box"/>
+  <text x="401" y="209" text-anchor="middle" class="ink t"><tspan class="mono">fd 1</tspan> → log.txt</text>
+  <rect x="478" y="182" width="90" height="44" rx="6" class="box"/>
+  <text x="523" y="209" text-anchor="middle" class="focus t mono b">exec api</text>
+  <rect x="580" y="182" width="110" height="44" rx="6" class="box"/>
+  <text x="635" y="209" text-anchor="middle" class="ink t"><tspan class="mono">api</tspan> runs</text>
+  <line x1="324" y1="204" x2="333" y2="204" class="line" marker-end="url(#arrow)"/>
+  <line x1="466" y1="204" x2="475" y2="204" class="line" marker-end="url(#arrow)"/>
+  <line x1="568" y1="204" x2="577" y2="204" class="line" marker-end="url(#arrow)"/>
+
+  <!-- exit -->
+  <line x1="670" y1="182" x2="670" y2="107" class="line" marker-end="url(#arrow)"/>
+  <text x="662" y="150" text-anchor="end" class="ink2 n">exit code</text>
+
+  <!-- the gap -->
+  <path d="M336,240 V248 H466 V240" class="line"/>
+  <text x="401" y="266" text-anchor="middle" class="ink2 n">set up before the</text>
+  <text x="401" y="282" text-anchor="middle" class="ink2 n">new program starts</text>
+</svg>

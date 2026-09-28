@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="306" viewBox="0 0 720 306" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="63" class="ink t b">Active</text>
+  <text x="198" y="32" text-anchor="middle" class="ink2 n">head</text>
+  <text x="538" y="32" text-anchor="middle" class="ink2 n">tail</text>
+  <rect x="170" y="40" width="56" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="170" y="40" width="56" height="36" rx="6" class="focus-s"/>
+  <text x="198" y="63" text-anchor="middle" class="ink t b">P</text>
+  <rect x="238" y="40" width="56" height="36" rx="6" class="box"/>
+  <rect x="306" y="40" width="56" height="36" rx="6" class="box"/>
+  <rect x="374" y="40" width="56" height="36" rx="6" class="box"/>
+  <rect x="442" y="40" width="56" height="36" rx="6" class="box"/>
+  <rect x="510" y="40" width="56" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="510" y="40" width="56" height="36" rx="6" class="focus-s"/>
+  <text x="538" y="63" text-anchor="middle" class="ink t b">P</text>
+  <line x1="238" y1="90" x2="498" y2="90" class="line" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="368" y="106" text-anchor="middle" class="ink2 n">pages drift toward the tail</text>
+  <text x="40" y="213" class="ink t b">Inactive</text>
+  <text x="198" y="182" text-anchor="middle" class="ink2 n">head</text>
+  <text x="538" y="182" text-anchor="middle" class="ink2 n">tail</text>
+  <rect x="170" y="190" width="56" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="170" y="190" width="56" height="36" rx="6" class="focus-s"/>
+  <text x="198" y="213" text-anchor="middle" class="ink t b">P</text>
+  <rect x="238" y="190" width="56" height="36" rx="6" class="box"/>
+  <rect x="306" y="190" width="56" height="36" rx="6" class="box"/>
+  <rect x="374" y="190" width="56" height="36" rx="6" class="box"/>
+  <rect x="442" y="190" width="56" height="36" rx="6" class="box"/>
+  <rect x="510" y="190" width="56" height="36" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="510" y="190" width="56" height="36" rx="6" class="focus-s"/>
+  <text x="538" y="213" text-anchor="middle" class="ink t b">P</text>
+  <line x1="238" y1="240" x2="498" y2="240" class="line" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  <text x="368" y="256" text-anchor="middle" class="ink2 n">pages drift toward the tail</text>
+  <text x="40" y="80" class="ink2 n">used often</text>
+  <text x="40" y="230" class="ink2 n">new or cold</text>
+  <line x1="198" y1="290" x2="198" y2="229" class="line" marker-end="url(#arrow)"/>
+  <text x="208" y="286" class="ink n"><tspan class="b">1</tspan>  first read: head of inactive</text>
+  <line x1="198" y1="168" x2="198" y2="79" class="line" marker-end="url(#arrow)"/>
+  <text x="208" y="135" class="ink n"><tspan class="b">2</tspan>  accessed again: promoted</text>
+  <text x="224" y="151" class="ink n">to head of active</text>
+  <line x1="538" y1="79" x2="410" y2="186" class="line" marker-end="url(#arrow)"/>
+  <text x="556" y="121" class="ink n"><tspan class="b">3</tspan>  not used again:</text>
+  <text x="572" y="137" class="ink n">moves back to</text>
+  <text x="572" y="153" class="ink n">the inactive list</text>
+  <line x1="568" y1="208" x2="610" y2="208" class="line" marker-end="url(#arrow)"/>
+  <rect x="612" y="190" width="76" height="36" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="650" y="213" text-anchor="middle" class="ink t">evicted</text>
+  <text x="650" y="246" text-anchor="middle" class="ink n"><tspan class="b">4</tspan>  from the</text>
+  <text x="650" y="262" text-anchor="middle" class="ink n">inactive tail</text>
+</svg>

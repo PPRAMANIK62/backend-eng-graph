@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="324" viewBox="0 0 720 324" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <line x1="150.0" y1="44" x2="254.0" y2="44" class="line"/>
+  <line x1="150.0" y1="38" x2="150.0" y2="50" class="line"/>
+  <line x1="254.0" y1="38" x2="254.0" y2="50" class="line"/>
+  <text x="150.0" y="28" class="ink2 n">one 64-byte cache line = 16 ints</text>
+  <text x="665" y="40" text-anchor="middle" class="ink t b">Lines loaded</text>
+  <text x="24" y="78" class="ink t b">Every int</text>
+  <text x="24" y="94" class="ink2 n mono">K = 1</text>
+  <rect x="150.0" y="66" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="151.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="157.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="164.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="170.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="177.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="183.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="190.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="196.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="203.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="209.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="216.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="222.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="229.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="235.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="242.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="248.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="266.0" y="66" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="267.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="273.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="280.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="286.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="293.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="299.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="306.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="312.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="319.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="325.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="332.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="338.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="345.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="351.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="358.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="364.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="382.0" y="66" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="383.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="389.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="396.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="402.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="409.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="415.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="422.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="428.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="435.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="441.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="448.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="454.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="461.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="467.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="474.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="480.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="498.0" y="66" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="499.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="505.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="512.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="518.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="525.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="531.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="538.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="544.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="551.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="557.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="564.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="570.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="577.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="583.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="590.00" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="596.50" y="72" width="4.5" height="14" rx="1" class="focus"/>
+  <text x="665" y="84" text-anchor="middle" class="ink t">4 of 4</text>
+  <text x="24" y="136" class="ink t b">Every 4th int</text>
+  <text x="24" y="152" class="ink2 n mono">K = 4</text>
+  <rect x="150.0" y="124" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="151.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="177.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="203.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="229.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="266.0" y="124" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="267.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="293.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="319.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="345.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="382.0" y="124" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="383.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="409.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="435.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="461.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="498.0" y="124" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="499.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="525.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="551.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="577.00" y="130" width="4.5" height="14" rx="1" class="focus"/>
+  <text x="665" y="142" text-anchor="middle" class="ink t">4 of 4</text>
+  <text x="24" y="194" class="ink t b">Every 16th int</text>
+  <text x="24" y="210" class="ink2 n mono">K = 16</text>
+  <rect x="150.0" y="182" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="151.00" y="188" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="266.0" y="182" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="267.00" y="188" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="382.0" y="182" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="383.00" y="188" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="498.0" y="182" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="499.00" y="188" width="4.5" height="14" rx="1" class="focus"/>
+  <text x="665" y="200" text-anchor="middle" class="ink t">4 of 4</text>
+  <text x="24" y="252" class="ink t b">Every 32nd int</text>
+  <text x="24" y="268" class="ink2 n mono">K = 32</text>
+  <rect x="150.0" y="240" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="151.00" y="246" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="266.0" y="240" width="104.0" height="26" rx="4" class="line" stroke-dasharray="4 3"/>
+  <rect x="382.0" y="240" width="104.0" height="26" rx="4" class="box"/>
+  <rect x="383.00" y="246" width="4.5" height="14" rx="1" class="focus"/>
+  <rect x="498.0" y="240" width="104.0" height="26" rx="4" class="line" stroke-dasharray="4 3"/>
+  <text x="665" y="258" text-anchor="middle" class="ink t">2 of 4</text>
+  <rect x="150" y="294" width="5" height="14" rx="1" class="focus"/>
+  <text x="164" y="306" class="ink2 n">int the loop touches</text>
+  <rect x="310" y="294" width="30" height="14" rx="3" class="box"/>
+  <text x="348" y="306" class="ink2 n">line fetched</text>
+  <rect x="450" y="294" width="30" height="14" rx="3" class="line" stroke-dasharray="4 3"/>
+  <text x="488" y="306" class="ink2 n">line skipped</text>
+</svg>

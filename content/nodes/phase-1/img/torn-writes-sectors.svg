@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <line x1="164" y1="34" x2="706" y2="34" class="line"/>
+  <line x1="164" y1="28" x2="164" y2="40" class="line"/>
+  <line x1="706" y1="28" x2="706" y2="40" class="line"/>
+  <text x="435" y="22" text-anchor="middle" class="ink t">One 16 KB page = 32 sectors of 512 bytes</text>
+  <text x="40" y="75" class="ink t">Before</text>
+  <rect x="164" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="181" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="198" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="215" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="232" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="249" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="266" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="283" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="300" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="317" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="334" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="351" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="368" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="385" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="402" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="419" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="436" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="453" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="470" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="487" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="504" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="521" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="538" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="555" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="572" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="589" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="606" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="623" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="640" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="657" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="674" y="56" width="15" height="28" rx="3" class="old"/>
+  <rect x="691" y="56" width="15" height="28" rx="3" class="old"/>
+  <text x="40" y="127" class="ink t">Intended</text>
+  <rect x="164" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="181" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="198" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="215" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="232" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="249" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="266" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="283" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="300" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="317" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="334" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="351" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="368" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="385" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="402" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="419" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="436" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="453" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="470" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="487" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="504" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="521" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="538" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="555" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="572" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="589" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="606" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="623" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="640" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="657" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="674" y="108" width="15" height="28" rx="3" class="focus"/>
+  <rect x="691" y="108" width="15" height="28" rx="3" class="focus"/>
+  <text x="40" y="179" class="ink t">After a power cut</text>
+  <rect x="164" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="181" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="198" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="215" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="232" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="249" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="266" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="283" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="300" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="317" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="334" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="351" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="368" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="385" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="402" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="419" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="436" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="453" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="470" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="487" y="160" width="15" height="28" rx="3" class="focus"/>
+  <rect x="504" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="521" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="538" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="555" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="572" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="589" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="606" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="623" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="640" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="657" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="674" y="160" width="15" height="28" rx="3" class="old"/>
+  <rect x="691" y="160" width="15" height="28" rx="3" class="old"/>
+  <line x1="503" y1="152" x2="503" y2="196" class="lost-s"/>
+  <text x="333" y="212" text-anchor="middle" class="ink2 n">first 20 sectors new</text>
+  <text x="604" y="212" text-anchor="middle" class="ink2 n">last 12 still old</text>
+  <text x="164" y="232" class="ink n">Torn: neither the old page nor the new one, and nothing in it says so</text>
+  <rect x="164" y="256" width="15" height="28" rx="3" class="focus"/>
+  <rect x="160" y="252" width="23" height="36" rx="5" class="safe-box"/>
+  <text x="193" y="268" class="ink t">One sector lands whole or not at all</text>
+  <text x="193" y="285" class="ink2 n">The least any NVMe drive promises; its AWUPF value may promise more</text>
+  <rect x="40" y="312" width="22" height="16" rx="3" class="old"/>
+  <text x="70" y="325" class="ink2 n">old data</text>
+  <rect x="150" y="312" width="22" height="16" rx="3" class="focus"/>
+  <text x="180" y="325" class="ink2 n">new data</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="348" viewBox="0 0 720 348" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- the loop -->
+  <text x="40" y="24" class="ink t b">The loop</text>
+  <rect x="40" y="44" width="130" height="56" rx="6" class="box"/>
+  <text x="105" y="68" text-anchor="middle" class="ink t">1  Run</text>
+  <text x="105" y="86" text-anchor="middle" class="ink2 n">the workload</text>
+  <rect x="210" y="44" width="130" height="56" rx="6" class="box"/>
+  <text x="275" y="68" text-anchor="middle" class="lost t">2  Cut power</text>
+  <text x="275" y="86" text-anchor="middle" class="ink2 n">drop unsynced data</text>
+  <rect x="210" y="160" width="130" height="56" rx="6" class="box"/>
+  <text x="275" y="184" text-anchor="middle" class="ink t">3  Remount</text>
+  <text x="275" y="202" text-anchor="middle" class="ink2 n">and let recovery run</text>
+  <rect x="40" y="160" width="130" height="56" rx="6" class="box"/>
+  <text x="105" y="184" text-anchor="middle" class="ink t">4  Check</text>
+  <text x="105" y="202" text-anchor="middle" class="ink2 n">against the rules</text>
+  <line x1="172" y1="72" x2="207" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="275" y1="102" x2="275" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="208" y1="188" x2="173" y2="188" class="line" marker-end="url(#arrow)"/>
+  <line x1="105" y1="158" x2="105" y2="103" class="line" marker-end="url(#arrow)"/>
+  <text x="115" y="134" class="ink2 n">repeat, cutting</text>
+  <text x="115" y="150" class="ink2 n">somewhere else</text>
+
+  <!-- the stack -->
+  <text x="420" y="24" class="ink t b">Where a tool can sit</text>
+  <rect x="420" y="44" width="260" height="36" rx="6" class="box"/>
+  <text x="550" y="67" text-anchor="middle" class="ink t">Your program</text>
+  <rect x="420" y="98" width="260" height="44" rx="6" class="focus-s"/>
+  <text x="550" y="116" text-anchor="middle" class="ink t b">LazyFS (FUSE)</text>
+  <text x="550" y="133" text-anchor="middle" class="ink2 n">drops data not yet fsynced</text>
+  <rect x="420" y="160" width="260" height="36" rx="6" class="box"/>
+  <text x="550" y="183" text-anchor="middle" class="ink t">File system, e.g. ext4</text>
+  <rect x="420" y="214" width="260" height="44" rx="6" class="focus-s"/>
+  <text x="550" y="232" text-anchor="middle" class="ink t b">dm-log-writes</text>
+  <text x="550" y="249" text-anchor="middle" class="ink2 n">logs every block write, in order</text>
+  <rect x="420" y="276" width="124" height="36" rx="6" class="box"/>
+  <text x="482" y="299" text-anchor="middle" class="ink t">Disk</text>
+  <rect x="556" y="276" width="124" height="36" rx="6" class="box"/>
+  <text x="618" y="299" text-anchor="middle" class="ink t">Log device</text>
+  <line x1="550" y1="81" x2="550" y2="95" class="line" marker-end="url(#arrow)"/>
+  <line x1="550" y1="143" x2="550" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="550" y1="197" x2="550" y2="211" class="line" marker-end="url(#arrow)"/>
+  <line x1="482" y1="259" x2="482" y2="273" class="line" marker-end="url(#arrow)"/>
+  <line x1="618" y1="259" x2="618" y2="273" class="line" marker-end="url(#arrow)"/>
+  <text x="420" y="334" class="ink2 n">Replay the log up to a mark, mount, check.</text>
+</svg>

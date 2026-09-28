@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="350" viewBox="0 0 720 350" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="24" class="ink t">The number 150 (hex <tspan class="mono">0x96</tspan>) as bytes</text>
+  <text x="280" y="56" class="ink2 n">written first</text>
+  <line x1="280" y1="64" x2="530" y2="64" class="line" marker-end="url(#arrow)"/>
+  <text x="540" y="68" class="ink2 n">last</text>
+  <text x="40" y="98" class="ink t b">Big-endian uint32</text>
+  <text x="40" y="115" class="ink2 n">most significant byte first</text>
+  <rect x="280" y="80" width="56" height="40" rx="6" class="box"/>
+  <text x="308" y="105" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="344" y="80" width="56" height="40" rx="6" class="box"/>
+  <text x="372" y="105" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="408" y="80" width="56" height="40" rx="6" class="box"/>
+  <text x="436" y="105" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="472" y="80" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="500" y="105" text-anchor="middle" class="ink t mono">96</text>
+  <text x="40" y="158" class="ink t b">Little-endian uint32</text>
+  <text x="40" y="175" class="ink2 n">least significant byte first</text>
+  <rect x="280" y="140" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="308" y="165" text-anchor="middle" class="ink t mono">96</text>
+  <rect x="344" y="140" width="56" height="40" rx="6" class="box"/>
+  <text x="372" y="165" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="408" y="140" width="56" height="40" rx="6" class="box"/>
+  <text x="436" y="165" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="472" y="140" width="56" height="40" rx="6" class="box"/>
+  <text x="500" y="165" text-anchor="middle" class="ink t mono">00</text>
+  <text x="40" y="218" class="ink t b">Varint</text>
+  <text x="40" y="235" class="ink2 n">low 7-bit group first</text>
+  <rect x="280" y="200" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="308" y="225" text-anchor="middle" class="ink t mono">96</text>
+  <rect x="344" y="200" width="56" height="40" rx="6" class="box"/>
+  <text x="372" y="225" text-anchor="middle" class="ink t mono">01</text>
+  <!-- varint bit breakdown -->
+  <text x="40" y="282" class="ink2 n b">Inside the varint bytes</text>
+  <text x="280" y="282" class="ink n mono">96 = 1 0010110</text>
+  <text x="410" y="282" class="ink2 n">top bit 1: another byte follows</text>
+  <text x="280" y="306" class="ink n mono">01 = 0 0000001</text>
+  <text x="410" y="306" class="ink2 n">top bit 0: this is the last byte</text>
+  <text x="280" y="330" class="ink2 n">The low 7 bits of 150 (<tspan class="mono">0010110</tspan>) go first, then the rest (<tspan class="mono">0000001</tspan>).</text>
+</svg>

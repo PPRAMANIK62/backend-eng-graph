@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="506" viewBox="0 0 720 506" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="193" y="24" text-anchor="middle" class="ink t b">Erase block 0</text>
+  <text x="527" y="24" text-anchor="middle" class="ink t b">Erase block 1</text>
+  <text x="91" y="44" text-anchor="middle" class="ink2 n">page 0</text>
+  <text x="159" y="44" text-anchor="middle" class="ink2 n">page 1</text>
+  <text x="227" y="44" text-anchor="middle" class="ink2 n">page 2</text>
+  <text x="295" y="44" text-anchor="middle" class="ink2 n">page 3</text>
+  <text x="425" y="44" text-anchor="middle" class="ink2 n">page 4</text>
+  <text x="493" y="44" text-anchor="middle" class="ink2 n">page 5</text>
+  <text x="561" y="44" text-anchor="middle" class="ink2 n">page 6</text>
+  <text x="629" y="44" text-anchor="middle" class="ink2 n">page 7</text>
+  <text x="40" y="78" class="ink t b">1  Write logical blocks 100, 101, 2000, 2001</text>
+  <text x="60" y="104" class="ink2 n">Map:</text>
+  <text x="100" y="104" class="focus n mono b">100 → 0</text>
+  <text x="210" y="104" class="focus n mono b">101 → 1</text>
+  <text x="320" y="104" class="focus n mono b">2000 → 2</text>
+  <text x="430" y="104" class="focus n mono b">2001 → 3</text>
+  <rect x="60" y="118" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="60" y="118" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="91" y="143" text-anchor="middle" class="ink t mono">100</text>
+  <rect x="128" y="118" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="128" y="118" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="159" y="143" text-anchor="middle" class="ink t mono">101</text>
+  <rect x="196" y="118" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="196" y="118" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="227" y="143" text-anchor="middle" class="ink t mono">2000</text>
+  <rect x="264" y="118" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="264" y="118" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="295" y="143" text-anchor="middle" class="ink t mono">2001</text>
+  <rect x="394" y="118" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="425" y="143" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="462" y="118" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="493" y="143" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="530" y="118" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="561" y="143" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="598" y="118" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="629" y="143" text-anchor="middle" class="ink2 n">erased</text>
+  <text x="40" y="206" class="ink t b">2  Rewrite 100 and 101: new pages, old ones become garbage</text>
+  <text x="60" y="232" class="ink2 n">Map:</text>
+  <text x="100" y="232" class="focus n mono b">100 → 4</text>
+  <text x="210" y="232" class="focus n mono b">101 → 5</text>
+  <text x="320" y="232" class="ink n mono">2000 → 2</text>
+  <text x="430" y="232" class="ink n mono">2001 → 3</text>
+  <rect x="60" y="246" width="62" height="40" rx="6" class="old"/>
+  <text x="91" y="264" text-anchor="middle" class="ink n mono">100</text>
+  <text x="91" y="279" text-anchor="middle" class="ink n">garbage</text>
+  <rect x="128" y="246" width="62" height="40" rx="6" class="old"/>
+  <text x="159" y="264" text-anchor="middle" class="ink n mono">101</text>
+  <text x="159" y="279" text-anchor="middle" class="ink n">garbage</text>
+  <rect x="196" y="246" width="62" height="40" rx="6" class="box"/>
+  <text x="227" y="271" text-anchor="middle" class="ink t mono">2000</text>
+  <rect x="264" y="246" width="62" height="40" rx="6" class="box"/>
+  <text x="295" y="271" text-anchor="middle" class="ink t mono">2001</text>
+  <rect x="394" y="246" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="394" y="246" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="425" y="271" text-anchor="middle" class="ink t mono">100</text>
+  <rect x="462" y="246" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="462" y="246" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="493" y="271" text-anchor="middle" class="ink t mono">101</text>
+  <rect x="530" y="246" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="561" y="271" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="598" y="246" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="629" y="271" text-anchor="middle" class="ink2 n">erased</text>
+  <text x="40" y="334" class="ink t b">3  Garbage collection: copy live 2000 and 2001 out, erase block 0</text>
+  <text x="60" y="360" class="ink2 n">Map:</text>
+  <text x="100" y="360" class="ink n mono">100 → 4</text>
+  <text x="210" y="360" class="ink n mono">101 → 5</text>
+  <text x="320" y="360" class="focus n mono b">2000 → 6</text>
+  <text x="430" y="360" class="focus n mono b">2001 → 7</text>
+  <rect x="60" y="374" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="91" y="399" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="128" y="374" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="159" y="399" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="196" y="374" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="227" y="399" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="264" y="374" width="62" height="40" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="295" y="399" text-anchor="middle" class="ink2 n">erased</text>
+  <rect x="394" y="374" width="62" height="40" rx="6" class="box"/>
+  <text x="425" y="399" text-anchor="middle" class="ink t mono">100</text>
+  <rect x="462" y="374" width="62" height="40" rx="6" class="box"/>
+  <text x="493" y="399" text-anchor="middle" class="ink t mono">101</text>
+  <rect x="530" y="374" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="530" y="374" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="561" y="399" text-anchor="middle" class="ink t mono">2000</text>
+  <rect x="598" y="374" width="62" height="40" rx="6" class="focus" fill-opacity=".18"/>
+  <rect x="598" y="374" width="62" height="40" rx="6" class="focus-s"/>
+  <text x="629" y="399" text-anchor="middle" class="ink t mono">2001</text>
+  <rect x="60" y="450" width="22" height="16" rx="4" class="focus" fill-opacity=".18"/>
+  <rect x="60" y="450" width="22" height="16" rx="4" class="focus-s"/>
+  <text x="90" y="463" class="ink2 n">written in this step</text>
+  <rect x="240" y="450" width="22" height="16" rx="4" class="box"/>
+  <text x="270" y="463" class="ink2 n">live data</text>
+  <rect x="360" y="450" width="22" height="16" rx="4" class="old"/>
+  <text x="390" y="463" class="ink2 n">garbage: nothing in the map points here</text>
+  <text x="60" y="490" class="ink2 n">Copying 2000 and 2001 is write amplification: flash writes you never asked for.</text>
+</svg>

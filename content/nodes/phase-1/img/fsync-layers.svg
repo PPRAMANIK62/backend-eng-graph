@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- the five layers -->
+  <rect x="40" y="40" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="67" class="ink t b">1  Your program's buffer</text>
+  <rect x="40" y="120" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="147" class="ink t b">2  Library buffer</text>
+  <rect x="40" y="200" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="227" class="ink t b">3  Page cache (kernel)</text>
+  <rect x="40" y="280" width="300" height="44" rx="6" class="box"/>
+  <text x="56" y="307" class="ink t b">4  Drive's volatile write cache</text>
+  <rect x="40" y="360" width="300" height="44" rx="6" class="safe-box"/>
+  <text x="56" y="387" class="ink t b">5  Stable storage (flash)</text>
+
+  <!-- arrows between layers, labelled with what moves the data -->
+  <line x1="70" y1="86" x2="70" y2="117" class="line" marker-end="url(#arrow)"/>
+  <text x="84" y="106" class="ink2 n mono">fwrite()</text>
+  <line x1="70" y1="166" x2="70" y2="197" class="line" marker-end="url(#arrow)"/>
+  <text x="84" y="186" class="ink2 n mono">write(), or fflush() to force it</text>
+  <line x1="70" y1="246" x2="70" y2="277" class="line" marker-end="url(#arrow)"/>
+  <text x="84" y="266" class="ink2 n mono">kernel writeback later, or fsync() now</text>
+  <line x1="70" y1="326" x2="70" y2="357" class="line" marker-end="url(#arrow)"/>
+  <text x="84" y="346" class="ink2 n mono">cache flush or FUA write (fsync)</text>
+
+  <!-- what each crash wipes out -->
+  <text x="560" y="24" text-anchor="middle" class="ink t b">What each failure wipes out</text>
+  <line x1="450" y1="42" x2="450" y2="162" class="lost-s"/>
+  <line x1="440" y1="42" x2="460" y2="42" class="lost-s"/>
+  <line x1="440" y1="162" x2="460" y2="162" class="lost-s"/>
+  <text x="450" y="182" text-anchor="middle" class="ink n">process crash</text>
+  <text x="450" y="198" text-anchor="middle" class="ink2 n">layers 1–2</text>
+
+  <line x1="560" y1="42" x2="560" y2="242" class="lost-s"/>
+  <line x1="550" y1="42" x2="570" y2="42" class="lost-s"/>
+  <line x1="550" y1="242" x2="570" y2="242" class="lost-s"/>
+  <text x="560" y="262" text-anchor="middle" class="ink n">kernel crash</text>
+  <text x="560" y="278" text-anchor="middle" class="ink2 n">layers 1–3</text>
+
+  <line x1="670" y1="42" x2="670" y2="322" class="lost-s"/>
+  <line x1="660" y1="42" x2="680" y2="42" class="lost-s"/>
+  <line x1="660" y1="322" x2="680" y2="322" class="lost-s"/>
+  <text x="670" y="342" text-anchor="middle" class="ink n">power cut</text>
+  <text x="670" y="358" text-anchor="middle" class="ink2 n">layers 1–4</text>
+</svg>

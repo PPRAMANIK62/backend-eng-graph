@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="60" y="30" class="ink t b">Virtual address space</text>
+  <text x="60" y="48" class="ink2 n">one process, 8 pages</text>
+  <text x="490" y="30" class="ink t b">Physical memory</text>
+  <text x="490" y="48" class="ink2 n">16 frames</text>
+  <text x="670" y="77" class="ink2 n mono">0</text>
+  <text x="670" y="95" class="ink2 n mono">1</text>
+  <line x1="490" y1="82" x2="660" y2="82" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="113" class="ink2 n mono">2</text>
+  <line x1="490" y1="100" x2="660" y2="100" class="line" stroke-opacity="0.45"/>
+  <rect x="490" y="118" width="170" height="18" class="focus" fill-opacity="0.22"/>
+  <text x="575.0" y="131" text-anchor="middle" class="ink n">page 0</text>
+  <text x="670" y="131" class="ink2 n mono">3</text>
+  <line x1="490" y1="118" x2="660" y2="118" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="149" class="ink2 n mono">4</text>
+  <line x1="490" y1="136" x2="660" y2="136" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="167" class="ink2 n mono">5</text>
+  <line x1="490" y1="154" x2="660" y2="154" class="line" stroke-opacity="0.45"/>
+  <rect x="490" y="172" width="170" height="18" class="focus" fill-opacity="0.22"/>
+  <text x="575.0" y="185" text-anchor="middle" class="ink n">page 2</text>
+  <text x="670" y="185" class="ink2 n mono">6</text>
+  <line x1="490" y1="172" x2="660" y2="172" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="203" class="ink2 n mono">7</text>
+  <line x1="490" y1="190" x2="660" y2="190" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="221" class="ink2 n mono">8</text>
+  <line x1="490" y1="208" x2="660" y2="208" class="line" stroke-opacity="0.45"/>
+  <rect x="490" y="226" width="170" height="18" class="focus" fill-opacity="0.22"/>
+  <text x="575.0" y="239" text-anchor="middle" class="ink n">page 1</text>
+  <text x="670" y="239" class="ink2 n mono">9</text>
+  <line x1="490" y1="226" x2="660" y2="226" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="257" class="ink2 n mono">10</text>
+  <line x1="490" y1="244" x2="660" y2="244" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="275" class="ink2 n mono">11</text>
+  <line x1="490" y1="262" x2="660" y2="262" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="293" class="ink2 n mono">12</text>
+  <line x1="490" y1="280" x2="660" y2="280" class="line" stroke-opacity="0.45"/>
+  <rect x="490" y="298" width="170" height="18" class="focus" fill-opacity="0.22"/>
+  <text x="575.0" y="311" text-anchor="middle" class="ink n">page 7</text>
+  <text x="670" y="311" class="ink2 n mono">13</text>
+  <line x1="490" y1="298" x2="660" y2="298" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="329" class="ink2 n mono">14</text>
+  <line x1="490" y1="316" x2="660" y2="316" class="line" stroke-opacity="0.45"/>
+  <text x="670" y="347" class="ink2 n mono">15</text>
+  <line x1="490" y1="334" x2="660" y2="334" class="line" stroke-opacity="0.45"/>
+  <rect x="490" y="64" width="170" height="288" rx="6" class="line"/>
+  <rect x="60" y="66" width="170" height="32" rx="6" class="box"/>
+  <text x="74" y="87" class="ink t b">page 0</text>
+  <text x="216" y="87" text-anchor="end" class="ink2 n">code</text>
+  <path d="M 230 82.0 C 350 82.0, 370 127.0, 487 127.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="60" y="102" width="170" height="32" rx="6" class="box"/>
+  <text x="74" y="123" class="ink t b">page 1</text>
+  <text x="216" y="123" text-anchor="end" class="ink2 n">code</text>
+  <path d="M 230 118.0 C 350 118.0, 370 235.0, 487 235.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="60" y="138" width="170" height="32" rx="6" class="box"/>
+  <text x="74" y="159" class="ink t b">page 2</text>
+  <text x="216" y="159" text-anchor="end" class="ink2 n">heap</text>
+  <path d="M 230 154.0 C 350 154.0, 370 181.0, 487 181.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="60" y="174" width="170" height="32" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="74" y="195" class="ink2 t">page 3</text>
+  <text x="216" y="195" text-anchor="end" class="ink2 n">invalid</text>
+  <rect x="60" y="210" width="170" height="32" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="74" y="231" class="ink2 t">page 4</text>
+  <text x="216" y="231" text-anchor="end" class="ink2 n">invalid</text>
+  <rect x="60" y="246" width="170" height="32" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="74" y="267" class="ink2 t">page 5</text>
+  <text x="216" y="267" text-anchor="end" class="ink2 n">invalid</text>
+  <rect x="60" y="282" width="170" height="32" rx="6" class="box"/>
+  <text x="74" y="303" class="ink t b">page 6</text>
+  <text x="216" y="303" text-anchor="end" class="ink2 n">heap</text>
+  <path d="M 230 298.0 C 290 298.0, 330 298.0, 330 374" class="line" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <rect x="60" y="318" width="170" height="32" rx="6" class="box"/>
+  <text x="74" y="339" class="ink t b">page 7</text>
+  <text x="216" y="339" text-anchor="end" class="ink2 n">stack</text>
+  <path d="M 230 334.0 C 350 334.0, 370 307.0, 487 307.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="270" y="376" width="140" height="44" rx="6" class="box"/>
+  <text x="340" y="396" text-anchor="middle" class="ink t b">Disk (swap)</text>
+  <text x="340" y="412" text-anchor="middle" class="ink2 n">page 6: not present</text>
+  <text x="60" y="404" class="ink2 n">Invalid pages use no RAM.</text>
+</svg>

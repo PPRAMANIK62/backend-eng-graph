@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="526" viewBox="0 0 720 526" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="30" y="30" width="170" height="56" rx="6" class="box"/>
+  <text x="115.0" y="56.0" text-anchor="middle" class="ink t b">Program</text>
+  <text x="115.0" y="73.0" text-anchor="middle" class="ink2 n">load through p</text>
+  <rect x="275" y="30" width="170" height="56" rx="6" class="box"/>
+  <text x="360.0" y="56.0" text-anchor="middle" class="ink t b">Virtual memory</text>
+  <text x="360.0" y="73.0" text-anchor="middle" class="ink2 n">range for data.db</text>
+  <rect x="30" y="170" width="170" height="56" rx="6" class="box"/>
+  <text x="115.0" y="196.0" text-anchor="middle" class="ink t b">Kernel</text>
+  <text x="115.0" y="213.0" text-anchor="middle" class="ink2 n">page fault handler</text>
+  <rect x="275" y="170" width="170" height="56" rx="6" class="focus-s"/>
+  <text x="360.0" y="196.0" text-anchor="middle" class="ink t b">Page cache</text>
+  <text x="360.0" y="213.0" text-anchor="middle" class="ink2 n">in RAM</text>
+  <rect x="520" y="170" width="170" height="56" rx="6" class="box"/>
+  <text x="605.0" y="196.0" text-anchor="middle" class="ink t b">Disk</text>
+  <text x="605.0" y="213.0" text-anchor="middle" class="ink2 n">data.db</text>
+  <rect x="30" y="310" width="170" height="56" rx="6" class="box"/>
+  <text x="115.0" y="343.0" text-anchor="middle" class="ink t b">Page table</text>
+  <rect x="275" y="310" width="170" height="56" rx="6" class="box"/>
+  <text x="360.0" y="343.0" text-anchor="middle" class="ink t b">TLB</text>
+  <path d="M 200 58 L 272 58" class="line" marker-end="url(#arrow)"/>
+  <circle cx="236" cy="44" r="11" class="box"/><text x="236" y="49" text-anchor="middle" class="ink n b">1</text>
+  <path d="M 100 86 L 100 167" class="line" marker-end="url(#arrow)"/>
+  <circle cx="84" cy="127" r="11" class="box"/><text x="84" y="132" text-anchor="middle" class="ink n b">2</text>
+  <path d="M 200 198 L 272 198" class="line" marker-end="url(#arrow)"/>
+  <circle cx="236" cy="184" r="11" class="box"/><text x="236" y="189" text-anchor="middle" class="ink n b">3</text>
+  <path d="M 520 198 L 448 198" class="line" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="484" y="222" text-anchor="middle" class="ink2 n">on a miss</text>
+  <path d="M 100 226 L 100 307" class="line" marker-end="url(#arrow)"/>
+  <circle cx="84" cy="267" r="11" class="box"/><text x="84" y="272" text-anchor="middle" class="ink n b">4</text>
+  <path d="M 200 338 L 272 338" class="line" marker-end="url(#arrow)"/>
+  <circle cx="236" cy="324" r="11" class="box"/><text x="236" y="329" text-anchor="middle" class="ink n b">4</text>
+  <path d="M 330 167 C 320 120, 260 96, 203 84" class="line" marker-end="url(#arrow)"/>
+  <circle cx="300" cy="112" r="11" class="box"/><text x="300" y="117" text-anchor="middle" class="ink n b">5</text>
+  <circle cx="42" cy="405" r="11" class="box"/><text x="42" y="410" text-anchor="middle" class="ink n b">1</text>
+  <text x="64" y="410" class="ink n">mmap() reserves a range of addresses for data.db. Nothing is loaded.</text>
+  <circle cx="42" cy="429" r="11" class="box"/><text x="42" y="434" text-anchor="middle" class="ink n b">2</text>
+  <text x="64" y="434" class="ink n">The first load through p finds no page table entry: page fault.</text>
+  <circle cx="42" cy="453" r="11" class="box"/><text x="42" y="458" text-anchor="middle" class="ink n b">3</text>
+  <text x="64" y="458" class="ink n">The kernel finds the page in the page cache, reading it from disk on a miss.</text>
+  <circle cx="42" cy="477" r="11" class="box"/><text x="42" y="482" text-anchor="middle" class="ink n b">4</text>
+  <text x="64" y="482" class="ink n">It adds a page table entry pointing at the cached page; the CPU caches it in the TLB.</text>
+  <circle cx="42" cy="501" r="11" class="box"/><text x="42" y="506" text-anchor="middle" class="ink n b">5</text>
+  <text x="64" y="506" class="ink n">The load completes. Later loads of that page are plain memory reads.</text>
+</svg>

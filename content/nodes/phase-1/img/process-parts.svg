@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="356" viewBox="0 0 720 356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="12" width="688" height="330" rx="6" class="focus-s"/>
+  <text x="36" y="40" class="focus t b">Process: the running <tspan class="mono">api</tspan> program</text>
+
+  <!-- address space -->
+  <text x="40" y="78" class="ink t b">Address space</text>
+  <rect x="40" y="92" width="190" height="40" rx="6" class="box"/>
+  <text x="135" y="117" text-anchor="middle" class="ink t">Code</text>
+  <rect x="40" y="138" width="190" height="40" rx="6" class="box"/>
+  <text x="135" y="163" text-anchor="middle" class="ink t">Global data</text>
+  <rect x="40" y="184" width="190" height="40" rx="6" class="box"/>
+  <text x="135" y="209" text-anchor="middle" class="ink t">Heap</text>
+  <rect x="40" y="230" width="190" height="44" rx="6" class="line" stroke-dasharray="4 4"/>
+  <rect x="40" y="280" width="190" height="40" rx="6" class="box"/>
+  <text x="135" y="305" text-anchor="middle" class="ink t">Stack</text>
+
+  <!-- saved registers -->
+  <text x="260" y="78" class="ink t b">Saved registers</text>
+  <rect x="260" y="92" width="200" height="40" rx="6" class="box"/>
+  <text x="276" y="117" class="ink t mono b">PC</text>
+  <text x="310" y="117" class="ink2 n">next instruction</text>
+  <rect x="260" y="138" width="200" height="40" rx="6" class="box"/>
+  <text x="276" y="163" class="ink t mono b">SP</text>
+  <text x="310" y="163" class="ink2 n">top of the stack</text>
+
+  <!-- bookkeeping -->
+  <text x="260" y="222" class="ink t b">Kernel bookkeeping</text>
+  <rect x="260" y="236" width="200" height="84" rx="6" class="box"/>
+  <text x="276" y="260" class="ink t">PID</text>
+  <text x="276" y="284" class="ink t">Parent PID</text>
+  <text x="276" y="308" class="ink t">State</text>
+
+  <!-- fd table -->
+  <text x="490" y="78" class="ink t b">File descriptor table</text>
+  <rect x="490" y="92" width="194" height="40" rx="6" class="box"/>
+  <text x="506" y="117" class="ink t mono b">0</text>
+  <text x="530" y="117" class="ink2 n">standard input</text>
+  <rect x="490" y="138" width="194" height="40" rx="6" class="box"/>
+  <text x="506" y="163" class="ink t mono b">1</text>
+  <text x="530" y="163" class="ink2 n">standard output</text>
+  <rect x="490" y="184" width="194" height="40" rx="6" class="box"/>
+  <text x="506" y="209" class="ink t mono b">2</text>
+  <text x="530" y="209" class="ink2 n">standard error</text>
+  <rect x="490" y="230" width="194" height="40" rx="6" class="box"/>
+  <text x="506" y="255" class="ink t mono b">n</text>
+  <text x="530" y="255" class="ink2 n">a socket</text>
+  <text x="490" y="296" class="ink2 n">seen from outside in</text>
+  <text x="490" y="312" class="ink2 n mono">/proc/&lt;pid&gt;/fd/</text>
+</svg>

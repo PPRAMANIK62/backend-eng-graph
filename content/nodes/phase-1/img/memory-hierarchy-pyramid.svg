@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="384" viewBox="0 0 720 384" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="445" y="36" class="ink t b">Size</text>
+  <text x="578" y="36" class="ink t b">Measured cost</text>
+  <polygon points="200.0,60 272.0,60 294.1,108 177.9,108" class="box" stroke-linejoin="round"/>
+  <text x="236" y="89.0" text-anchor="middle" class="ink t b">Registers</text>
+  <line x1="291.0" y1="84.0" x2="432" y2="84.0" class="line" stroke-dasharray="2 4"/>
+  <polygon points="175.2,114 296.8,114 318.9,162 153.1,162" class="box" stroke-linejoin="round"/>
+  <text x="236" y="143.0" text-anchor="middle" class="ink t b">L1 data cache</text>
+  <line x1="315.9" y1="138.0" x2="432" y2="138.0" class="line" stroke-dasharray="2 4"/>
+  <text x="445" y="135.0" class="ink t">448 KiB</text>
+  <text x="445" y="151.0" class="ink2 n">total, 12 instances</text>
+  <text x="578" y="143.0" class="ink t">~1 ns</text>
+  <polygon points="150.3,168 321.7,168 343.8,216 128.2,216" class="box" stroke-linejoin="round"/>
+  <text x="236" y="197.0" text-anchor="middle" class="ink t b">L2 cache</text>
+  <line x1="340.7" y1="192.0" x2="432" y2="192.0" class="line" stroke-dasharray="2 4"/>
+  <text x="445" y="189.0" class="ink t">9 MiB</text>
+  <text x="445" y="205.0" class="ink2 n">total, 6 instances</text>
+  <text x="578" y="197.0" class="ink t">4–6 ns</text>
+  <polygon points="125.5,222 346.5,222 368.6,270 103.4,270" class="box" stroke-linejoin="round"/>
+  <text x="236" y="251.0" text-anchor="middle" class="ink t b">L3 cache</text>
+  <line x1="365.6" y1="246.0" x2="432" y2="246.0" class="line" stroke-dasharray="2 4"/>
+  <text x="445" y="243.0" class="ink t">18 MiB</text>
+  <text x="445" y="259.0" class="ink2 n">one, shared</text>
+  <text x="578" y="251.0" class="ink t">12–19 ns</text>
+  <polygon points="100.6,276 371.4,276 393.4,324 78.6,324" class="box" stroke-linejoin="round"/>
+  <text x="236" y="305.0" text-anchor="middle" class="ink t b">RAM</text>
+  <line x1="390.4" y1="300.0" x2="432" y2="300.0" class="line" stroke-dasharray="2 4"/>
+  <text x="445" y="305.0" class="ink t">16 GB</text>
+  <text x="578" y="305.0" class="ink t">104–125 ns</text>
+  <polygon points="75.8,330 396.2,330 418.3,378 53.7,378" class="box" stroke-linejoin="round"/>
+  <text x="236" y="359.0" text-anchor="middle" class="ink t b">NVMe SSD</text>
+  <line x1="415.2" y1="354.0" x2="432" y2="354.0" class="line" stroke-dasharray="2 4"/>
+  <text x="445" y="359.0" class="ink t">512 GB</text>
+  <text x="578" y="351.0" class="ink t">49.8 µs</text>
+  <text x="578" y="367.0" class="ink2 n">p50, random 4 KiB read</text>
+  <line x1="40" y1="70" x2="40" y2="350" class="line" marker-end="url(#arrow)"/>
+  <text x="26" y="210" text-anchor="middle" transform="rotate(-90 26 210)" class="ink2 n">bigger and slower</text>
+</svg>

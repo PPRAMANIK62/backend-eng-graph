@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="404" viewBox="0 0 720 404" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- panel 1: one small write -->
+  <text x="40" y="24" class="ink t b">One small write, with this machine's settings</text>
+  <text x="60" y="56" class="ink n"><tspan class="mono">write()</tspan> returns</text>
+  <line x1="60" y1="60" x2="60" y2="104" class="line"/>
+
+  <rect x="60" y="70" width="360" height="30" rx="4" class="focus" fill-opacity=".18"/>
+  <rect x="60" y="70" width="360" height="30" rx="4" class="focus-s"/>
+  <text x="240" y="90" text-anchor="middle" class="ink n">dirty in RAM, not expired yet</text>
+  <rect x="420" y="70" width="180" height="30" rx="4" class="focus-s" stroke-dasharray="4 3"/>
+  <text x="510" y="90" text-anchor="middle" class="ink n">expired, waits for flusher</text>
+  <rect x="604" y="70" width="76" height="30" rx="4" class="safe-box"/>
+  <text x="642" y="90" text-anchor="middle" class="ink n">on disk</text>
+
+  <line x1="60" y1="114" x2="600" y2="114" class="lost-s"/>
+  <text x="60" y="132" class="ink2 n">A power cut anywhere in here loses the write, though <tspan class="mono">write()</tspan> succeeded</text>
+
+  <!-- time axis -->
+  <line x1="60" y1="148" x2="690" y2="148" class="line"/>
+  <line x1="60" y1="144" x2="60" y2="152" class="line"/>
+  <line x1="240" y1="144" x2="240" y2="152" class="line"/>
+  <line x1="420" y1="144" x2="420" y2="152" class="line"/>
+  <line x1="600" y1="144" x2="600" y2="152" class="line"/>
+  <text x="60" y="168" text-anchor="middle" class="ink2 n">0 s</text>
+  <text x="240" y="168" text-anchor="middle" class="ink2 n">15 s</text>
+  <text x="420" y="168" text-anchor="middle" class="ink2 n">30 s</text>
+  <text x="600" y="168" text-anchor="middle" class="ink2 n">~45 s</text>
+  <text x="420" y="188" text-anchor="middle" class="ink2 n">expires: <tspan class="mono">dirty_expire_centisecs</tspan> = 30 s</text>
+  <text x="690" y="206" text-anchor="end" class="ink2 n">flusher wakes every 15 s, so written by ~45 s at the latest</text>
+
+  <!-- panel 2: amount of dirty memory -->
+  <text x="40" y="252" class="ink t b">Total dirty memory, as programs keep writing</text>
+  <text x="188" y="278" text-anchor="middle" class="ink n b">64 MiB</text>
+  <text x="572" y="278" text-anchor="middle" class="ink n b">256 MiB</text>
+  <text x="188" y="294" text-anchor="middle" class="ink2 n mono">dirty_background_bytes</text>
+  <text x="572" y="294" text-anchor="middle" class="ink2 n mono">dirty_bytes</text>
+
+  <rect x="60" y="304" width="620" height="30" rx="4" class="box"/>
+  <line x1="188" y1="300" x2="188" y2="338" class="line" stroke-dasharray="4 3"/>
+  <line x1="572" y1="300" x2="572" y2="338" class="line" stroke-dasharray="4 3"/>
+  <text x="66" y="324" class="ink2 n">0</text>
+
+  <text x="124" y="356" text-anchor="middle" class="ink2 n">background writeback</text>
+  <text x="124" y="372" text-anchor="middle" class="ink2 n">not started</text>
+  <text x="380" y="356" text-anchor="middle" class="ink2 n">background flusher threads</text>
+  <text x="380" y="372" text-anchor="middle" class="ink2 n">start writing it out</text>
+  <text x="626" y="356" text-anchor="middle" class="ink2 n">a writing process</text>
+  <text x="626" y="372" text-anchor="middle" class="ink2 n">must do writeback:</text>
+  <text x="626" y="388" text-anchor="middle" class="ink2 n"><tspan class="mono">write()</tspan> gets slow</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+      .grid{stroke:#8a8984;stroke-opacity:.3;stroke-width:1}
+    .dot{fill:#2a78d6} .ring{fill:none;stroke:#52514e;stroke-width:1.5}
+    .curve{stroke:#2a78d6;stroke-width:2;fill:none}
+    @media (prefers-color-scheme: dark){ .dot{fill:#3987e5} .ring{stroke:#c3c2b7} .curve{stroke:#3987e5} }
+  </style>
+  <line x1="230.0" y1="46" x2="230.0" y2="366" class="grid"/>
+  <text x="230.0" y="384" text-anchor="middle" class="ink2 n">0.1 ns</text>
+  <line x1="275.0" y1="46" x2="275.0" y2="366" class="grid"/>
+  <text x="275.0" y="384" text-anchor="middle" class="ink2 n">1 ns</text>
+  <line x1="320.0" y1="46" x2="320.0" y2="366" class="grid"/>
+  <line x1="365.0" y1="46" x2="365.0" y2="366" class="grid"/>
+  <text x="365.0" y="384" text-anchor="middle" class="ink2 n">100 ns</text>
+  <line x1="410.0" y1="46" x2="410.0" y2="366" class="grid"/>
+  <text x="410.0" y="384" text-anchor="middle" class="ink2 n">1 µs</text>
+  <line x1="455.0" y1="46" x2="455.0" y2="366" class="grid"/>
+  <line x1="500.0" y1="46" x2="500.0" y2="366" class="grid"/>
+  <text x="500.0" y="384" text-anchor="middle" class="ink2 n">100 µs</text>
+  <line x1="545.0" y1="46" x2="545.0" y2="366" class="grid"/>
+  <text x="545.0" y="384" text-anchor="middle" class="ink2 n">1 ms</text>
+  <line x1="590.0" y1="46" x2="590.0" y2="366" class="grid"/>
+  <line x1="635.0" y1="46" x2="635.0" y2="366" class="grid"/>
+  <text x="635.0" y="384" text-anchor="middle" class="ink2 n">100 ms</text>
+  <line x1="680.0" y1="46" x2="680.0" y2="366" class="grid"/>
+  <text x="680.0" y="384" text-anchor="middle" class="ink2 n">1 s</text>
+  <text x="218" y="75.0" text-anchor="end" class="ink n">Load from L1 (16 KiB set)</text>
+  <circle cx="261.5" cy="71.0" r="8" class="ring"/>
+  <circle cx="276.7" cy="71.0" r="5" class="dot"/>
+  <text x="289.7" y="75.0" text-anchor="start" class="ink n">1.1 ns</text>
+  <text x="218" y="105.0" text-anchor="end" class="ink n">Load from L2 (256 KiB set)</text>
+  <circle cx="313.0" cy="101.0" r="8" class="ring"/>
+  <circle cx="300.9" cy="101.0" r="5" class="dot"/>
+  <text x="290.9" y="105.0" text-anchor="end" class="ink n">3.8 ns</text>
+  <text x="218" y="135.0" text-anchor="end" class="ink n">Load from L3 (8 MiB set)</text>
+  <circle cx="332.4" cy="131.0" r="5" class="dot"/>
+  <text x="345.4" y="135.0" text-anchor="start" class="ink n">18.8 ns</text>
+  <text x="218" y="165.0" text-anchor="end" class="ink n">Empty system call</text>
+  <circle cx="356.3" cy="161.0" r="5" class="dot"/>
+  <text x="369.3" y="165.0" text-anchor="start" class="ink n">64.0 ns</text>
+  <text x="218" y="195.0" text-anchor="end" class="ink n">Load from RAM (64 MiB set)</text>
+  <circle cx="365.0" cy="191.0" r="8" class="ring"/>
+  <circle cx="365.8" cy="191.0" r="5" class="dot"/>
+  <text x="378.8" y="195.0" text-anchor="start" class="ink n">104 ns</text>
+  <text x="218" y="225.0" text-anchor="end" class="ink n">Pipe round trip, 2 switches</text>
+  <circle cx="420.3" cy="221.0" r="5" class="dot"/>
+  <text x="433.3" y="225.0" text-anchor="start" class="ink n">1.7 µs</text>
+  <text x="218" y="255.0" text-anchor="end" class="ink n">Random 4 KiB SSD read (p50)</text>
+  <circle cx="486.4" cy="251.0" r="5" class="dot"/>
+  <text x="499.4" y="255.0" text-anchor="start" class="ink n">49.8 µs</text>
+  <text x="218" y="285.0" text-anchor="end" class="ink n">Ping home router (best)</text>
+  <circle cx="555.4" cy="281.0" r="5" class="dot"/>
+  <text x="568.4" y="285.0" text-anchor="start" class="ink n">1.7 ms</text>
+  <text x="218" y="315.0" text-anchor="end" class="ink n">TCP handshake, AWS Mumbai</text>
+  <circle cx="629.8" cy="311.0" r="5" class="dot"/>
+  <text x="642.8" y="315.0" text-anchor="start" class="ink n">76.5 ms</text>
+  <text x="218" y="345.0" text-anchor="end" class="ink n">TCP handshake, AWS Virginia</text>
+  <circle cx="657.7" cy="341.0" r="5" class="dot"/>
+  <text x="670.7" y="345.0" text-anchor="start" class="ink n">319 ms</text>
+  <circle cx="236" cy="22" r="5" class="dot"/><text x="248" y="26" class="ink n">This laptop, 2026-09-28 (median)</text>
+  <circle cx="486" cy="22" r="8" class="ring"/><text x="498" y="26" class="ink n">Dean's 2009 table, same operation</text>
+</svg>

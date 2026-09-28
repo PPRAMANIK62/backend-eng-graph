@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="364" viewBox="0 0 720 364" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- headers -->
+  <text x="40" y="32" class="ink t b">Thread 1</text>
+  <text x="300" y="32" class="ink t b">Thread 2</text>
+  <text x="630" y="32" text-anchor="middle" class="ink t b">counter in memory</text>
+  <line x1="24" y1="44" x2="696" y2="44" class="line"/>
+  <line x1="280" y1="44" x2="280" y2="324" class="line" stroke-dasharray="2 4"/>
+  <line x1="560" y1="44" x2="560" y2="324" class="line" stroke-dasharray="2 4"/>
+
+  <!-- rows -->
+  <text x="40" y="72" class="ink t">load counter → register</text>
+  <text x="630" y="72" text-anchor="middle" class="ink t mono">50</text>
+  <text x="40" y="104" class="ink t">add 1: register = 51</text>
+  <text x="630" y="104" text-anchor="middle" class="ink t mono">50</text>
+
+  <rect x="24" y="118" width="672" height="30" rx="6" class="box"/>
+  <text x="40" y="138" class="ink2 n">timer interrupt: kernel saves Thread 1's registers, runs Thread 2</text>
+
+  <text x="300" y="172" class="ink t">load counter → register</text>
+  <text x="630" y="172" text-anchor="middle" class="ink t mono">50</text>
+  <text x="300" y="204" class="ink t">add 1: register = 51</text>
+  <text x="630" y="204" text-anchor="middle" class="ink t mono">50</text>
+  <text x="300" y="236" class="ink t">store register</text>
+  <text x="630" y="236" text-anchor="middle" class="ink t mono b">51</text>
+
+  <rect x="24" y="250" width="672" height="30" rx="6" class="box"/>
+  <text x="40" y="270" class="ink2 n">Thread 1 resumes with its saved register (51)</text>
+
+  <text x="40" y="304" class="ink t">store register</text>
+  <text x="630" y="304" text-anchor="middle" class="lost t mono b">51</text>
+
+  <line x1="24" y1="324" x2="696" y2="324" class="line"/>
+  <text x="696" y="350" text-anchor="end" class="lost t b">Two increments, but the counter went up by one</text>
+</svg>

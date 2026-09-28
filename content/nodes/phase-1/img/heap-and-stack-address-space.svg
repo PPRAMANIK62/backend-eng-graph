@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="466" viewBox="0 0 720 466" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="60" y="28" class="ink t b">One process's address space</text>
+  <rect x="60" y="44" width="240" height="48" rx="6" class="box"/>
+  <text x="76" y="73" class="ink t b">Code</text>
+  <rect x="60" y="104" width="240" height="110" rx="6" class="box"/>
+  <text x="76" y="130" class="ink t b">Heap</text>
+  <rect x="180" y="150" width="90" height="36" rx="4" class="focus" fill-opacity="0.22"/>
+  <rect x="180" y="150" width="90" height="36" rx="4" class="line"/>
+  <text x="225" y="173" text-anchor="middle" class="ink n mono">int</text>
+  <text x="225" y="202" text-anchor="middle" class="ink2 n">4 bytes</text>
+  <rect x="60" y="226" width="240" height="60" rx="6" class="line" stroke-dasharray="4 4"/>
+  <text x="180.0" y="261" text-anchor="middle" class="ink2 n">unused addresses</text>
+  <rect x="60" y="298" width="240" height="120" rx="6" class="box"/>
+  <text x="76" y="324" class="ink t b">Stack</text>
+  <rect x="76" y="338" width="208" height="64" rx="4" class="line"/>
+  <text x="90" y="358" class="ink2 n">frame for <tspan class="mono">func()</tspan></text>
+  <rect x="180" y="366" width="90" height="28" rx="4" class="focus" fill-opacity="0.22"/>
+  <rect x="180" y="366" width="90" height="28" rx="4" class="line"/>
+  <text x="225" y="385" text-anchor="middle" class="ink n mono">x</text>
+  <path d="M 270 380 C 350 380, 350 168, 273 168" class="line" marker-end="url(#arrow)"/>
+  <text x="362" y="278" class="ink2 n">x points at the int</text>
+  <text x="430" y="128" class="ink n"><tspan class="b">Heap:</tspan> lives until someone calls <tspan class="mono">free()</tspan></text>
+  <text x="430" y="322" class="ink n"><tspan class="b">Stack:</tspan> freed when <tspan class="mono">func()</tspan> returns</text>
+  <text x="60" y="448" class="ink t mono">int *x = malloc(sizeof(int));</text>
+</svg>

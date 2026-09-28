@@ -8,7 +8,7 @@ import { ZoomMap, type Concept } from "./zoom-map";
 
 /** Every written concept, with its title already split for a chip. */
 export const getConcepts = cache((): Record<string, Concept> =>
-  Object.fromEntries(getGraph().nodes.map(n => [n.id, { ...n, lines: wrap(n.title, 19) }])),
+  Object.fromEntries(getGraph().nodes.map(n => [n.id, { ...n, lines: wrap(n.title, 9.3) }])),
 );
 
 export function MapPage({ phase }: { phase: number }) {

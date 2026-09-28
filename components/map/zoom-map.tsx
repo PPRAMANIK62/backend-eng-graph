@@ -263,10 +263,9 @@ export function ZoomMap({ map, concepts, phases }: Props) {
                 <rect className={s.chipBack} x={n.x} y={n.y} width={CHIP.w} height={CHIP.h} rx={10} />
                 <g className={s.chipFace}>
                   <rect className={s.chipBox} x={n.x} y={n.y} width={CHIP.w} height={CHIP.h} rx={10} />
-                  <circle className={s.chipDepth} cx={n.x + 16} cy={n.y + CHIP.h / 2} r={c.depth === "deep" ? 5 : 2.8} />
-                  <text className={s.chipLabel} x={n.x + 30} y={y0}>
+                  <text className={s.chipLabel} x={n.x + 16} y={y0}>
                     {c.lines.map((l, i) => (
-                      <tspan key={i} x={n.x + 30} dy={i ? 18 : 0}>
+                      <tspan key={i} x={n.x + 16} dy={i ? 18 : 0}>
                         {l}
                       </tspan>
                     ))}
@@ -422,14 +421,6 @@ export function ZoomMap({ map, concepts, phases }: Props) {
       </nav>
 
       <div className={s.legend} aria-hidden data-hidden={focus ? "" : undefined}>
-        <span>
-          <i className={s.lgDeep} />
-          deep
-        </span>
-        <span>
-          <i className={s.lgShort} />
-          short
-        </span>
         <span>
           <i className={s.lgNeed} />
           needs

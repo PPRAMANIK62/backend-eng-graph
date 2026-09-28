@@ -185,24 +185,43 @@ function curve(a: { x: number; y: number }, b: { x: number; y: number }) {
   return `M${r(sx)} ${r(sy)}C${r(sx + d)} ${r(sy)} ${r(tx - d)} ${r(ty)} ${r(tx)} ${r(ty)}`;
 }
 
-/** Split a title into at most `lines` lines of about `max` characters. */
+/**
+ * Advance widths in hundredths of an em for ASCII 32 to 126, in Schibsted
+ * Grotesk 500 (the chip font), measured with canvas measureText in Chromium.
+ */
+const ADVANCE =
+  "24 25 37 67 57 87 69 21 32 32 43 63 27 48 29 45 62 36 58 58 60 59 60 54 59 60 29 28 63 63 63 54 90 71 65 71 71 59 57 72 73 37 55 68 55 89 74 77 63 77 65 62 66 69 69 95 67 63 61 32 45 32 63 50 50 56 60 56 60 58 35 56 58 25 28 57 27 88 59 60 60 60 42 52 35 59 57 83 57 56 51 34 25 34 63"
+    .split(" ")
+    .map(Number);
+
+/** Width of `text` in ems at the chip font. */
+function ems(text: string): number {
+  let w = 0;
+  for (const ch of text) w += (ADVANCE[ch.charCodeAt(0) - 32] ?? 60) / 100;
+  return w;
+}
+
+/**
+ * Split a title into at most `lines` lines no wider than `max` ems. Breaks
+ * at spaces and after hyphens.
+ */
 export function wrap(text: string, max: number, lines = 2): string[] {
+  const words = text.split(/\s+/).flatMap(w => w.split(/(?<=-)/));
   const out: string[] = [];
   let line = "";
-  for (const w of text.split(/\s+/)) {
-    if (line && `${line} ${w}`.length > max) {
+  for (const w of words) {
+    const joined = !line ? w : line.endsWith("-") ? line + w : `${line} ${w}`;
+    if (line && ems(joined) > max) {
       out.push(line);
       line = w;
-    } else line = line ? `${line} ${w}` : w;
+    } else line = joined;
   }
   if (line) out.push(line);
-  if (out.length > lines)
-    return [
-      ...out.slice(0, lines - 1),
-      `${out
-        .slice(lines - 1)
-        .join(" ")
-        .slice(0, max - 1)}…`,
-    ];
-  return out;
+  if (out.length <= lines) return out;
+  let last = out
+    .slice(lines - 1)
+    .join(" ")
+    .replace(/- /g, "-");
+  while (ems(`${last}…`) > max) last = last.slice(0, -1);
+  return [...out.slice(0, lines - 1), `${last.trimEnd()}…`];
 }

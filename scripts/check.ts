@@ -12,6 +12,9 @@
  *     and whatever is committed is published)
  *   - a written node lists no sources under Further reading
  *   - an image link ![..](img/..) points to a file that doesn't exist
+ *   - a calendar date (YYYY-MM-DD, Mon D YYYY, Month YYYY) anywhere in content/,
+ *     or a date field (updated, published, accessed, date) in frontmatter;
+ *     years alone are fine, and dates inside URLs are ignored
  * Warnings:
  *   - a [@citation] marker in the body instead of under Further reading
  *   - a source no node cites
@@ -19,7 +22,6 @@
  *   - a written node doesn't link something it needs in the text
  *   - a node is past its depth's word limit (may be two concepts)
  *   - a written deep node cites fewer than 3 sources
- *   - a written node hasn't been updated in 12 months
  *   - a written node still has a VISUAL: comment that was never drawn
  *   - an image in nodes/phase-N/img/ that no node uses
  *
@@ -40,7 +42,6 @@ const LINKING_DIRS = ["decisions", "experiments"]; // [[links]] here must resolv
 const DEPTHS: Record<string, number> = { deep: 2500, short: 1000 }; // depth -> word limit
 const KINDS = ["blog", "book", "code", "docs", "paper", "spec", "talk"];
 const LINK_FIELDS = ["needs", "leads_to", "compare_with"] as const;
-const STALE_DAYS = 365;
 const DEEP_MIN_SOURCES = 3;
 
 const CITATION = /\[@([a-z0-9-]+)(?:,[^\]]*)?\]/g;
@@ -141,7 +142,7 @@ function loadSources(errors: string[]): Map<string, Meta> {
       continue;
     }
     if (meta.id !== stem) errors.push(`${where}: id '${shown(meta.id)}' should be '${stem}'`);
-    for (const field of ["title", "author", "url", "accessed"]) if (!meta[field]?.length) errors.push(`${where}: missing ${field}`);
+    for (const field of ["title", "author", "url"]) if (!meta[field]?.length) errors.push(`${where}: missing ${field}`);
     if (!KINDS.includes(str(meta.kind))) errors.push(`${where}: kind must be one of ${pyList(KINDS)}`);
     sources.set(stem, meta);
   }
@@ -239,23 +240,50 @@ function checkNode(nid: string, n: Node, nodes: Map<string, Node>, sources: Map<
 
   const limit = DEPTHS[str(n.meta.depth)];
   if (limit && n.words > limit) warnings.push(`${where}: ${n.words} words, over ${limit} for ${n.meta.depth}, may be two concepts`);
-
-  if (n.written) {
-    const updated = str(n.meta.updated);
-    const day = /^\d{4}-\d{2}-\d{2}$/.test(updated) ? new Date(`${updated}T00:00:00`) : null;
-    if (!day || isNaN(day.getTime())) errors.push(`${where}: updated must be a date like 2026-09-23`);
-    else {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const age = Math.round((today.getTime() - day.getTime()) / 86_400_000);
-      if (age > STALE_DAYS) warnings.push(`${where}: not updated in ${age} days, re-check it`);
-    }
-  }
 }
 
 function outgoing(n: Node, nodes: Map<string, Node>): Set<string> {
   const targets = new Set([...n.needs, ...n.leads_to, ...n.compare_with, ...n.links]);
   return new Set([...targets].filter(t => nodes.has(t)));
+}
+
+const MONTH = "(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\\.?";
+const DATES = [
+  /\b\d{4}-\d{2}-\d{2}(?:\b|(?=T\d))/, // YYYY-MM-DD, also with a time
+  /\b\d{4}-(?:0[1-9]|1[0-2])\b(?!-)/, // YYYY-MM
+  new RegExp(`\\b${MONTH} \\d{1,2}(?:st|nd|rd|th)?,? \\d{4}\\b`), // Mon D, YYYY
+  new RegExp(`\\b\\d{1,2}(?:st|nd|rd|th)? ${MONTH},? \\d{4}\\b`), // D Mon YYYY
+  new RegExp(`\\b${MONTH} \\d{4}\\b`), // Month YYYY
+];
+const DATE_FIELDS = ["updated", "published", "accessed", "date"];
+const URLISH = /\bhttps?:\/\/\S+|\b[\w.-]+\.(?:com|org|net|io|dev)\/\S*/g;
+
+/** No calendar dates anywhere in content/: years only. */
+function checkDates(errors: string[]) {
+  const files = walkMd(CONTENT);
+  for (const phase of readdirSync(NODES).filter(d => d.startsWith("phase-"))) {
+    const imgDir = join(NODES, phase, "img");
+    if (existsSync(imgDir))
+      files.push(
+        ...readdirSync(imgDir)
+          .filter(f => f.endsWith(".svg"))
+          .map(f => join(imgDir, f)),
+      );
+  }
+  for (const path of files) {
+    const where = relative(ROOT, path);
+    const text = readFileSync(path, "utf8");
+    if (path.endsWith(".md") && text.startsWith("---\n")) {
+      const head = text.slice(4, text.indexOf("\n---", 4));
+      for (const field of DATE_FIELDS)
+        if (new RegExp(`^${field}:`, "m").test(head)) errors.push(`${where}: remove the ${field} field, no dates`);
+    }
+    text.split("\n").forEach((line, i) => {
+      const bare = line.replace(URLISH, "");
+      const hit = DATES.map(re => bare.match(re)?.[0]).find(Boolean);
+      if (hit) errors.push(`${where}:${i + 1}: calendar date '${hit}', use a year or a version instead`);
+    });
+  }
 }
 
 function printMap(nodes: Map<string, Node>) {
@@ -282,6 +310,7 @@ function main(): number {
   const warnings: string[] = [];
   const sources = loadSources(errors);
   const nodes = loadNodes(errors);
+  checkDates(errors);
 
   if (process.argv.includes("--map")) printMap(nodes);
 

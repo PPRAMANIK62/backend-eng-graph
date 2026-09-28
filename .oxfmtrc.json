@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 140,
+  "arrowParens": "avoid",
+  "ignorePatterns": ["content/**", "lab/**", "visuals/**", "*.md", "tentative-shape.md", "bun.lock"]
+}

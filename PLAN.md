@@ -1,7 +1,7 @@
 # The plan
 
-Written 2026-09-28. The skills list below was checked against real backend
-job postings opened on 2026-09-28 (listed under "Where the skills come
+The skills list below was checked against real backend job postings
+(listed under "Where the skills come
 from").
 
 ## Why I'm doing this
@@ -45,7 +45,7 @@ the concepts under them don't.
 
 ## Where the skills come from
 
-Postings opened on 2026-09-28:
+Postings opened:
 
 - **Stripe, Backend Engineer, Core Technology**
   (stripe.com/jobs/listing/backend-engineer-core-technology/6042172).
@@ -347,7 +347,7 @@ Concepts, roughly:
 
 ## Stack
 
-- **Go for the lab.** Chosen on 2026-09-28 over Rust (both are in the
+- **Go for the lab.** Chosen over Rust (both are in the
   postings above). Decision 0001 records it, with the repo layout, when
   the phase 1 build starts. Go fits proxies, brokers and consensus, and
   has good profiling built in.

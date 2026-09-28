@@ -1,6 +1,6 @@
 # The lab: what gets built
 
-Written 2026-09-28. This is the backend version of ai-eng-graph's
+This is the backend version of ai-eng-graph's
 `GUIDE.md`: what gets built in each phase, how it's checked, and when the
 phase is done.
 
@@ -77,7 +77,7 @@ the load generator) get their own directories because later builds reuse
 them. The repo layout (one Go module or several) is part of decision 0001.
 
 The tools named below (LazyFS, dm-log-writes, netem, toxiproxy, Porcupine,
-Elle, YCSB, memtier, Pebble and the rest) are the plan as of 2026-09-28.
+Elle, YCSB, memtier, Pebble and the rest) are the plan when this was written.
 Check each one still exists and fits when its phase starts.
 
 ## Phase 1: the log and the crash harness
@@ -97,10 +97,10 @@ present, and no corrupted record is accepted.
 **Compared with:** the fsync latencies against the SSD's spec sheet, and
 the log's recovery rules against SQLite's WAL documentation.
 
-**Decisions to record:** Go, chosen over Rust on 2026-09-28 (0001, with
+**Decisions to record:** Go, chosen over Rust (0001, with
 repo layout), which crash simulator (0002), record format (0003).
 
-**On this machine** (checked 2026-09-28): one WD PC SN740 512 GB NVMe
+**On this machine:** one WD PC SN740 512 GB NVMe
 SSD, root on btrfs over LUKS (dm-crypt), kernel 7.1.9. There's no spare
 disk, so crash tests and the ext4 runs use loop devices backed by files.
 `dmsetup`, `losetup` and `mkfs.ext4` are installed; LazyFS, `mkfs.xfs`,

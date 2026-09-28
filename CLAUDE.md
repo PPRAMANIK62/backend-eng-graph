@@ -31,7 +31,10 @@ articles are written and linked.
   AI filler words. See the style section in `WRITING.md`.
 - I'm new to most of this. Explain lab work as you go, and don't skip the
   reading to get to the build.
-- Use absolute dates (2026-09-28), never "today" or "last week".
+- No calendar dates anywhere: not in articles, notes, frontmatter, docs,
+  data, file names or commit messages. A year that is part of a fact
+  ("RFC 9293 (2022)", "Linux 4.13 (2017)") is fine; pin stale things to
+  a version instead of a day. `bun run check` rejects dates in `content/`.
 - Don't publish secrets. Keys go in environment variables, never in this
   folder's files.
 
@@ -51,7 +54,7 @@ content/sources/        one note per source (<id>.md); files starting with _
 content/decisions/      one record per real build choice (<id>.md)
 content/experiments/    one write-up per harness run or benchmark (<id>.md)
 lab/                    the builds, one directory per component (see LAB.md)
-scripts/check.ts        checks citations, quotes, links, orphans, size, staleness
+scripts/check.ts        checks citations, quotes, links, orphans, size, dates
                         (bun run check; bun run check --map prints the graph)
 app/, components/, lib/ the site (Next.js; see decision 0004-site-app)
 ```
@@ -112,7 +115,7 @@ Every phase runs these steps, in order. Nothing else.
    tricky" covers disagreements and what's changed; the note works as a
    hover card; the style rules hold. Mark each `VISUAL:` for a figure. Tell
    me what you changed and what you're unsure about.
-6. **Publish.** Only when I say so: update the `updated` date and commit.
+6. **Publish.** Only when I say so: commit.
 
 ## Building
 
@@ -136,8 +139,8 @@ Every phase runs these steps, in order. Nothing else.
 ## Other work
 
 - **Run `bun run check`** after any change to `content/`.
-- **Re-check stale nodes.** When the script says a written node is 12
-  months old, check its sources are still current and the article is still
-  right, then update `updated`. Tell me what changed.
+- **Re-check old nodes.** When a new version of something a node covers
+  ships, check its sources are still current and the article is still
+  right. Tell me what changed.
 - **Keep this file short.** Update it only for lasting rules, not task
   history.

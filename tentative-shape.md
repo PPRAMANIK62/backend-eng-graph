@@ -1,6 +1,6 @@
 # Tentative shape of the map
 
-Written 2026-09-28. **Not final.** This is a first guess at every node across
+**Not final.** This is a first guess at every node across
 all 17 phases, so I can see where the project is going. Each phase still
 gets planned properly at its start (see `CLAUDE.md`), and these lists will
 change as I learn. Once a phase's nodes exist as files in `content/nodes/`,

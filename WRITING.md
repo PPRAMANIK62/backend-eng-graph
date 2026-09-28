@@ -1,6 +1,6 @@
 # How the articles get written
 
-Written 2026-09-28, adapted from ai-eng-graph. Every node in the graph is a
+Adapted from ai-eng-graph. Every node in the graph is a
 research article built from the best published engineering writing, with
 citations.
 
@@ -37,9 +37,9 @@ sources are where we learned it; they're listed once at the end.
 - Short sentences. Short paragraphs, one idea each.
 - No quotes from sources in the body, unless the exact wording is the point
   (a line from a spec, say).
-- Date and version anything that goes stale: "Linux 5.1 (2019) added
-  io_uring", not "Linux has io_uring". Kernel, database
-  and protocol versions matter here.
+- Version anything that goes stale: "Linux 5.1 (2019) added io_uring",
+  not "Linux has io_uring". Kernel, database and protocol versions matter
+  here. A year is fine; a calendar date (day or month) never is, anywhere.
 - A visual wherever a picture explains faster than words: packet diagrams,
   on-disk layouts, timelines of two transactions. Visuals support the
   reading, they don't replace it.
@@ -106,7 +106,7 @@ One file per source in `content/sources/`, made from `content/templates/source.m
 - Books are fine sources (DDIA, Database Internals, OSTEP and the like)
   when I've actually read the part I cite. Note the chapter and section.
 - 3 to 6 sources per article is normal.
-- Record the URL, author, publish date, and the date I read it.
+- Record the URL, author, and the version or year of what you read.
 - Key claims get a short quote and where in the source it came from, so any
   claim in an article can be checked against the notes.
 
@@ -184,7 +184,6 @@ Drafts stay uncommitted until I've reviewed them.
 ## Keeping articles current
 
 Backend fundamentals change slower than AI, but versions, defaults and
-tools don't. A written node gets re-checked every 12 months: are the
-sources still current, has a new version changed the behavior, is the
-article still right? Update `updated` after each check. The check script
-warns when a written node hasn't been touched in 12 months.
+tools don't. When a new version ships, re-check the nodes it touches: are
+the sources still current, has the behavior changed, is the article still
+right?

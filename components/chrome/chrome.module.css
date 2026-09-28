@@ -1,0 +1,241 @@
+/* The pieces of the top bar, shared by the map and the article pages. */
+
+.float {
+  background: var(--float);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px -24px rgb(var(--shadow) / 0.5);
+}
+
+/* ---------- phase tabs ---------- */
+.tabs {
+  display: flex;
+  gap: 2px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 11px;
+  border-radius: 999px;
+  color: var(--ink-2);
+  font:
+    500 12px var(--font-jb-mono),
+    ui-monospace,
+    monospace;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.25s,
+    background-color 0.3s var(--ease);
+}
+a.tab:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--pill) 60%, transparent);
+}
+.tab[data-off] {
+  opacity: 0.35;
+  cursor: default;
+}
+.tab[aria-current="page"] {
+  color: var(--ink);
+  background: var(--pill);
+}
+.tabName {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  font:
+    500 13px var(--font-grotesk),
+    system-ui,
+    sans-serif;
+  transition:
+    max-width 0.5s var(--ease),
+    opacity 0.35s,
+    margin 0.5s var(--ease);
+}
+.tab[aria-current="page"] .tabName {
+  max-width: 32ch;
+  margin-left: 8px;
+  opacity: 1;
+}
+.tab:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+/* ---------- search ---------- */
+.search {
+  position: relative;
+  flex: 0 1 260px;
+  margin-left: auto;
+}
+.search input {
+  width: 100%;
+  height: 34px;
+  padding: 0 34px 0 34px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--chip) 70%, transparent);
+  color: var(--ink);
+  font:
+    14px var(--font-grotesk),
+    system-ui,
+    sans-serif;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.search input::placeholder {
+  color: var(--ink-2);
+}
+.search input:focus {
+  border-color: var(--amber);
+  background: var(--chip);
+}
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--ink-2);
+  pointer-events: none;
+}
+.searchKey {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  translate: 0 -50%;
+  padding: 0 6px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--ink-2);
+  font:
+    11px/18px var(--font-jb-mono),
+    monospace;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.search input:focus ~ .searchKey {
+  opacity: 0;
+}
+.results {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(360px, 90vw);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -18px rgb(var(--shadow) / 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px) scale(0.98);
+  transform-origin: top right;
+  transition:
+    opacity 0.18s var(--ease),
+    transform 0.25s var(--ease),
+    visibility 0s linear 0.25s;
+}
+.results[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.results li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+.results li[aria-selected="true"] {
+  background: var(--pill);
+}
+.resTitle {
+  font-size: 14px;
+}
+.resPhase {
+  color: var(--ink-2);
+  font:
+    11px var(--font-jb-mono),
+    monospace;
+  white-space: nowrap;
+}
+
+/* ---------- theme ---------- */
+.theme {
+  position: relative;
+  display: flex;
+  flex: none;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.theme button {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 26px;
+  border-radius: 999px;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.theme button[aria-checked="true"],
+.theme button:hover {
+  color: var(--ink);
+}
+.theme button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+.themePill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--pill);
+  opacity: 0;
+  translate: calc(var(--i, 0) * 28px) 0;
+  transition:
+    translate 0.35s var(--ease),
+    opacity 0.2s;
+}
+.theme[data-ready="true"] .themePill {
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .search {
+    flex: 1 1 110px;
+  }
+  /* The phase name is in the page title already; the tab keeps its number. */
+  .tab[aria-current="page"] .tabName {
+    max-width: 0;
+    margin-left: 0;
+    opacity: 0;
+  }
+  .searchKey {
+    display: none;
+  }
+}

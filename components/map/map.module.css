@@ -1,0 +1,669 @@
+/* The full-screen zoom map. The canvas fills the window; the bar, title,
+   reading panel, small map and legend float over it. */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, var(--dotgrid) 1px, transparent 1.4px) 0 0 / 24px 24px,
+    var(--bg);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.canvas:active {
+  cursor: grabbing;
+}
+
+/* d3-zoom writes the transform; a flight turns the transition on until it lands. */
+.world {
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.world[data-flying] {
+  transition: transform 0.9s var(--ease-io);
+}
+
+.step {
+  fill: var(--ink-2);
+  font:
+    500 11px var(--font-jb-mono),
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: opacity 0.4s;
+}
+.stage[data-focus] .step {
+  opacity: 0.4;
+}
+
+/* ---------- lines ---------- */
+.edgeBase {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.4;
+  transition: opacity 0.4s;
+}
+.edge[data-cross] .edgeBase {
+  stroke-dasharray: 4 5;
+}
+.edgeLit {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transition:
+    stroke-dashoffset 0.9s var(--ease) 0.25s,
+    opacity 0.3s,
+    stroke 0.3s;
+}
+.edge[data-state="dim"] .edgeBase {
+  opacity: 0.35;
+}
+.edge[data-state="need"] .edgeLit,
+.edge[data-state="lead"] .edgeLit,
+.edge[data-state="peek"] .edgeLit {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+.edge[data-state="lead"] .edgeLit {
+  stroke: var(--teal);
+}
+.edge[data-state="peek"] .edgeLit {
+  stroke: var(--ink-2);
+  stroke-width: 2;
+  opacity: 0.7;
+  transition-delay: 0s;
+  transition-duration: 0.35s;
+}
+
+/* ---------- concepts ---------- */
+.chip {
+  cursor: pointer;
+  outline: none;
+}
+.chipBack {
+  fill: var(--bg); /* keeps lines from showing through a faded chip */
+}
+.chipFace {
+  transition: opacity 0.45s var(--ease);
+}
+.chipBox {
+  fill: var(--chip);
+  stroke: var(--line);
+  stroke-width: 1.2;
+  transition:
+    fill 0.35s,
+    stroke 0.35s,
+    stroke-width 0.35s;
+}
+.chipDepth {
+  fill: var(--ink-2);
+  transition: fill 0.35s;
+}
+.chipLabel {
+  fill: var(--ink);
+  font:
+    500 15px var(--font-grotesk),
+    system-ui,
+    sans-serif;
+  transition: fill 0.35s;
+}
+.chipSub {
+  fill: var(--ink-2);
+  font:
+    500 10.5px var(--font-jb-mono),
+    monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.chip[data-stub] .chipBox {
+  fill: none;
+  stroke-dasharray: 5 4;
+}
+.chip:hover .chipBox {
+  stroke: var(--ink-2);
+  stroke-width: 1.8;
+}
+.chip:focus-visible .chipBox {
+  stroke: var(--amber);
+  stroke-width: 3.5;
+}
+.chip[data-state="dim"] .chipFace {
+  opacity: 0.24;
+}
+.chip[data-state="focus"] .chipBox {
+  fill: var(--amber);
+  stroke: var(--amber);
+}
+.chip[data-state="focus"] :is(.chipLabel, .chipDepth) {
+  fill: var(--on-amber);
+}
+.chip[data-state="before"] .chipBox {
+  stroke: var(--amber);
+  stroke-width: 2;
+}
+.chip[data-state="after"] .chipBox {
+  stroke: var(--teal);
+  stroke-width: 2;
+}
+.chipDone {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.chipDone circle {
+  fill: var(--teal);
+}
+.chipDone path {
+  fill: none;
+  stroke: var(--bg);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.chip[data-done] .chipDone {
+  opacity: 1;
+}
+
+/* ---------- floating pieces ---------- */
+.bar {
+  composes: float from "../chrome/chrome.module.css";
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 8px 6px 16px;
+}
+.brand {
+  flex: none;
+  color: var(--ink);
+  font:
+    500 13px var(--font-jb-mono),
+    monospace;
+  text-decoration: none;
+}
+
+.title {
+  position: absolute;
+  z-index: 2;
+  top: 84px;
+  left: 24px;
+  max-width: min(660px, calc(100% - 48px));
+  pointer-events: none;
+  transition:
+    opacity 0.4s var(--ease),
+    translate 0.5s var(--ease);
+}
+.stage[data-focus] .title {
+  opacity: 0;
+  translate: 0 -8px;
+}
+.eyebrow {
+  margin: 0;
+  color: var(--ink-2);
+  font:
+    500 12px var(--font-jb-mono),
+    monospace;
+  letter-spacing: 0.04em;
+}
+.title h1 {
+  margin: 2px 0 0;
+  font:
+    700 clamp(26px, 3vw, 38px) / 1.08 var(--font-grotesk),
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.meta {
+  margin: 6px 0 0;
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+.title kbd,
+.keys kbd {
+  padding: 0 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font:
+    11px/17px var(--font-jb-mono),
+    monospace;
+}
+
+/* The reading panel slides in from the left when a concept is in focus;
+   its content crossfades up each time the focus moves. */
+.panel {
+  position: absolute;
+  z-index: 3;
+  top: 84px;
+  left: 16px;
+  bottom: 16px;
+  width: min(400px, calc(100% - 32px));
+  display: grid;
+  align-content: start;
+  pointer-events: none;
+  opacity: 0;
+  translate: -16px 0;
+  transition:
+    opacity 0.3s var(--ease),
+    translate 0.45s var(--ease);
+}
+.panel[data-open] {
+  opacity: 1;
+  translate: 0 0;
+}
+.panelInner {
+  composes: float from "../chrome/chrome.module.css";
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 18px 20px 16px;
+  background: var(--surface);
+  pointer-events: auto;
+  animation: panel-in 0.4s var(--ease) both;
+}
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+.trail {
+  margin: 0 0 10px;
+  color: var(--ink-2);
+  font:
+    11px/1.8 var(--font-jb-mono),
+    monospace;
+}
+.trail a {
+  color: inherit;
+  text-decoration: none;
+}
+.trail a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+.trail b {
+  color: var(--ink);
+  font-weight: 500;
+}
+.arr {
+  margin: 0 6px;
+  opacity: 0.6;
+}
+.panelTitle {
+  margin: 0;
+  font:
+    700 26px/1.12 var(--font-grotesk),
+    sans-serif;
+  letter-spacing: -0.015em;
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 6px 0 0;
+  color: var(--ink-2);
+  font:
+    12px var(--font-jb-mono),
+    monospace;
+}
+.doneTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px 1px 6px;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  color: var(--teal);
+}
+.note {
+  margin: 12px 0 14px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+.rel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.relTitle {
+  margin: 0 0 6px;
+  font:
+    500 11px var(--font-jb-mono),
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.relTitle[data-tone="need"] {
+  color: var(--amber);
+}
+.relTitle[data-tone="lead"] {
+  color: var(--teal);
+}
+.rel ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rel button {
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.rel button:hover {
+  border-color: var(--ink);
+}
+.rel em {
+  margin-left: 6px;
+  color: var(--ink-2);
+  font:
+    normal 11px var(--font-jb-mono),
+    monospace;
+}
+.rel p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  font:
+    500 14px var(--font-grotesk),
+    sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    translate 0.25s var(--ease),
+    background-color 0.2s;
+}
+.btn {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn:hover {
+  translate: 0 -1px;
+}
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 14px 0 0;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 20px;
+}
+.keys span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.keys kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  line-height: 1;
+}
+
+/* The small map: the whole phase, where you are, and what's on screen. */
+.mini {
+  composes: float from "../chrome/chrome.module.css";
+  position: absolute;
+  z-index: 2;
+  right: 16px;
+  bottom: 16px;
+  width: 260px;
+  padding: 10px 12px 12px;
+  opacity: 0;
+  translate: 0 12px;
+  pointer-events: none;
+  transition:
+    opacity 0.4s var(--ease),
+    translate 0.5s var(--ease);
+}
+.mini[data-open] {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+.miniCap {
+  margin: 0 0 6px;
+  color: var(--ink-2);
+  font:
+    500 10.5px var(--font-jb-mono),
+    monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.mini svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mini line {
+  stroke: var(--ink-2);
+  stroke-width: 6;
+  opacity: 0.3;
+  transition:
+    stroke 0.3s,
+    opacity 0.3s;
+}
+.mini line[data-state="need"] {
+  stroke: var(--amber);
+  stroke-width: 10;
+  opacity: 1;
+}
+.mini line[data-state="lead"] {
+  stroke: var(--teal);
+  stroke-width: 10;
+  opacity: 1;
+}
+.mini circle {
+  fill: var(--ink-2);
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    fill 0.3s,
+    scale 0.4s var(--ease);
+}
+.mini circle:hover {
+  fill: var(--ink);
+  scale: 1.5;
+}
+.mini circle[data-state="focus"] {
+  fill: var(--amber);
+  scale: 1.8;
+}
+.mini circle[data-state="before"] {
+  fill: var(--amber);
+  opacity: 0.8;
+}
+.mini circle[data-state="after"] {
+  fill: var(--teal);
+}
+.miniFrame {
+  fill: color-mix(in srgb, var(--ink) 6%, transparent);
+  stroke: var(--ink-2);
+  stroke-width: 8;
+  pointer-events: none;
+}
+
+.legend {
+  composes: float from "../chrome/chrome.module.css";
+  position: absolute;
+  z-index: 2;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 8px 14px;
+  color: var(--ink-2);
+  font:
+    12px var(--font-jb-mono),
+    monospace;
+  transition: opacity 0.35s var(--ease);
+}
+.legend[data-hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend i {
+  display: inline-block;
+}
+.lgDeep {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink-2);
+}
+.lgShort {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-2);
+}
+.lgNeed,
+.lgLead {
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--amber);
+}
+.lgLead {
+  background: var(--teal);
+}
+.lgDone {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.zoom {
+  composes: float from "../chrome/chrome.module.css";
+  position: absolute;
+  z-index: 2;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  padding: 3px;
+  border-radius: 12px;
+  transition:
+    opacity 0.3s,
+    translate 0.45s var(--ease);
+}
+.zoom button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 30px;
+  border-radius: 9px;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+.zoom button:hover {
+  color: var(--ink);
+  background: var(--pill);
+}
+.zoom button:focus-visible,
+.btn:focus-visible,
+.rel button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+/* With the panel open on the left, the zoom buttons move out of its way. */
+.zoom[data-focus] {
+  translate: 432px 0;
+}
+
+@media (max-width: 899px) {
+  .bar {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    padding-left: 8px;
+  }
+  .brand {
+    display: none;
+  }
+  .title {
+    top: 70px;
+    left: 16px;
+  }
+  .panel {
+    top: auto;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    max-height: 46vh;
+    translate: 0 16px;
+  }
+  .panel[data-open] {
+    translate: 0 0;
+  }
+  .rel {
+    grid-template-columns: 1fr;
+  }
+  .keys,
+  .mini,
+  .legend {
+    display: none;
+  }
+  .zoom {
+    left: auto;
+    right: 10px;
+    bottom: 10px;
+  }
+  .zoom[data-focus] {
+    translate: 0 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

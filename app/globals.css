@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* The design system: a survey map. Dotted paper, white chips, and two signal
+   colours that always mean the same thing: amber is what a concept needs (the
+   road in), teal is what it unlocks (the road out). Components read these
+   tokens, so both themes come from here. */
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-grotesk);
+  --font-heading: var(--font-grotesk);
+  --font-mono: var(--font-jb-mono);
+  --color-ring: var(--amber);
+  --color-input: var(--line);
+  --color-border: var(--line);
+  --color-accent: var(--pill);
+  --color-accent-foreground: var(--ink);
+  --color-muted: var(--pill);
+  --color-muted-foreground: var(--ink-2);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--bg);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+}
+
+:root {
+  color-scheme: light;
+
+  --bg: #e9edeb; /* the map ground */
+  --dotgrid: #c9d2cf;
+  --surface: #fbfcfb; /* reading surfaces */
+  --float: rgb(251 252 251 / 0.86); /* floating panels over the map */
+  --chip: #ffffff;
+  --line: #c4cdca;
+  --pill: #dce2e0;
+  --ink: #172026;
+  --ink-2: #56636a;
+  --ink-3: #859197;
+  --amber: #b36f0b; /* needs: the road in */
+  --amber-soft: #f4e6cf;
+  --on-amber: #ffffff;
+  --teal: #0c8272; /* unlocks: the road out */
+  --teal-soft: #d3ece7;
+  --link: #1f5f9e;
+  --shadow: 23 32 38;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0d1215;
+  --dotgrid: #1b252a;
+  --surface: #121a1e;
+  --float: rgb(20 27 31 / 0.86);
+  --chip: #172024;
+  --line: #2c3a40;
+  --pill: #223036;
+  --ink: #dde5e8;
+  --ink-2: #93a2a9;
+  --ink-3: #66757c;
+  --amber: #efb24a;
+  --amber-soft: #3a2c14;
+  --on-amber: #1a1305;
+  --teal: #4cc4b1;
+  --teal-soft: #15332e;
+  --link: #7fb0ea;
+  --shadow: 0 0 0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-grotesk), system-ui, sans-serif;
+  }
+}
+
+/* ---------- Motion ----------
+   All motion is CSS: transitions on the map, keyframes for panels, and the
+   browser's view transitions between pages. Entrances ease out, moves on
+   screen ease in-out. Under reduced motion, things still fade but nothing travels. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: var(--ease);
+}
+::view-transition {
+  pointer-events: none;
+}
+
+/* Between phases the page slides sideways; into an article it drops down,
+   back to the map it rises. Types are set per link (components/chrome/nav.ts). */
+::view-transition-old(.vt-forward) {
+  --vt-x: -48px;
+}
+::view-transition-new(.vt-forward) {
+  --vt-x: 48px;
+}
+::view-transition-old(.vt-back) {
+  --vt-x: 48px;
+}
+::view-transition-new(.vt-back) {
+  --vt-x: -48px;
+}
+::view-transition-old(.vt-open) {
+  --vt-y: -12px;
+}
+::view-transition-new(.vt-open) {
+  --vt-y: 28px;
+}
+::view-transition-old(.vt-close) {
+  --vt-y: 28px;
+}
+::view-transition-new(.vt-close) {
+  --vt-y: -12px;
+}
+::view-transition-old(.vt-forward),
+::view-transition-old(.vt-back),
+::view-transition-old(.vt-open),
+::view-transition-old(.vt-close) {
+  animation:
+    140ms var(--ease) both vt-out,
+    320ms var(--ease-io) both vt-leave;
+}
+::view-transition-new(.vt-forward),
+::view-transition-new(.vt-back),
+::view-transition-new(.vt-open),
+::view-transition-new(.vt-close) {
+  animation:
+    220ms var(--ease) 80ms both vt-in,
+    320ms var(--ease-io) both vt-arrive;
+}
+
+/* A concept's title carries from the map's reading panel to the article heading. */
+::view-transition-group(.vt-morph) {
+  z-index: 11;
+  animation-duration: 340ms;
+  animation-timing-function: var(--ease-io);
+}
+::view-transition-image-pair(.vt-morph) {
+  animation: 340ms var(--ease-io) vt-blur;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-leave {
+  to {
+    translate: var(--vt-x, 0) var(--vt-y, 0);
+  }
+}
+@keyframes vt-arrive {
+  from {
+    translate: var(--vt-x, 0) var(--vt-y, 0);
+  }
+}
+@keyframes vt-blur {
+  40% {
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    --vt-x: 0 !important;
+    --vt-y: 0 !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*) {
+    animation-duration: 0s !important;
+  }
+}

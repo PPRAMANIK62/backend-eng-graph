@@ -165,8 +165,8 @@ Concepts, roughly:
   anycast, NAT, MTU, ICMP
 - where network latency comes from
 - sockets, UDP, TCP in depth: the handshake, TIME_WAIT, retransmission,
-  flow control, congestion control, the bandwidth-delay product, Nagle,
-  head-of-line blocking
+  keepalive, flow control, congestion control, bufferbloat, pacing, the
+  bandwidth-delay product, Nagle, head-of-line blocking
 - DNS: resolution, record types, caching
 - tools: TUN/TAP devices, packet capture
 
@@ -176,6 +176,7 @@ Skill 2.
 Concepts, roughly:
 - hashes, symmetric and public-key crypto, HMAC, at concept level
 - TLS 1.3, certificates and PKI, resumption, mTLS
+- DNSSEC, encrypted DNS (DoT and DoH)
 - HTTP semantics, HTTP/1.1, HTTP/2, QUIC, HTTP/3, WebSockets, SSE
 - protobuf and gRPC, connection pooling
 - reverse proxies, request smuggling, load balancing and its algorithms,

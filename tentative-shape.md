@@ -19,8 +19,8 @@ How to read the tables:
 | Phase | Theme | Deep | Short | Total |
 |---|---|---|---|---|
 | 1 | The machine under the backend | 12 | 20 | 32 |
-| 2 | Networking I, packets to transport | 8 | 18 | 26 |
-| 3 | Networking II, secure protocols and proxies | 11 | 16 | 27 |
+| 2 | Networking I, packets to transport | 9 | 20 | 29 |
+| 3 | Networking II, secure protocols and proxies | 11 | 18 | 29 |
 | 4 | Concurrency and I/O models | 8 | 14 | 22 |
 | 5 | APIs and contracts | 11 | 10 | 21 |
 | 6 | Databases I, using Postgres well | 12 | 17 | 29 |
@@ -35,10 +35,10 @@ How to read the tables:
 | 15 | Security, authentication and authorization | 11 | 14 | 25 |
 | 16 | Data systems | 8 | 12 | 20 |
 | 17 | Putting it together: system design and durable execution | 6 | 8 | 14 |
-| | | **168** | **229** | **397** |
+| | | **169** | **233** | **402** |
 
-That's a lot of writing: roughly 168 × 2,000 + 229 × 700 words, about
-496,000 words, three times ai-eng-graph. It's meant to take a long time.
+That's a lot of writing: roughly 169 × 2,000 + 233 × 700 words, about
+501,000 words, three times ai-eng-graph. It's meant to take a long time.
 Phases 1 to 8 stand on their own if I stop there.
 
 ## The spine
@@ -120,11 +120,11 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 | `ip-addressing` | deep | IPv4 and IPv6 addresses, subnets and CIDR notation. | network-layers | |
 | `ip-routing` | deep | How a packet finds its way hop by hop using routing tables. | ip-addressing | |
 | `bgp` | short | How networks on the internet announce which addresses they can reach. | ip-routing | |
-| `anycast` | short | One address announced from many places, so you reach the nearest. How DNS roots and CDNs work. | bgp | |
-| `nat` | short | Many private addresses sharing one public one, and why it breaks incoming connections. | ip-addressing | |
+| `anycast` | short | One address announced from many places, so you reach the nearest. How DNS roots and CDNs work. | bgp, tcp | |
+| `nat` | short | Many private addresses sharing one public one, and why it breaks incoming connections. | ip-addressing, ports-and-sockets | |
 | `mtu-and-fragmentation` | short | The largest packet a link carries, and what happens to bigger ones. | ip-routing | |
-| `icmp` | short | Ping, traceroute and path MTU discovery. | ip-routing | |
-| `network-latency` | deep | Propagation, transmission, queuing and processing delay. Round-trip time, and why the speed of light is a real limit. | network-layers | |
+| `icmp` | short | Ping, traceroute and path MTU discovery. | ip-routing | mtu-and-fragmentation |
+| `network-latency` | deep | Propagation, transmission, queuing and processing delay. Round-trip time, and why the speed of light is a real limit. | network-layers, latency-numbers | |
 
 **Transport**
 
@@ -135,20 +135,23 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 | `tcp` | deep | A reliable, ordered byte stream built on a network that drops and reorders packets. | ports-and-sockets | udp |
 | `tcp-handshake` | short | SYN, SYN-ACK, ACK: what opening a connection costs, and SYN floods. | tcp | |
 | `time-wait` | short | Why a closed connection lingers, and how that runs a busy client out of ports. | tcp-handshake | |
-| `tcp-retransmission` | short | ACKs, retransmission timeouts and fast retransmit. | tcp | |
+| `tcp-retransmission` | deep | ACKs, retransmission timeouts and fast retransmit. | tcp | |
 | `tcp-flow-control` | short | The receiver's window: don't send more than the other side can hold. | tcp | congestion-control |
 | `congestion-control` | deep | Slow start, backing off on loss, and CUBIC vs BBR: don't send more than the network can carry. | tcp-retransmission | tcp-flow-control |
-| `bandwidth-delay-product` | short | How much data must be in flight to fill a link. Why long fat pipes need big windows. | congestion-control | |
+| `bandwidth-delay-product` | short | How much data must be in flight to fill a link. Why long fat pipes need big windows. | congestion-control, network-latency, tcp-flow-control | |
 | `nagle-and-delayed-ack` | short | Two sensible TCP features that together add 40 ms stalls. TCP_NODELAY. | tcp | |
-| `head-of-line-blocking` | short | One lost packet holds up everything behind it in the stream. | tcp | |
-| `tun-tap`* | short | Virtual network devices that hand raw packets to a program. The phase 2 build runs on one. | ip-routing | |
+| `head-of-line-blocking` | short | One lost packet holds up everything behind it in the stream. | tcp-retransmission | |
+| `tcp-keepalive`* | short | How a connection notices the other side is gone: keepalive probes and TCP_USER_TIMEOUT. | tcp, nat | |
+| `bufferbloat`* | short | Oversized buffers that fill up and add delay, and the queue management that fixes it. | network-latency, congestion-control | |
+| `pacing`* | short | Spacing packets out over the round trip instead of sending them in bursts. | congestion-control | |
+| `tun-tap`* | short | Virtual network devices that hand raw packets to a program. The phase 2 build runs on one. | ip-routing, ethernet-and-arp | |
 | `packet-capture` | short | tcpdump and Wireshark: seeing what's really on the wire. | network-layers | |
 
 **Names**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `dns` | deep | Turning names into addresses: stub and recursive resolvers, root, TLD and authoritative servers. | udp | |
+| `dns` | deep | Turning names into addresses: stub and recursive resolvers, root, TLD and authoritative servers. | udp, tcp | |
 | `dns-records` | short | A, AAAA, CNAME, NS, MX, TXT, SRV: what each record type is for. | dns | |
 | `dns-caching` | short | TTLs, negative caching, and why a DNS change takes a while to reach everyone. | dns | |
 
@@ -185,6 +188,8 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 | `server-sent-events` | short | A one-way stream of events from server to client over plain HTTP. | http-1-1 | websockets |
 | `protobuf` | short | A binary format with a schema and numbered fields. | binary-encoding | |
 | `grpc` | deep | Remote calls over HTTP/2 with protobuf: unary and streaming calls, deadlines, status codes. | http2, protobuf | |
+| `dnssec`* | short | Signatures on DNS answers, so a resolver can check an answer came from the zone's owner. | dns, public-key-crypto | |
+| `encrypted-dns`* | short | DNS over TLS and DNS over HTTPS: hiding lookups from the network. | dns, tls | |
 | `connection-pooling` | short | Keeping connections open to reuse them, and how big the pool should be. | tcp-handshake, tls | |
 | `fuzzing`* | short | Feeding generated input to a parser to find crashes and disagreements. The phase 3 build's harness. | | fault-injection |
 
@@ -198,7 +203,7 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 | `l4-vs-l7` | short | Balancing connections vs balancing requests. What each can see and do. | load-balancing | |
 | `load-balancing-algorithms` | deep | Round robin, least connections, power of two choices, and how each behaves under uneven load. | load-balancing | |
 | `health-checks` | short | Active probes vs watching real traffic, and taking bad backends out. | load-balancing | |
-| `service-discovery` | short | How a client finds the current list of backend addresses. | dns, load-balancing | |
+| `service-discovery` | short | How a client finds the current list of backend addresses. | dns, dns-records, load-balancing | |
 | `cdn` | deep | Caches at the edge, near users. What they can and can't serve. | anycast, reverse-proxy | |
 
 ## Phase 4: Concurrency and I/O models (skill 3)

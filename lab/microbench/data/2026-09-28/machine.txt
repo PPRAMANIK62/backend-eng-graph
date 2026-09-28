@@ -1,0 +1,16 @@
+date: 2026-09-28T13:51:39+05:30
+Linux omarchy 7.1.9-arch1-2 #1 SMP PREEMPT_DYNAMIC Fri, 21 Aug 2026 22:18:59 +0000 x86_64 GNU/Linux
+CPU(s):                                  16
+Model name:                              13th Gen Intel(R) Core(TM) i5-13500H
+CPU(s) scaling MHz:                      76%
+L1d cache:                               448 KiB (12 instances)
+L1i cache:                               640 KiB (12 instances)
+L2 cache:                                9 MiB (6 instances)
+L3 cache:                                18 MiB (1 instance)
+governor: powersave
+gcc (GCC) 16.2.1 20260810
+               total        used        free      shared  buff/cache   available
+Mem:     16431239168  9334403072  2009202688  1049374720  7132815360  7096836096
+btrfs rw,relatime,compress=zstd:3,ssd,space_cache=v2,subvolid=257,subvol=/@home
+nvme0n1 WD PC SN740 SDDQNQD-512G-1014
+---------------------m out/ssd.bin

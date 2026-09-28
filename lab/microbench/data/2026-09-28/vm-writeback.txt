@@ -1,0 +1,6 @@
+dirty_ratio = 0
+dirty_bytes = 268435456
+dirty_background_ratio = 0
+dirty_background_bytes = 67108864
+dirty_expire_centisecs = 3000
+dirty_writeback_centisecs = 1500

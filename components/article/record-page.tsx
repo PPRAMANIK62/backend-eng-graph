@@ -33,6 +33,8 @@ export function RecordPage({ doc }: { doc: RecordDoc }) {
               {LABEL[doc.kind]} {number}
             </p>
             <h1 className={s.title}>{doc.title}</h1>
+          </header>
+          <aside className={s.rail} aria-label="About this record">
             <p className={s.meta}>
               <span>Phase {doc.phase}</span>
               {doc.about && <span>{doc.about}</span>}
@@ -52,7 +54,7 @@ export function RecordPage({ doc }: { doc: RecordDoc }) {
                 </div>
               </div>
             )}
-          </header>
+          </aside>
           <div className={s.prose}>{content}</div>
         </article>
       </div>

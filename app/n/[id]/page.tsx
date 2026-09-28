@@ -68,6 +68,8 @@ export default async function ArticlePage({ params }: PageProps<"/n/[id]">) {
               <h1 className={s.title}>{node.title}</h1>
             </ViewTransition>
             <p className={s.lede}>{node.note}</p>
+          </header>
+          <aside className={s.rail} aria-label="About this concept">
             <p className={s.meta}>
               <span>{node.depth === "deep" ? "Deep read" : "Short read"}</span>
               <span>{minutes(node.words)} min</span>
@@ -82,7 +84,7 @@ export default async function ArticlePage({ params }: PageProps<"/n/[id]">) {
                 <RelRow tone="lead" label="Unlocks" items={unlocks} here={node.phase} />
               </div>
             )}
-          </header>
+          </aside>
           <div className={s.prose}>{content}</div>
           <ArticleEnd id={id} mapHref={mapHref} next={unlocks.map(n => ({ id: n.id, title: n.title, note: n.note, words: n.words }))} />
         </article>

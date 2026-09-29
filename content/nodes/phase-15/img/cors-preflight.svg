@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="548" viewBox="0 0 720 548" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="130" y="28" text-anchor="middle" class="ink t b">Browser</text>
+  <text x="130" y="46" text-anchor="middle" class="ink2 n">page at app.example.com</text>
+  <text x="610" y="28" text-anchor="middle" class="ink t b">api.example.com</text>
+  <line x1="130" y1="58" x2="130" y2="560" class="line"/>
+  <line x1="610" y1="58" x2="610" y2="560" class="line"/>
+
+  <!-- 1 preflight -->
+  <text x="150" y="80" class="ink n b">1  Preflight (no cookies)</text>
+  <text x="150" y="98" class="ink n mono">OPTIONS /orders/42</text>
+  <text x="150" y="114" class="ink2 n mono">Origin: https://app.example.com</text>
+  <text x="150" y="130" class="ink2 n mono">Access-Control-Request-Method: PUT</text>
+  <text x="150" y="146" class="ink2 n mono">Access-Control-Request-Headers: content-type</text>
+  <line x1="130" y1="158" x2="607" y2="158" class="line" marker-end="url(#arrow)"/>
+
+  <!-- 2 preflight answer -->
+  <text x="590" y="186" text-anchor="end" class="ink n b">2  204 No Content</text>
+  <text x="590" y="204" text-anchor="end" class="ink2 n mono">Access-Control-Allow-Origin: https://app.example.com</text>
+  <text x="590" y="220" text-anchor="end" class="ink2 n mono">Access-Control-Allow-Methods: PUT</text>
+  <text x="590" y="236" text-anchor="end" class="ink2 n mono">Access-Control-Allow-Headers: content-type</text>
+  <text x="590" y="252" text-anchor="end" class="ink2 n mono">Access-Control-Max-Age: 600</text>
+  <line x1="610" y1="264" x2="133" y2="264" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="280" width="220" height="44" rx="6" class="box"/>
+  <text x="130" y="299" text-anchor="middle" class="ink n">check passes; cache</text>
+  <text x="130" y="315" text-anchor="middle" class="ink n">the answer for 600 s</text>
+
+  <!-- 3 real request -->
+  <text x="260" y="352" class="focus n b">3  The real request</text>
+  <text x="260" y="370" class="focus n mono">PUT /orders/42</text>
+  <text x="260" y="386" class="ink2 n mono">Origin: https://app.example.com</text>
+  <text x="260" y="402" class="ink2 n mono">Content-Type: application/json</text>
+  <line x1="130" y1="414" x2="607" y2="414" class="focus-s" marker-end="url(#arrow)"/>
+
+  <!-- 4 real response -->
+  <text x="590" y="442" text-anchor="end" class="ink n b">4  200 OK</text>
+  <text x="590" y="460" text-anchor="end" class="ink2 n mono">Access-Control-Allow-Origin: https://app.example.com</text>
+  <line x1="610" y1="472" x2="133" y2="472" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="488" width="220" height="44" rx="6" class="box"/>
+  <text x="130" y="507" text-anchor="middle" class="ink n">check the header again,</text>
+  <text x="130" y="523" text-anchor="middle" class="ink n">then give the script the body</text>
+</svg>

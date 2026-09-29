@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="590" viewBox="0 0 720 590" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <line x1="610" y1="331" x2="610" y2="385" class="line"/>
+  <line x1="610" y1="304" x2="610" y2="316" class="line"/>
+  <line x1="610" y1="58" x2="610" y2="212" class="line"/>
+  <line x1="360" y1="331" x2="360" y2="385" class="line"/>
+  <line x1="360" y1="166" x2="360" y2="316" class="line"/>
+  <line x1="360" y1="58" x2="360" y2="108" class="line"/>
+  <line x1="110" y1="58" x2="110" y2="385" class="line"/>
+  <text x="110" y="26" text-anchor="middle" class="ink t b">Server (relying party)</text>
+  <text x="110" y="44" text-anchor="middle" class="ink2 n mono">example.com</text>
+  <text x="360" y="26" text-anchor="middle" class="ink t b">Browser</text>
+  <text x="360" y="44" text-anchor="middle" class="ink2 n mono">on https://example.com</text>
+  <text x="610" y="26" text-anchor="middle" class="ink t b">Authenticator</text>
+  <text x="610" y="44" text-anchor="middle" class="ink2 n">phone, laptop or key</text>
+  <line x1="110" y1="92" x2="357" y2="92" class="line" marker-end="url(#arrow)"/>
+  <text x="235.0" y="85" text-anchor="middle" class="ink n mono">challenge (random), rpId</text>
+  <rect x="250" y="108" width="220" height="58" rx="6" class="box"/>
+  <text x="360" y="126" text-anchor="middle" class="ink n">checks rpId fits its own domain,</text>
+  <text x="360" y="142" text-anchor="middle" class="ink n">builds clientData: type, challenge,</text>
+  <text x="360" y="158" text-anchor="middle" class="focus n mono b">origin https://example.com</text>
+  <line x1="360" y1="196" x2="607" y2="196" class="line" marker-end="url(#arrow)"/>
+  <text x="485.0" y="189" text-anchor="middle" class="ink n mono">rpId, SHA-256(clientData)</text>
+  <rect x="510" y="212" width="200" height="92" rx="6" class="box"/>
+  <text x="610" y="230" text-anchor="middle" class="ink n">finds the passkey for</text>
+  <text x="610" y="246" text-anchor="middle" class="focus n b">this rpId only</text>
+  <text x="610" y="262" text-anchor="middle" class="ink n">checks fingerprint or PIN</text>
+  <text x="610" y="278" text-anchor="middle" class="ink n">signs authData + hash</text>
+  <text x="610" y="294" text-anchor="middle" class="ink n">with the private key</text>
+  <line x1="610" y1="334" x2="363" y2="334" class="line" marker-end="url(#arrow)"/>
+  <text x="485.0" y="327" text-anchor="middle" class="ink n mono">authData, signature, credential ID</text>
+  <line x1="360" y1="372" x2="113" y2="372" class="line" marker-end="url(#arrow)"/>
+  <text x="235.0" y="365" text-anchor="middle" class="ink n mono">+ clientData, user handle</text>
+  <rect x="15" y="392" width="190" height="178" rx="6" class="safe-box"/>
+  <text x="110" y="412" text-anchor="middle" class="ink n b">checks, in order:</text>
+  <text x="110" y="432" text-anchor="middle" class="ink n">challenge is the one it sent</text>
+  <text x="110" y="451" text-anchor="middle" class="ink n">origin is its own</text>
+  <text x="110" y="470" text-anchor="middle" class="ink n">rpIdHash is SHA-256(rpId)</text>
+  <text x="110" y="489" text-anchor="middle" class="ink n">UP flag set (UV if needed)</text>
+  <text x="110" y="508" text-anchor="middle" class="ink n">signature valid with the</text>
+  <text x="110" y="527" text-anchor="middle" class="ink n">public key it stored</text>
+  <text x="110" y="546" text-anchor="middle" class="ink n">at registration</text>
+  <rect x="505" y="420" width="210" height="58" rx="6" class="box"/>
+  <text x="610" y="440" text-anchor="middle" class="ink n">authData = rpIdHash, flags</text>
+  <text x="610" y="456" text-anchor="middle" class="ink n mono">(UP, UV, BE, BS), signCount</text>
+  <text x="610" y="500" text-anchor="middle" class="ink2 n">The private key is never sent</text>
+  <text x="610" y="516" text-anchor="middle" class="ink2 n">to the server or the browser.</text>
+</svg>

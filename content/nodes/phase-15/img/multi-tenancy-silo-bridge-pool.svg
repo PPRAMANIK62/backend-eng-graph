@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="125" y="26" text-anchor="middle" class="ink t b">Silo</text>
+  <text x="125" y="44" text-anchor="middle" class="ink2 n">an instance per tenant</text>
+  <text x="360" y="26" text-anchor="middle" class="ink t b">Bridge</text>
+  <text x="360" y="44" text-anchor="middle" class="ink2 n">a schema per tenant, shared instance</text>
+  <text x="595" y="26" text-anchor="middle" class="ink t b">Pool</text>
+  <text x="595" y="44" text-anchor="middle" class="ink2 n">shared tables, tenant_id on every row</text>
+
+  <!-- silo: three separate instances -->
+  <rect x="30" y="62" width="190" height="52" rx="6" class="box"/>
+  <text x="46" y="84" class="ink n b">instance A</text>
+  <text x="46" y="102" class="ink2 n mono">invoices (A only)</text>
+  <rect x="30" y="122" width="190" height="52" rx="6" class="box"/>
+  <text x="46" y="144" class="ink n b">instance B</text>
+  <text x="46" y="162" class="ink2 n mono">invoices (B only)</text>
+  <rect x="30" y="182" width="190" height="52" rx="6" class="box"/>
+  <text x="46" y="204" class="ink n b">instance C</text>
+  <text x="46" y="222" class="ink2 n mono">invoices (C only)</text>
+
+  <!-- bridge: one instance, three schemas -->
+  <rect x="262" y="62" width="196" height="172" rx="6" class="box"/>
+  <text x="276" y="84" class="ink n b">one shared instance</text>
+  <rect x="276" y="96" width="168" height="36" rx="6" class="box"/>
+  <text x="290" y="119" class="ink2 n mono">tenant_a.invoices</text>
+  <rect x="276" y="140" width="168" height="36" rx="6" class="box"/>
+  <text x="290" y="163" class="ink2 n mono">tenant_b.invoices</text>
+  <rect x="276" y="184" width="168" height="36" rx="6" class="box"/>
+  <text x="290" y="207" class="ink2 n mono">tenant_c.invoices</text>
+
+  <!-- pool: one table -->
+  <rect x="498" y="62" width="196" height="172" rx="6" class="box"/>
+  <text x="512" y="84" class="ink n b">one shared instance</text>
+  <text x="512" y="108" class="ink n mono">invoices</text>
+  <line x1="512" y1="116" x2="680" y2="116" class="line"/>
+  <text x="512" y="134" class="focus n mono">tenant_id</text>
+  <text x="600" y="134" class="ink2 n mono" xml:space="preserve" style="white-space:pre">id  amount</text>
+  <text x="512" y="156" class="focus n mono">A</text><text x="600" y="156" class="ink2 n mono" xml:space="preserve" style="white-space:pre">1   120</text>
+  <text x="512" y="176" class="focus n mono">C</text><text x="600" y="176" class="ink2 n mono" xml:space="preserve" style="white-space:pre">2   75</text>
+  <text x="512" y="196" class="focus n mono">A</text><text x="600" y="196" class="ink2 n mono" xml:space="preserve" style="white-space:pre">3   300</text>
+  <text x="512" y="216" class="focus n mono">B</text><text x="600" y="216" class="ink2 n mono" xml:space="preserve" style="white-space:pre">4   42</text>
+
+  <!-- what each shares -->
+  <text x="125" y="258" text-anchor="middle" class="ink2 n">shares nothing in the database</text>
+  <text x="360" y="258" text-anchor="middle" class="ink2 n">shares the server's CPU and memory</text>
+  <text x="595" y="258" text-anchor="middle" class="ink2 n">every query must filter on tenant_id</text>
+
+  <!-- spectrum -->
+  <line x1="40" y1="292" x2="680" y2="292" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="40" y="316" class="ink n">more isolation, more cost per tenant</text>
+  <text x="680" y="316" text-anchor="end" class="ink n">more sharing, less cost per tenant</text>
+</svg>

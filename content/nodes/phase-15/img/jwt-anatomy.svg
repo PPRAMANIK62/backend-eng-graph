@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="376" viewBox="0 0 720 376" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="26" text-anchor="start" class="ink t b">The token, as sent</text>
+  <rect x="20" y="40" width="680" height="84" rx="6" class="box"/>
+  <text x="32" y="64" text-anchor="start" class="focus n mono b">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</text>
+  <text x="32" y="86" text-anchor="start" class="ink n mono b">.eyJsb2dnZWRJbkFzIjoiYWRtaW4iLCJpYXQiOjE0MjI3Nzk2Mzh9</text>
+  <text x="32" y="108" text-anchor="start" class="ink2 n mono b">.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI</text>
+  <text x="20" y="158" text-anchor="start" class="ink t b">Decoded</text>
+  <rect x="20" y="172" width="200" height="138" rx="6" class="box"/>
+  <text x="32" y="196" text-anchor="start" class="focus t b">Header</text>
+  <text x="32" y="222" text-anchor="start" class="ink n mono">{&quot;alg&quot;:&quot;HS256&quot;,</text>
+  <text x="32" y="240" text-anchor="start" class="ink n mono"> &quot;typ&quot;:&quot;JWT&quot;}</text>
+  <text x="32" y="282" text-anchor="start" class="ink2 n">how it is signed</text>
+  <rect x="260" y="172" width="200" height="138" rx="6" class="box"/>
+  <text x="272" y="196" text-anchor="start" class="ink t b">Payload (claims)</text>
+  <text x="272" y="222" text-anchor="start" class="ink n mono">{&quot;loggedInAs&quot;:&quot;admin&quot;,</text>
+  <text x="272" y="240" text-anchor="start" class="ink n mono"> &quot;iat&quot;:1422779638}</text>
+  <text x="272" y="282" text-anchor="start" class="ink2 n">what it says</text>
+  <rect x="500" y="172" width="200" height="138" rx="6" class="box"/>
+  <text x="512" y="196" text-anchor="start" class="ink t b">Signature</text>
+  <text x="512" y="222" text-anchor="start" class="ink n mono">HMAC-SHA256(</text>
+  <text x="512" y="240" text-anchor="start" class="ink n mono">  key,</text>
+  <text x="512" y="258" text-anchor="start" class="ink n mono">  header . payload)</text>
+  <text x="512" y="282" text-anchor="start" class="ink2 n">proof the first two</text>
+  <text x="512" y="300" text-anchor="start" class="ink2 n">parts weren't changed</text>
+  <path d="M120,124 V169" class="line" marker-end="url(#arrow)"/>
+  <path d="M360,124 V169" class="line" marker-end="url(#arrow)"/>
+  <path d="M600,124 V169" class="line" marker-end="url(#arrow)"/>
+  <text x="128" y="150" text-anchor="start" class="ink2 n">base64url</text>
+  <text x="368" y="150" text-anchor="start" class="ink2 n">base64url</text>
+  <text x="608" y="150" text-anchor="start" class="ink2 n">base64url</text>
+  <text x="20" y="340" text-anchor="start" class="ink n">Header and payload are only encoded: anyone holding the token can read them.</text>
+  <text x="20" y="360" text-anchor="start" class="ink2 n">Only the signature needs the key, here the shared HMAC secret "secretkey".</text>
+</svg>

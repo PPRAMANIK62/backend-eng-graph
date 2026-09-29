@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="26" class="ink t b">ID token payload (a signed JWT)</text>
+  <rect x="40" y="40" width="300" height="262" rx="6" class="box"/>
+  <text x="56" y="72" class="ink n mono b">&quot;iss&quot;:</text>
+  <text x="150" y="72" class="ink n mono">&quot;https://login.example.com&quot;</text>
+  <text x="56" y="102" class="ink n mono b">&quot;sub&quot;:</text>
+  <text x="150" y="102" class="ink n mono">&quot;24400320&quot;</text>
+  <text x="56" y="132" class="ink n mono b">&quot;aud&quot;:</text>
+  <text x="150" y="132" class="ink n mono">&quot;my-client-id&quot;</text>
+  <text x="56" y="162" class="ink n mono b">&quot;exp&quot;:</text>
+  <text x="150" y="162" class="ink n mono">1311281970</text>
+  <text x="56" y="192" class="ink n mono b">&quot;iat&quot;:</text>
+  <text x="150" y="192" class="ink n mono">1311280970</text>
+  <text x="56" y="222" class="ink n mono b">&quot;nonce&quot;:</text>
+  <text x="150" y="222" class="ink n mono">&quot;n-0S6_WzA2Mj&quot;</text>
+  <text x="56" y="252" class="ink n mono b">&quot;auth_time&quot;:</text>
+  <text x="150" y="252" class="ink n mono">1311280969</text>
+  <text x="56" y="286" class="ink2 n">+ a signature over all of it</text>
+  <text x="400" y="26" class="ink t b">What the client checks</text>
+  <line x1="344" y1="68" x2="396" y2="68" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="72" class="ink n">equals the issuer I expect, exactly</text>
+  <line x1="344" y1="98" x2="396" y2="98" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="102" class="ink2 n">with iss: the stable user ID</text>
+  <line x1="344" y1="128" x2="396" y2="128" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="132" class="ink n">contains my client_id</text>
+  <line x1="344" y1="158" x2="396" y2="158" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="162" class="ink n">is still in the future</text>
+  <line x1="344" y1="218" x2="396" y2="218" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="222" class="ink n">matches the nonce I sent</text>
+  <line x1="344" y1="282" x2="396" y2="282" class="line" marker-end="url(#arrow)"/>
+  <text x="402" y="286" class="ink n">valid, with keys from jwks_uri</text>
+</svg>

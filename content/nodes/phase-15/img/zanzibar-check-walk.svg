@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- the question -->
+  <rect x="170" y="14" width="380" height="40" rx="6" class="box"/>
+  <text x="360" y="39" text-anchor="middle" class="ink t b">Can <tspan class="mono">user:alice</tspan> view <tspan class="mono">doc:readme</tspan>?</text>
+  <line x1="360" y1="56" x2="360" y2="74" class="line"/>
+  <text x="360" y="92" text-anchor="middle" class="ink2 n mono">view = edit + viewer + parent-&gt;view</text>
+  <!-- branches -->
+  <path d="M360,100 V112 H120 V130" class="line" marker-end="url(#arrow)"/>
+  <path d="M360,100 V130" class="line" marker-end="url(#arrow)"/>
+  <path d="M360,100 V112 H600 V130" class="focus-s" marker-end="url(#arrow)"/>
+
+  <rect x="30" y="133" width="180" height="54" rx="6" class="box"/>
+  <text x="120" y="155" text-anchor="middle" class="ink t mono">edit</text>
+  <text x="120" y="175" text-anchor="middle" class="ink2 n">no owner or editor tuple</text>
+  <rect x="270" y="133" width="180" height="54" rx="6" class="box"/>
+  <text x="360" y="155" text-anchor="middle" class="ink t mono">viewer</text>
+  <text x="360" y="175" text-anchor="middle" class="ink2 n">no viewer tuple for alice</text>
+  <rect x="490" y="133" width="220" height="54" rx="6" class="box"/>
+  <text x="600" y="155" text-anchor="middle" class="ink t mono">parent-&gt;view</text>
+  <text x="600" y="175" text-anchor="middle" class="ink n mono">doc:readme#parent@folder:A</text>
+
+  <line x1="600" y1="189" x2="600" y2="213" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="490" y="216" width="220" height="54" rx="6" class="box"/>
+  <text x="600" y="238" text-anchor="middle" class="ink t">view on <tspan class="mono">folder:A</tspan></text>
+  <text x="600" y="258" text-anchor="middle" class="ink n mono">folder:A#viewer@group:eng#member</text>
+
+  <line x1="600" y1="272" x2="600" y2="296" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="490" y="299" width="220" height="54" rx="6" class="box"/>
+  <text x="600" y="321" text-anchor="middle" class="ink t">member of <tspan class="mono">group:eng</tspan>?</text>
+  <text x="600" y="341" text-anchor="middle" class="ink n mono">group:eng#member@alice</text>
+
+  <line x1="600" y1="355" x2="600" y2="379" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="490" y="382" width="220" height="44" rx="6" class="safe-box"/>
+  <text x="600" y="409" text-anchor="middle" class="ink t b">allowed</text>
+
+  <!-- notes on the left -->
+  <text x="30" y="236" class="ink2 n">Each box is a lookup at the same snapshot.</text>
+  <text x="30" y="256" class="ink2 n">All three branches start at once.</text>
+  <text x="30" y="276" class="ink2 n">The first branch to prove "yes" cancels</text>
+  <text x="30" y="296" class="ink2 n">the others.</text>
+  <text x="30" y="336" class="ink2 n">A userset like <tspan class="mono">group:eng#member</tspan></text>
+  <text x="30" y="356" class="ink2 n">is a check of its own, so the walk can</text>
+  <text x="30" y="376" class="ink2 n">go as deep as groups are nested.</text>
+  <text x="30" y="452" class="ink2 n">Stored tuples in <tspan class="mono">monospace</tspan>; the rule on top comes from the schema.</text>
+</svg>

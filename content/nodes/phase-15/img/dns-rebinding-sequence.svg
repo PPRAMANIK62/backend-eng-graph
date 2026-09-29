@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe{fill:#1baf7a}
+    .dash{stroke-dasharray:5 4}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe{fill:#199e70}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- your network -->
+  <rect x="372" y="8" width="340" height="404" rx="6" class="line dash"/>
+  <text x="704" y="404" text-anchor="end" class="ink2 n">your network, behind the firewall</text>
+
+  <!-- lanes -->
+  <text x="90" y="30" text-anchor="middle" class="ink t b">Attacker's DNS</text>
+  <text x="250" y="30" text-anchor="middle" class="ink t b">Attacker's server</text>
+  <text x="450" y="30" text-anchor="middle" class="ink t b">Your browser</text>
+  <text x="630" y="30" text-anchor="middle" class="ink t b">Router admin</text>
+  <text x="630" y="46" text-anchor="middle" class="ink2 n mono">192.168.1.1</text>
+  <line x1="90" y1="42" x2="90" y2="170" class="line"/>
+  <line x1="90" y1="214" x2="90" y2="384" class="line"/>
+  <line x1="250" y1="42" x2="250" y2="384" class="line"/>
+  <line x1="450" y1="42" x2="450" y2="384" class="line"/>
+  <line x1="630" y1="54" x2="630" y2="384" class="line"/>
+
+  <!-- 1: first lookup -->
+  <line x1="450" y1="72" x2="93" y2="72" class="line" marker-end="url(#arrow)"/>
+  <text x="170" y="66" text-anchor="middle" class="ink n mono">attacker.example?</text>
+  <line x1="90" y1="98" x2="447" y2="98" class="line" marker-end="url(#arrow)"/>
+  <text x="170" y="92" text-anchor="middle" class="ink n mono">203.0.113.5</text>
+  <text x="308" y="92" text-anchor="middle" class="ink2 n">short TTL</text>
+
+  <!-- 2: page and script -->
+  <line x1="450" y1="130" x2="253" y2="130" class="line" marker-end="url(#arrow)"/>
+  <text x="310" y="124" text-anchor="middle" class="ink n mono">GET /</text>
+  <line x1="250" y1="156" x2="447" y2="156" class="line" marker-end="url(#arrow)"/>
+  <text x="310" y="150" text-anchor="middle" class="ink n">page, script</text>
+
+  <!-- 3: rebind -->
+  <rect x="20" y="172" width="140" height="40" rx="6" class="focus-box"/>
+  <text x="90" y="188" text-anchor="middle" class="ink n">attacker changes</text>
+  <text x="90" y="203" text-anchor="middle" class="ink n">the record</text>
+
+  <!-- 4: second lookup -->
+  <line x1="450" y1="236" x2="93" y2="236" class="line" marker-end="url(#arrow)"/>
+  <text x="170" y="230" text-anchor="middle" class="ink n mono">attacker.example?</text>
+  <text x="462" y="240" class="ink2 n">asks again</text>
+  <line x1="90" y1="262" x2="447" y2="262" class="line" marker-end="url(#arrow)"/>
+  <text x="170" y="256" text-anchor="middle" class="lost n mono b">192.168.1.1</text>
+
+  <!-- 5: request to router -->
+  <line x1="450" y1="292" x2="627" y2="292" class="line" marker-end="url(#arrow)"/>
+  <text x="540" y="286" text-anchor="middle" class="ink n mono">Host: attacker.example</text>
+  <line x1="630" y1="318" x2="453" y2="318" class="line" marker-end="url(#arrow)"/>
+  <text x="540" y="312" text-anchor="middle" class="ink n">admin page</text>
+
+  <!-- 6: exfiltrate -->
+  <line x1="450" y1="366" x2="253" y2="366" class="line" marker-end="url(#arrow)"/>
+  <text x="310" y="344" text-anchor="middle" class="lost n b">script sends</text>
+  <text x="310" y="360" text-anchor="middle" class="lost n b">it out</text>
+  <text x="462" y="346" class="ink2 n">same host name,</text>
+  <text x="462" y="361" class="ink2 n">so same origin:</text>
+  <text x="462" y="376" class="ink2 n">the script may read it</text>
+</svg>

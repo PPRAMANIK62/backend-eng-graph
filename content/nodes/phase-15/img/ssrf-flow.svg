@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- boundary -->
+  <line x1="200" y1="30" x2="200" y2="330" class="line" stroke-dasharray="6 5"/>
+  <text x="192" y="26" text-anchor="end" class="ink2 n">internet</text>
+  <text x="208" y="26" class="ink2 n">inside the network</text>
+
+  <!-- attacker -->
+  <rect x="20" y="140" width="150" height="56" rx="6" class="box"/>
+  <text x="95" y="164" text-anchor="middle" class="ink t b">Attacker</text>
+  <text x="95" y="182" text-anchor="middle" class="ink2 n">can't reach inside</text>
+
+  <!-- app -->
+  <rect x="236" y="140" width="164" height="56" rx="6" class="box"/>
+  <text x="318" y="164" text-anchor="middle" class="ink t b">Your API server</text>
+  <text x="318" y="182" text-anchor="middle" class="ink2 n">fetches the given URL</text>
+
+  <line x1="172" y1="154" x2="233" y2="154" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="95" y="226" text-anchor="middle" class="focus n b">1  POST a URL</text>
+  <line x1="236" y1="184" x2="175" y2="184" class="lost-s" style="stroke-width:1.5" marker-end="url(#arrow)"/>
+  <text x="95" y="244" text-anchor="middle" class="lost n b">4  gets the response</text>
+
+  <!-- targets -->
+  <rect x="470" y="40" width="230" height="56" rx="6" class="box"/>
+  <text x="585" y="64" text-anchor="middle" class="ink t b">Admin page</text>
+  <text x="585" y="82" text-anchor="middle" class="ink2 n mono">http://127.0.0.1/admin</text>
+
+  <rect x="470" y="140" width="230" height="56" rx="6" class="box"/>
+  <text x="585" y="164" text-anchor="middle" class="ink t b">Internal service</text>
+  <text x="585" y="182" text-anchor="middle" class="ink2 n mono">http://10.0.0.5/</text>
+
+  <rect x="470" y="240" width="230" height="56" rx="6" class="box"/>
+  <rect x="470" y="240" width="230" height="56" rx="6" fill="none" class="lost-s"/>
+  <text x="585" y="264" text-anchor="middle" class="ink t b">Metadata service</text>
+  <text x="585" y="282" text-anchor="middle" class="ink2 n mono">169.254.169.254</text>
+
+  <line x1="400" y1="160" x2="467" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="400" y1="168" x2="467" y2="168" class="line" marker-end="url(#arrow)"/>
+  <line x1="400" y1="176" x2="467" y2="254" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="440" y="206" class="focus n b">2</text>
+  <line x1="470" y1="288" x2="403" y2="196" class="lost-s" style="stroke-width:1.5" marker-end="url(#arrow)"/>
+  <text x="424" y="300" text-anchor="end" class="lost n b">3  credentials</text>
+  <text x="470" y="318" class="ink2 n">reachable only from inside</text>
+</svg>

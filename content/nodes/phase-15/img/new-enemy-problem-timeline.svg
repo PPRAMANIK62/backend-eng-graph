@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- axis labels -->
+  <text x="20" y="26" class="ink t b">Without a token</text>
+  <line x1="120" y1="80" x2="690" y2="80" class="line" marker-end="url(#arrow)"/>
+  <text x="696" y="98" text-anchor="end" class="ink2 n">time</text>
+  <!-- T1 -->
+  <line x1="210" y1="70" x2="210" y2="90" class="line"/>
+  <text x="210" y="60" text-anchor="middle" class="ink n mono">T1</text>
+  <text x="210" y="112" text-anchor="middle" class="ink n">Bob removed</text>
+  <text x="210" y="128" text-anchor="middle" class="ink2 n">from the doc</text>
+  <!-- T2 -->
+  <line x1="360" y1="70" x2="360" y2="90" class="line"/>
+  <text x="360" y="60" text-anchor="middle" class="ink n mono">T2</text>
+  <text x="360" y="112" text-anchor="middle" class="ink n">New text saved</text>
+  <text x="360" y="128" text-anchor="middle" class="ink2 n">by Charlie</text>
+  <!-- check -->
+  <rect x="470" y="40" width="210" height="30" rx="6" class="box"/>
+  <text x="575" y="60" text-anchor="middle" class="ink n">Bob's check, snapshot <tspan class="mono">T0</tspan></text>
+  <line x1="575" y1="72" x2="575" y2="90" class="line"/>
+  <text x="575" y="112" text-anchor="middle" class="lost t b">Bob still a viewer</text>
+  <text x="575" y="128" text-anchor="middle" class="ink2 n">sees the new text</text>
+  <text x="130" y="60" text-anchor="middle" class="ink2 n mono">T0</text>
+  <line x1="130" y1="70" x2="130" y2="90" class="line"/>
+  <text x="130" y="112" text-anchor="middle" class="ink2 n">replica</text>
+  <text x="130" y="128" text-anchor="middle" class="ink2 n">is here</text>
+
+  <line x1="20" y1="160" x2="700" y2="160" class="line" stroke-dasharray="3 4"/>
+
+  <text x="20" y="190" class="ink t b">With a zookie</text>
+  <line x1="120" y1="244" x2="690" y2="244" class="line" marker-end="url(#arrow)"/>
+  <text x="696" y="262" text-anchor="end" class="ink2 n">time</text>
+  <line x1="210" y1="234" x2="210" y2="254" class="line"/>
+  <text x="210" y="224" text-anchor="middle" class="ink n mono">T1</text>
+  <text x="210" y="276" text-anchor="middle" class="ink n">Bob removed</text>
+  <line x1="360" y1="234" x2="360" y2="254" class="line"/>
+  <text x="360" y="224" text-anchor="middle" class="ink n mono">T2</text>
+  <text x="360" y="276" text-anchor="middle" class="ink n">New text saved</text>
+  <text x="360" y="292" text-anchor="middle" class="focus n b">with zookie T2</text>
+  <rect x="470" y="204" width="210" height="30" rx="6" class="box"/>
+  <text x="575" y="224" text-anchor="middle" class="ink n">Bob's check sends <tspan class="mono">T2</tspan></text>
+  <line x1="575" y1="236" x2="575" y2="254" class="line"/>
+  <text x="575" y="276" text-anchor="middle" class="ink n">snapshot must be ≥ <tspan class="mono">T2</tspan></text>
+  <rect x="490" y="286" width="170" height="30" rx="6" class="safe-box"/>
+  <text x="575" y="306" text-anchor="middle" class="ink t b">includes T1: denied</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="372" viewBox="0 0 720 372" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="24" class="ink t b">Second factor</text>
+  <text x="360" y="24" class="ink t b">Vulnerable to</text>
+  <rect x="40" y="40" width="300" height="76" rx="6" class="safe-box"/>
+  <text x="56" y="62" class="ink n b">Phishing-resistant:</text>
+  <text x="56" y="80" class="ink n">FIDO / WebAuthn (passkeys,</text>
+  <text x="56" y="98" class="ink n">security keys), PKI certificates</text>
+  <text x="360" y="62" class="ink n">none of these attacks:</text>
+  <text x="360" y="80" class="ink n">the output is bound to the</text>
+  <text x="360" y="98" class="ink n">site or the connection</text>
+  <rect x="40" y="124" width="300" height="76" rx="6" class="box"/>
+  <text x="56" y="146" class="ink n b">Authenticator app code (OTP),</text>
+  <text x="56" y="164" class="ink n">or push with number matching</text>
+  <text x="360" y="146" class="lost n b">phishing: a fake page</text>
+  <text x="360" y="164" class="ink n">asks for the code and</text>
+  <text x="360" y="182" class="ink n">relays it at once</text>
+  <rect x="40" y="208" width="300" height="76" rx="6" class="box"/>
+  <text x="56" y="230" class="ink n b">Push without number matching</text>
+  <text x="360" y="230" class="lost n b">push bombing: approve one</text>
+  <text x="360" y="248" class="ink n">prompt to make them stop;</text>
+  <text x="360" y="266" class="ink n">user error</text>
+  <rect x="40" y="292" width="300" height="76" rx="6" class="box"/>
+  <text x="56" y="314" class="ink n b">SMS or voice code</text>
+  <text x="360" y="314" class="lost n b">phishing, SIM swap,</text>
+  <text x="360" y="332" class="ink n">SS7 interception.</text>
+  <text x="360" y="350" class="ink n">A last resort</text>
+  <line x1="700" y1="44" x2="700" y2="352" class="line" marker-start="url(#arrow)"/>
+  <text x="690" y="60" text-anchor="end" class="ink2 n">stronger</text>
+  <text x="690" y="352" text-anchor="end" class="ink2 n">weaker</text>
+</svg>

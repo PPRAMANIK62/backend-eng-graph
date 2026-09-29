@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="324" viewBox="0 0 720 324" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="170" y="28" text-anchor="middle" class="ink t b">Your server</text>
+  <text x="580" y="28" text-anchor="middle" class="ink t b">DNS</text><text x="580" y="46" text-anchor="middle" class="ink2 n">attacker controls the answers</text>
+  <line x1="170" y1="52" x2="170" y2="256" class="line"/>
+  <line x1="580" y1="52" x2="580" y2="256" class="line"/>
+
+  <!-- check -->
+  <text x="158" y="74" text-anchor="end" class="ink n b">validator</text>
+  <line x1="170" y1="70" x2="577" y2="70" class="line" marker-end="url(#arrow)"/>
+  <text x="375" y="62" text-anchor="middle" class="ink n mono">evil.example?</text>
+  <line x1="580" y1="100" x2="173" y2="100" class="line" marker-end="url(#arrow)"/>
+  <text x="375" y="92" text-anchor="middle" class="ink n mono">203.0.113.10</text>
+  <rect x="190" y="112" width="200" height="28" rx="6" class="safe-box"/>
+  <text x="290" y="131" text-anchor="middle" class="ink n">public address: approved</text>
+
+  <!-- use -->
+  <text x="158" y="184" text-anchor="end" class="ink n b">HTTP client</text>
+  <line x1="170" y1="180" x2="577" y2="180" class="line" marker-end="url(#arrow)"/>
+  <text x="375" y="172" text-anchor="middle" class="ink n mono">evil.example?</text>
+  <line x1="580" y1="210" x2="173" y2="210" class="lost-s" style="stroke-width:1.5" marker-end="url(#arrow)"/>
+  <text x="375" y="202" text-anchor="middle" class="lost n mono b">127.0.0.1</text>
+  <rect x="190" y="222" width="200" height="28" rx="6" class="box"/>
+  <rect x="190" y="222" width="200" height="28" rx="6" fill="none" class="lost-s" style="stroke-width:1.5"/>
+  <text x="290" y="241" text-anchor="middle" class="ink n">connects to localhost</text>
+  <text x="598" y="190" class="ink2 n">second answer</text>
+  <text x="598" y="206" class="ink2 n">differs</text>
+
+  <!-- fix -->
+  <rect x="20" y="268" width="680" height="44" rx="6" class="safe-box"/>
+  <text x="36" y="295" class="ink n"><tspan class="b">Fix:</tspan> resolve once, check that address, and connect to that same address.</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="210" height="72" rx="6" class="box"/>
+  <text x="34" y="56" class="ink t b">1  Requirements</text>
+  <text x="34" y="76" class="ink2 n">what it must do,</text>
+  <text x="34" y="92" class="ink2 n">and how well, as numbers</text>
+  <rect x="255" y="30" width="210" height="72" rx="6" class="box"/>
+  <text x="269" y="56" class="ink t b">2  Rough numbers</text>
+  <text x="269" y="76" class="ink2 n">rate, storage, bandwidth;</text>
+  <text x="269" y="92" class="ink2 n">what runs out first</text>
+  <rect x="490" y="30" width="210" height="72" rx="6" class="box"/>
+  <text x="504" y="56" class="ink t b">3  Entities and API</text>
+  <text x="504" y="76" class="ink2 n">the nouns it stores,</text>
+  <text x="504" y="92" class="ink2 n">the contract with users</text>
+  <line x1="230" y1="66" x2="252" y2="66" class="line" marker-end="url(#arrow)"/>
+  <line x1="465" y1="66" x2="487" y2="66" class="line" marker-end="url(#arrow)"/>
+  <path d="M595 102 V136 H140 V167" class="line" marker-end="url(#arrow)"/>
+  <rect x="20" y="170" width="240" height="72" rx="6" class="box"/>
+  <text x="34" y="196" class="ink t b">4  Simplest design that works</text>
+  <text x="34" y="216" class="ink2 n">boxes and arrows,</text>
+  <text x="34" y="232" class="ink2 n">one endpoint at a time</text>
+  <rect x="320" y="170" width="240" height="72" rx="6" class="box"/>
+  <rect x="320" y="170" width="240" height="72" rx="6" class="focus-s"/>
+  <text x="334" y="196" class="ink t b">5  Hunt the bottleneck</text>
+  <text x="334" y="216" class="ink2 n">push on it with the</text>
+  <text x="334" y="232" class="ink2 n">requirements and numbers</text>
+  <line x1="260" y1="206" x2="317" y2="206" class="line" marker-end="url(#arrow)"/>
+  <rect x="580" y="160" width="134" height="92" rx="6" class="box"/>
+  <text x="592" y="182" class="focus n b">Is it possible?</text>
+  <text x="592" y="202" class="focus n b">Can we do better?</text>
+  <text x="592" y="222" class="focus n b">Is it feasible?</text>
+  <text x="592" y="242" class="focus n b">Is it resilient?</text>
+  <line x1="560" y1="206" x2="578" y2="206" class="line"/>
+  <path d="M440 242 V290 H140 V245" class="line" marker-end="url(#arrow)"/>
+  <text x="290" y="310" text-anchor="middle" class="ink2 n">a failed answer changes the design, and you go round again</text>
+  <text x="20" y="346" class="ink2 n">New requirements found along the way go back to step 1.</text>
+</svg>

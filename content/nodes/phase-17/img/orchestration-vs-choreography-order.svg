@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="410" viewBox="0 0 720 410" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="24" text-anchor="middle" class="ink t b">Orchestration</text>
+  <text x="532" y="24" text-anchor="middle" class="ink t b">Choreography</text>
+  <line x1="352" y1="12" x2="352" y2="400" class="line" stroke-dasharray="5 4"/>
+  <rect x="130" y="40" width="100" height="32" rx="6" class="box"/>
+  <text x="180.0" y="61.0" text-anchor="middle" class="ink t b">Client</text>
+  <line x1="180" y1="72" x2="180" y2="98" class="line" marker-end="url(#arrow)"/>
+  <rect x="45" y="100" width="270" height="40" rx="6" class="box"/>
+  <text x="180.0" y="125.0" text-anchor="middle" class="ink t b">Order orchestrator</text>
+  <rect x="20" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="70.0" y="221.5" text-anchor="middle" class="ink t b">Order</text>
+  <text x="70.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <rect x="127" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="177.0" y="221.5" text-anchor="middle" class="ink t b">Customer</text>
+  <text x="177.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <rect x="234" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="284.0" y="221.5" text-anchor="middle" class="ink t b">Stock</text>
+  <text x="284.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <line x1="110" y1="140" x2="72" y2="198" class="focus-s" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="80" y="172" text-anchor="start" class="ink n b">1</text>
+  <line x1="180" y1="140" x2="177" y2="198" class="focus-s" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="186" y="172" text-anchor="start" class="ink n b">2</text>
+  <line x1="250" y1="140" x2="284" y2="198" class="focus-s" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="275" y="172" text-anchor="start" class="ink n b">3</text>
+  <text x="24" y="280" text-anchor="start" class="ink n">1  create pending order</text>
+  <text x="24" y="300" text-anchor="start" class="ink n">2  reserve credit</text>
+  <text x="24" y="320" text-anchor="start" class="ink n">3  reserve stock</text>
+  <text x="24" y="340" text-anchor="start" class="ink n">then approve the order, or run compensations</text>
+  <text x="24" y="380" text-anchor="start" class="ink2 n">Calls and replies. The flow is written in one place.</text>
+  <rect x="395" y="100" width="280" height="40" rx="6" class="box"/>
+  <text x="535.0" y="125.0" text-anchor="middle" class="ink t b">Message broker</text>
+  <rect x="375" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="425.0" y="221.5" text-anchor="middle" class="ink t b">Order</text>
+  <text x="425.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <rect x="482" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="532.0" y="221.5" text-anchor="middle" class="ink t b">Customer</text>
+  <text x="532.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <rect x="589" y="200" width="100" height="50" rx="6" class="box"/>
+  <text x="639.0" y="221.5" text-anchor="middle" class="ink t b">Stock</text>
+  <text x="639.0" y="238.5" text-anchor="middle" class="ink t b">service</text>
+  <line x1="413" y1="198" x2="413" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="395" y="176" text-anchor="start" class="ink n b">1</text>
+  <line x1="520" y1="198" x2="520" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="502" y="176" text-anchor="start" class="ink n b">2</text>
+  <line x1="627" y1="198" x2="627" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="609" y="176" text-anchor="start" class="ink n b">3</text>
+  <line x1="437" y1="142" x2="437" y2="198" class="line" marker-end="url(#arrow)"/>
+  <text x="445" y="176" text-anchor="start" class="ink n b">4</text>
+  <line x1="544" y1="142" x2="544" y2="198" class="line" marker-end="url(#arrow)"/>
+  <line x1="651" y1="142" x2="651" y2="198" class="line" marker-end="url(#arrow)"/>
+  <line x1="425" y1="282" x2="425" y2="252" class="line" marker-end="url(#arrow)"/>
+  <text x="437" y="276" text-anchor="start" class="ink2 n">client request</text>
+  <text x="372" y="305" text-anchor="start" class="ink n">1  order service publishes OrderCreated</text>
+  <text x="372" y="323" text-anchor="start" class="ink n">2  customer service publishes CreditReserved</text>
+  <text x="372" y="341" text-anchor="start" class="ink n">3  stock service publishes StockReserved</text>
+  <text x="372" y="359" text-anchor="start" class="ink n">4  order service marks the order approved</text>
+  <text x="372" y="380" text-anchor="start" class="ink2 n">Blue: publish. Grey: consume.</text>
+  <text x="372" y="398" text-anchor="start" class="ink2 n">The flow is only in the subscriptions.</text>
+
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="356" viewBox="0 0 720 356" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="24" text-anchor="middle" class="ink t b">First run, just before the promo ends</text>
+  <text x="540" y="24" text-anchor="middle" class="ink t b">Replay, after the promo has ended</text>
+  <line x1="180" y1="98" x2="180" y2="114" class="line" marker-end="url(#arrow)"/>
+  <line x1="180" y1="154" x2="180" y2="170" class="line" marker-end="url(#arrow)"/>
+  <line x1="180" y1="222" x2="180" y2="238" class="line" marker-end="url(#arrow)"/>
+  <line x1="540" y1="98" x2="540" y2="114" class="line" marker-end="url(#arrow)"/>
+  <line x1="540" y1="154" x2="540" y2="170" class="line" marker-end="url(#arrow)"/>
+  <line x1="540" y1="222" x2="540" y2="238" class="line" marker-end="url(#arrow)"/>
+  <rect x="40" y="44" width="280" height="54" rx="6" class="box"/>
+  <rect x="40" y="44" width="280" height="54" rx="6" class="focus-s"/>
+  <text x="180.0" y="65" text-anchor="middle" class="ink t mono">now() = before endDate</text>
+  <text x="180.0" y="84" text-anchor="middle" class="ink2 n">read from the system clock</text>
+  <rect x="400" y="44" width="280" height="54" rx="6" class="box"/>
+  <rect x="400" y="44" width="280" height="54" rx="6" class="focus-s"/>
+  <text x="540.0" y="65" text-anchor="middle" class="ink t mono">now() = after endDate</text>
+  <text x="540.0" y="84" text-anchor="middle" class="ink2 n">read again: a different value</text>
+  <rect x="40" y="116" width="280" height="38" rx="6" class="box"/>
+  <text x="180.0" y="140.0" text-anchor="middle" class="ink t mono">if now() &lt;= endDate</text>
+  <rect x="400" y="116" width="280" height="38" rx="6" class="box"/>
+  <text x="540.0" y="140.0" text-anchor="middle" class="ink t mono">if now() &lt;= endDate</text>
+  <rect x="40" y="172" width="280" height="50" rx="6" class="safe-box"/>
+  <text x="180.0" y="193" text-anchor="middle" class="ink t mono">chargeWithDiscount()</text>
+  <text x="180.0" y="212" text-anchor="middle" class="ink2 n">then branch: runs, result recorded</text>
+  <rect x="400" y="172" width="280" height="50" rx="6" class="box"/>
+  <text x="540.0" y="193" text-anchor="middle" class="ink t mono">chargeFullPrice()</text>
+  <text x="540.0" y="212" text-anchor="middle" class="ink2 n">else branch: nothing recorded, so it runs</text>
+  <rect x="400" y="172" width="280" height="50" rx="6" class="lost-s"/>
+  <rect x="40" y="240" width="280" height="50" rx="6" class="box"/>
+  <text x="180.0" y="261" text-anchor="middle" class="ink t mono">sendReceipt()</text>
+  <text x="180.0" y="280" text-anchor="middle" class="ink2 n">fails; the workflow is retried later</text>
+  <rect x="400" y="240" width="280" height="50" rx="6" class="box"/>
+  <text x="540.0" y="261" text-anchor="middle" class="ink t mono">sendReceipt()</text>
+  <text x="540.0" y="280" text-anchor="middle" class="ink2 n">runs</text>
+  <rect x="40" y="240" width="280" height="50" rx="6" class="lost-s"/>
+  <text x="20" y="326" text-anchor="start" class="ink2 n">The replay takes the other branch, so the customer is charged twice. The fix: get the time from the</text>
+  <text x="20" y="344" text-anchor="start" class="ink2 n">engine (or a step), so the first value is recorded and the replay gets the same one back.</text>
+
+</svg>

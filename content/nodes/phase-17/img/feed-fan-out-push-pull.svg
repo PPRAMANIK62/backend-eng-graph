@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="336" viewBox="0 0 720 336" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="22" class="ink t b">Fan-out on write (push)</text>
+  <rect x="20" y="74" width="90" height="34" rx="6" class="box"/>
+  <text x="65" y="96" text-anchor="middle" class="ink n">Alice posts</text>
+  <rect x="134" y="74" width="90" height="34" rx="6" class="box"/>
+  <rect x="134" y="74" width="90" height="34" rx="6" class="focus-s"/>
+  <text x="179" y="96" text-anchor="middle" class="focus n b">fan-out</text>
+  <line x1="110" y1="91" x2="132" y2="91" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="38" width="96" height="28" rx="6" class="box"/>
+  <text x="298" y="57" text-anchor="middle" class="ink n">Cara's feed</text>
+  <line x1="224" y1="91" x2="248" y2="52" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="78" width="96" height="28" rx="6" class="box"/>
+  <text x="298" y="97" text-anchor="middle" class="ink n">Dan's feed</text>
+  <line x1="224" y1="91" x2="248" y2="92" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="118" width="96" height="28" rx="6" class="box"/>
+  <text x="298" y="137" text-anchor="middle" class="ink n">Bob's feed</text>
+  <line x1="224" y1="91" x2="248" y2="132" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="176" width="96" height="34" rx="6" class="box"/>
+  <text x="298" y="198" text-anchor="middle" class="ink n">Bob reads</text>
+  <line x1="298" y1="176" x2="298" y2="148" class="line" marker-end="url(#arrow)"/>
+  <text x="20" y="232" class="ink2 n">write: one insert per follower</text>
+  <text x="20" y="250" class="ink2 n">read: one precomputed list</text>
+  <text x="380" y="22" class="ink t b">Fan-out on read (pull)</text>
+  <rect x="380" y="34" width="90" height="34" rx="6" class="box"/>
+  <text x="425" y="56" text-anchor="middle" class="ink n">Alice posts</text>
+  <rect x="500" y="38" width="100" height="28" rx="6" class="box"/>
+  <text x="550" y="57" text-anchor="middle" class="ink n">Alice's posts</text>
+  <line x1="600" y1="52" x2="630" y2="52.0" class="line"/>
+  <rect x="500" y="78" width="100" height="28" rx="6" class="box"/>
+  <text x="550" y="97" text-anchor="middle" class="ink n">Erin's posts</text>
+  <line x1="600" y1="92" x2="630" y2="92.0" class="line"/>
+  <rect x="500" y="118" width="100" height="28" rx="6" class="box"/>
+  <text x="550" y="137" text-anchor="middle" class="ink n">Finn's posts</text>
+  <line x1="600" y1="132" x2="630" y2="132.0" class="line"/>
+  <line x1="470" y1="51" x2="498" y2="51" class="line" marker-end="url(#arrow)"/>
+  <path d="M600 52 H640 V174" class="line" marker-end="url(#arrow)"/>
+  <path d="M600 92 H640" class="line"/>
+  <path d="M600 132 H640" class="line"/>
+  <rect x="590" y="176" width="110" height="34" rx="6" class="box"/>
+  <rect x="590" y="176" width="110" height="34" rx="6" class="focus-s"/>
+  <text x="645" y="198" text-anchor="middle" class="focus n b">merge by time</text>
+  <rect x="380" y="176" width="90" height="34" rx="6" class="box"/>
+  <text x="425" y="198" text-anchor="middle" class="ink n">Bob reads</text>
+  <line x1="470" y1="193" x2="588" y2="193" class="line" marker-end="url(#arrow)"/>
+  <text x="380" y="232" class="ink2 n">write: once, to the author's list</text>
+  <text x="380" y="250" class="ink2 n">read: every account Bob follows</text>
+  <rect x="20" y="272" width="680" height="52" rx="6" class="box"/>
+  <text x="36" y="294" class="ink n">Hybrid: push for ordinary accounts; pull the few with huge followings at read time and merge.</text>
+  <text x="36" y="313" class="ink2 n">Per pair: push when the reader reads often compared with how often the author posts.</text>
+</svg>

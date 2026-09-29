@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="466" viewBox="0 0 720 466" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="24" class="ink t b">Sidecar mode</text>
+  <rect x="250" y="34" width="220" height="38" rx="6" class="box"/>
+  <text x="360" y="58" text-anchor="middle" class="ink t">control plane (istiod)</text>
+  <rect x="20" y="104" width="280" height="72" rx="6" class="box"/>
+  <text x="32" y="120" class="ink2 n">order pod</text>
+  <rect x="34" y="128" width="104" height="36" rx="6" class="line"/>
+  <text x="86" y="151" text-anchor="middle" class="ink n">order app</text>
+  <rect x="182" y="128" width="104" height="36" rx="6" class="focus-s"/>
+  <text x="234" y="151" text-anchor="middle" class="focus n b">proxy</text>
+  <line x1="138" y1="146" x2="180" y2="146" class="line" marker-end="url(#arrow)"/>
+  <rect x="420" y="104" width="280" height="72" rx="6" class="box"/>
+  <text x="688" y="120" text-anchor="end" class="ink2 n">payment pod</text>
+  <rect x="434" y="128" width="104" height="36" rx="6" class="focus-s"/>
+  <text x="486" y="151" text-anchor="middle" class="focus n b">proxy</text>
+  <rect x="582" y="128" width="104" height="36" rx="6" class="line"/>
+  <text x="634" y="151" text-anchor="middle" class="ink n">payment app</text>
+  <line x1="538" y1="146" x2="580" y2="146" class="line" marker-end="url(#arrow)"/>
+  <line x1="286" y1="146" x2="432" y2="146" class="line" marker-end="url(#arrow)"/>
+  <text x="359" y="138" text-anchor="middle" class="focus n b">mTLS</text>
+  <line x1="310" y1="72" x2="240" y2="126" class="line" marker-end="url(#arrow)"/>
+  <line x1="410" y1="72" x2="480" y2="126" class="line" marker-end="url(#arrow)"/>
+  <text x="480" y="50" class="ink2 n">pushes config</text>
+  <text x="480" y="66" class="ink2 n">and certificates</text>
+  <text x="20" y="224" class="ink t b">Ambient mode</text>
+  <rect x="20" y="236" width="280" height="120" rx="6" class="box"/>
+  <text x="32" y="252" class="ink2 n">node 1</text>
+  <rect x="34" y="262" width="104" height="36" rx="6" class="line"/>
+  <text x="86" y="285" text-anchor="middle" class="ink n">order app</text>
+  <rect x="160" y="310" width="126" height="34" rx="6" class="focus-s"/>
+  <text x="223" y="332" text-anchor="middle" class="focus n b">ztunnel</text>
+  <path d="M86 298 V327 H158" class="line" marker-end="url(#arrow)"/>
+  <rect x="420" y="236" width="280" height="120" rx="6" class="box"/>
+  <text x="432" y="252" class="ink2 n">node 2</text>
+  <rect x="582" y="262" width="104" height="36" rx="6" class="line"/>
+  <text x="634" y="285" text-anchor="middle" class="ink n">payment app</text>
+  <rect x="434" y="310" width="126" height="34" rx="6" class="focus-s"/>
+  <text x="497" y="332" text-anchor="middle" class="focus n b">ztunnel</text>
+  <path d="M560 327 H634 V300" class="line" marker-end="url(#arrow)"/>
+  <line x1="286" y1="327" x2="432" y2="327" class="line" marker-end="url(#arrow)"/>
+  <text x="359" y="319" text-anchor="middle" class="focus n b">mTLS (L4)</text>
+  <rect x="300" y="378" width="120" height="34" rx="6" class="focus-s"/>
+  <text x="360" y="400" text-anchor="middle" class="focus n b">waypoint (L7)</text>
+  <path d="M223 344 V395 H298" class="line" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <path d="M420 395 H497 V346" class="line" stroke-dasharray="4" marker-end="url(#arrow)"/>
+  <text x="360" y="432" text-anchor="middle" class="ink2 n">optional, per namespace, only where HTTP features are needed</text>
+  <text x="360" y="452" text-anchor="middle" class="ink2 n">the same control plane configures ztunnels and waypoints</text>
+</svg>

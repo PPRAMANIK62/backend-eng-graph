@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- write path -->
+  <text x="20" y="24" class="ink t b">Write path</text>
+  <rect x="20" y="40" width="130" height="50" rx="6" class="safe-box"/>
+  <text x="85" y="62" text-anchor="middle" class="ink t b">Database</text>
+  <text x="85" y="79" text-anchor="middle" class="ink2 n">source of truth</text>
+  <line x1="152" y1="65" x2="207" y2="65" class="line" marker-end="url(#arrow)"/>
+  <rect x="210" y="40" width="130" height="50" rx="6" class="box"/>
+  <text x="275" y="62" text-anchor="middle" class="ink t b">Change stream</text>
+  <text x="275" y="79" text-anchor="middle" class="ink2 n">in commit order</text>
+  <line x1="342" y1="65" x2="397" y2="65" class="line" marker-end="url(#arrow)"/>
+  <rect x="400" y="40" width="130" height="50" rx="6" class="box"/>
+  <text x="465" y="62" text-anchor="middle" class="ink t b">Indexer</text>
+  <text x="465" y="79" text-anchor="middle" class="ink2 n">route by doc ID</text>
+  <line x1="465" y1="92" x2="465" y2="183" class="line" marker-end="url(#arrow)"/>
+  <text x="475" y="130" class="ink2 n">to shard 2's primary, then its replicas</text>
+
+  <!-- shards -->
+  <rect x="150" y="154" width="540" height="112" rx="6" class="box" fill-opacity="0"/>
+  <text x="162" y="174" class="ink2 n">Search index, split into shards</text>
+  <rect x="170" y="186" width="150" height="64" rx="6" class="box"/>
+  <text x="245" y="210" text-anchor="middle" class="ink t b">Shard 1</text>
+  <text x="245" y="230" text-anchor="middle" class="ink2 n">primary + replica</text>
+  <rect x="345" y="186" width="150" height="64" rx="6" class="box"/>
+  <rect x="345" y="186" width="150" height="64" rx="6" class="focus-s"/>
+  <text x="420" y="210" text-anchor="middle" class="ink t b">Shard 2</text>
+  <text x="420" y="230" text-anchor="middle" class="ink2 n">primary + replica</text>
+  <rect x="520" y="186" width="150" height="64" rx="6" class="box"/>
+  <text x="595" y="210" text-anchor="middle" class="ink t b">Shard 3</text>
+  <text x="595" y="230" text-anchor="middle" class="ink2 n">primary + replica</text>
+
+  <!-- read path -->
+  <text x="20" y="306" class="ink t b">Read path</text>
+  <rect x="20" y="316" width="120" height="50" rx="6" class="box"/>
+  <text x="80" y="338" text-anchor="middle" class="ink t b">Query</text>
+  <text x="80" y="355" text-anchor="middle" class="ink2 n mono">"red shoes"</text>
+  <line x1="142" y1="341" x2="197" y2="341" class="line" marker-end="url(#arrow)"/>
+  <rect x="200" y="316" width="170" height="50" rx="6" class="box"/>
+  <text x="285" y="338" text-anchor="middle" class="ink t b">Coordinating node</text>
+  <text x="285" y="355" text-anchor="middle" class="ink2 n">fans out, merges top hits</text>
+  <line x1="260" y1="314" x2="245" y2="254" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="300" y1="314" x2="410" y2="254" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="340" y1="314" x2="585" y2="254" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="470" y="300" class="ink2 n">one copy of every shard</text>
+  <text x="470" y="316" class="ink2 n">answers; the slowest</text>
+  <text x="470" y="332" class="ink2 n">one sets the pace</text>
+</svg>

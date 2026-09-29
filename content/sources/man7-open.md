@@ -45,6 +45,13 @@ O_DSYNC (make each write durable before it returns).
 - (added in review) The logical block size can be read with blockdev. "from the shell using the command: blockdev --getss" (NOTES, O_DIRECT)
 - (added in review) Mixing O_DIRECT and buffered I/O is slower even when correct. "Even when the filesystem correctly handles the coherency issues in this situation, overall I/O throughput is likely to be slower than using either mode alone." (NOTES, O_DIRECT)
 - (added in review) Private mappings include the heap and static buffers. "this includes memory allocated on the heap and statically allocated buffers" (NOTES, O_DIRECT)
+- (added for race-condition) O_CREAT with O_EXCL makes check-that-it-doesn't-exist and create one step: the call fails if the path exists. "Ensure that this call creates the file: if this flag is specified in conjunction with O_CREAT, and path already exists, then open() fails with the error EEXIST." (O_EXCL)
+- (added for race-condition) With both flags, symlinks aren't followed. "When these two flags are specified, symbolic links are not followed" (O_EXCL)
+- (added for race-condition) Where NFS doesn't support O_EXCL, lock files built on it race. "In NFS environments where O_EXCL support is not provided, programs that rely on it for performing locking tasks will contain a race condition." (O_EXCL)
+- (added for race-condition) O_APPEND moves to the end and writes as one atomic step. "The modification of the file offset and the write operation are performed as a single atomic step." (O_APPEND)
+- O_NONBLOCK: neither open nor later I/O on the fd makes the caller wait. "Neither the open() nor any subsequent I/O operations on the file descriptor which is returned will cause the calling process to wait." (O_NONBLOCK or O_NDELAY)
+- O_NONBLOCK doesn't change what poll, select or epoll report; they only say whether a blocking call would block. "Note that the setting of this flag has no effect on the operation of poll(2), select(2), epoll(7), and similar, since those interfaces merely inform the caller about whether a file descriptor is \"ready\"" (O_NONBLOCK or O_NDELAY)
+- O_NONBLOCK does nothing for regular files and block devices; they still block briefly for device activity. "Note that this flag has no effect for regular files and block devices; that is, I/O operations will (briefly) block when device activity is required, regardless of whether O_NONBLOCK is set." (O_NONBLOCK or O_NDELAY)
 
 ## Visuals worth redrawing
 

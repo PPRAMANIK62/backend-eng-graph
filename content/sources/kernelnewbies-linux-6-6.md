@@ -21,6 +21,7 @@ EEVDF and why.
 - EEVDF picks tasks that got less than their share and holds back those that got more, algorithmically. "processes that are not getting the attention they should are automatically picked the next time, while processes that got more than they deserved are \"punished\"." (1.1)
 - CFS relied on heuristics and tunables; many tunables were removed. "CFS used heuristics and tunable knobs to attempt to guess which processes needed more attention. Many of these tunables have been removed." (1.1)
 - Expected effect: better latency for tasks CFS left behind. "this new scheduler should improve the latency of tasks that would be left behind by CFS" (1.1)
+- Linux 6.6 added a sysctl to turn io_uring off for the whole system. "Add a sysctl to disable io_uring system-wide" (Core (various), iouring)
 
 ## Visuals worth redrawing
 

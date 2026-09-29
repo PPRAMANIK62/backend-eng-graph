@@ -22,6 +22,8 @@ attempts, ndots, rotate, edns0 and use-vc.
 - With no nameserver lines, the local machine is used. "If no nameserver entries are present, the default is to use the name server on the local machine." (nameserver)
 - Search list: names with fewer than ndots dots are tried with each search domain appended. "Resolver queries having fewer than ndots dots (default is 1) in them will be attempted using each component of the search path in turn until a match is found." (search)
 - Search lists can be slow and noisy. "Note that this process may be slow and will generate a lot of network traffic if the servers for the listed domains are not local" (search)
+- ndots: below the threshold, search domains are tried before the name as given. "Sets a threshold for the number of dots which must appear in a name given to res_query(3) (see resolver(3)) before an initial absolute query will be made." (options, ndots:n; added for kubernetes-networking)
+- The ndots default is 1. "The default for n is 1, meaning that if there are any dots in a name, the name will be tried first as an absolute name before any search list elements are appended to it." (options, ndots:n)
 - Default timeout per try is 5 seconds, capped at 30. "Measured in seconds, the default is RES_TIMEOUT (currently 5, see <resolv.h>)." (options, timeout:n)
 - The timeout isn't the total time of a lookup. "This may not be the total time taken by any resolver API call and there is no guarantee that a single resolver API call maps to a single timeout." (options, timeout:n)
 - Default attempts is 2, capped at 5. "The default is RES_DFLRETRY (currently 2, see <resolv.h>)." (options, attempts:n)

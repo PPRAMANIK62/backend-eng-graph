@@ -24,6 +24,10 @@ measurements with code, not from the kernel developers.
 - Goroutines over a channel did ~2.8 million round trips/s, about 170 ns per switch, because no kernel switch is needed. "an estimate of ~170 ns switching between goroutines" (same)
 - The default thread stack is 8 MiB of virtual memory, only backed by RAM when used; 10,000 threads showed ~80 GiB virtual and ~80 MiB resident. "the process uses ~80 GiB of virtual memory, with about 80 MiB of resident memory." (memory section)
 - Stack size can be set with pthread_attr_setstacksize. (memory section)
+- When each of 10,000 threads really used 400 KiB of stack, RSS was about 2.6 GiB. "if I make each of 10,000 threads use 400 KiB of memory, the total RSS is not 4 GiB but around 2.6 GiB" (Back to memory overhead for threads)
+- Memory per task is a concurrency cost, not a thread cost: an event-driven handler that holds a lot of memory costs the same. "Note that this is not really a problem with threads - but with concurrency" (Back to memory overhead for threads)
+- 32-bit Linux defaults to 2 MiB stacks with 3 GiB of address space, about 1,500 threads. "the default chosen by 32-bit Linux is 2 MiB; the maximal virtual address space available is 3 GiB, so this imposes a limit of ~1500 threads with the default settings." (Back to memory overhead for threads)
+- On his 64-bit machine the OS let one process start about 32K threads. "on my machine the maximal number of threads the OS lets one process start is about 32K" (Back to memory overhead for threads)
 - Early-2000s folklore about thread limits no longer holds. "a lot of folklore from the early 2000s doesn't apply today." (conclusion)
 - 10,000 threads in one process is practical on a 2018 machine. "we can easily run 10,000 threads in a single process today, in production." (conclusion)
 

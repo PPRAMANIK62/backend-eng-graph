@@ -23,6 +23,14 @@ what an SRE team is responsible for, and introduces error budgets.
 - What an SRE team owns. "an SRE team is responsible for the availability, latency, performance, efficiency, change management, monitoring, emergency response, and capacity planning of their service(s)." (Tenets of SRE)
 - DevOps emerged in late 2008 and shares many of SRE's principles. "The term “DevOps” emerged in industry in late 2008" (DevOps or SRE?)
 - 100% is the wrong reliability target; the error budget is one minus the availability target. "100% is the wrong reliability target for basically everything" (Pursuing Maximum Change Velocity Without Violating a Service's SLO)
+- (For capacity-planning.) What capacity planning is for. "Demand forecasting and capacity planning can be viewed as ensuring that there is sufficient capacity and redundancy to serve projected future demand with the required availability." (Demand Forecasting and Capacity Planning)
+- Two kinds of growth: organic (normal adoption) and inorganic (launches, marketing campaigns, business events). (Demand Forecasting and Capacity Planning)
+- The forecast must reach past the lead time. "An accurate organic demand forecast, which extends beyond the lead time required for acquiring capacity" (Demand Forecasting and Capacity Planning)
+- Load testing turns servers into service capacity. "Regular load testing of the system to correlate raw capacity(servers, disks, and so on) to service capacity" (Demand Forecasting and Capacity Planning)
+- Adding capacity is riskier than shifting load, so treat it with care. "it is a riskier operation than load shifting" (Provisioning)
+- Slower is less capacity. "A slowdown in a service equates to a loss of capacity." (Efficiency and Performance)
+- Capacity is defined at a latency. "SREs provision to meet a capacity target at a specific response speed" (Efficiency and Performance)
+- Why adding capacity is risky. "Adding new capacity often involves spinning up a new instance or location, making significant modification to existing systems (configuration files, load balancers, networking), and validating that the new capacity performs and delivers correct results." (Provisioning)
 
 ## Visuals worth redrawing
 

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="192" viewBox="0 0 720 192" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect x="16.0" y="44" width="160" height="90" rx="6" class="focus-box"/>
+  <text x="96.0" y="72" text-anchor="middle" class="ink t b">1. Add</text>
+  <text x="96.0" y="98" text-anchor="middle" class="ink2 n">return both total</text>
+  <text x="96.0" y="115" text-anchor="middle" class="ink2 n">and amount</text>
+  <line x1="178.0" y1="89" x2="190.0" y2="89" class="line" marker-end="url(#arrow)"/>
+  <rect x="192.0" y="44" width="160" height="90" rx="6" class="box"/>
+  <text x="272.0" y="72" text-anchor="middle" class="ink t b">2. Deprecate</text>
+  <text x="272.0" y="98" text-anchor="middle" class="ink2 n">Deprecation and</text>
+  <text x="272.0" y="115" text-anchor="middle" class="ink2 n">Link headers on total</text>
+  <line x1="354.0" y1="89" x2="366.0" y2="89" class="line" marker-end="url(#arrow)"/>
+  <rect x="368.0" y="44" width="160" height="90" rx="6" class="box"/>
+  <text x="448.0" y="72" text-anchor="middle" class="ink t b">3. Sunset</text>
+  <text x="448.0" y="98" text-anchor="middle" class="ink2 n">announce the end,</text>
+  <text x="448.0" y="115" text-anchor="middle" class="ink2 n">watch old traffic fade</text>
+  <line x1="530.0" y1="89" x2="542.0" y2="89" class="line" marker-end="url(#arrow)"/>
+  <rect x="544.0" y="44" width="160" height="90" rx="6" class="lost-box"/>
+  <text x="624.0" y="72" text-anchor="middle" class="ink t b">4. Remove</text>
+  <text x="624.0" y="98" text-anchor="middle" class="ink2 n">total is gone, in a</text>
+  <text x="624.0" y="115" text-anchor="middle" class="ink2 n">new major version</text>
+  <line x1="16.0" y1="156" x2="528.0" y2="156" class="safe-s"/>
+  <text x="272.0" y="178" text-anchor="middle" class="ink n">compatible: old clients keep working</text>
+  <line x1="544.0" y1="156" x2="704.0" y2="156" class="lost-s"/>
+  <text x="624.0" y="178" text-anchor="middle" class="ink n">breaking</text>
+  <text x="16.0" y="26" class="ink2 n">Renaming <tspan class="mono">total</tspan> to <tspan class="mono">amount</tspan> in the orders API, without breaking anyone until the last step</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- row 1: allowed -->
+  <text x="20" y="24" class="ink t b">Allowed</text>
+  <line x1="40" y1="110" x2="700" y2="110" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="128" text-anchor="end" class="ink2 n">time</text>
+
+  <line x1="420" y1="100" x2="420" y2="120" class="focus-s"/>
+  <text x="420" y="92" text-anchor="middle" class="focus n b">now</text>
+  <line x1="460" y1="102" x2="460" y2="118" class="line"/>
+  <text x="460" y="92" text-anchor="middle" class="ink n">TAT</text>
+  <line x1="540" y1="102" x2="540" y2="118" class="line"/>
+  <text x="540" y="92" text-anchor="middle" class="ink n b">new TAT</text>
+  <path d="M462,70 H537" class="line" marker-end="url(#arrow)"/>
+  <text x="500" y="62" text-anchor="middle" class="ink2 n">+ T</text>
+
+  <line x1="220" y1="102" x2="220" y2="118" class="line"/>
+  <text x="220" y="92" text-anchor="middle" class="ink n">new TAT − τ</text>
+  <line x1="223" y1="136" x2="537" y2="136" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="380" y="154" text-anchor="middle" class="ink2 n">τ, the tolerance (burst allowance)</text>
+
+  <rect x="40" y="166" width="440" height="30" rx="6" class="safe-box"/>
+  <text x="52" y="186" class="ink n">new TAT − τ is already past: allow, and store new TAT</text>
+
+  <!-- row 2: refused -->
+  <text x="20" y="236" class="ink t b">Refused</text>
+  <line x1="40" y1="322" x2="700" y2="322" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="340" text-anchor="end" class="ink2 n">time</text>
+
+  <line x1="200" y1="312" x2="200" y2="332" class="focus-s"/>
+  <text x="200" y="304" text-anchor="middle" class="focus n b">now</text>
+  <line x1="280" y1="314" x2="280" y2="330" class="line"/>
+  <text x="280" y="304" text-anchor="middle" class="ink n">new TAT − τ</text>
+  <line x1="520" y1="314" x2="520" y2="330" class="line"/>
+  <text x="520" y="304" text-anchor="middle" class="ink n">TAT</text>
+  <line x1="600" y1="314" x2="600" y2="330" class="line"/>
+  <text x="600" y="304" text-anchor="middle" class="ink n b">new TAT</text>
+  <path d="M522,282 H597" class="line" marker-end="url(#arrow)"/>
+  <text x="560" y="274" text-anchor="middle" class="ink2 n">+ T</text>
+
+  <line x1="283" y1="348" x2="597" y2="348" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="440" y="366" text-anchor="middle" class="ink2 n">τ</text>
+  <line x1="203" y1="348" x2="277" y2="348" class="lost-s"/>
+  <text x="240" y="366" text-anchor="middle" class="lost n b">retry after</text>
+
+  <rect x="40" y="378" width="440" height="30" rx="6" class="box"/>
+  <text x="52" y="398" class="ink n">new TAT − τ is still ahead of now: refuse, store nothing</text>
+</svg>

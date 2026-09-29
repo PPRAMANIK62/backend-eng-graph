@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<text x="20" y="28" class="ink t b">Resource tree</text>
+<rect x="20" y="48" width="200" height="38" rx="6" class="box"/>
+<text x="32" y="72" class="ink t mono">publishers</text>
+<text x="208" y="72" text-anchor="end" class="ink2 n">collection</text>
+<rect x="50" y="108" width="200" height="38" rx="6" class="box"/>
+<text x="62" y="132" class="ink t mono">123</text>
+<text x="238" y="132" text-anchor="end" class="ink2 n">a publisher</text>
+<path d="M34,86 V127 H48" class="line" marker-end="url(#arrow)"/>
+<rect x="80" y="168" width="200" height="38" rx="6" class="box"/>
+<text x="92" y="192" class="ink t mono">books</text>
+<text x="268" y="192" text-anchor="end" class="ink2 n">collection</text>
+<path d="M64,146 V187 H78" class="line" marker-end="url(#arrow)"/>
+<rect x="110" y="228" width="200" height="38" rx="6" class="box"/>
+<rect x="110" y="228" width="200" height="38" rx="6" class="focus-s"/>
+<text x="122" y="252" class="ink t mono">les-miserables</text>
+<text x="298" y="252" text-anchor="end" class="ink2 n">a book</text>
+<path d="M94,206 V247 H108" class="line" marker-end="url(#arrow)"/>
+<text x="20" y="296" class="ink2 n">Name: </text><text x="62" y="296" class="ink2 n mono">publishers/123/books/les-miserables</text>
+<text x="345" y="28" class="ink t b">Methods, as HTTP requests</text>
+<text x="345" y="48" class="ink2 n">paths below start with </text><text x="477" y="48" class="ink2 n mono">/v1/publishers/123</text>
+<text x="345" y="80" class="ink t">List</text><text x="425" y="80" class="ink n mono b">GET</text><text x="493" y="80" class="ink n mono">/books</text>
+<text x="345" y="110" class="ink t">Get</text><text x="425" y="110" class="ink n mono b">GET</text><text x="493" y="110" class="ink n mono">/books/les-miserables</text>
+<text x="345" y="140" class="ink t">Create</text><text x="425" y="140" class="ink n mono b">POST</text><text x="493" y="140" class="ink n mono">/books</text>
+<text x="345" y="170" class="ink t">Update</text><text x="425" y="170" class="ink n mono b">PATCH</text><text x="493" y="170" class="ink n mono">/books/les-miserables</text>
+<text x="345" y="200" class="ink t">Delete</text><text x="425" y="200" class="ink n mono b">DELETE</text><text x="493" y="200" class="ink n mono">/books/les-miserables</text>
+<line x1="345" y1="216" x2="710" y2="216" class="line"/>
+<text x="345" y="236" class="ink2 n">custom method, verb after a colon</text>
+<text x="345" y="260" class="focus t b">Archive</text><text x="425" y="260" class="focus n mono b">POST</text><text x="493" y="260" class="focus n mono">/books/les-miserables:archive</text>
+</svg>

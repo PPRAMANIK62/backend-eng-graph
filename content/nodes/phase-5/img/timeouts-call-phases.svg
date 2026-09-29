@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="290" viewBox="0 0 720 290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="24" class="ink t b">One HTTP call, phase by phase</text>
+  <rect x="40" y="40" width="74" height="48" rx="6" class="box"/>
+  <text x="77.0" y="60" text-anchor="middle" class="ink n b">DNS</text>
+  <text x="77.0" y="77" text-anchor="middle" class="ink n">lookup</text>
+  <rect x="120" y="40" width="89" height="48" rx="6" class="box"/>
+  <text x="164.5" y="60" text-anchor="middle" class="ink n b">TCP</text>
+  <text x="164.5" y="77" text-anchor="middle" class="ink n">connect</text>
+  <rect x="215" y="40" width="109" height="48" rx="6" class="box"/>
+  <text x="269.5" y="60" text-anchor="middle" class="ink n b">TLS</text>
+  <text x="269.5" y="77" text-anchor="middle" class="ink n">handshake</text>
+  <rect x="330" y="40" width="89" height="48" rx="6" class="box"/>
+  <text x="374.5" y="60" text-anchor="middle" class="ink n b">Send</text>
+  <text x="374.5" y="77" text-anchor="middle" class="ink n">request</text>
+  <rect x="425" y="40" width="119" height="48" rx="6" class="box"/>
+  <text x="484.5" y="60" text-anchor="middle" class="ink n b">Wait for</text>
+  <text x="484.5" y="77" text-anchor="middle" class="ink n">headers</text>
+  <rect x="550" y="40" width="124" height="48" rx="6" class="box"/>
+  <text x="612.0" y="60" text-anchor="middle" class="ink n b">Read</text>
+  <text x="612.0" y="77" text-anchor="middle" class="ink n">body</text>
+  <line x1="40" y1="104" x2="676" y2="104" class="line" marker-end="url(#arrow)"/>
+  <text x="40" y="122" class="ink2 n">time</text>
+  <line x1="120" y1="136" x2="209" y2="136" class="box"/>
+  <line x1="120" y1="129" x2="120" y2="143" class="box"/>
+  <line x1="209" y1="129" x2="209" y2="143" class="box"/>
+  <text x="120" y="160" class="ink n">connect timeout</text>
+  <line x1="215" y1="136" x2="324" y2="136" class="box"/>
+  <line x1="215" y1="129" x2="215" y2="143" class="box"/>
+  <line x1="324" y1="129" x2="324" y2="143" class="box"/>
+  <text x="225" y="182" class="ink n">TLS handshake timeout</text>
+  <line x1="269.5" y1="143" x2="269.5" y2="168" class="line"/>
+  <line x1="425" y1="136" x2="544" y2="136" class="box"/>
+  <line x1="425" y1="129" x2="425" y2="143" class="box"/>
+  <line x1="544" y1="129" x2="544" y2="143" class="box"/>
+  <text x="425" y="160" class="ink n">response header</text>
+  <text x="425" y="176" class="ink n">timeout</text>
+  <rect x="556" y="126" width="14" height="20" rx="3" class="box"/>
+  <rect x="587" y="126" width="14" height="20" rx="3" class="box"/>
+  <rect x="618" y="126" width="14" height="20" rx="3" class="box"/>
+  <rect x="649" y="126" width="14" height="20" rx="3" class="box"/>
+  <text x="550" y="160" class="ink n">idle timeout,</text>
+  <text x="550" y="176" class="ink n">restarts on each read</text>
+  <line x1="40" y1="214" x2="674" y2="214" class="focus-s" style="stroke-width:3"/>
+  <line x1="40" y1="205" x2="40" y2="223" class="focus-s" style="stroke-width:3"/>
+  <line x1="674" y1="205" x2="674" y2="223" class="focus-s" style="stroke-width:3"/>
+  <text x="40" y="244" class="focus t b">total timeout: one budget for the whole call, never restarts</text>
+  <text x="40" y="272" class="ink2 n">Some libraries' timeouts leave out the DNS lookup or the TLS handshake. Check which phases yours covers.</text>
+</svg>

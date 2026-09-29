@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="386" viewBox="0 0 720 386" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="165" y="28" text-anchor="middle" class="ink t b">Sender</text>
+  <text x="480" y="28" text-anchor="middle" class="ink t b">Receiver</text>
+
+  <!-- sender: the three inputs -->
+  <rect x="20" y="50" width="90" height="40" rx="6" class="box"/>
+  <text x="65" y="75" text-anchor="middle" class="ink n">message ID</text>
+  <rect x="120" y="50" width="90" height="40" rx="6" class="box"/>
+  <text x="165" y="75" text-anchor="middle" class="ink n">timestamp</text>
+  <rect x="220" y="50" width="90" height="40" rx="6" class="box"/>
+  <text x="265" y="75" text-anchor="middle" class="ink n">raw body</text>
+
+  <line x1="65" y1="90" x2="65" y2="119" class="line" marker-end="url(#arrow)"/>
+  <line x1="165" y1="90" x2="165" y2="119" class="line" marker-end="url(#arrow)"/>
+  <line x1="265" y1="90" x2="265" y2="119" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="122" width="290" height="40" rx="6" class="box"/>
+  <text x="165" y="147" text-anchor="middle" class="ink n mono">msg_id.timestamp.body</text>
+  <line x1="165" y1="162" x2="165" y2="191" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="194" width="290" height="40" rx="6" class="box"/>
+  <rect x="20" y="194" width="290" height="40" rx="6" class="focus-s"/>
+  <text x="165" y="219" text-anchor="middle" class="focus n b">HMAC-SHA256 with the secret</text>
+  <line x1="165" y1="234" x2="165" y2="263" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="266" width="290" height="64" rx="6" class="box"/>
+  <text x="34" y="288" class="ink n b">POST the body as signed, with</text>
+  <text x="34" y="306" class="ink2 n mono">webhook-id, webhook-timestamp,</text>
+  <text x="34" y="322" class="ink2 n mono">webhook-signature: v1,&lt;base64&gt;</text>
+
+  <!-- over the network -->
+  <path d="M310,298 H325 V70 H337" class="line" marker-end="url(#arrow)"/>
+
+  <!-- receiver steps -->
+  <rect x="340" y="50" width="280" height="40" rx="6" class="box"/>
+  <text x="352" y="75" class="ink n">Rebuild the string: headers + raw body</text>
+  <line x1="480" y1="90" x2="480" y2="103" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="340" y="106" width="280" height="40" rx="6" class="box"/>
+  <rect x="340" y="106" width="280" height="40" rx="6" class="focus-s"/>
+  <text x="352" y="131" class="focus n b">HMAC-SHA256 with the same secret</text>
+  <line x1="480" y1="146" x2="480" y2="159" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="340" y="162" width="280" height="40" rx="6" class="box"/>
+  <text x="352" y="187" class="ink n">Matches the header? (constant time)</text>
+  <text x="630" y="187" class="lost n b">no: reject</text>
+  <line x1="480" y1="202" x2="480" y2="215" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="340" y="218" width="280" height="40" rx="6" class="box"/>
+  <text x="352" y="243" class="ink n">Timestamp close enough to my clock?</text>
+  <text x="630" y="243" class="lost n b">no: reject</text>
+  <line x1="480" y1="258" x2="480" y2="271" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="340" y="274" width="280" height="40" rx="6" class="box"/>
+  <text x="352" y="299" class="ink n">Message ID not seen before?</text>
+  <text x="630" y="299" class="lost n b">no: skip</text>
+  <line x1="480" y1="314" x2="480" y2="327" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="340" y="330" width="280" height="40" rx="6" class="safe-box"/>
+  <text x="352" y="355" class="ink n b">Now parse the JSON and act</text>
+</svg>

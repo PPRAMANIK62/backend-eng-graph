@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="334" viewBox="0 0 720 334" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- panel A: fixed windows -->
+  <text x="20" y="24" class="ink t b">Fixed windows, limit 50 per minute</text>
+  <rect x="60" y="60" width="310" height="40" rx="6" class="box"/>
+  <rect x="370" y="60" width="310" height="40" rx="6" class="box"/>
+  <rect x="340" y="64" width="28" height="32" class="lost"/>
+  <rect x="372" y="64" width="28" height="32" class="lost"/>
+  <text x="200" y="85" text-anchor="middle" class="ink n">one minute: 50, at the limit</text>
+  <text x="540" y="85" text-anchor="middle" class="ink n">next minute: 50, at the limit</text>
+  <path d="M340,54 V48 H400 V54" class="lost-s"/>
+  <text x="370" y="40" text-anchor="middle" class="lost n b">100 requests in about 2 seconds</text>
+  <text x="370" y="118" text-anchor="middle" class="ink2 n">counter resets here</text>
+
+  <!-- panel B: sliding window counter -->
+  <text x="20" y="160" class="ink t b">Sliding window counter, same limit</text>
+  <path d="M137,196 V190 H447 V196" class="focus-s"/>
+  <text x="292" y="182" text-anchor="middle" class="focus n b">the last 60 seconds</text>
+
+  <rect x="60" y="202" width="310" height="40" rx="6" class="box"/>
+  <text x="253" y="227" text-anchor="middle" class="ink n">previous minute: 42 requests</text>
+  <rect x="370" y="202" width="77" height="40" rx="6" class="box"/>
+  <text x="408" y="227" text-anchor="middle" class="ink n b">18</text>
+  <line x1="447" y1="186" x2="447" y2="252" class="focus-s"/>
+  <text x="455" y="227" class="focus n b">now</text>
+
+  <line x1="140" y1="262" x2="367" y2="262" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="253" y="280" text-anchor="middle" class="ink2 n">45 s of it, three quarters</text>
+  <line x1="373" y1="262" x2="444" y2="262" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="408" y="280" text-anchor="middle" class="ink2 n">15 s</text>
+
+  <text x="360" y="316" text-anchor="middle" class="ink t">estimate = 42 × 0.75 + 18 = <tspan class="b">49.5</tspan>, just under 50</text>
+</svg>

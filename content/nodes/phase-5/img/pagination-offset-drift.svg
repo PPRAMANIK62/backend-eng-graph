@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<text x="20" y="26" class="ink t b">1. First page</text>
+<text x="20" y="44" class="ink2 n mono">OFFSET 0 LIMIT 3</text>
+<rect x="20" y="60" width="150" height="30" rx="6" class="box"/>
+<text x="32" y="80" class="ink n">row E</text>
+<rect x="20" y="98" width="150" height="30" rx="6" class="box"/>
+<text x="32" y="118" class="ink n">row D</text>
+<rect x="20" y="136" width="150" height="30" rx="6" class="box"/>
+<text x="32" y="156" class="ink n">row C</text>
+<text x="195" y="26" class="ink t b">2. A row arrives</text>
+<text x="195" y="44" class="ink2 n mono">newest first</text>
+<rect x="195" y="60" width="150" height="30" rx="6" class="box"/>
+<rect x="195" y="60" width="150" height="30" rx="6" class="focus-s"/>
+<text x="207" y="80" class="focus n">row F</text>
+<text x="333" y="80" text-anchor="end" class="focus n">new</text>
+<rect x="195" y="98" width="150" height="30" rx="6" class="box"/>
+<rect x="195" y="98" width="150" height="30" rx="6" class="box" style="stroke-dasharray:4 3"/>
+<text x="207" y="118" class="ink2 n">row E</text>
+<rect x="195" y="136" width="150" height="30" rx="6" class="box"/>
+<rect x="195" y="136" width="150" height="30" rx="6" class="box" style="stroke-dasharray:4 3"/>
+<text x="207" y="156" class="ink2 n">row D</text>
+<rect x="195" y="174" width="150" height="30" rx="6" class="box"/>
+<rect x="195" y="174" width="150" height="30" rx="6" class="box" style="stroke-dasharray:4 3"/>
+<text x="207" y="194" class="ink2 n">row C</text>
+<rect x="195" y="212" width="150" height="30" rx="6" class="box"/>
+<text x="207" y="232" class="ink n">row B</text>
+<rect x="195" y="250" width="150" height="30" rx="6" class="box"/>
+<text x="207" y="270" class="ink n">row A</text>
+<text x="370" y="26" class="ink t b">3a. Offset</text>
+<text x="370" y="44" class="ink2 n mono">OFFSET 3 LIMIT 3</text>
+<rect x="370" y="60" width="150" height="30" rx="6" class="box"/>
+<rect x="370" y="60" width="150" height="30" rx="6" class="lost-s" style="stroke-width:1.5"/>
+<text x="382" y="80" class="lost n">row C</text>
+<text x="508" y="80" text-anchor="end" class="lost n">again</text>
+<rect x="370" y="98" width="150" height="30" rx="6" class="box"/>
+<text x="382" y="118" class="ink n">row B</text>
+<rect x="370" y="136" width="150" height="30" rx="6" class="box"/>
+<text x="382" y="156" class="ink n">row A</text>
+<text x="550" y="26" class="ink t b">3b. Keyset</text>
+<text x="550" y="44" class="ink2 n mono">after row C, LIMIT 3</text>
+<rect x="550" y="60" width="150" height="30" rx="6" class="safe-box"/>
+<text x="562" y="80" class="ink n">row B</text>
+<rect x="550" y="98" width="150" height="30" rx="6" class="safe-box"/>
+<text x="562" y="118" class="ink n">row A</text>
+<text x="20" y="300" class="ink2 n">Rows E, D and C (dashed) were already shown. The offset counts them again from the new top,</text>
+<text x="20" y="318" class="ink2 n">so C comes back. The keyset query starts after the last row seen, so the insert doesn’t matter.</text>
+</svg>

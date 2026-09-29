@@ -7,7 +7,7 @@ note: >-
   Owns the data, the services and the systems they run on. Where it
   overlaps with platform, SRE and data engineering.
 needs: []
-leads_to: [latency-numbers]
+leads_to: [latency-numbers, system-design-method]
 compare_with: []
 ---
 

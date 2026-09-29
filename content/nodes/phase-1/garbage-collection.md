@@ -7,7 +7,7 @@ note: >-
   How Go and the JVM free memory for you, and what the pauses cost a
   server's latency.
 needs: [heap-and-stack, cpu-cache]
-leads_to: []
+leads_to: [process-pauses]
 compare_with: []
 ---
 
@@ -47,7 +47,7 @@ Two facts from this shape everything else:
 
 - Marking only touches **live** memory. The cost of a cycle grows with how
   much is live, not with how much garbage there is.
-- Most of the cost is in marking. Profiling of Go programs puts it at
+- Most of the cost is in marking. [[profiling|Profiling]] of Go programs puts it at
   about 90% marking and 10% sweeping.
 
 ![Two roots, a stack variable and a global, point to heap objects A and D. From them the collector reaches B, C and E, which are marked live. Objects F, G and H point at each other in a loop, but nothing reachable points at them, so they are garbage.](img/garbage-collection-mark.svg)
@@ -79,7 +79,7 @@ program, Go caps the GC at roughly 50% of CPU time over a short window and
 lets memory go past the limit instead.
 
 The memory limit fits best when the program has its memory to itself, like
-a web service in a container with a fixed amount of RAM, set 5 to 10%
+a web service in a [[containers|container]] with a fixed amount of RAM, set 5 to 10%
 below that amount. Don't set one just to avoid running out of memory when
 you're already near the container's limit. You'd swap an out-of-memory
 crash for a server that crawls.

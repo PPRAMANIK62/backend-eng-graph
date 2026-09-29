@@ -58,7 +58,7 @@ change it.
 ## When it bites
 
 Each TIME_WAIT entry holds its four numbers for a minute. Picture a
-load balancer opening a fresh connection to one backend for every
+[[load-balancing|load balancer]] opening a fresh connection to one backend for every
 request. The backend's address and port are fixed, the load balancer's
 address is fixed, so only the load balancer's source port changes. With
 Linux's default ephemeral range of 28,232 ports (see

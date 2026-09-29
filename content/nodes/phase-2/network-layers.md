@@ -7,7 +7,7 @@ note: >-
   Link, internet, transport, application: how the network is split into
   layers that each do one job, and where the model is a simplification.
 needs: []
-leads_to: [ethernet-and-arp, ip-addressing, network-latency, packet-capture]
+leads_to: [ethernet-and-arp, ip-addressing, network-latency, packet-capture, l4-vs-l7]
 compare_with: []
 ---
 

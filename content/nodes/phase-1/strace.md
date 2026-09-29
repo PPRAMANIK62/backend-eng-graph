@@ -8,7 +8,7 @@ note: >-
   is it actually doing?"
 needs: [system-call]
 leads_to: []
-compare_with: []
+compare_with: [ebpf]
 ---
 
 # strace

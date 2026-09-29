@@ -8,8 +8,8 @@ note: >-
   point, remount, check what survived. LazyFS, dm-log-writes. The phase
   1 harness.
 needs: [crash-consistency]
-leads_to: []
-compare_with: []
+leads_to: [fault-injection]
+compare_with: [model-based-testing]
 ---
 
 # Crash testing

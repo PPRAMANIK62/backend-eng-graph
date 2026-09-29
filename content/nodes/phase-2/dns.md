@@ -8,7 +8,7 @@ note: >-
   resolver asks a recursive resolver, which walks from the root to the
   TLD to the authoritative servers.
 needs: [udp, tcp]
-leads_to: [dns-records, dns-caching, dnssec, encrypted-dns]
+leads_to: [dns-records, dns-caching, dnssec, encrypted-dns, service-discovery, ssrf, dns-rebinding]
 compare_with: []
 ---
 
@@ -162,7 +162,7 @@ TCP has also stopped being optional. The older host requirements
 (RFC 1123) said resolvers SHOULD support it, and some implementers read
 that as "may skip it". Since RFC 7766 (2016), every general-purpose DNS
 implementation, stub resolvers included, MUST support both UDP and TCP.
-DNSSEC and IPv6 made answers bigger, and TCP also protects against
+[[dnssec|DNSSEC]] and IPv6 made answers bigger, and TCP also protects against
 spoofed source addresses, which attackers use to aim DNS answers at a
 victim.
 

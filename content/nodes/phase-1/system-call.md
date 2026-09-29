@@ -7,7 +7,7 @@ note: >-
   How a program asks the kernel to do something, and what crossing into
   the kernel costs.
 needs: [process]
-leads_to: [strace, file-descriptor]
+leads_to: [strace, file-descriptor, non-blocking-io, profiling, ebpf, zero-copy, seccomp]
 compare_with: []
 ---
 

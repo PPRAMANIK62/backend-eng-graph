@@ -7,7 +7,7 @@ note: >-
   Registers, L1 to L3 caches, RAM, disk: each level bigger and slower.
   Why locality decides speed.
 needs: []
-leads_to: [latency-numbers, cpu-cache]
+leads_to: [latency-numbers, cpu-cache, caching]
 compare_with: []
 ---
 

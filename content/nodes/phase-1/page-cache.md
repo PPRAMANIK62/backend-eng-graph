@@ -7,7 +7,7 @@ note: >-
   The kernel keeps file data in RAM. Reads and writes hit it first, not
   the disk.
 needs: [virtual-memory, filesystem]
-leads_to: [mmap, direct-io, fsync]
+leads_to: [mmap, direct-io, fsync, storage-engine, buffer-pool, zero-copy, cgroups]
 compare_with: []
 ---
 

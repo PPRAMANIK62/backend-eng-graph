@@ -6,7 +6,7 @@ phase: 1
 note: >-
   Cache lines, hits and misses, and false sharing between cores.
 needs: [memory-hierarchy]
-leads_to: [garbage-collection]
+leads_to: [garbage-collection, memory-model, vectorized-execution]
 compare_with: []
 ---
 

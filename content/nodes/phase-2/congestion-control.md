@@ -8,7 +8,7 @@ note: >-
   receiver can take: slow start, backing off on loss, and CUBIC vs BBR.
 needs: [tcp-retransmission]
 leads_to: [bandwidth-delay-product, bufferbloat, pacing]
-compare_with: [tcp-flow-control]
+compare_with: [tcp-flow-control, admission-control]
 ---
 
 # Congestion control

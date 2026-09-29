@@ -7,7 +7,7 @@ note: >-
   Propagation, transmission, queuing and processing delay. Round-trip
   time, and why the speed of light is a real limit.
 needs: [network-layers, latency-numbers]
-leads_to: [bandwidth-delay-product, bufferbloat]
+leads_to: [bandwidth-delay-product, bufferbloat, timeouts, distributed-system]
 compare_with: []
 ---
 
@@ -91,7 +91,7 @@ check gives the same picture: in 1996 a ping from Stanford to Boston,
 43 ms in fibre.
 
 No engineering removes the floor. You can only move the endpoints
-closer. That's the whole idea behind putting servers, caches and CDNs
+closer. That's the whole idea behind putting servers, caches and [[cdn|CDNs]]
 near users, and behind choosing a region near your database.
 
 ## Transmission: why a faster link doesn't help small messages

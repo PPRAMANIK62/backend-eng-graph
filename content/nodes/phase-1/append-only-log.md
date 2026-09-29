@@ -7,7 +7,7 @@ note: >-
   A file you only ever add to: length-prefixed, checksummed records, and
   recovery that drops a torn tail. The phase 1 build.
 needs: [binary-encoding, checksums, crash-consistency]
-leads_to: []
+leads_to: [write-ahead-log, log-structured-hash-table, log-segments, audit-logging]
 compare_with: []
 ---
 
@@ -58,7 +58,7 @@ As long as all three hold, the record is good. The first record that fails marks
 
 The ways a tail tears map onto these checks: the header was cut short, the header landed but the data didn't, or the data is only partly there ([[torn-writes]]). A torn tail is normal after a crash, not an error.
 
-SQLite's write-ahead log works on the same principle, with differences worth studying. Each frame holds one database page. A frame counts only if two salt values in its header match the file header, and a checksum that runs over the header and every frame up to that one matches. A transaction is committed only when a frame with a commit marker is written; frames after the last commit marker are ignored. The salts change each time the log file is reused, so leftover frames from an earlier round can't be mistaken for new ones.
+SQLite's [[write-ahead-log|write-ahead log]] works on the same principle, with differences worth studying. Each frame holds one database page. A frame counts only if two salt values in its header match the file header, and a checksum that runs over the header and every frame up to that one matches. A transaction is committed only when a frame with a commit marker is written; frames after the last commit marker are ignored. The salts change each time the log file is reused, so leftover frames from an earlier round can't be mistaken for new ones.
 
 ## Where it gets tricky
 

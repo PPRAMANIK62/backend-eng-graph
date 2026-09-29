@@ -6,7 +6,7 @@ phase: 1
 note: >-
   Several lines of execution sharing one process's memory.
 needs: [process]
-leads_to: [cpu-scheduler]
+leads_to: [cpu-scheduler, concurrency-vs-parallelism, race-condition, message-passing, thread-per-connection, thread-pool, cpu-bound-vs-io-bound]
 compare_with: [process]
 ---
 
@@ -123,11 +123,12 @@ store it back. Say the counter is 50.
 3. Thread 2 loads 50 (memory still says 50), adds 1, stores 51.
 4. Thread 1 resumes and stores its 51.
 
-Two increments, and the counter went up by one. This is a **race
-condition**: the result depends on the timing of who runs when. The code
+Two increments, and the counter went up by one. This is a
+**[[race-condition|race condition]]**: the result depends on the timing
+of who runs when. The code
 that touches the shared counter is a **critical section**, and what you
 need there is mutual exclusion, so only one thread is inside at a time.
-Locks and atomic operations provide that; they're a later phase.
+[[mutex|Locks]] and atomic operations provide that; they're a later phase.
 
 ![A table with columns for thread 1, thread 2 and the counter in memory. Thread 1 loads 50 and adds 1, an interrupt switches to thread 2, which loads 50, adds 1 and stores 51; thread 1 then resumes and stores 51 again, so one increment is lost.](img/thread-lost-update.svg)
 
@@ -165,7 +166,7 @@ thread that called fork, plus the whole memory, including locks that other
 threads were holding. Nobody in the child will ever unlock them. Details in
 [[process]].
 
-**"Thread" means different things.** A Go goroutine isn't a kernel
+**"Thread" means different things.** A Go [[green-threads|goroutine]] isn't a kernel
 thread. Go switches between goroutines in user space, without a kernel
 context switch, which is close to the M:N idea Linux rejected for its own
 thread library. When someone says "we run 100,000 threads," check which

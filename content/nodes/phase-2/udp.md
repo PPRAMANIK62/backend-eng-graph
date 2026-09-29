@@ -7,7 +7,7 @@ note: >-
   Send a datagram and hope: no connection, no ordering, no
   retransmission.
 needs: [ports-and-sockets]
-leads_to: [dns]
+leads_to: [dns, quic]
 compare_with: [tcp]
 ---
 

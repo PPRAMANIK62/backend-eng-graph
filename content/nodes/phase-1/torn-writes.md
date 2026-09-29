@@ -7,7 +7,7 @@ note: >-
   A write only partly on disk after power loss: what the drive promises
   is atomic (a sector) and what it doesn't.
 needs: [block-device, ssd-internals]
-leads_to: [crash-consistency]
+leads_to: [crash-consistency, full-page-writes]
 compare_with: []
 ---
 
@@ -76,7 +76,7 @@ failure. The rules are strict:
   [[fsync]]) for the write to survive at all.
 
 Databases are the main reason this exists. They write pages of up to
-16 KB, and without an untorn-write promise they write each page twice to
+16 KB, and without an untorn-write promise they [[full-page-writes|write each page twice]] to
 protect against tears.
 
 ## Where it gets tricky

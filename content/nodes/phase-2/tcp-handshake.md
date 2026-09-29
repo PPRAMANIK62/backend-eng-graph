@@ -7,7 +7,7 @@ note: >-
   SYN, SYN-ACK, ACK: what opening a connection costs, and how SYN
   floods abuse it.
 needs: [tcp]
-leads_to: [time-wait]
+leads_to: [time-wait, connection-pooling, quic]
 compare_with: []
 ---
 

@@ -7,7 +7,7 @@ note: >-
   How numbers and strings are laid out as bytes: endianness, fixed
   width, varints, length prefixes.
 needs: []
-leads_to: [append-only-log]
+leads_to: [append-only-log, protobuf, sstable, parquet, schema-evolution]
 compare_with: []
 ---
 

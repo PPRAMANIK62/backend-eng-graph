@@ -7,7 +7,7 @@ note: >-
   Forcing data from the page cache to stable storage. What "durable"
   really means, and where drives and filesystems lie.
 needs: [page-cache]
-leads_to: [crash-consistency, fsync-errors]
+leads_to: [crash-consistency, fsync-errors, write-ahead-log, redis-persistence]
 compare_with: []
 ---
 

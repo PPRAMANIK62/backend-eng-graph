@@ -7,8 +7,8 @@ note: >-
   CRC32 and friends: catching data that was torn or corrupted on the way
   to or from disk.
 needs: []
-leads_to: [append-only-log]
-compare_with: []
+leads_to: [append-only-log, sstable]
+compare_with: [cryptographic-hashes]
 ---
 
 # Checksums
@@ -37,7 +37,7 @@ Checksum functions sit on a line from cheap and weak to expensive and strong.
 - The Internet checksum, used in IPv4, TCP and UDP headers, is 16 bits. It's very fast and misses a lot of errors.
 - Adler-32 is 32 bits and cheap to compute in software, but weak on short messages, and short messages are exactly what small log records are. Fletcher's checksum is a little stronger and a little slower.
 - CRCs (cyclic redundancy checks) are the middle ground. They're well studied and easy to build into hardware.
-- Cryptographic hashes sit at the strong end. They're 16 bytes or more and cost far more CPU.
+- [[cryptographic-hashes|Cryptographic hashes]] sit at the strong end. They're 16 bytes or more and cost far more CPU.
 
 For storage, the usual answer is CRC32C, the 32-bit CRC with Castagnoli's polynomial. It catches more errors than the older IEEE CRC-32 polynomial, which is the one ethernet, gzip, zip and PNG use.
 

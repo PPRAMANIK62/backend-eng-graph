@@ -7,7 +7,7 @@ note: >-
   Write a temp file, fsync it, rename it, fsync the directory: the
   classic safe update.
 needs: [crash-consistency]
-leads_to: []
+leads_to: [batch-processing]
 compare_with: []
 ---
 

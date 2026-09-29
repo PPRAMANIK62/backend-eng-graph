@@ -7,7 +7,7 @@ note: >-
   A running program: its own address space, open files and state,
   managed by the kernel.
 needs: []
-leads_to: [thread, system-call, signals, virtual-memory]
+leads_to: [thread, system-call, signals, virtual-memory, postgres-architecture, redis-persistence, linux-namespaces, cgroups, virtual-machines, linux-capabilities]
 compare_with: [thread]
 ---
 
@@ -157,7 +157,7 @@ has costs you should know about.
 **Copy-on-write isn't free.** fork looks instant for a small process. For a
 process with a large heap, the page tables alone take time and memory to
 copy, and every page either side writes to afterwards gets copied then.
-Redis forks for persistence, so while the child writes out its data, each
+Redis forks for [[redis-persistence|persistence]], so while the child writes out its data, each
 page the parent changes gets copied.
 
 **Shared file offsets surprise people.** Because parent and child share open

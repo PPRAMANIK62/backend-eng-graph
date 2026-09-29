@@ -8,7 +8,7 @@ note: >-
   timeout, duplicate ACKs, SACK and RACK-TLP.
 needs: [tcp]
 leads_to: [congestion-control, head-of-line-blocking]
-compare_with: []
+compare_with: [retries-with-backoff]
 ---
 
 # TCP retransmission

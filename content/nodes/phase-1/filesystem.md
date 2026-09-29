@@ -7,8 +7,8 @@ note: >-
   How files, directories and inodes are laid onto blocks. ext4, XFS, and
   journaling.
 needs: [file-descriptor, block-device]
-leads_to: [page-cache]
-compare_with: []
+leads_to: [page-cache, storage-engine, overlayfs]
+compare_with: [object-storage]
 ---
 
 # Filesystems

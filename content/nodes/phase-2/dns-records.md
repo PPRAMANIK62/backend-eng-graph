@@ -7,7 +7,7 @@ note: >-
   A, AAAA, CNAME, NS, SOA, MX, TXT, SRV and PTR: what each record type
   holds and what it's for.
 needs: [dns]
-leads_to: []
+leads_to: [service-discovery]
 compare_with: []
 ---
 

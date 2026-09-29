@@ -7,7 +7,7 @@ note: >-
   The receiver's window: the sender never has more unacknowledged data
   out than the other side has room for.
 needs: [tcp]
-leads_to: [bandwidth-delay-product]
+leads_to: [bandwidth-delay-product, backpressure]
 compare_with: [congestion-control]
 ---
 

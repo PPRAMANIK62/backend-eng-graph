@@ -7,7 +7,7 @@ note: >-
   Many private addresses sharing one public one, and why that breaks
   incoming connections.
 needs: [ip-addressing, ports-and-sockets]
-leads_to: [tcp-keepalive]
+leads_to: [tcp-keepalive, quic, kubernetes-networking, kube-proxy]
 compare_with: []
 ---
 

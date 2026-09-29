@@ -8,7 +8,7 @@ note: >-
   across a region and across the world, measured on my own machine. The
   numbers every design sits on.
 needs: [backend-engineer, memory-hierarchy]
-leads_to: [network-latency]
+leads_to: [network-latency, back-of-envelope-estimation]
 compare_with: []
 ---
 

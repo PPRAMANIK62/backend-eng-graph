@@ -75,7 +75,7 @@ region and touches one byte of it can get a whole 2 MiB page instead of
 4 KiB. Memory use grows for no gain. That's why the kernel docs suggest
 `madvise` mode when wasted memory matters.
 
-**Fork plus copy-on-write.** Redis saves snapshots by forking. After a
+**Fork plus copy-on-write.** Redis saves [[redis-persistence|snapshots]] by forking. After a
 fork, parent and child share their pages until one of them writes, and
 then that page is copied. With 4 KiB pages, a write copies 4 KiB. With
 huge pages, it copies 2 MiB. In a busy Redis instance, the first few

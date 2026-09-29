@@ -7,7 +7,7 @@ note: >-
   The sockets API (bind, listen, accept, connect), and a connection
   named by four numbers: two addresses and two ports.
 needs: [file-descriptor, ip-addressing]
-leads_to: [udp, tcp, nat]
+leads_to: [udp, tcp, nat, zero-downtime-reload, non-blocking-io, thread-per-connection]
 compare_with: []
 ---
 

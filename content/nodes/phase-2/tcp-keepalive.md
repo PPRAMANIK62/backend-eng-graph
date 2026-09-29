@@ -7,8 +7,8 @@ note: >-
   How a connection notices the other side is gone: keepalive probes and
   TCP_USER_TIMEOUT.
 needs: [tcp, nat]
-leads_to: []
-compare_with: []
+leads_to: [connection-pooling]
+compare_with: [timeouts]
 ---
 
 # TCP keepalive and dead peers

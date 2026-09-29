@@ -7,7 +7,7 @@ note: >-
   A small integer that stands for anything you can read or write: a
   file, a socket, a pipe.
 needs: [system-call]
-leads_to: [filesystem, ports-and-sockets]
+leads_to: [filesystem, ports-and-sockets, io-multiplexing]
 compare_with: []
 ---
 

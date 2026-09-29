@@ -7,7 +7,7 @@ note: >-
   Messages the kernel delivers to a process: SIGTERM, SIGKILL, SIGPIPE.
   Where graceful shutdown starts.
 needs: [process]
-leads_to: []
+leads_to: [graceful-shutdown]
 compare_with: []
 ---
 
@@ -59,7 +59,7 @@ events, with `sigwaitinfo` or through a file descriptor from `signalfd`.
 Here's what happens when Kubernetes deletes a pod running your service:
 
 1. If the container has a preStop hook, it runs first.
-2. The container runtime sends **SIGTERM** to process 1 in each container
+2. The [[container-runtimes|container runtime]] sends **SIGTERM** to process 1 in each container
    (or the image's configured stop signal instead).
 3. At the same time, Kubernetes starts taking the pod out of the service's
    endpoints and marks it not ready, so load balancers stop sending it new

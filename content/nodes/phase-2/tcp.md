@@ -7,8 +7,8 @@ note: >-
   A reliable, ordered byte stream built on a network that drops,
   duplicates and reorders packets.
 needs: [ports-and-sockets]
-leads_to: [tcp-handshake, tcp-retransmission, tcp-flow-control, nagle-and-delayed-ack, dns, anycast, tcp-keepalive]
-compare_with: [udp]
+leads_to: [tcp-handshake, tcp-retransmission, tcp-flow-control, nagle-and-delayed-ack, dns, anycast, tcp-keepalive, tls, http-semantics, resp-protocol]
+compare_with: [udp, quic]
 ---
 
 # TCP
@@ -43,7 +43,7 @@ It doesn't promise:
   connection to a machine that lost power looks exactly like a quiet
   one.
 - **Privacy or authenticity.** TCP has no encryption or authentication
-  of its own. That's TLS's job (phase 3).
+  of its own. That's [[tls|TLS]]'s job (phase 3).
 - **Timing.** "Reliable" means TCP keeps trying. It can keep trying for
   a very long time.
 

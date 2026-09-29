@@ -6,7 +6,7 @@ phase: 2
 note: >-
   One lost packet holds up everything behind it in an ordered stream.
 needs: [tcp-retransmission]
-leads_to: []
+leads_to: [http2, quic]
 compare_with: []
 ---
 
@@ -43,14 +43,14 @@ delayed along with B.
 ## The same problem, one layer up
 
 Head-of-line blocking also happens above TCP, in the application
-protocol. HTTP/1.1 pipelining let a client send several requests
+protocol. [[http-1-1|HTTP/1.1]] pipelining let a client send several requests
 without waiting, but it still suffered from head-of-line blocking at
 the application layer: a response stuck at the front held up the ones
 behind it. Clients worked around it by opening several
 connections, which has its own cost: each connection runs its own
 [[congestion-control]] and they don't share what they learn.
 
-HTTP/2 (RFC 9113, 2022) fixed the application-layer version by
+[[http2|HTTP/2]] (RFC 9113, 2022) fixed the application-layer version by
 multiplexing many requests over one connection as interleaved frames.
 But it runs on TCP, and TCP's loss recovery can't see those separate
 requests. A single lost or reordered packet stalls every active request
@@ -59,10 +59,10 @@ its spec is open about that.
 
 ## How QUIC avoids it
 
-QUIC (RFC 9000, 2021) runs over [[udp]] and builds streams into the
+[[quic|QUIC]] (RFC 9000, 2021) runs over [[udp]] and builds streams into the
 transport itself. Each stream is ordered on its own, and when a packet
 is lost, only the streams whose data was in that packet wait for the
-retransmission; the others keep going. HTTP/3 (RFC 9114, 2022) runs
+retransmission; the others keep going. [[http3|HTTP/3]] (RFC 9114, 2022) runs
 HTTP over QUIC streams for exactly this reason. QUIC gets
 its own article in phase 3.
 

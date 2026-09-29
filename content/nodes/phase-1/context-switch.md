@@ -7,7 +7,7 @@ note: >-
   The kernel swapping one thread off a core for another, and why many of
   them hurt.
 needs: [cpu-scheduler]
-leads_to: []
+leads_to: [green-threads]
 compare_with: []
 ---
 

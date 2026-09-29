@@ -8,7 +8,7 @@ note: >-
   it.
 needs: [virtual-memory, page-cache]
 leads_to: []
-compare_with: [direct-io]
+compare_with: [direct-io, buffer-pool, zero-copy]
 ---
 
 # mmap

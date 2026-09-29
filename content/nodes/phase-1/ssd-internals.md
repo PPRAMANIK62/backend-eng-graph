@@ -7,7 +7,7 @@ note: >-
   Flash pages and erase blocks, the flash translation layer, garbage
   collection and write amplification inside the drive.
 needs: [block-device]
-leads_to: [torn-writes]
+leads_to: [torn-writes, amplification]
 compare_with: []
 ---
 

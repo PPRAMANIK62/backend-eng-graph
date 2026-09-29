@@ -7,7 +7,7 @@ note: >-
   Skipping the page cache to control I/O yourself, like some databases
   do.
 needs: [page-cache]
-leads_to: []
+leads_to: [buffer-pool]
 compare_with: [mmap]
 ---
 

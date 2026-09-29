@@ -7,7 +7,7 @@ note: >-
   One address announced from many places, so each user reaches the
   nearest. How DNS roots and CDNs work.
 needs: [bgp, tcp]
-leads_to: []
+leads_to: [cdn]
 compare_with: []
 ---
 
@@ -96,7 +96,7 @@ Monitor from many locations and record which site answered.
   calls, the first step of a longer exchange.
 - For long connections, expect the occasional reset when routing changes,
   and make clients reconnect and retry cleanly.
-- Tie announcements to health checks, and damp them so a sick site
+- Tie announcements to [[health-checks|health checks]], and damp them so a sick site
   doesn't flap.
 - Don't expect even load between sites. Plan each site's capacity for the
   region that routes to it.

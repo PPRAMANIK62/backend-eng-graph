@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="90" y="24" text-anchor="middle" class="ink t b">B crashed</text>
+  <text x="40" y="50" text-anchor="middle" class="ink n b">A</text>
+  <text x="140" y="50" text-anchor="middle" class="ink n b">B</text>
+  <line x1="40" y1="58" x2="40" y2="280" class="line"/>
+  <path d="M32,80 H26 V210 H32" class="line"/>
+  <text x="22" y="150" text-anchor="middle" class="ink2 n" transform="rotate(-90 22 150)">timeout</text>
+  <circle cx="40" cy="210" r="5" class="focus"/>
+  <line x1="140" y1="58" x2="140" y2="100" class="line"/>
+  <path d="M132,92 L148,108 M148,92 L132,108" class="lost-s"/>
+  <text x="140" y="126" text-anchor="middle" class="ink2 n">crashed</text>
+  <line x1="40" y1="80" x2="130" y2="140" class="line" marker-end="url(#arrow)"/>
+  <text x="82" y="98" text-anchor="middle" class="ink n mono">ping</text>
+  <text x="270" y="24" text-anchor="middle" class="ink t b">B paused</text>
+  <text x="220" y="50" text-anchor="middle" class="ink n b">A</text>
+  <text x="320" y="50" text-anchor="middle" class="ink n b">B</text>
+  <line x1="220" y1="58" x2="220" y2="280" class="line"/>
+  <path d="M212,80 H206 V210 H212" class="line"/>
+  <text x="202" y="150" text-anchor="middle" class="ink2 n" transform="rotate(-90 202 150)">timeout</text>
+  <circle cx="220" cy="210" r="5" class="focus"/>
+  <line x1="320" y1="58" x2="320" y2="280" class="line"/>
+  <line x1="220" y1="80" x2="317" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="262" y="88" text-anchor="middle" class="ink n mono">ping</text>
+  <rect x="313" y="116" width="14" height="110" rx="3" class="old"/>
+  <text x="332" y="160" class="ink2 n">GC</text>
+  <text x="332" y="176" class="ink2 n">pause</text>
+  <line x1="320" y1="230" x2="223" y2="262" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="236" text-anchor="middle" class="ink n mono">ack</text>
+  <text x="450" y="24" text-anchor="middle" class="ink t b">Ping lost</text>
+  <text x="400" y="50" text-anchor="middle" class="ink n b">A</text>
+  <text x="500" y="50" text-anchor="middle" class="ink n b">B</text>
+  <line x1="400" y1="58" x2="400" y2="280" class="line"/>
+  <path d="M392,80 H386 V210 H392" class="line"/>
+  <text x="382" y="150" text-anchor="middle" class="ink2 n" transform="rotate(-90 382 150)">timeout</text>
+  <circle cx="400" cy="210" r="5" class="focus"/>
+  <line x1="500" y1="58" x2="500" y2="280" class="line"/>
+  <line x1="400" y1="80" x2="450" y2="100" class="line"/>
+  <path d="M450,96 L462,108 M462,96 L450,108" class="lost-s"/>
+  <text x="438" y="80" class="ink n mono">ping</text>
+  <text x="466" y="126" class="ink2 n">lost</text>
+  <text x="630" y="24" text-anchor="middle" class="ink t b">Reply late</text>
+  <text x="580" y="50" text-anchor="middle" class="ink n b">A</text>
+  <text x="680" y="50" text-anchor="middle" class="ink n b">B</text>
+  <line x1="580" y1="58" x2="580" y2="280" class="line"/>
+  <path d="M572,80 H566 V210 H572" class="line"/>
+  <text x="562" y="150" text-anchor="middle" class="ink2 n" transform="rotate(-90 562 150)">timeout</text>
+  <circle cx="580" cy="210" r="5" class="focus"/>
+  <line x1="680" y1="58" x2="680" y2="280" class="line"/>
+  <line x1="580" y1="80" x2="677" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="622" y="88" text-anchor="middle" class="ink n mono">ping</text>
+  <line x1="680" y1="120" x2="583" y2="262" class="line" marker-end="url(#arrow)"/>
+  <text x="628" y="180" text-anchor="end" class="ink n mono">ack</text>
+  <circle cx="150" cy="302" r="5" class="focus"/>
+  <text x="162" y="306" class="focus n b">A gives up and suspects B.</text>
+  <text x="340" y="306" class="ink2 n">In all four, A sees the same thing: no reply in time.</text>
+</svg>

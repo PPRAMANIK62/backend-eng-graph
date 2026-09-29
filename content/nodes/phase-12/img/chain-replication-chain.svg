@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="250" viewBox="0 0 720 250" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="250" y="16" width="220" height="50" rx="6" class="box"/>
+  <text x="360" y="38" text-anchor="middle" class="ink t b">Master</text>
+  <text x="360" y="56" text-anchor="middle" class="ink2 n">replicated with consensus</text>
+  <rect x="140" y="150" width="120" height="56" rx="6" class="box"/>
+  <text x="200.0" y="174" text-anchor="middle" class="ink t b">Head</text>
+  <text x="200.0" y="192" text-anchor="middle" class="ink2 n">orders every update</text>
+  <line x1="200.0" y1="148" x2="240.0" y2="68" class="line" stroke-dasharray="5 4"/>
+  <rect x="300" y="150" width="120" height="56" rx="6" class="box"/>
+  <text x="360.0" y="174" text-anchor="middle" class="ink t b">Middle</text>
+  <text x="360.0" y="192" text-anchor="middle" class="ink2 n">applies, forwards</text>
+  <line x1="360.0" y1="148" x2="360" y2="68" class="line" stroke-dasharray="5 4"/>
+  <rect x="460" y="150" width="120" height="56" rx="6" class="box"/>
+  <text x="520.0" y="174" text-anchor="middle" class="ink t b">Tail</text>
+  <text x="520.0" y="192" text-anchor="middle" class="ink2 n">answers queries</text>
+  <line x1="520.0" y1="148" x2="480.0" y2="68" class="line" stroke-dasharray="5 4"/>
+  <text x="190" y="90" text-anchor="end" class="ink2 n">detects failures, relinks</text>
+  <text x="190" y="106" text-anchor="end" class="ink2 n">the chain, tells clients</text>
+  <line x1="260" y1="170" x2="297" y2="170" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="420" y1="170" x2="457" y2="170" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="457" y1="190" x2="423" y2="190" class="line" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <line x1="297" y1="190" x2="263" y2="190" class="line" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="360" y="230" text-anchor="middle" class="ink2 n">updates flow down the chain; acks flow back up</text>
+  <text x="20" y="160" text-anchor="start" class="focus n mono b">update</text>
+  <line x1="20" y1="174" x2="137" y2="174" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="20" y="196" text-anchor="start" class="ink2 n">client</text>
+  <text x="700" y="160" text-anchor="end" class="ink n mono b">query</text>
+  <line x1="700" y1="170" x2="583" y2="170" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="208" text-anchor="end" class="ink n mono b">reply</text>
+  <line x1="583" y1="194" x2="700" y2="194" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="224" text-anchor="end" class="ink2 n">client</text>
+</svg>

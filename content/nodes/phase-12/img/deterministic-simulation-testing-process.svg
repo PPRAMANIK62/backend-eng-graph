@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    .fbox{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .frame{fill:none;stroke:#8a8984;stroke-width:1.5;stroke-dasharray:6 4}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .fbox{fill:#3987e5;stroke:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- the one process -->
+  <rect x="10" y="10" width="700" height="336" rx="8" class="frame"/>
+  <text x="24" y="32" class="ink t b">One OS process, one thread</text>
+
+  <!-- workload + checker -->
+  <rect x="30" y="48" width="320" height="46" rx="6" class="box"/>
+  <text x="42" y="68" class="ink t b">Workload</text>
+  <text x="42" y="85" class="ink n">random requests from simulated clients</text>
+  <rect x="370" y="48" width="320" height="46" rx="6" class="safe-box"/>
+  <text x="382" y="68" class="ink t b">Checker</text>
+  <text x="382" y="85" class="ink n">assertions, invariants, history check</text>
+
+  <!-- nodes -->
+  <rect x="30" y="118" width="200" height="60" rx="6" class="fbox"/>
+  <text x="130" y="143" text-anchor="middle" class="ink t b">Node 1</text>
+  <text x="130" y="162" text-anchor="middle" class="ink n">real production code</text>
+  <rect x="260" y="118" width="200" height="60" rx="6" class="fbox"/>
+  <text x="360" y="143" text-anchor="middle" class="ink t b">Node 2</text>
+  <text x="360" y="162" text-anchor="middle" class="ink n">real production code</text>
+  <rect x="490" y="118" width="200" height="60" rx="6" class="fbox"/>
+  <text x="590" y="143" text-anchor="middle" class="ink t b">Node 3</text>
+  <text x="590" y="162" text-anchor="middle" class="ink n">real production code</text>
+
+  <!-- interfaces -->
+  <text x="30" y="206" class="ink2 n">Everything nondeterministic goes through an interface the simulator owns:</text>
+  <rect x="30" y="216" width="155" height="44" rx="6" class="box"/>
+  <text x="107" y="235" text-anchor="middle" class="ink n b">Network</text>
+  <text x="107" y="251" text-anchor="middle" class="ink2 n">drop, delay, partition</text>
+  <rect x="198" y="216" width="155" height="44" rx="6" class="box"/>
+  <text x="275" y="235" text-anchor="middle" class="ink n b">Disk</text>
+  <text x="275" y="251" text-anchor="middle" class="ink2 n">errors, corruption</text>
+  <rect x="366" y="216" width="155" height="44" rx="6" class="box"/>
+  <text x="443" y="235" text-anchor="middle" class="ink n b">Clock</text>
+  <text x="443" y="251" text-anchor="middle" class="ink2 n">jumps to next event</text>
+  <rect x="534" y="216" width="156" height="44" rx="6" class="box"/>
+  <text x="612" y="235" text-anchor="middle" class="ink n b">Random numbers</text>
+  <text x="612" y="251" text-anchor="middle" class="ink2 n">one seeded source</text>
+
+  <!-- scheduler -->
+  <rect x="30" y="280" width="660" height="50" rx="6" class="box"/>
+  <text x="42" y="301" class="ink t b">Event loop: runs one event at a time, in an order picked by the seed</text>
+  <text x="42" y="319" class="ink n">Also crashes and restarts nodes, and injects faults when the seed says so</text>
+
+  <!-- seed -->
+  <text x="24" y="376" class="ink n b">One seed per run.</text>
+  <text x="140" y="376" class="ink2 n">same seed + same code = the same run, event for event</text>
+</svg>

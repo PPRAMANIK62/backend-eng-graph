@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="416" viewBox="0 0 720 416" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="20" y="14" width="200" height="34" rx="6" class="box"/>
+  <text x="120" y="36" text-anchor="middle" class="ink t b">Client</text>
+  <line x1="90" y1="50" x2="90" y2="116" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="84" y="80" text-anchor="end" class="focus n mono b">y:=9</text>
+  <line x1="150" y1="116" x2="150" y2="52" class="line" marker-end="url(#arrow)"/>
+  <text x="158" y="80" class="ink2 n">result</text>
+  <rect x="20" y="100" width="200" height="250" rx="6" class="line"/>
+  <text x="120.0" y="370" text-anchor="middle" class="ink2 n">server 1 (leader)</text>
+  <rect x="35" y="118" width="170" height="36" rx="6" class="box"/>
+  <text x="120.0" y="141" text-anchor="middle" class="ink n b">consensus module</text>
+  <text x="35" y="184" class="ink2 n">log</text>
+  <rect x="35.0" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="63.3" y="214" text-anchor="middle" class="ink n mono">x:=3</text>
+  <rect x="91.7" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="120.0" y="214" text-anchor="middle" class="ink n mono">y:=1</text>
+  <rect x="148.3" y="192" width="56.7" height="34" rx="4" class="focus-s"/>
+  <text x="176.7" y="214" text-anchor="middle" class="focus n mono b">y:=9</text>
+  <line x1="120.0" y1="156" x2="120.0" y2="189" class="line" marker-end="url(#arrow)"/>
+  <line x1="120.0" y1="228" x2="120.0" y2="267" class="line" marker-end="url(#arrow)"/>
+  <text x="128.0" y="252" class="ink2 n">apply in order</text>
+  <rect x="35" y="270" width="170" height="62" rx="6" class="safe-box"/>
+  <text x="120.0" y="293" text-anchor="middle" class="ink n b">state machine</text>
+  <text x="120.0" y="317" text-anchor="middle" class="ink n mono">x=3  y=9</text>
+  <rect x="260" y="100" width="200" height="250" rx="6" class="line"/>
+  <text x="360.0" y="370" text-anchor="middle" class="ink2 n">server 2</text>
+  <rect x="275" y="118" width="170" height="36" rx="6" class="box"/>
+  <text x="360.0" y="141" text-anchor="middle" class="ink n b">consensus module</text>
+  <text x="275" y="184" class="ink2 n">log</text>
+  <rect x="275.0" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="303.3" y="214" text-anchor="middle" class="ink n mono">x:=3</text>
+  <rect x="331.7" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="360.0" y="214" text-anchor="middle" class="ink n mono">y:=1</text>
+  <rect x="388.3" y="192" width="56.7" height="34" rx="4" class="focus-s"/>
+  <text x="416.7" y="214" text-anchor="middle" class="focus n mono b">y:=9</text>
+  <line x1="360.0" y1="156" x2="360.0" y2="189" class="line" marker-end="url(#arrow)"/>
+  <line x1="360.0" y1="228" x2="360.0" y2="267" class="line" marker-end="url(#arrow)"/>
+  <text x="368.0" y="252" class="ink2 n">apply in order</text>
+  <rect x="275" y="270" width="170" height="62" rx="6" class="safe-box"/>
+  <text x="360.0" y="293" text-anchor="middle" class="ink n b">state machine</text>
+  <text x="360.0" y="317" text-anchor="middle" class="ink n mono">x=3  y=9</text>
+  <rect x="500" y="100" width="200" height="250" rx="6" class="line"/>
+  <text x="600.0" y="370" text-anchor="middle" class="ink2 n">server 3</text>
+  <rect x="515" y="118" width="170" height="36" rx="6" class="box"/>
+  <text x="600.0" y="141" text-anchor="middle" class="ink n b">consensus module</text>
+  <text x="515" y="184" class="ink2 n">log</text>
+  <rect x="515.0" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="543.3" y="214" text-anchor="middle" class="ink n mono">x:=3</text>
+  <rect x="571.7" y="192" width="56.7" height="34" rx="4" class="box"/>
+  <text x="600.0" y="214" text-anchor="middle" class="ink n mono">y:=1</text>
+  <rect x="628.3" y="192" width="56.7" height="34" rx="4" class="focus-s"/>
+  <text x="656.7" y="214" text-anchor="middle" class="focus n mono b">y:=9</text>
+  <line x1="600.0" y1="156" x2="600.0" y2="189" class="line" marker-end="url(#arrow)"/>
+  <line x1="600.0" y1="228" x2="600.0" y2="267" class="line" marker-end="url(#arrow)"/>
+  <text x="608.0" y="252" class="ink2 n">apply in order</text>
+  <rect x="515" y="270" width="170" height="62" rx="6" class="safe-box"/>
+  <text x="600.0" y="293" text-anchor="middle" class="ink n b">state machine</text>
+  <text x="600.0" y="317" text-anchor="middle" class="ink n mono">x=3  y=9</text>
+  <line x1="205" y1="136" x2="273" y2="136" class="line" marker-end="url(#arrow)"/>
+  <path d="M180,118 V86 H600.0 V115" class="line" marker-end="url(#arrow)"/>
+  <text x="360.0" y="80" text-anchor="middle" class="ink2 n">leader replicates the entry; a majority must store it</text>
+  <text x="360" y="404" text-anchor="middle" class="ink2 n">Same commands, same order, deterministic machine: every server reaches the same state.</text>
+</svg>

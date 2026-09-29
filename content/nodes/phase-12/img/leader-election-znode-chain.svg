@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  
+  <text x="40" y="50" class="ink t b">While the leader is alive</text>
+  <text x="40" y="70" class="ink2 n mono">/election</text>
+  <rect x="40" y="90" width="140" height="36" rx="6" class="box"/>
+  <rect x="40" y="90" width="140" height="36" rx="6" class="focus-s"/>
+  <text x="110.0" y="113" text-anchor="middle" class="focus n mono b">n_0001</text>
+  <text x="110.0" y="146" text-anchor="middle" class="focus n b">leader</text>
+  <rect x="210" y="90" width="140" height="36" rx="6" class="box"/>
+  <text x="280.0" y="113" text-anchor="middle" class="ink n mono">n_0002</text>
+  <text x="280.0" y="146" text-anchor="middle" class="ink2 n">candidate</text>
+  <path d="M230,90 C210,64 180,64 160,88" class="line" marker-end="url(#arrow)"/>
+  <text x="195.0" y="68" text-anchor="middle" class="ink2 n">watches</text>
+  <rect x="380" y="90" width="140" height="36" rx="6" class="box"/>
+  <text x="450.0" y="113" text-anchor="middle" class="ink n mono">n_0003</text>
+  <text x="450.0" y="146" text-anchor="middle" class="ink2 n">candidate</text>
+  <path d="M400,90 C380,64 350,64 330,88" class="line" marker-end="url(#arrow)"/>
+  <text x="365.0" y="68" text-anchor="middle" class="ink2 n">watches</text>
+  <rect x="550" y="90" width="140" height="36" rx="6" class="box"/>
+  <text x="620.0" y="113" text-anchor="middle" class="ink n mono">n_0004</text>
+  <text x="620.0" y="146" text-anchor="middle" class="ink2 n">candidate</text>
+  <path d="M570,90 C550,64 520,64 500,88" class="line" marker-end="url(#arrow)"/>
+  <text x="535.0" y="68" text-anchor="middle" class="ink2 n">watches</text>
+  <text x="40" y="210" class="ink t b">After the leader's session dies</text>
+  <text x="40" y="230" class="ink2 n mono">/election</text>
+  <rect x="40" y="250" width="140" height="36" rx="6" class="box" style="stroke-dasharray:5 4"/>
+  <text x="110.0" y="273" text-anchor="middle" class="old n mono">n_0001</text>
+  <line x1="50" y1="256" x2="170" y2="280" class="lost-s"/>
+  <text x="110.0" y="304" text-anchor="middle" class="lost n b">session died,</text>
+  <text x="110.0" y="319" text-anchor="middle" class="lost n b">node deleted</text>
+  <rect x="210" y="250" width="140" height="36" rx="6" class="box"/>
+  <rect x="210" y="250" width="140" height="36" rx="6" class="focus-s"/>
+  <text x="280.0" y="273" text-anchor="middle" class="focus n mono b">n_0002</text>
+  <text x="280.0" y="304" text-anchor="middle" class="focus n b">notified, now smallest,</text>
+  <text x="280.0" y="319" text-anchor="middle" class="focus n b">so it is the leader</text>
+  <rect x="380" y="250" width="140" height="36" rx="6" class="box"/>
+  <text x="450.0" y="273" text-anchor="middle" class="ink n mono">n_0003</text>
+  <text x="450.0" y="306" text-anchor="middle" class="ink2 n">candidate</text>
+  <path d="M400,250 C380,224 350,224 330,248" class="line" marker-end="url(#arrow)"/>
+  <text x="365.0" y="228" text-anchor="middle" class="ink2 n">watches</text>
+  <rect x="550" y="250" width="140" height="36" rx="6" class="box"/>
+  <text x="620.0" y="273" text-anchor="middle" class="ink n mono">n_0004</text>
+  <text x="620.0" y="306" text-anchor="middle" class="ink2 n">candidate</text>
+  <path d="M570,250 C550,224 520,224 500,248" class="line" marker-end="url(#arrow)"/>
+  <text x="535.0" y="228" text-anchor="middle" class="ink2 n">watches</text>
+  <path d="M160,248 C180,224 210,224 230,250" class="line" marker-end="url(#arrow)"/>
+  <text x="195.0" y="228" text-anchor="middle" class="lost n b">event</text>
+  </svg>

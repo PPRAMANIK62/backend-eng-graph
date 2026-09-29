@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lane labels -->
+  <text x="16" y="72" class="ink t b">Server</text>
+  <text x="16" y="182" class="ink t b">Client</text>
+  <text x="16" y="330" class="ink t b">Next</text>
+  <text x="16" y="346" class="ink t b">holder</text>
+
+  <!-- server lease: full term -->
+  <rect x="120" y="54" width="480" height="28" rx="6" class="box"/>
+  <text x="360" y="73" text-anchor="middle" class="ink n">lease term, counted on the server's clock</text>
+  <text x="120" y="44" text-anchor="middle" class="ink2 n">grant</text>
+
+  <!-- grant travels -->
+  <line x1="120" y1="84" x2="188" y2="160" class="line" marker-end="url(#arrow)"/>
+  <text x="182" y="118" class="ink2 n">grant travels</text>
+  <text x="182" y="132" class="ink2 n">(network delay)</text>
+
+  <!-- client's estimate -->
+  <rect x="190" y="164" width="350" height="28" rx="6" class="box"/>
+  <rect x="190" y="164" width="350" height="28" rx="6" class="focus-s"/>
+  <text x="365" y="183" text-anchor="middle" class="focus n b">client's own estimate, cut short</text>
+
+  <!-- end markers -->
+  <line x1="540" y1="150" x2="540" y2="262" class="focus-s" style="stroke-dasharray:4 3"/>
+  <text x="536" y="148" text-anchor="end" class="focus n b">client stops here</text>
+  <line x1="600" y1="40" x2="600" y2="352" class="line" style="stroke-dasharray:4 3"/>
+  <text x="606" y="44" class="ink n">server hands the</text>
+  <text x="606" y="58" class="ink n">lease on here</text>
+
+  <!-- safety margin -->
+  <rect x="540" y="214" width="60" height="28" rx="6" class="safe-box"/>
+  <text x="570" y="258" text-anchor="middle" class="ink n b">safety</text>
+  <text x="570" y="272" text-anchor="middle" class="ink n b">margin</text>
+  <text x="530" y="226" text-anchor="end" class="ink2 n">allowance for</text>
+  <text x="530" y="240" text-anchor="end" class="ink2 n">clock drift</text>
+
+  <!-- slow client clock -->
+  <rect x="190" y="286" width="460" height="22" rx="6" class="lost-s" style="stroke-dasharray:6 4"/>
+  <text x="200" y="302" class="lost n b">client clock runs slow: its estimate ends too late</text>
+
+  <!-- next holder -->
+  <rect x="600" y="322" width="104" height="28" rx="6" class="box"/>
+  <text x="678" y="341" text-anchor="middle" class="ink n">new</text>
+  <rect x="600" y="284" width="50" height="68" rx="4" class="lost-s"/>
+  <text x="646" y="276" text-anchor="middle" class="lost n b">two holders</text>
+
+  <!-- time arrow -->
+  <line x1="120" y1="370" x2="700" y2="370" class="line" marker-end="url(#arrow)"/>
+  <text x="112" y="374" text-anchor="end" class="ink2 n">time</text>
+</svg>

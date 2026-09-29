@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" class="ink t b">Forward steps, each a local transaction that commits on its own</text>
+
+  <!-- T1 -->
+  <rect x="20" y="46" width="200" height="66" rx="6" class="box"/>
+  <text x="32" y="66" class="ink2 n">T1 · order service</text>
+  <text x="32" y="86" class="ink t b">Create order</text>
+  <text x="32" y="103" class="ink n">status PENDING</text>
+  <line x1="222" y1="79" x2="256" y2="79" class="line" marker-end="url(#arrow)"/>
+
+  <!-- T2 -->
+  <rect x="260" y="46" width="200" height="66" rx="6" class="box"/>
+  <text x="272" y="66" class="ink2 n">T2 · customer service</text>
+  <text x="272" y="86" class="ink t b">Reserve credit</text>
+  <text x="272" y="103" class="ink n">100 held</text>
+  <line x1="462" y1="79" x2="496" y2="79" class="line" marker-end="url(#arrow)"/>
+
+  <!-- T3 fails -->
+  <rect x="500" y="46" width="200" height="66" rx="6" class="box"/>
+  <path d="M500,52 V106" class="lost-s"/>
+  <text x="512" y="66" class="ink2 n">T3 · stock service</text>
+  <text x="512" y="86" class="ink t b">Reserve stock</text>
+  <text x="512" y="103" class="lost n b">fails: out of stock</text>
+
+  <!-- turn back -->
+  <path d="M600,114 V215 H464" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="610" y="148" class="focus n b">compensate,</text>
+  <text x="610" y="164" class="focus n b">newest first</text>
+
+  <text x="20" y="160" class="ink t b">Compensating steps, run in reverse</text>
+
+  <!-- C2 -->
+  <rect x="260" y="182" width="200" height="66" rx="6" class="box"/>
+  <text x="272" y="202" class="ink2 n">C2 · customer service</text>
+  <text x="272" y="222" class="ink t b">Release credit</text>
+  <text x="272" y="239" class="ink n">the hold on 100 ends</text>
+  <line x1="258" y1="215" x2="224" y2="215" class="focus-s" marker-end="url(#arrow)"/>
+
+  <!-- C1 -->
+  <rect x="20" y="182" width="200" height="66" rx="6" class="box"/>
+  <text x="32" y="202" class="ink2 n">C1 · order service</text>
+  <text x="32" y="222" class="ink t b">Reject order</text>
+  <text x="32" y="239" class="ink n">status REJECTED</text>
+
+  <!-- notes -->
+  <text x="20" y="282" class="ink2 n">Between T2 and C2, other requests can see the 100 held: a saga has no isolation.</text>
+  <text x="20" y="302" class="ink2 n">C1 doesn't delete the order. It moves it to a new state, so the history stays.</text>
+</svg>

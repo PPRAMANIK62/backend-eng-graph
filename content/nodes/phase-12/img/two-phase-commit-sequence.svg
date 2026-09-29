@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="390" viewBox="0 0 720 390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lanes -->
+  <text x="150" y="28" text-anchor="middle" class="ink t b">Coordinator</text>
+  <text x="400" y="28" text-anchor="middle" class="ink t b">Participant A</text>
+  <text x="400" y="44" text-anchor="middle" class="ink2 n">Alice's database</text>
+  <text x="620" y="28" text-anchor="middle" class="ink t b">Participant B</text>
+  <text x="620" y="44" text-anchor="middle" class="ink2 n">Bob's database</text>
+  <line x1="150" y1="54" x2="150" y2="385" class="line"/>
+  <line x1="400" y1="54" x2="400" y2="385" class="line"/>
+  <line x1="620" y1="54" x2="620" y2="385" class="line"/>
+
+  <!-- phase labels -->
+  <text x="14" y="122" class="ink2 n b">Phase 1</text>
+  <text x="14" y="138" class="ink2 n">prepare</text>
+  <text x="14" y="352" class="ink2 n b">Phase 2</text>
+  <text x="14" y="368" class="ink2 n">commit</text>
+
+  <!-- prepare -->
+  <text x="190" y="66" class="ink n mono">PREPARE</text>
+  <line x1="150" y1="72" x2="397" y2="96" class="line" marker-end="url(#arrow)"/>
+  <line x1="150" y1="72" x2="617" y2="102" class="line" marker-end="url(#arrow)"/>
+
+  <!-- participants write prepare records -->
+  <rect x="330" y="110" width="140" height="54" rx="6" class="box"/>
+  <text x="400" y="128" text-anchor="middle" class="ink n">write changes and</text>
+  <text x="400" y="143" text-anchor="middle" class="ink n">a prepare record,</text>
+  <text x="400" y="158" text-anchor="middle" class="ink n">keep locks</text>
+  <rect x="550" y="110" width="140" height="54" rx="6" class="box"/>
+  <text x="620" y="128" text-anchor="middle" class="ink n">write changes and</text>
+  <text x="620" y="143" text-anchor="middle" class="ink n">a prepare record,</text>
+  <text x="620" y="158" text-anchor="middle" class="ink n">keep locks</text>
+
+  <!-- yes votes -->
+  <text x="190" y="184" class="ink n mono">YES</text>
+  <line x1="400" y1="176" x2="153" y2="200" class="line" marker-end="url(#arrow)"/>
+  <line x1="620" y1="176" x2="153" y2="212" class="line" marker-end="url(#arrow)"/>
+
+  <!-- commit point -->
+  <rect x="160" y="224" width="190" height="44" rx="6" class="safe-box"/>
+  <text x="172" y="242" class="ink n b">write COMMIT to its log</text>
+  <text x="172" y="259" class="ink n">the commit point</text>
+
+  <!-- in-doubt bracket on A -->
+  <path d="M404,176 H412 V306 H404" class="lost-s"/>
+  <text x="422" y="232" class="lost n b">in doubt</text>
+  <text x="422" y="248" class="ink2 n">voted yes, can't decide</text>
+  <text x="422" y="264" class="ink2 n">alone, locks still held</text>
+
+  <!-- commit -->
+  <text x="190" y="280" class="focus n mono b">COMMIT</text>
+  <line x1="150" y1="286" x2="397" y2="306" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="150" y1="286" x2="617" y2="318" class="focus-s" marker-end="url(#arrow)"/>
+
+  <!-- participants commit -->
+  <rect x="330" y="330" width="140" height="40" rx="6" class="box"/>
+  <text x="400" y="346" text-anchor="middle" class="ink n">commit,</text>
+  <text x="400" y="362" text-anchor="middle" class="ink n">release locks</text>
+  <rect x="550" y="330" width="140" height="40" rx="6" class="box"/>
+  <text x="620" y="346" text-anchor="middle" class="ink n">commit,</text>
+  <text x="620" y="362" text-anchor="middle" class="ink n">release locks</text>
+
+</svg>

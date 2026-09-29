@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="344" viewBox="0 0 720 344" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="26" class="ink t b">1. S1 leads term 4</text>
+  <text x="78" y="52" text-anchor="middle" class="ink2 n">1</text>
+  <text x="114" y="52" text-anchor="middle" class="ink2 n">2</text>
+  <text x="150" y="52" text-anchor="middle" class="ink2 n">3</text>
+  <text x="20" y="84" class="focus t b">S1</text>
+  <rect x="62" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="78" y="83" text-anchor="middle" class="ink t">1</text>
+  <rect x="98" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="114" y="83" text-anchor="middle" class="ink t">2</text>
+  <rect x="134" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="150" y="83" text-anchor="middle" class="ink t">4</text>
+  <text x="174" y="83" class="focus n">leader</text>
+  <text x="20" y="124" class="ink t b">S2</text>
+  <rect x="62" y="102" width="32" height="32" rx="4" class="box"/>
+  <text x="78" y="123" text-anchor="middle" class="ink t">1</text>
+  <rect x="98" y="102" width="32" height="32" rx="4" class="box"/>
+  <text x="114" y="123" text-anchor="middle" class="ink t">2</text>
+  <text x="20" y="164" class="ink t b">S3</text>
+  <rect x="62" y="142" width="32" height="32" rx="4" class="box"/>
+  <text x="78" y="163" text-anchor="middle" class="ink t">1</text>
+  <rect x="98" y="142" width="32" height="32" rx="4" class="box"/>
+  <text x="114" y="163" text-anchor="middle" class="ink t">2</text>
+  <text x="20" y="204" class="ink t b">S4</text>
+  <rect x="62" y="182" width="32" height="32" rx="4" class="box"/>
+  <text x="78" y="203" text-anchor="middle" class="ink t">1</text>
+  <text x="20" y="244" class="ink t b">S5</text>
+  <rect x="62" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="78" y="243" text-anchor="middle" class="ink t">1</text>
+  <rect x="98" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="114" y="243" text-anchor="middle" class="ink t">3</text>
+  <text x="20" y="286" class="ink n">term-2 entry on a majority,</text>
+  <text x="20" y="302" class="ink n">but not committed</text>
+  <text x="256" y="26" class="ink t b">2. S1 crashes, S5 wins</text>
+  <text x="314" y="52" text-anchor="middle" class="ink2 n">1</text>
+  <text x="350" y="52" text-anchor="middle" class="ink2 n">2</text>
+  <text x="386" y="52" text-anchor="middle" class="ink2 n">3</text>
+  <text x="256" y="84" class="ink t b">S1</text>
+  <rect x="298" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="314" y="83" text-anchor="middle" class="ink t">1</text>
+  <rect x="334" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="350" y="83" text-anchor="middle" class="ink t">2</text>
+  <rect x="370" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="386" y="83" text-anchor="middle" class="ink t">4</text>
+  <text x="412" y="84" class="lost n b">✕ down</text>
+  <text x="256" y="124" class="ink t b">S2</text>
+  <rect x="298" y="102" width="32" height="32" rx="4" class="box"/>
+  <text x="314" y="123" text-anchor="middle" class="ink t">1</text>
+  <rect x="334" y="102" width="32" height="32" rx="4" class="box"/>
+  <text x="350" y="123" text-anchor="middle" class="ink t">3</text>
+  <rect x="333" y="101" width="34" height="34" rx="4" class="lost-s" style="stroke-width:2"/>
+  <text x="256" y="164" class="ink t b">S3</text>
+  <rect x="298" y="142" width="32" height="32" rx="4" class="box"/>
+  <text x="314" y="163" text-anchor="middle" class="ink t">1</text>
+  <rect x="334" y="142" width="32" height="32" rx="4" class="box"/>
+  <text x="350" y="163" text-anchor="middle" class="ink t">3</text>
+  <rect x="333" y="141" width="34" height="34" rx="4" class="lost-s" style="stroke-width:2"/>
+  <text x="256" y="204" class="ink t b">S4</text>
+  <rect x="298" y="182" width="32" height="32" rx="4" class="box"/>
+  <text x="314" y="203" text-anchor="middle" class="ink t">1</text>
+  <rect x="334" y="182" width="32" height="32" rx="4" class="box"/>
+  <text x="350" y="203" text-anchor="middle" class="ink t">3</text>
+  <text x="256" y="244" class="focus t b">S5</text>
+  <rect x="298" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="314" y="243" text-anchor="middle" class="ink t">1</text>
+  <rect x="334" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="350" y="243" text-anchor="middle" class="ink t">3</text>
+  <text x="374" y="243" class="focus n">leader</text>
+  <text x="256" y="286" class="ink n">S5&#39;s last term 3 beats 2:</text>
+  <text x="256" y="302" class="ink n">index 2 overwritten</text>
+  <text x="492" y="26" class="ink t b">3. Or: S1 commits term 4 first</text>
+  <text x="550" y="52" text-anchor="middle" class="ink2 n">1</text>
+  <text x="586" y="52" text-anchor="middle" class="ink2 n">2</text>
+  <text x="622" y="52" text-anchor="middle" class="ink2 n">3</text>
+  <text x="492" y="84" class="focus t b">S1</text>
+  <rect x="534" y="62" width="32" height="32" rx="4" class="box"/>
+  <text x="550" y="83" text-anchor="middle" class="ink t">1</text>
+  <rect x="570" y="62" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="586" y="83" text-anchor="middle" class="ink t">2</text>
+  <rect x="606" y="62" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="622" y="83" text-anchor="middle" class="ink t">4</text>
+  <text x="646" y="83" class="focus n">leader</text>
+  <text x="492" y="124" class="ink t b">S2</text>
+  <rect x="534" y="102" width="32" height="32" rx="4" class="box"/>
+  <text x="550" y="123" text-anchor="middle" class="ink t">1</text>
+  <rect x="570" y="102" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="586" y="123" text-anchor="middle" class="ink t">2</text>
+  <rect x="606" y="102" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="622" y="123" text-anchor="middle" class="ink t">4</text>
+  <text x="492" y="164" class="ink t b">S3</text>
+  <rect x="534" y="142" width="32" height="32" rx="4" class="box"/>
+  <text x="550" y="163" text-anchor="middle" class="ink t">1</text>
+  <rect x="570" y="142" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="586" y="163" text-anchor="middle" class="ink t">2</text>
+  <rect x="606" y="142" width="32" height="32" rx="4" class="safe-box"/>
+  <text x="622" y="163" text-anchor="middle" class="ink t">4</text>
+  <text x="492" y="204" class="ink t b">S4</text>
+  <rect x="534" y="182" width="32" height="32" rx="4" class="box"/>
+  <text x="550" y="203" text-anchor="middle" class="ink t">1</text>
+  <text x="492" y="244" class="ink t b">S5</text>
+  <rect x="534" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="550" y="243" text-anchor="middle" class="ink t">1</text>
+  <rect x="570" y="222" width="32" height="32" rx="4" class="box"/>
+  <text x="586" y="243" text-anchor="middle" class="ink t">3</text>
+  <text x="492" y="286" class="ink n">S5 can&#39;t win now;</text>
+  <text x="492" y="302" class="ink n">2 and 3 are committed</text>
+  <line x1="250" y1="12" x2="250" y2="306" class="line" stroke-dasharray="2 4"/>
+  <line x1="486" y1="12" x2="486" y2="306" class="line" stroke-dasharray="2 4"/>
+  <text x="20" y="332" class="ink2 n">Numbers in boxes are the term of each entry; columns are log indexes. Red outline: a copy of the term-2 entry that got overwritten.</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="195.0" y="30" text-anchor="middle" class="ink n b">request</text>
+  <text x="300.0" y="30" text-anchor="middle" class="ink n b">pre-prepare</text>
+  <text x="420.0" y="30" text-anchor="middle" class="ink n b">prepare</text>
+  <text x="540.0" y="30" text-anchor="middle" class="ink n b">commit</text>
+  <text x="645.0" y="30" text-anchor="middle" class="ink n b">reply</text>
+  <line x1="240" y1="40" x2="240" y2="290" class="line" stroke-dasharray="2 4"/>
+  <line x1="360" y1="40" x2="360" y2="290" class="line" stroke-dasharray="2 4"/>
+  <line x1="480" y1="40" x2="480" y2="290" class="line" stroke-dasharray="2 4"/>
+  <line x1="600" y1="40" x2="600" y2="290" class="line" stroke-dasharray="2 4"/>
+  <line x1="150" y1="70" x2="690" y2="70" class="line"/>
+  <text x="10" y="74" text-anchor="start" class="ink n b">Client</text>
+  <line x1="150" y1="120" x2="690" y2="120" class="line"/>
+  <text x="10" y="124" text-anchor="start" class="ink n b">Replica 0</text>
+  <text x="80" y="124" text-anchor="start" class="ink2 n">primary</text>
+  <line x1="150" y1="170" x2="690" y2="170" class="line"/>
+  <text x="10" y="174" text-anchor="start" class="ink n b">Replica 1</text>
+  <line x1="150" y1="220" x2="690" y2="220" class="line"/>
+  <text x="10" y="224" text-anchor="start" class="ink n b">Replica 2</text>
+  <line x1="150" y1="270" x2="690" y2="270" class="lost-s" stroke-dasharray="6 5" style="stroke-width:1.5"/>
+  <text x="10" y="274" text-anchor="start" class="ink n b">Replica 3</text>
+  <text x="80" y="274" text-anchor="start" class="lost n b">faulty</text>
+  <line x1="150" y1="70" x2="238" y2="117" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="240" y1="120" x2="358" y2="167" class="line" marker-end="url(#arrow)"/>
+  <line x1="240" y1="120" x2="358" y2="217" class="line" marker-end="url(#arrow)"/>
+  <line x1="240" y1="120" x2="358" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="170" x2="478" y2="123" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="170" x2="478" y2="217" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="170" x2="478" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="220" x2="478" y2="123" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="220" x2="478" y2="173" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="220" x2="478" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="120" x2="598" y2="167" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="120" x2="598" y2="217" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="120" x2="598" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="170" x2="598" y2="123" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="170" x2="598" y2="217" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="170" x2="598" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="220" x2="598" y2="123" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="220" x2="598" y2="173" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="220" x2="598" y2="267" class="line" marker-end="url(#arrow)"/>
+  <line x1="600" y1="120" x2="688" y2="73" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="600" y1="170" x2="688" y2="73" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="600" y1="220" x2="688" y2="73" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="150" y="312" text-anchor="start" class="ink2 n">n = 4 replicas tolerate f = 1 faulty one. Replica 3 here sends nothing; it could also lie.</text>
+  <text x="150" y="330" text-anchor="start" class="ink2 n">The client accepts a result once f + 1 = 2 replicas send the same one.</text>
+</svg>

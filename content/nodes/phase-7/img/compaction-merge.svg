@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="352" viewBox="0 0 720 352" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+  <text x="30" y="32" class="ink t b">Newer file</text>
+  <rect x="30" y="44" width="64" height="32" rx="4" class="box"/>
+  <text x="62.0" y="65" text-anchor="middle" class="ink n mono">a=7</text>
+  <rect x="100" y="44" width="64" height="32" rx="4" class="box"/>
+  <text x="132.0" y="65" text-anchor="middle" class="lost n mono b">c=del</text>
+  <rect x="170" y="44" width="64" height="32" rx="4" class="box"/>
+  <text x="202.0" y="65" text-anchor="middle" class="ink n mono">d=4</text>
+  <text x="290" y="32" class="ink t b">Older file</text>
+  <rect x="290" y="44" width="64" height="32" rx="4" class="old-box"/>
+  <text x="322.0" y="65" text-anchor="middle" class="ink2 n mono">a=1</text>
+  <rect x="360" y="44" width="64" height="32" rx="4" class="box"/>
+  <text x="392.0" y="65" text-anchor="middle" class="ink n mono">b=2</text>
+  <rect x="430" y="44" width="64" height="32" rx="4" class="old-box"/>
+  <text x="462.0" y="65" text-anchor="middle" class="ink2 n mono">c=3</text>
+  <rect x="500" y="44" width="64" height="32" rx="4" class="box"/>
+  <text x="532.0" y="65" text-anchor="middle" class="ink n mono">e=5</text>
+  <text x="30" y="104" class="ink2 n">Read both in key order at the same time. For each key, keep the newest version.</text>
+  <line x1="300" y1="114" x2="300" y2="150" class="line" marker-end="url(#arrow)"/>
+  <text x="30" y="166" class="ink t b">Output, if deeper levels exist</text>
+  <rect x="30" y="178" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="62.0" y="199" text-anchor="middle" class="ink n mono">a=7</text>
+  <rect x="100" y="178" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="132.0" y="199" text-anchor="middle" class="ink n mono">b=2</text>
+  <rect x="170" y="178" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="202.0" y="199" text-anchor="middle" class="lost n mono b">c=del</text>
+  <rect x="240" y="178" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="272.0" y="199" text-anchor="middle" class="ink n mono">d=4</text>
+  <rect x="310" y="178" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="342.0" y="199" text-anchor="middle" class="ink n mono">e=5</text>
+  <text x="30" y="232" class="ink2 n">Old a=1 and c=3 are dropped. The tombstone c=del must stay while any deeper level could still hold an older c.</text>
+  <text x="30" y="272" class="ink t b">Or, output if this is the bottom level</text>
+  <rect x="30" y="284" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="62.0" y="305" text-anchor="middle" class="ink n mono">a=7</text>
+  <rect x="100" y="284" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="132.0" y="305" text-anchor="middle" class="ink n mono">b=2</text>
+  <rect x="170" y="284" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="202.0" y="305" text-anchor="middle" class="ink n mono">d=4</text>
+  <rect x="240" y="284" width="64" height="32" rx="4" class="focus-box"/>
+  <text x="272.0" y="305" text-anchor="middle" class="ink n mono">e=5</text>
+  <text x="30" y="338" class="ink2 n">Nothing older can exist below, so the tombstone is dropped too. Only now is c really gone.</text>
+</svg>

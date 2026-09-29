@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="272" viewBox="0 0 720 272" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+  <text x="20" y="26" class="ink t b">Leveled: one sorted run per level</text>
+  <text x="20" y="44" class="ink2 n">Merge into a level rewrites the run already there.</text>
+  <text x="20" y="87" class="ink n b">L0</text>
+  <text x="20" y="133" class="ink n b">L1</text>
+  <text x="20" y="179" class="ink n b">L2</text>
+  <rect x="50" y="70" width="30" height="26" rx="4" class="focus-box"/>
+  <rect x="50" y="116" width="90" height="26" rx="4" class="box"/>
+  <rect x="50" y="162" width="270" height="26" rx="4" class="box"/>
+  <line x1="65" y1="98" x2="80" y2="113" class="focus-s" marker-end="url(#farrow)"/>
+  <text x="150" y="133" class="ink2 n">rewritten by each merge, about</text>
+  <text x="150" y="149" class="ink2 n">T−1 times before it moves down</text>
+  <text x="20" y="214" class="ink n">After: L1 holds one bigger run; L2 untouched until L1 is full.</text>
+  <text x="20" y="240" class="ink n b">Writes: high</text><text x="120" y="240" class="ink n">(data rewritten up to T times per level)</text>
+  <text x="20" y="258" class="ink n b">Reads, space: low</text><text x="150" y="258" class="ink n">(one run per level)</text>
+  <line x1="360" y1="16" x2="360" y2="266" class="line" stroke-dasharray="4 4"/>
+  <text x="380" y="26" class="ink t b">Tiered: up to T runs per level</text>
+  <text x="380" y="44" class="ink2 n">When a level is full, merge its runs into one run below.</text>
+  <text x="380" y="87" class="ink n b">L0</text>
+  <text x="380" y="133" class="ink n b">L1</text>
+  <text x="380" y="179" class="ink n b">L2</text>
+  <rect x="410" y="70" width="30" height="26" rx="4" class="focus-box"/>
+  <rect x="450" y="70" width="30" height="26" rx="4" class="focus-box"/>
+  <rect x="490" y="70" width="30" height="26" rx="4" class="focus-box"/>
+  <rect x="410" y="116" width="90" height="26" rx="4" class="box"/>
+  <rect x="510" y="116" width="90" height="26" rx="4" class="focus-box"/>
+  <rect x="410" y="162" width="130" height="26" rx="4" class="box"/>
+  <rect x="550" y="162" width="130" height="26" rx="4" class="box"/>
+  <path d="M425,98 V106 H555 V113" class="focus-s" marker-end="url(#farrow)"/>
+  <path d="M465,98 V106" class="focus-s"/>
+  <path d="M505,98 V106" class="focus-s"/>
+  <text x="610" y="133" class="ink2 n">new run, beside</text>
+  <text x="610" y="149" class="ink2 n">the old one</text>
+  <text x="380" y="214" class="ink n">After: L0 empty, one more run in L1 (T = 3 here).</text>
+  <text x="380" y="240" class="ink n b">Writes: low</text><text x="472" y="240" class="ink n">(each level writes data once)</text>
+  <text x="380" y="258" class="ink n b">Reads, space: higher</text><text x="540" y="258" class="ink n">(T runs per level)</text>
+</svg>

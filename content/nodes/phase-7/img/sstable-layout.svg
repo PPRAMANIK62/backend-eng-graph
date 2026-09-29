@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+  <text x="30" y="26" class="ink t b">One SSTable file</text>
+  <rect x="30" y="40" width="240" height="34" rx="4" class="focus-box"/>
+  <text x="42" y="61" class="ink t">data block 1</text>
+  <rect x="30" y="80" width="240" height="34" rx="4" class="box"/>
+  <text x="42" y="101" class="ink t">data block 2</text>
+  <text x="150" y="135" text-anchor="middle" class="ink2 t">…</text>
+  <rect x="30" y="148" width="240" height="34" rx="4" class="box"/>
+  <text x="42" y="169" class="ink t">data block N</text>
+  <rect x="30" y="188" width="240" height="34" rx="4" class="box"/>
+  <text x="42" y="209" class="ink t">filter block (Bloom filter)</text>
+  <rect x="30" y="228" width="240" height="34" rx="4" class="box"/>
+  <text x="42" y="249" class="ink t">metaindex block</text>
+  <rect x="30" y="268" width="240" height="78" rx="4" class="box"/>
+  <text x="42" y="289" class="ink t">index block</text>
+  <rect x="30" y="352" width="240" height="34" rx="4" class="box"/>
+  <text x="42" y="373" class="ink t">footer, 48 bytes</text>
+  <text x="42" y="308" class="ink2 n mono">user:13 → block 1</text>
+  <text x="42" y="324" class="ink2 n mono">user:22 → block 2</text>
+  <text x="42" y="340" class="ink2 n mono">…</text>
+  <path d="M30,369 H16 V285 H26" class="line" marker-end="url(#arrow)"/>
+  <path d="M30,377 H8 V245 H26" class="line" marker-end="url(#arrow)"/>
+  <path d="M200,304 H292 V57 H274" class="line" marker-end="url(#arrow)"/>
+  <path d="M200,320 H300 V97 H274" class="line" marker-end="url(#arrow)"/>
+  <text x="30" y="408" class="ink2 n">Read the footer first (fixed size, at the end),</text>
+  <text x="30" y="424" class="ink2 n">then the index, then one data block.</text>
+  <text x="340" y="26" class="ink t b">Inside data block 1 (before compression)</text>
+  <rect x="340" y="40" width="360" height="262" rx="6" class="focus-box"/>
+  <text x="354" y="62" class="ink2 n">shared</text>
+  <text x="412" y="62" class="ink2 n">unshared</text>
+  <text x="484" y="62" class="ink2 n">key bytes</text>
+  <text x="580" y="62" class="ink2 n">value</text>
+  <text x="354" y="86" class="ink n mono">0</text>
+  <text x="412" y="86" class="ink n mono">9</text>
+  <text x="484" y="86" class="ink n mono b">user:1001</text>
+  <text x="580" y="86" class="ink n mono">Ada</text>
+  <text x="686" y="86" text-anchor="end" class="focus n b">restart</text>
+  <text x="354" y="108" class="ink n mono">8</text>
+  <text x="412" y="108" class="ink n mono">1</text>
+  <text x="484" y="108" class="ink n mono">2</text>
+  <text x="580" y="108" class="ink n mono">Bob</text>
+  <text x="354" y="130" class="ink n mono">7</text>
+  <text x="412" y="130" class="ink n mono">2</text>
+  <text x="484" y="130" class="ink n mono">57</text>
+  <text x="580" y="130" class="ink n mono">Cy</text>
+  <text x="354" y="152" class="ink n mono">…</text>
+  <text x="412" y="152" class="ink n mono"></text>
+  <text x="484" y="152" class="ink n mono"></text>
+  <text x="580" y="152" class="ink n mono"></text>
+  <text x="354" y="174" class="ink n mono">0</text>
+  <text x="412" y="174" class="ink n mono">9</text>
+  <text x="484" y="174" class="ink n mono b">user:1210</text>
+  <text x="580" y="174" class="ink n mono">Dee</text>
+  <text x="686" y="174" text-anchor="end" class="focus n b">restart</text>
+  <line x1="350" y1="190" x2="690" y2="190" class="line"/>
+  <text x="354" y="210" class="ink n">restart offsets: 0, …</text>
+  <text x="354" y="228" class="ink n">number of restarts: 2</text>
+  <text x="354" y="252" class="ink2 n">user:1002 is stored as: first 8 bytes of the</text>
+  <text x="354" y="268" class="ink2 n">previous key, then "2". A full key every 16 entries</text>
+  <text x="354" y="284" class="ink2 n">lets a lookup binary search the restart points.</text>
+  <text x="340" y="324" class="ink2 n">Then the block is compressed, and a 5-byte trailer is added:</text>
+  <text x="340" y="340" class="ink2 n">compression type (1 byte) and a CRC32 checksum (4 bytes).</text>
+  <path d="M270,50 C305,50 305,54 336,54" class="focus-s" stroke-dasharray="4 3" marker-end="url(#farrow)"/>
+</svg>

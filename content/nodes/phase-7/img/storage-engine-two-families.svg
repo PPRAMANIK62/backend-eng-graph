@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="180" y="30" text-anchor="middle" class="ink t b">Update in place</text>
+  <text x="540" y="30" text-anchor="middle" class="ink t b">Log-structured</text>
+  <line x1="360" y1="20" x2="360" y2="370" class="line"/>
+  <text x="180" y="52" text-anchor="middle" class="ink2 n mono">UPDATE row 42: name = 'Ada'</text>
+  <text x="540" y="52" text-anchor="middle" class="ink2 n mono">UPDATE row 42: name = 'Ada'</text>
+  <text x="40" y="90" class="ink2 n">In memory (2: change the row inside the page)</text>
+  <rect x="40" y="98" width="280" height="56" rx="6" class="box"/>
+  <text x="56" y="121" class="ink t b">page 7</text>
+  <rect x="130" y="108" width="176" height="36" rx="6" class="box"/>
+  <rect x="130" y="108" width="176" height="36" rx="6" class="focus-s"/>
+  <text x="218" y="131" text-anchor="middle" class="focus n mono b">row 42: Ada</text>
+  <text x="40" y="262" class="ink2 n">Data file</text>
+  <rect x="40" y="270" width="64" height="40" rx="6" class="box"/>
+  <text x="72" y="295" text-anchor="middle" class="ink n">page 5</text>
+  <rect x="112" y="270" width="64" height="40" rx="6" class="box"/>
+  <text x="144" y="295" text-anchor="middle" class="ink n">page 6</text>
+  <rect x="184" y="270" width="64" height="40" rx="6" class="box"/>
+  <text x="216" y="295" text-anchor="middle" class="ink n">page 7</text>
+  <rect x="256" y="270" width="64" height="40" rx="6" class="box"/>
+  <text x="288" y="295" text-anchor="middle" class="ink n">page 8</text>
+  <rect x="184" y="270" width="64" height="40" rx="6" class="focus-s"/>
+  <line x1="200" y1="268" x2="200" y2="158" class="line" marker-end="url(#arrow)"/>
+  <text x="192" y="215" text-anchor="end" class="ink n">1 read</text>
+  <line x1="232" y1="158" x2="232" y2="266" class="line" marker-end="url(#arrow)"/>
+  <text x="240" y="215" class="ink n">3 write back,</text>
+  <text x="240" y="231" class="ink n">same place</text>
+  <text x="40" y="340" class="ink2 n">The row has a home. The page is overwritten.</text>
+  <text x="400" y="90" class="ink2 n">In memory</text>
+  <rect x="400" y="98" width="280" height="56" rx="6" class="box"/>
+  <text x="416" y="121" class="ink t b">memtable</text>
+  <rect x="500" y="108" width="166" height="36" rx="6" class="box"/>
+  <rect x="500" y="108" width="166" height="36" rx="6" class="focus-s"/>
+  <text x="583" y="131" text-anchor="middle" class="focus n mono b">42 → Ada</text>
+  <line x1="540" y1="158" x2="540" y2="190" class="line" marker-end="url(#arrow)"/>
+  <text x="548" y="180" class="ink n">flush when full</text>
+  <text x="400" y="210" class="ink2 n">Sorted files on disk (never changed)</text>
+  <rect x="400" y="218" width="86" height="40" rx="6" class="box"/>
+  <rect x="400" y="218" width="86" height="40" rx="6" class="focus-s"/>
+  <text x="443" y="236" text-anchor="middle" class="ink n">file 3</text>
+  <text x="443" y="251" text-anchor="middle" class="focus n mono">42 → Ada</text>
+  <rect x="497" y="218" width="86" height="40" rx="6" class="box"/>
+  <text x="540" y="236" text-anchor="middle" class="ink n">file 2</text>
+  <text x="540" y="251" text-anchor="middle" class="ink2 n mono">42 → Bob</text>
+  <rect x="594" y="218" width="86" height="40" rx="6" class="box"/>
+  <text x="637" y="243" text-anchor="middle" class="ink n">file 1</text>
+  <path d="M443,262 V282 H637 V262" class="line"/>
+  <line x1="540" y1="282" x2="540" y2="300" class="line" marker-end="url(#arrow)"/>
+  <text x="548" y="297" class="ink n">compaction</text>
+  <rect x="460" y="304" width="160" height="40" rx="6" class="box"/>
+  <text x="540" y="321" text-anchor="middle" class="ink n">merged file</text>
+  <text x="540" y="336" text-anchor="middle" class="ink n mono">42 → Ada (Bob dropped)</text>
+  <text x="400" y="366" class="ink2 n">Reads check the memtable, then newest file first.</text>
+
+</svg>

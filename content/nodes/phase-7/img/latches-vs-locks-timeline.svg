@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="200" y="30" text-anchor="middle" class="ink n mono">BEGIN</text><text x="690" y="30" text-anchor="middle" class="ink n mono">COMMIT</text>
+  <line x1="200" y1="38" x2="200" y2="250" class="line" stroke-dasharray="3 4"/><line x1="690" y1="38" x2="690" y2="250" class="line" stroke-dasharray="3 4"/>
+  <text x="30" y="60" class="ink t b">Transaction lock</text>
+  <text x="30" y="78" class="ink2 n">row lock on order 42</text>
+  <rect x="200" y="54" width="490" height="24" rx="6" class="focus-box"/>
+  <text x="445.0" y="71" text-anchor="middle" class="ink n">held until commit</text>
+  <text x="30" y="118" class="ink t b">Latches</text>
+  <text x="30" y="163" class="ink2 n">buffer mapping</text>
+  <line x1="200" y1="159" x2="690" y2="159" class="line" stroke-opacity=".35"/>
+  <rect x="215" y="150" width="8" height="18" rx="2" class="box"/>
+  <rect x="300" y="150" width="8" height="18" rx="2" class="box"/>
+  <rect x="420" y="150" width="8" height="18" rx="2" class="box"/>
+  <rect x="560" y="150" width="8" height="18" rx="2" class="box"/>
+  <rect x="640" y="150" width="8" height="18" rx="2" class="box"/>
+  <text x="30" y="197" class="ink2 n">B+tree leaf page</text>
+  <line x1="200" y1="193" x2="690" y2="193" class="line" stroke-opacity=".35"/>
+  <rect x="230" y="184" width="8" height="18" rx="2" class="box"/>
+  <rect x="330" y="184" width="8" height="18" rx="2" class="box"/>
+  <rect x="450" y="184" width="8" height="18" rx="2" class="box"/>
+  <rect x="600" y="184" width="8" height="18" rx="2" class="box"/>
+  <text x="30" y="231" class="ink2 n">heap page</text>
+  <line x1="200" y1="227" x2="690" y2="227" class="line" stroke-opacity=".35"/>
+  <rect x="250" y="218" width="8" height="18" rx="2" class="box"/>
+  <rect x="470" y="218" width="8" height="18" rx="2" class="box"/>
+  <rect x="610" y="218" width="8" height="18" rx="2" class="box"/>
+  <text x="200" y="272" class="ink2 n">Each latch is taken for one lookup or change, then released.</text>
+  <text x="200" y="290" class="ink2 n">Time runs left to right; widths are not to scale.</text>
+</svg>

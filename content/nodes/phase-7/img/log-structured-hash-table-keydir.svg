@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="284" viewBox="0 0 720 284" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+
+  <!-- keydir -->
+  <text x="40" y="26" class="ink t b">Keydir (in memory)</text>
+  <rect x="40" y="40" width="260" height="140" rx="6" class="box"/>
+  <text x="56" y="62" class="ink2 n">key</text>
+  <text x="170" y="62" class="ink2 n">file</text>
+  <text x="222" y="62" class="ink2 n">offset</text>
+  <line x1="52" y1="72" x2="288" y2="72" class="line"/>
+  <text x="56" y="96" class="ink n mono">user:7</text>
+  <text x="170" y="96" class="ink n mono">2</text>
+  <text x="222" y="96" class="ink n mono">0</text>
+  <text x="56" y="128" class="ink n mono">user:9</text>
+  <text x="170" y="128" class="ink n mono">3</text>
+  <text x="222" y="128" class="ink n mono">0</text>
+  <text x="56" y="160" class="focus n mono b">user:42</text>
+  <text x="170" y="160" class="focus n mono b">3</text>
+  <text x="222" y="160" class="focus n mono b">40</text>
+
+  <!-- data files -->
+  <text x="380" y="26" class="ink t b">Data files (on disk)</text>
+  <rect x="380" y="40" width="300" height="104" rx="6" class="box"/>
+  <text x="392" y="60" class="ink2 n">file 2: closed, never written again</text>
+  <rect x="392" y="72" width="84" height="30" rx="4" class="box"/>
+  <text x="434" y="92" text-anchor="middle" class="ink n mono">user:7</text>
+  <rect x="484" y="72" width="130" height="30" rx="4" class="old-box"/>
+  <text x="549" y="92" text-anchor="middle" class="ink2 n mono">user:42=Ada</text>
+  <text x="484" y="124" class="ink2 n">old value: nothing points here</text>
+
+  <rect x="380" y="168" width="300" height="100" rx="6" class="box"/>
+  <text x="392" y="188" class="ink2 n">file 3: the active file</text>
+  <rect x="392" y="200" width="84" height="30" rx="4" class="box"/>
+  <text x="434" y="220" text-anchor="middle" class="ink n mono">user:9</text>
+  <rect x="484" y="200" width="130" height="30" rx="4" class="focus-box"/>
+  <text x="549" y="220" text-anchor="middle" class="ink n mono">user:42=Ada L.</text>
+  <line x1="620" y1="215" x2="664" y2="215" class="line" marker-end="url(#arrow)"/>
+  <text x="668" y="252" text-anchor="end" class="ink2 n">next append</text>
+
+  <!-- pointers -->
+  <path d="M300,87 H389" class="line" marker-end="url(#arrow)"/>
+  <path d="M300,124 H330 V215 H389" class="line" marker-end="url(#arrow)"/>
+  <path d="M300,156 H316 V250 H549 V233" class="focus-s" marker-end="url(#farrow)"/>
+
+  <text x="40" y="212" class="focus n b">get(user:42)</text>
+  <text x="40" y="230" class="ink2 n">one hash lookup in memory,</text>
+  <text x="40" y="246" class="ink2 n">then one read at file 3, offset 40</text>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+  <text x="10" y="26" class="ink t b">A 16-bit Bloom filter with 3 hash functions</text>
+  <rect x="104" y="150" width="36" height="34" class="box"/>
+  <text x="122.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="122.0" y="200" text-anchor="middle" class="ink2 n mono">0</text>
+  <rect x="140" y="150" width="36" height="34" class="focus-box"/>
+  <text x="158.0" y="172" text-anchor="middle" class="ink t mono">1</text>
+  <text x="158.0" y="200" text-anchor="middle" class="ink2 n mono">1</text>
+  <rect x="176" y="150" width="36" height="34" class="box"/>
+  <text x="194.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="194.0" y="200" text-anchor="middle" class="ink2 n mono">2</text>
+  <rect x="212" y="150" width="36" height="34" class="focus-box"/>
+  <text x="230.0" y="172" text-anchor="middle" class="ink t mono">1</text>
+  <text x="230.0" y="200" text-anchor="middle" class="ink2 n mono">3</text>
+  <rect x="248" y="150" width="36" height="34" class="box"/>
+  <text x="266.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="266.0" y="200" text-anchor="middle" class="ink2 n mono">4</text>
+  <rect x="284" y="150" width="36" height="34" class="box"/>
+  <text x="302.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="302.0" y="200" text-anchor="middle" class="ink2 n mono">5</text>
+  <rect x="320" y="150" width="36" height="34" class="focus-box"/>
+  <text x="338.0" y="172" text-anchor="middle" class="ink t mono">1</text>
+  <text x="338.0" y="200" text-anchor="middle" class="ink2 n mono">6</text>
+  <rect x="356" y="150" width="36" height="34" class="box"/>
+  <text x="374.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="374.0" y="200" text-anchor="middle" class="ink2 n mono">7</text>
+  <rect x="392" y="150" width="36" height="34" class="box"/>
+  <text x="410.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="410.0" y="200" text-anchor="middle" class="ink2 n mono">8</text>
+  <rect x="428" y="150" width="36" height="34" class="box"/>
+  <text x="446.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="446.0" y="200" text-anchor="middle" class="ink2 n mono">9</text>
+  <rect x="464" y="150" width="36" height="34" class="box"/>
+  <text x="482.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="482.0" y="200" text-anchor="middle" class="ink2 n mono">10</text>
+  <rect x="500" y="150" width="36" height="34" class="focus-box"/>
+  <text x="518.0" y="172" text-anchor="middle" class="ink t mono">1</text>
+  <text x="518.0" y="200" text-anchor="middle" class="ink2 n mono">11</text>
+  <rect x="536" y="150" width="36" height="34" class="box"/>
+  <text x="554.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="554.0" y="200" text-anchor="middle" class="ink2 n mono">12</text>
+  <rect x="572" y="150" width="36" height="34" class="box"/>
+  <text x="590.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="590.0" y="200" text-anchor="middle" class="ink2 n mono">13</text>
+  <rect x="608" y="150" width="36" height="34" class="focus-box"/>
+  <text x="626.0" y="172" text-anchor="middle" class="ink t mono">1</text>
+  <text x="626.0" y="200" text-anchor="middle" class="ink2 n mono">14</text>
+  <rect x="644" y="150" width="36" height="34" class="box"/>
+  <text x="662.0" y="172" text-anchor="middle" class="ink t mono">0</text>
+  <text x="662.0" y="200" text-anchor="middle" class="ink2 n mono">15</text>
+  <text x="10" y="64" class="ink2 n">insert</text>
+  <text x="230.0" y="64" text-anchor="middle" class="ink n mono b">apple</text>
+  <line x1="230.0" y1="72" x2="158.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="230.0" y1="72" x2="338.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="230.0" y1="72" x2="518.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <text x="518.0" y="64" text-anchor="middle" class="ink n mono b">melon</text>
+  <line x1="518.0" y1="72" x2="230.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="518.0" y1="72" x2="338.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="518.0" y1="72" x2="626.0" y2="147" class="focus-s" marker-end="url(#farrow)"/>
+  <rect x="428" y="150" width="36" height="34" rx="2" class="safe-box"/>
+  <text x="10" y="240" class="ink2 n">look up</text>
+  <text x="104" y="240" class="ink n mono b">grape</text>
+  <text x="174" y="240" class="ink n">hashes to bits 3, 9, 14. Bit 9 is 0, so grape is definitely not here.</text>
+  <text x="104" y="266" class="ink n mono b">peach</text>
+  <text x="174" y="266" class="ink n">hashes to bits 1, 3, 11. All are 1, so the answer is</text>
+  <text x="444" y="266" class="lost n b">maybe</text>
+  <text x="174" y="284" class="ink2 n">It was never inserted: those bits were set by apple and melon. That is a false positive.</text>
+</svg>

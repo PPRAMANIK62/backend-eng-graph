@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" class="ink t b">Bytes written to storage for one 128-byte row change</text>
+  <text x="20" y="46" class="ink2 n">Each small square is one row's worth (128 bytes). Worked example, not a benchmark.</text>
+  <text x="20" y="95" class="ink t b">B+tree</text><text x="20" y="111" class="ink2 n">clustered, like InnoDB</text>
+  <rect x="190" y="78" width="15" height="40" rx="3" class="focus"/>
+  <rect x="205" y="78" width="480" height="40" rx="6" class="box"/>
+  <text x="445" y="103" text-anchor="middle" class="ink t">whole 4,096-byte page written back</text>
+  <text x="693" y="104" class="ink t b">33</text>
+  <line x1="197" y1="120" x2="197" y2="134" class="line"/><text x="190" y="148" class="ink2 n">128-byte log record</text>
+  <text x="20" y="207" class="ink t b">LSM tree</text><text x="20" y="223" class="ink2 n">leveled, like RocksDB</text>
+  <rect x="190" y="190" width="15" height="40" rx="3" class="focus"/>
+  <rect x="205" y="190" width="15" height="40" rx="3" class="box"/>
+  <rect x="220" y="190" width="15" height="40" rx="3" class="box"/>
+  <rect x="235" y="190" width="105" height="40" rx="6" class="box"/>
+  <text x="287.5" y="215" text-anchor="middle" class="ink t">L1 → L2  ≈7</text>
+  <rect x="340" y="190" width="105" height="40" rx="6" class="box"/>
+  <text x="392.5" y="215" text-anchor="middle" class="ink t">L2 → L3  ≈7</text>
+  <rect x="445" y="190" width="105" height="40" rx="6" class="box"/>
+  <text x="497.5" y="215" text-anchor="middle" class="ink t">L3 → L4  ≈7</text>
+  <text x="558" y="216" class="ink t b">≈24</text>
+  <line x1="197" y1="232" x2="197" y2="246" class="line"/><line x1="197" y1="246" x2="400" y2="246" class="line"/><text x="406" y="250" class="ink2 n">log record  1</text>
+  <line x1="212" y1="232" x2="212" y2="264" class="line"/><line x1="212" y1="264" x2="400" y2="264" class="line"/><text x="406" y="268" class="ink2 n">memtable flush to L0  1</text>
+  <line x1="227" y1="232" x2="227" y2="282" class="line"/><line x1="227" y1="282" x2="400" y2="282" class="line"/><text x="406" y="286" class="ink2 n">compaction L0 → L1  ≈1</text>
+  <text x="20" y="324" class="ink2 n">B+tree: worst case, the buffer pool is full of dirty pages, so every change costs a page write.</text>
+  <text x="20" y="342" class="ink2 n">LSM: levels 0 to 4, each about 10x the one above; about 7 per level in practice, 10 in theory.</text>
+</svg>

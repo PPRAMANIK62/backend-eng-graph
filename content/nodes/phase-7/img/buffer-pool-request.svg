@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="366" viewBox="0 0 720 366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="30" y="20" width="200" height="36" rx="6" class="box"/>
+  <rect x="30" y="20" width="200" height="36" rx="6" class="focus-s"/>
+  <text x="130" y="43" text-anchor="middle" class="focus t b">request: page 1207</text>
+  <line x1="130" y1="56" x2="130" y2="86" class="line" marker-end="url(#arrow)"/>
+  <text x="140" y="76" class="ink n">1 look up</text>
+  <rect x="30" y="90" width="200" height="150" rx="6" class="box"/>
+  <text x="46" y="112" class="ink n b">Page table (in memory)</text>
+  <text x="46" y="136" class="ink n mono">88 → frame 0</text>
+  <text x="46" y="156" class="ink n mono">15 → frame 1</text>
+  <text x="46" y="176" class="ink n mono">301 → frame 2</text>
+  <text x="46" y="196" class="ink n mono">7 → frame 3</text>
+  <text x="46" y="222" class="focus n mono b">1207: not here (miss)</text>
+  <text x="270" y="80" class="ink n b">Buffer pool frames</text>
+  <rect x="270" y="90" width="96" height="64" rx="6" class="box"/>
+  <text x="318" y="110" text-anchor="middle" class="ink2 n">frame 0</text>
+  <text x="318" y="130" text-anchor="middle" class="ink n">page 88</text>
+  <rect x="376" y="90" width="96" height="64" rx="6" class="box"/>
+  <text x="424" y="110" text-anchor="middle" class="ink2 n">frame 1</text>
+  <text x="424" y="130" text-anchor="middle" class="ink n">page 15</text>
+  <text x="424" y="147" text-anchor="middle" class="ink2 n b">pinned</text>
+  <rect x="482" y="90" width="96" height="64" rx="6" class="box"/>
+  <text x="530" y="110" text-anchor="middle" class="ink2 n">frame 2</text>
+  <text x="530" y="130" text-anchor="middle" class="ink n">page 301</text>
+  <text x="530" y="147" text-anchor="middle" class="ink2 n b">dirty</text>
+  <rect x="588" y="90" width="96" height="64" rx="6" class="box"/>
+  <text x="636" y="110" text-anchor="middle" class="ink2 n">frame 3</text>
+  <text x="636" y="130" text-anchor="middle" class="ink n">page 7</text>
+  <rect x="482" y="90" width="96" height="64" rx="6" class="focus-s"/>
+  <text x="530" y="172" text-anchor="middle" class="focus n">victim: unpinned</text>
+  <rect x="270" y="280" width="420" height="44" rx="6" class="box"/>
+  <text x="480" y="307" text-anchor="middle" class="ink t">data file</text>
+  <line x1="510" y1="176" x2="510" y2="276" class="line" marker-end="url(#arrow)"/>
+  <text x="502" y="236" text-anchor="end" class="ink n">2 dirty: write</text>
+  <text x="502" y="252" text-anchor="end" class="ink n">page 301 first</text>
+  <line x1="552" y1="276" x2="552" y2="176" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="560" y="236" class="focus n">3 read page 1207</text>
+  <text x="560" y="252" class="focus n">into frame 2</text>
+  <text x="30" y="272" class="ink n">4 update the page table,</text>
+  <text x="30" y="288" class="ink n">pin the page, return</text>
+  <text x="30" y="304" class="ink n">a pointer to frame 2</text>
+  <text x="30" y="350" class="ink2 n">On a hit, the page table already lists the page: pin it and return a pointer. No I/O.</text>
+
+</svg>

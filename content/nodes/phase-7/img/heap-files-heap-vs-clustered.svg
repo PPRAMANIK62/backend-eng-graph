@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="366" viewBox="0 0 720 366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="180" y="28" text-anchor="middle" class="ink t b">Heap (Postgres)</text>
+  <text x="540" y="28" text-anchor="middle" class="ink t b">Clustered (InnoDB)</text>
+  <line x1="360" y1="16" x2="360" y2="356" class="line"/>
+  <rect x="30" y="56" width="140" height="62" rx="6" class="box"/>
+  <text x="100" y="76" text-anchor="middle" class="ink2 n">primary key index</text>
+  <text x="100" y="100" text-anchor="middle" class="focus n mono b">42 → (7, 2)</text>
+  <rect x="190" y="56" width="150" height="62" rx="6" class="box"/>
+  <text x="265" y="76" text-anchor="middle" class="ink2 n">email index</text>
+  <text x="265" y="100" text-anchor="middle" class="focus n mono b">ada@ → (7, 2)</text>
+  <text x="30" y="308" class="ink2 n">Heap pages, rows in no order</text>
+  <rect x="30" y="218" width="100" height="70" rx="6" class="box"/>
+  <text x="80.0" y="242" text-anchor="middle" class="ink t b">page 3</text>
+  <text x="80.0" y="264" text-anchor="middle" class="ink n">row 17</text>
+  <rect x="135" y="218" width="106" height="70" rx="6" class="box"/>
+  <text x="188.0" y="242" text-anchor="middle" class="ink t b">page 7</text>
+  <text x="188.0" y="264" text-anchor="middle" class="ink n">slot 2: row 42</text>
+  <rect x="250" y="218" width="100" height="70" rx="6" class="box"/>
+  <text x="300.0" y="242" text-anchor="middle" class="ink t b">page 9</text>
+  <text x="300.0" y="264" text-anchor="middle" class="ink n">row 8</text>
+  <rect x="135" y="218" width="106" height="70" rx="6" class="focus-s"/>
+  <line x1="100" y1="120" x2="176" y2="214" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="265" y1="120" x2="200" y2="214" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="30" y="334" class="ink2 n">Every index holds the row's address.</text>
+  <text x="30" y="350" class="ink2 n">One search from any index.</text>
+  <rect x="390" y="56" width="150" height="62" rx="6" class="box"/>
+  <text x="465" y="76" text-anchor="middle" class="ink2 n">email index</text>
+  <text x="465" y="100" text-anchor="middle" class="focus n mono b">ada@ → id 42</text>
+  <rect x="560" y="56" width="130" height="40" rx="6" class="box"/>
+  <text x="625" y="81" text-anchor="middle" class="ink n">PK tree root</text>
+  <path d="M540,90 C548,90 552,80 558,78" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="465" y="138" text-anchor="middle" class="focus n">2nd search, by id</text>
+  <text x="390" y="308" class="ink2 n">Primary key B+tree leaves are the table</text>
+  <rect x="390" y="218" width="100" height="70" rx="6" class="box"/>
+  <text x="440.0" y="257" text-anchor="middle" class="ink n">ids 1–39</text>
+  <rect x="500" y="218" width="110" height="70" rx="6" class="box"/>
+  <text x="555.0" y="257" text-anchor="middle" class="ink n">id 42: Ada</text>
+  <rect x="620" y="218" width="70" height="70" rx="6" class="box"/>
+  <text x="655.0" y="257" text-anchor="middle" class="ink n">ids 43–</text>
+  <rect x="500" y="218" width="110" height="70" rx="6" class="focus-s"/>
+  <line x1="625" y1="96" x2="558" y2="214" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="390" y="334" class="ink2 n">Secondary indexes hold the primary key.</text>
+  <text x="390" y="350" class="ink2 n">Two searches from a secondary index.</text>
+
+</svg>

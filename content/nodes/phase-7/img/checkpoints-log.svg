@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="40" y="24" class="ink t b">The WAL, one box per segment file</text>
+  <rect x="40" y="40" width="56" height="40" rx="6" class="old"/>
+  <rect x="102" y="40" width="56" height="40" rx="6" class="old"/>
+  <rect x="164" y="40" width="56" height="40" rx="6" class="old"/>
+  <rect x="226" y="40" width="56" height="40" rx="6" class="old"/>
+  <rect x="288" y="40" width="56" height="40" rx="6" class="box"/>
+  <rect x="350" y="40" width="56" height="40" rx="6" class="box"/>
+  <rect x="412" y="40" width="56" height="40" rx="6" class="box"/>
+  <rect x="474" y="40" width="56" height="40" rx="6" class="box"/>
+  <rect x="536" y="40" width="56" height="40" rx="6" class="box"/>
+  <rect x="598" y="40" width="56" height="40" rx="6" class="box"/>
+  <text x="144" y="102" text-anchor="middle" class="ink n">no longer needed:</text>
+  <text x="144" y="118" text-anchor="middle" class="ink n">recycle or remove</text>
+  <line x1="285" y1="32" x2="285" y2="250" class="focus-s"/>
+  <text x="285" y="268" text-anchor="middle" class="ink n b">redo record</text>
+  <text x="285" y="284" text-anchor="middle" class="ink2 n">checkpoint starts</text>
+  <rect x="285" y="140" width="250" height="32" rx="6" class="focus-s"/>
+  <text x="410" y="161" text-anchor="middle" class="ink n">dirty pages written, spread out</text>
+  <line x1="535" y1="32" x2="535" y2="182" class="line" stroke-dasharray="4 4"/><line x1="535" y1="220" x2="535" y2="250" class="line" stroke-dasharray="4 4"/>
+  <text x="535" y="268" text-anchor="middle" class="ink n">checkpoint record</text>
+  <text x="535" y="284" text-anchor="middle" class="ink2 n">written when done</text>
+  <line x1="650" y1="32" x2="650" y2="250" class="lost-s"/>
+  <text x="650" y="268" text-anchor="middle" class="ink n b">crash</text>
+  <line x1="287" y1="210" x2="646" y2="210" class="line" marker-end="url(#arrow)"/>
+  <text x="466" y="200" text-anchor="middle" class="ink n">recovery replays only this part</text>
+  <line x1="40" y1="310" x2="690" y2="310" class="line" marker-end="url(#arrow)"/>
+  <text x="690" y="328" text-anchor="end" class="ink2 n">log grows this way</text>
+</svg>

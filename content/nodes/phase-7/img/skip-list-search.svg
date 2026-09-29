@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="244" viewBox="0 0 720 244" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:2}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984} .focushead{fill:#2a78d6}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+      .focushead{fill:#3987e5}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="farrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="focushead"/>
+    </marker>
+  </defs>
+  <rect x="30" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="30" y="142" width="40" height="22" rx="3" class="box"/>
+  <rect x="30" y="120" width="40" height="22" rx="3" class="box"/>
+  <rect x="30" y="98" width="40" height="22" rx="3" class="box"/>
+  <text x="50.0" y="204" text-anchor="middle" class="ink n mono">head</text>
+  <rect x="90" y="164" width="40" height="22" rx="3" class="box"/>
+  <text x="110.0" y="204" text-anchor="middle" class="ink n mono">3</text>
+  <rect x="148" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="148" y="142" width="40" height="22" rx="3" class="box"/>
+  <rect x="148" y="120" width="40" height="22" rx="3" class="box"/>
+  <text x="168.0" y="204" text-anchor="middle" class="ink n mono">6</text>
+  <rect x="206" y="164" width="40" height="22" rx="3" class="box"/>
+  <text x="226.0" y="204" text-anchor="middle" class="ink n mono">7</text>
+  <rect x="264" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="264" y="142" width="40" height="22" rx="3" class="box"/>
+  <text x="284.0" y="204" text-anchor="middle" class="ink n mono">9</text>
+  <rect x="322" y="164" width="40" height="22" rx="3" class="box"/>
+  <text x="342.0" y="204" text-anchor="middle" class="ink n mono">12</text>
+  <rect x="380" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="380" y="142" width="40" height="22" rx="3" class="box"/>
+  <text x="400.0" y="204" text-anchor="middle" class="ink n mono">17</text>
+  <rect x="438" y="164" width="40" height="22" rx="3" class="focus-box"/>
+  <text x="458.0" y="204" text-anchor="middle" class="focus n mono b">19</text>
+  <rect x="496" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="496" y="142" width="40" height="22" rx="3" class="box"/>
+  <rect x="496" y="120" width="40" height="22" rx="3" class="box"/>
+  <rect x="496" y="98" width="40" height="22" rx="3" class="box"/>
+  <text x="516.0" y="204" text-anchor="middle" class="ink n mono">21</text>
+  <rect x="554" y="164" width="40" height="22" rx="3" class="box"/>
+  <text x="574.0" y="204" text-anchor="middle" class="ink n mono">25</text>
+  <rect x="612" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="612" y="142" width="40" height="22" rx="3" class="box"/>
+  <text x="632.0" y="204" text-anchor="middle" class="ink n mono">26</text>
+  <rect x="672" y="164" width="40" height="22" rx="3" class="box"/>
+  <rect x="672" y="142" width="40" height="22" rx="3" class="box"/>
+  <rect x="672" y="120" width="40" height="22" rx="3" class="box"/>
+  <rect x="672" y="98" width="40" height="22" rx="3" class="box"/>
+  <text x="692.0" y="204" text-anchor="middle" class="ink n mono">NIL</text>
+  <line x1="50.0" y1="175.0" x2="88" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="50.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="50.0" y1="153.0" x2="146" y2="153.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="50.0" cy="153.0" r="2.5" class="ink2"/>
+  <line x1="50.0" y1="131.0" x2="146" y2="131.0" class="focus-s" marker-end="url(#farrow)"/>
+  <circle cx="50.0" cy="131.0" r="2.5" class="focus"/>
+  <line x1="50.0" y1="109.0" x2="494" y2="109.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="50.0" cy="109.0" r="2.5" class="ink2"/>
+  <line x1="110.0" y1="175.0" x2="146" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="110.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="168.0" y1="175.0" x2="204" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="168.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="168.0" y1="153.0" x2="262" y2="153.0" class="focus-s" marker-end="url(#farrow)"/>
+  <circle cx="168.0" cy="153.0" r="2.5" class="focus"/>
+  <line x1="168.0" y1="131.0" x2="494" y2="131.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="168.0" cy="131.0" r="2.5" class="ink2"/>
+  <line x1="226.0" y1="175.0" x2="262" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="226.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="284.0" y1="175.0" x2="320" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="284.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="284.0" y1="153.0" x2="378" y2="153.0" class="focus-s" marker-end="url(#farrow)"/>
+  <circle cx="284.0" cy="153.0" r="2.5" class="focus"/>
+  <line x1="342.0" y1="175.0" x2="378" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="342.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="400.0" y1="175.0" x2="436" y2="175.0" class="focus-s" marker-end="url(#farrow)"/>
+  <circle cx="400.0" cy="175.0" r="2.5" class="focus"/>
+  <line x1="400.0" y1="153.0" x2="494" y2="153.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="400.0" cy="153.0" r="2.5" class="ink2"/>
+  <line x1="458.0" y1="175.0" x2="494" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="458.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="516.0" y1="175.0" x2="552" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="516.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="516.0" y1="153.0" x2="610" y2="153.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="516.0" cy="153.0" r="2.5" class="ink2"/>
+  <line x1="516.0" y1="131.0" x2="670" y2="131.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="516.0" cy="131.0" r="2.5" class="ink2"/>
+  <line x1="516.0" y1="109.0" x2="670" y2="109.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="516.0" cy="109.0" r="2.5" class="ink2"/>
+  <line x1="574.0" y1="175.0" x2="610" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="574.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="632.0" y1="175.0" x2="670" y2="175.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="632.0" cy="175.0" r="2.5" class="ink2"/>
+  <line x1="632.0" y1="153.0" x2="670" y2="153.0" class="line" marker-end="url(#arrow)"/>
+  <circle cx="632.0" cy="153.0" r="2.5" class="ink2"/>
+  <line x1="63" y1="109.0" x2="63" y2="127.0" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="181" y1="131.0" x2="181" y2="149.0" class="focus-s" marker-end="url(#farrow)"/>
+  <line x1="413" y1="153.0" x2="413" y2="171.0" class="focus-s" marker-end="url(#farrow)"/>
+  <text x="24" y="179.0" text-anchor="end" class="ink2 n">1</text>
+  <text x="24" y="157.0" text-anchor="end" class="ink2 n">2</text>
+  <text x="24" y="135.0" text-anchor="end" class="ink2 n">3</text>
+  <text x="24" y="113.0" text-anchor="end" class="ink2 n">4</text>
+  <text x="10" y="36" class="ink t b">Searching for 19</text>
+  <text x="10" y="56" class="ink2 n">Go right while the next key is smaller than 19; otherwise drop a level. Blue is the path taken.</text>
+  <text x="10" y="230" class="ink2 n">Levels are random: each node gets one more level with probability p (LevelDB uses 1/4, capped at 12 levels).</text>
+</svg>

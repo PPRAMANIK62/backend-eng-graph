@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="346" viewBox="0 0 720 346" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">Postgres: full page image in the WAL</text>
+  <line x1="40" y1="44" x2="40" y2="108" class="focus-s"/>
+  <text x="34" y="126" class="ink2 n">checkpoint</text>
+  <rect x="56" y="48" width="150" height="56" rx="6" class="focus-s"/>
+  <text x="131" y="72" text-anchor="middle" class="ink n b">page 12, whole</text>
+  <text x="131" y="90" text-anchor="middle" class="ink2 n">first change</text>
+  <rect x="214" y="48" width="70" height="56" rx="6" class="box"/>
+  <text x="249" y="72" text-anchor="middle" class="ink n">row 3</text>
+  <text x="249" y="90" text-anchor="middle" class="ink2 n">small</text>
+  <rect x="292" y="48" width="70" height="56" rx="6" class="box"/>
+  <text x="327" y="72" text-anchor="middle" class="ink n">row 7</text>
+  <text x="327" y="90" text-anchor="middle" class="ink2 n">small</text>
+  <text x="130" y="126" class="ink2 n">then WAL records, in log order</text>
+
+  <rect x="410" y="48" width="120" height="56" rx="6" class="box"/>
+  <rect x="410" y="48" width="120" height="56" rx="6" class="lost-s"/>
+  <text x="470" y="72" text-anchor="middle" class="ink n">page 12 on disk</text>
+  <text x="470" y="90" text-anchor="middle" class="ink2 n">torn by a crash</text>
+  <line x1="534" y1="76" x2="572" y2="76" class="line" marker-end="url(#arrow)"/>
+  <rect x="576" y="48" width="124" height="56" rx="6" class="safe-box"/>
+  <text x="638" y="72" text-anchor="middle" class="ink n">page 12 fixed</text>
+  <text x="638" y="90" text-anchor="middle" class="ink2 n">sound again</text>
+  <text x="410" y="126" class="ink2 n">Replay: copy the whole image over</text>
+  <text x="410" y="142" class="ink2 n">the torn page, then apply row 3, row 7.</text>
+
+  <line x1="20" y1="170" x2="700" y2="170" class="line" stroke-dasharray="4 4"/>
+
+  <text x="20" y="200" class="ink t b">InnoDB: doublewrite buffer</text>
+  <rect x="40" y="222" width="140" height="56" rx="6" class="box"/>
+  <text x="110" y="246" text-anchor="middle" class="ink n">dirty page</text>
+  <text x="110" y="264" text-anchor="middle" class="ink2 n">in the buffer pool</text>
+  <line x1="182" y1="250" x2="256" y2="250" class="line" marker-end="url(#arrow)"/>
+  <text x="219" y="240" text-anchor="middle" class="ink n">1</text>
+  <rect x="260" y="222" width="170" height="56" rx="6" class="safe-box"/>
+  <text x="345" y="246" text-anchor="middle" class="ink n">doublewrite file</text>
+  <text x="345" y="264" text-anchor="middle" class="ink2 n">one chunk, one fsync</text>
+  <line x1="432" y1="250" x2="526" y2="250" class="line" marker-end="url(#arrow)"/>
+  <text x="479" y="240" text-anchor="middle" class="ink n">2</text>
+  <rect x="530" y="222" width="170" height="56" rx="6" class="box"/>
+  <rect x="530" y="222" width="170" height="56" rx="6" class="lost-s"/>
+  <text x="615" y="246" text-anchor="middle" class="ink n">page in data file</text>
+  <text x="615" y="264" text-anchor="middle" class="ink2 n">torn by a crash</text>
+  <path d="M345,280 v34 h270 v-30" class="line" marker-end="url(#arrow)"/>
+  <text x="480" y="332" text-anchor="middle" class="ink2 n">recovery copies the good page back</text>
+</svg>

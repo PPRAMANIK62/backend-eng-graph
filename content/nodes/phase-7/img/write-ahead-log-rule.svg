@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">Memory</text>
+  <rect x="40" y="40" width="300" height="130" rx="6" class="box"/>
+  <text x="56" y="62" class="ink t b">Buffer pool</text>
+  <rect x="56" y="76" width="130" height="80" rx="6" class="focus-s"/>
+  <text x="121" y="104" text-anchor="middle" class="ink t">page 12</text>
+  <text x="121" y="122" text-anchor="middle" class="ink2 n">dirty</text>
+  <text x="121" y="140" text-anchor="middle" class="ink2 n mono">page LSN 100</text>
+  <rect x="196" y="76" width="130" height="80" rx="6" class="focus-s"/>
+  <text x="261" y="104" text-anchor="middle" class="ink t">page 31</text>
+  <text x="261" y="122" text-anchor="middle" class="ink2 n">dirty</text>
+  <text x="261" y="140" text-anchor="middle" class="ink2 n mono">page LSN 140</text>
+
+  <rect x="380" y="40" width="320" height="130" rx="6" class="box"/>
+  <text x="396" y="62" class="ink t b">Log buffer</text>
+  <rect x="396" y="76" width="92" height="80" rx="6" class="focus-s"/>
+  <text x="442" y="104" text-anchor="middle" class="ink n mono">LSN 100</text>
+  <text x="442" y="124" text-anchor="middle" class="ink2 n">update</text>
+  <text x="442" y="140" text-anchor="middle" class="ink2 n">page 12</text>
+  <rect x="496" y="76" width="92" height="80" rx="6" class="focus-s"/>
+  <text x="542" y="104" text-anchor="middle" class="ink n mono">LSN 140</text>
+  <text x="542" y="124" text-anchor="middle" class="ink2 n">update</text>
+  <text x="542" y="140" text-anchor="middle" class="ink2 n">page 31</text>
+  <rect x="596" y="76" width="92" height="80" rx="6" class="focus-s"/>
+  <text x="642" y="104" text-anchor="middle" class="ink n mono">LSN 180</text>
+  <text x="642" y="124" text-anchor="middle" class="ink2 n">commit</text>
+
+  <line x1="20" y1="214" x2="700" y2="214" class="line" stroke-dasharray="4 4"/>
+  <text x="20" y="240" class="ink t b">Disk</text>
+
+  <line x1="540" y1="172" x2="540" y2="262" class="line" marker-end="url(#arrow)"/>
+  <text x="552" y="194" class="ink n">1  write and fsync the log</text>
+  <text x="552" y="240" class="ink2 n">up to LSN 180</text>
+
+  <rect x="380" y="266" width="320" height="70" rx="6" class="safe-box"/>
+  <text x="396" y="288" class="ink t b">WAL file</text>
+  <text x="396" y="314" class="ink n mono">… 100 · 140 · 180 commit</text>
+
+  <text x="380" y="366" class="ink n">2  only now: reply "committed" to the client</text>
+
+  <rect x="40" y="266" width="300" height="70" rx="6" class="box"/>
+  <text x="56" y="288" class="ink t b">Table file</text>
+  <rect x="56" y="300" width="130" height="26" rx="6" class="old"/>
+  <text x="121" y="318" text-anchor="middle" class="ink n">page 12 (old)</text>
+  <rect x="196" y="300" width="130" height="26" rx="6" class="old"/>
+  <text x="261" y="318" text-anchor="middle" class="ink n">page 31 (old)</text>
+
+  <line x1="190" y1="172" x2="190" y2="262" class="line" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+  <text x="202" y="242" class="ink n">3  later, any time</text>
+  <text x="40" y="366" class="ink2 n">A page may go to disk only after the log</text>
+  <text x="40" y="384" class="ink2 n">is flushed at least up to its page LSN.</text>
+</svg>

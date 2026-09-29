@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="346" viewBox="0 0 720 346" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="140" y="40" width="200" height="40" rx="6" class="box"/>
+  <text x="240" y="65" text-anchor="middle" class="ink n">parent: … → A (up to 60)</text>
+  <rect x="100" y="170" width="200" height="64" rx="6" class="box"/>
+  <text x="200" y="194" text-anchor="middle" class="ink t b">page A</text>
+  <text x="200" y="214" text-anchor="middle" class="ink n">keys up to 40, high key 40</text>
+  <rect x="400" y="170" width="220" height="64" rx="6" class="box"/>
+  <text x="510" y="194" text-anchor="middle" class="ink t b">page B (new)</text>
+  <text x="510" y="214" text-anchor="middle" class="ink n">keys 41 to 60</text>
+  <line x1="300" y1="202" x2="398" y2="202" class="line" marker-end="url(#arrow)"/>
+  <text x="349" y="194" text-anchor="middle" class="ink2 n">right link</text>
+  <path d="M200,80 L200,168" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="208" y="118" class="focus n">1  reader looking for 45 reads the parent,</text>
+  <text x="208" y="134" class="focus n">   which still says A covers up to 60</text>
+  <path d="M250,236 C300,280 440,280 490,238" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="370" y="298" text-anchor="middle" class="focus n">3  45 is above A's high key: follow the right link to B</text>
+  <text x="420" y="60" class="ink2 n">2  meanwhile a writer splits A:</text>
+  <text x="420" y="76" class="ink2 n">   41 to 60 move to new page B</text>
+  <text x="40" y="330" class="ink2 n">A split moves keys to a new page on the right, so moving right always finds them.</text>
+
+</svg>

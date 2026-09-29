@@ -50,6 +50,11 @@ it's our own drawing. Data charts say which experiment they came from.
 | `safe` | `#1baf7a` | `#199e70` | durable, correct, survives |
 | `old` | `#b8b7b2` | `#5c5b57` | old or stale data, garbage |
 
+Each colour also has a box form for shapes: `focus-box`, `lost-box` and
+`safe-box` are tinted boxes with a coloured stroke, `old-box` is a dashed
+outline (something that's gone or not there yet), and `focus-s`, `lost-s`
+and `safe-s` are coloured lines.
+
 - At most three colours besides neutrals in one figure.
 - Render before using it: `rsvg-convert -w 1440 file.svg -o /tmp/x.png`
   (and once with a dark background: `-b '#1a1a19'` after swapping in the

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="334" viewBox="0 0 720 334" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="20" y="60" width="180" height="90" rx="6" class="box"/>
+  <text x="110" y="88" text-anchor="middle" class="ink t b">Configuration</text>
+  <text x="110" y="110" text-anchor="middle" class="ink2 n mono">.tf files in Git</text>
+  <text x="110" y="130" text-anchor="middle" class="ink2 n">what you want</text>
+  <rect x="270" y="60" width="180" height="90" rx="6" class="box"/>
+  <text x="360" y="88" text-anchor="middle" class="ink t b">State file</text>
+  <text x="360" y="110" text-anchor="middle" class="ink2 n mono">terraform.tfstate</text>
+  <text x="360" y="130" text-anchor="middle" class="ink2 n">what Terraform last recorded</text>
+  <rect x="520" y="60" width="180" height="90" rx="6" class="box"/>
+  <text x="610" y="88" text-anchor="middle" class="ink t b">Real infrastructure</text>
+  <text x="610" y="110" text-anchor="middle" class="ink2 n mono">the cloud provider's API</text>
+  <text x="610" y="130" text-anchor="middle" class="ink2 n">what actually exists</text>
+  <path d="M 518 105 L 452 105" class="line" marker-end="url(#arrow)"/>
+  <text x="485" y="96" text-anchor="middle" class="ink n b">1 refresh</text>
+  <path d="M 204 105 L 266 105" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="235" y="96" text-anchor="middle" class="ink n b">2 diff</text>
+  <rect x="190" y="200" width="340" height="86" rx="6" class="box"/>
+  <rect x="190" y="200" width="340" height="86" rx="6" class="focus-s"/>
+  <text x="360" y="226" text-anchor="middle" class="ink t b">3 plan: the actions to make reality match</text>
+  <text x="360" y="250" text-anchor="middle" class="ink n mono">+ create&#160;&#160;&#160;&#160;~ update</text>
+  <text x="360" y="270" text-anchor="middle" class="ink n mono">-/+ replace&#160;&#160;&#160;&#160;- destroy</text>
+  <path d="M 360 152 L 360 197" class="line" marker-end="url(#arrow)"/>
+  <path d="M 532 243 L 610 243 L 610 153" class="line" marker-end="url(#arrow)"/>
+  <text x="620" y="236" class="ink n b">apply</text>
+  <text x="620" y="256" class="ink2 n">calls the API,</text>
+  <text x="620" y="272" class="ink2 n">then writes state</text>
+  <path d="M 610 32 L 610 50" class="lost-s" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M 604 49 L 616 49 L 610 58 z" class="lost"/>
+  <text x="600" y="24" text-anchor="end" class="lost n b">drift: a hand change in the console or CLI</text>
+  <text x="360" y="318" text-anchor="middle" class="ink2 n">plan changes nothing on its own; apply carries it out</text>
+
+</svg>

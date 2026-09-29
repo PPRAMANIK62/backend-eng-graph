@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="316" viewBox="0 0 720 316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- tag -->
+  <rect x="20" y="104" width="110" height="44" rx="6" class="box"/>
+  <text x="75" y="124" text-anchor="middle" class="ink n mono">api:1.4</text>
+  <text x="75" y="140" text-anchor="middle" class="ink2 n">tag (movable)</text>
+  <line x1="130" y1="126" x2="167" y2="126" class="line" marker-end="url(#arrow)"/>
+
+  <!-- index -->
+  <rect x="170" y="100" width="130" height="52" rx="6" class="box"/>
+  <text x="235" y="122" text-anchor="middle" class="ink t b">Index</text>
+  <text x="235" y="140" text-anchor="middle" class="ink2 n">a manifest per platform</text>
+  <line x1="300" y1="118" x2="337" y2="80" class="line" marker-end="url(#arrow)"/>
+  <line x1="300" y1="136" x2="337" y2="186" class="line" marker-end="url(#arrow)"/>
+
+  <!-- manifests -->
+  <rect x="340" y="52" width="150" height="52" rx="6" class="box"/>
+  <rect x="340" y="52" width="150" height="52" rx="6" class="focus-s"/>
+  <text x="415" y="74" text-anchor="middle" class="focus t b">Manifest</text>
+  <text x="415" y="92" text-anchor="middle" class="ink2 n mono">linux/amd64</text>
+  <rect x="340" y="170" width="150" height="52" rx="6" class="box"/>
+  <text x="415" y="192" text-anchor="middle" class="ink t b">Manifest</text>
+  <text x="415" y="210" text-anchor="middle" class="ink2 n mono">linux/arm64</text>
+  <text x="415" y="244" text-anchor="middle" class="ink2 n">(its own config and layers)</text>
+
+  <!-- blobs -->
+  <rect x="540" y="14" width="160" height="40" rx="6" class="box"/>
+  <text x="620" y="39" text-anchor="middle" class="ink n">config (JSON)</text>
+  <rect x="540" y="70" width="160" height="40" rx="6" class="box"/>
+  <text x="620" y="95" text-anchor="middle" class="ink n">layer 0 (base) .tar.gz</text>
+  <rect x="540" y="120" width="160" height="40" rx="6" class="box"/>
+  <text x="620" y="145" text-anchor="middle" class="ink n">layer 1 .tar.gz</text>
+  <rect x="540" y="170" width="160" height="40" rx="6" class="box"/>
+  <text x="620" y="195" text-anchor="middle" class="ink n">layer 2 .tar.gz</text>
+  <line x1="490" y1="66" x2="537" y2="36" class="line" marker-end="url(#arrow)"/>
+  <line x1="490" y1="78" x2="537" y2="90" class="line" marker-end="url(#arrow)"/>
+  <line x1="490" y1="88" x2="537" y2="138" class="line" marker-end="url(#arrow)"/>
+  <line x1="490" y1="98" x2="537" y2="186" class="line" marker-end="url(#arrow)"/>
+
+  <text x="20" y="286" class="ink2 n">Every arrow after the tag is a descriptor: media type, size and a digest such as</text>
+  <text x="20" y="304" class="ink2 n mono">sha256:6c3c624b58dbbcd3c0dd82b4c53f04194d1247c6eebdaab7c610cf7d66709b3b</text>
+</svg>

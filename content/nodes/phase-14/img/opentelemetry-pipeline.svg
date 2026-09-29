@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<rect x="16" y="40" width="220" height="264" rx="6" fill="none" class="line"/>
+<text x="126" y="30" text-anchor="middle" class="ink t b">Your service (one process)</text>
+<rect x="32" y="56" width="188" height="52" rx="6" class="box"/>
+<text x="126.0" y="76" text-anchor="middle" class="ink t">Your code and libraries</text>
+<text x="126.0" y="92" text-anchor="middle" class="ink2 n">start spans, record metrics</text>
+<rect x="32" y="136" width="188" height="52" rx="6" class="focus-s"/>
+<text x="126.0" y="156" text-anchor="middle" class="ink t b">OpenTelemetry API</text>
+<text x="126.0" y="172" text-anchor="middle" class="ink2 n">what instrumentation calls</text>
+<rect x="32" y="216" width="188" height="68" rx="6" class="box"/>
+<text x="126.0" y="236" text-anchor="middle" class="ink t b">SDK</text>
+<text x="126.0" y="252" text-anchor="middle" class="ink2 n">installed by the app owner:</text>
+<text x="126.0" y="268" text-anchor="middle" class="ink2 n">implements the API, exports</text>
+<line x1="126" y1="110" x2="126" y2="133" class="line" marker-end="url(#arrow)"/>
+<line x1="126" y1="190" x2="126" y2="213" class="line" marker-end="url(#arrow)"/>
+<line x1="222" y1="250" x2="318" y2="250" class="line" marker-end="url(#arrow)"/>
+<text x="270" y="226" text-anchor="middle" class="ink n b">OTLP</text>
+<text x="270" y="240" text-anchor="middle" class="ink2 n mono">gRPC :4317</text>
+<text x="270" y="272" text-anchor="middle" class="ink2 n mono">HTTP :4318</text>
+<rect x="320" y="40" width="200" height="264" rx="6" fill="none" class="line"/>
+<text x="420" y="30" text-anchor="middle" class="ink t b">Collector (agent or standalone)</text>
+<rect x="336" y="216" width="168" height="52" rx="6" class="box"/>
+<text x="420.0" y="236" text-anchor="middle" class="ink t">Receivers</text>
+<text x="420.0" y="252" text-anchor="middle" class="ink2 n">OTLP, Jaeger, Prometheus…</text>
+<rect x="336" y="136" width="168" height="52" rx="6" class="box"/>
+<text x="420.0" y="156" text-anchor="middle" class="ink t">Processors</text>
+<text x="420.0" y="172" text-anchor="middle" class="ink2 n">batch, filter, scrub PII</text>
+<rect x="336" y="56" width="168" height="52" rx="6" class="box"/>
+<text x="420.0" y="76" text-anchor="middle" class="ink t">Exporters</text>
+<text x="420.0" y="92" text-anchor="middle" class="ink2 n">one or more backends</text>
+<line x1="420" y1="214" x2="420" y2="191" class="line" marker-end="url(#arrow)"/>
+<line x1="420" y1="134" x2="420" y2="111" class="line" marker-end="url(#arrow)"/>
+<text x="626" y="30" text-anchor="middle" class="ink t b">Backends (not OTel)</text>
+<rect x="560" y="56" width="144" height="44" rx="6" class="box"/>
+<text x="632.0" y="83" text-anchor="middle" class="ink t">trace store</text>
+<rect x="560" y="116" width="144" height="44" rx="6" class="box"/>
+<text x="632.0" y="143" text-anchor="middle" class="ink t">metrics store</text>
+<rect x="560" y="176" width="144" height="44" rx="6" class="box"/>
+<text x="632.0" y="203" text-anchor="middle" class="ink t">logs, vendors…</text>
+<line x1="506" y1="82" x2="556" y2="78" class="line" marker-end="url(#arrow)"/>
+<line x1="506" y1="82" x2="556" y2="138" class="line" marker-end="url(#arrow)"/>
+<line x1="506" y1="82" x2="556" y2="198" class="line" marker-end="url(#arrow)"/>
+<text x="632" y="248" text-anchor="middle" class="ink2 n">storage and UI are</text>
+<text x="632" y="264" text-anchor="middle" class="ink2 n">left to other tools</text>
+</svg>

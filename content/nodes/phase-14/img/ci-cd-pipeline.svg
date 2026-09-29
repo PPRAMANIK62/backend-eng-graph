@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="210" viewBox="0 0 720 210" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="20" y="40" width="116" height="84" rx="6" class="box"/>
+  <text x="78.0" y="66" text-anchor="middle" class="ink t b">Merge to main</text>
+  <text x="78.0" y="88" text-anchor="middle" class="ink2 n">small change,</text>
+  <text x="78.0" y="106" text-anchor="middle" class="ink2 n">reviewed</text>
+  <path d="M 138 82 L 158 82" class="line" marker-end="url(#arrow)"/>
+  <rect x="160" y="40" width="116" height="84" rx="6" class="box"/>
+  <text x="218.0" y="66" text-anchor="middle" class="ink t b">Commit stage</text>
+  <text x="218.0" y="88" text-anchor="middle" class="ink2 n">compile, unit tests</text>
+  <text x="218.0" y="106" text-anchor="middle" class="ink2 n">with fakes, ~10 min</text>
+  <path d="M 278 82 L 298 82" class="line" marker-end="url(#arrow)"/>
+  <rect x="300" y="40" width="116" height="84" rx="6" class="box"/>
+  <rect x="300" y="40" width="116" height="84" rx="6" class="focus-s"/>
+  <text x="358.0" y="66" text-anchor="middle" class="ink t b">Artifact</text>
+  <text x="358.0" y="88" text-anchor="middle" class="ink2 n">hermetic build,</text>
+  <text x="358.0" y="106" text-anchor="middle" class="ink2 n">hashed and signed</text>
+  <path d="M 418 82 L 438 82" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="40" width="116" height="84" rx="6" class="box"/>
+  <text x="498.0" y="66" text-anchor="middle" class="ink t b">Slower tests</text>
+  <text x="498.0" y="88" text-anchor="middle" class="ink2 n">integration and</text>
+  <text x="498.0" y="106" text-anchor="middle" class="ink2 n">end to end, hours</text>
+  <path d="M 558 82 L 578 82" class="line" marker-end="url(#arrow)"/>
+  <rect x="580" y="40" width="116" height="84" rx="6" class="box"/>
+  <text x="638.0" y="66" text-anchor="middle" class="ink t b">Production</text>
+  <text x="638.0" y="88" text-anchor="middle" class="ink2 n">canary or one-box,</text>
+  <text x="638.0" y="106" text-anchor="middle" class="ink2 n">then widen</text>
+  <path d="M 218 126 L 218 160" class="lost-s" style="stroke-width:1.5"/>
+  <text x="218" y="178" text-anchor="middle" class="lost n b">red: stop the line,</text>
+  <text x="218" y="194" text-anchor="middle" class="ink2 n">revert or fix</text>
+  <path d="M 498 126 L 498 160" class="lost-s" style="stroke-width:1.5"/>
+  <text x="498" y="178" text-anchor="middle" class="lost n b">red: add a fast test</text>
+  <text x="498" y="194" text-anchor="middle" class="ink2 n">to the commit stage</text>
+  <path d="M 638 126 L 638 160" class="lost-s" style="stroke-width:1.5"/>
+  <text x="638" y="178" text-anchor="middle" class="lost n b">alarm: roll back</text>
+  <text x="638" y="194" text-anchor="middle" class="ink2 n">to last good artifact</text>
+
+</svg>

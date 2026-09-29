@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="22" class="ink t b">Head sampling: the first service decides, before anything happens</text>
+  <text x="20" y="48" class="ink2 n">request</text><text x="140" y="48" class="ink2 n">decision on trace id</text><text x="330" y="48" class="ink2 n">every service, same id</text><text x="520" y="48" class="ink2 n">outcome</text><text x="610" y="48" class="ink2 n">trace</text>
+  <text x="20" y="81" class="ink t">A</text>
+  <rect x="140" y="62" width="150" height="28" rx="6" class="box"/><text x="215" y="81" text-anchor="middle" class="ink n">keep</text>
+  <line x1="292" y1="76" x2="326" y2="76" class="line" marker-end="url(#arrow)"/>
+  <text x="330" y="81" class="ink n">all hops keep</text>
+  <text x="520" y="81" class="ink n">ok</text>
+  <rect x="604" y="62" width="96" height="28" rx="6" class="safe-box"/>
+  <text x="652" y="81" text-anchor="middle" class="ink n">kept</text>
+  <text x="20" y="117" class="ink t">B</text>
+  <rect x="140" y="98" width="150" height="28" rx="6" class="box"/><text x="215" y="117" text-anchor="middle" class="ink n">drop</text>
+  <line x1="292" y1="112" x2="326" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="330" y="117" class="ink n">all hops drop</text>
+  <text x="520" y="117" class="ink n">ok</text>
+  <rect x="604" y="98" width="96" height="28" rx="6" class="box"/>
+  <text x="652" y="117" text-anchor="middle" class="ink2 n">dropped</text>
+  <text x="20" y="153" class="ink t">C</text>
+  <rect x="140" y="134" width="150" height="28" rx="6" class="box"/><text x="215" y="153" text-anchor="middle" class="ink n">drop</text>
+  <line x1="292" y1="148" x2="326" y2="148" class="line" marker-end="url(#arrow)"/>
+  <text x="330" y="153" class="ink n">all hops drop</text>
+  <text x="520" y="153" class="lost b n">error</text>
+  <rect x="604" y="134" width="96" height="28" rx="6" class="box"/><rect x="604" y="134" width="96" height="28" rx="6" class="lost-s"/>
+  <text x="652" y="153" text-anchor="middle" class="lost n b">dropped</text>
+  <text x="20" y="184" class="ink2 n">Request C failed later, but its trace was already dropped at the start.</text>
+  <line x1="20" y1="202" x2="700" y2="202" class="line"/>
+  <text x="20" y="228" class="ink t b">Tail sampling: a collector decides after the trace is complete</text>
+  <rect x="20" y="246" width="120" height="56" rx="6" class="box"/>
+  <text x="80" y="270" text-anchor="middle" class="ink t">all services</text><text x="80" y="289" text-anchor="middle" class="ink2 n">send every span</text>
+  <line x1="142" y1="274" x2="157" y2="274" class="line" marker-end="url(#arrow)"/>
+  <rect x="160" y="246" width="120" height="56" rx="6" class="box"/>
+  <text x="220" y="270" text-anchor="middle" class="ink t">route by</text><text x="220" y="289" text-anchor="middle" class="ink2 n">trace id</text>
+  <line x1="282" y1="274" x2="297" y2="274" class="line" marker-end="url(#arrow)"/>
+  <rect x="300" y="246" width="120" height="56" rx="6" class="box"/>
+  <text x="360" y="270" text-anchor="middle" class="ink t">tail sampler</text><text x="360" y="289" text-anchor="middle" class="ink2 n">holds spans, waits</text>
+  <line x1="422" y1="274" x2="437" y2="274" class="line" marker-end="url(#arrow)"/>
+  <rect x="440" y="246" width="120" height="56" rx="6" class="box"/>
+  <text x="500" y="270" text-anchor="middle" class="ink t">rules</text><text x="500" y="289" text-anchor="middle" class="ink2 n">errors, slow, a few %</text>
+  <line x1="562" y1="274" x2="577" y2="274" class="line" marker-end="url(#arrow)"/>
+  <rect x="580" y="246" width="120" height="56" rx="6" class="box"/>
+  <text x="640" y="270" text-anchor="middle" class="ink t">storage</text><text x="640" y="289" text-anchor="middle" class="ink2 n">kept traces only</text>
+  <rect x="300" y="246" width="120" height="56" rx="6" class="focus-s"/>
+  <text x="160" y="326" class="ink2 n">All spans of one trace must reach the same sampler.</text>
+  <text x="160" y="344" class="ink2 n">decision_wait: 30 s by default; num_traces: 50,000 by default</text>
+</svg>

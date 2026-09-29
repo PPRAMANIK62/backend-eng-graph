@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="366" viewBox="0 0 720 366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <path d="M 70 50 L 70 300 L 690 300" class="line" marker-end="url(#arrow)"/>
+  <text x="690" y="320" text-anchor="end" class="ink2 n">time</text>
+  <text x="62" y="60" text-anchor="end" class="ink2 n">load</text>
+  <text x="62" y="76" text-anchor="end" class="ink2 n">and</text>
+  <text x="62" y="92" text-anchor="end" class="ink2 n">capacity</text>
+  <path d="M 70 200 L 430 200 L 430 165 L 500 165 L 500 130 L 570 130 L 570 95 L 670 95" class="focus-s" style="stroke-width:3"/>
+  <text x="668" y="88" text-anchor="end" class="focus n b">capacity</text>
+  <text x="668" y="132" text-anchor="end" class="ink2 n b">load</text>
+  <path d="M 70 230 L 180 230 L 180 115 L 670 115" class="line" style="stroke-width:3"/>
+  <path d="M 180 115 L 500 115 L 500 130 L 500 165 L 430 165 L 430 200 L 180 200 Z" class="lost" fill-opacity=".18"/>
+  <text x="300" y="150" text-anchor="middle" class="lost n b">overloaded: headroom and</text>
+  <text x="300" y="166" text-anchor="middle" class="lost n b">load shedding cover this</text>
+  <text x="76" y="222" class="ink2 n">headroom</text>
+  <text x="186" y="106" class="ink n b">load jumps</text>
+  <path d="M 183 312 L 183 318 L 247 318 L 247 312" class="line"/>
+  <text x="215.0" y="336" text-anchor="middle" class="ink2 n">metric</text>
+  <text x="215.0" y="352" text-anchor="middle" class="ink2 n">shows it</text>
+  <path d="M 253 312 L 253 318 L 297 318 L 297 312" class="line"/>
+  <text x="275.0" y="336" text-anchor="middle" class="ink2 n">next loop</text>
+  <text x="275.0" y="352" text-anchor="middle" class="ink2 n">≤ 15 s</text>
+  <path d="M 303 312 L 303 318 L 427 318 L 427 312" class="line"/>
+  <text x="365.0" y="336" text-anchor="middle" class="ink2 n">pods start, warm up,</text>
+  <text x="365.0" y="352" text-anchor="middle" class="ink2 n">pass readiness</text>
+  <path d="M 433 312 L 433 318 L 567 318 L 567 312" class="line"/>
+  <text x="500.0" y="336" text-anchor="middle" class="ink2 n">growth capped</text>
+  <text x="500.0" y="352" text-anchor="middle" class="ink2 n">per 15 s</text>
+
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- node A -->
+  <rect x="20" y="30" width="360" height="290" rx="6" class="box"/>
+  <text x="36" y="54" class="ink t b">Client's node</text>
+  <rect x="40" y="70" width="160" height="50" rx="6" class="box"/>
+  <text x="120" y="100" text-anchor="middle" class="ink t">client pod</text>
+  <line x1="120" y1="122" x2="120" y2="176" class="line" marker-end="url(#arrow)"/>
+  <text x="132" y="146" class="ink2 n">connects to</text>
+  <text x="132" y="162" class="ink2 n mono">10.0.0.1:1234 (cluster IP)</text>
+
+  <rect x="40" y="180" width="320" height="120" rx="6" class="box"/>
+  <rect x="40" y="180" width="320" height="120" rx="6" class="focus-s"/>
+  <text x="56" y="204" class="ink t b">Kernel rules, written by kube-proxy</text>
+  <text x="56" y="228" class="ink n">1. match the cluster IP and port</text>
+  <text x="56" y="250" class="ink n">2. pick one of 3 endpoints at random</text>
+  <text x="56" y="272" class="ink n">3. rewrite destination to pod B's IP</text>
+  <text x="56" y="290" class="ink2 n">(destination NAT, source left alone)</text>
+
+  <!-- endpoints -->
+  <text x="430" y="54" class="ink t b">Service endpoints</text>
+  <text x="430" y="72" class="ink2 n">pods matching the selector, any node</text>
+  <rect x="430" y="90" width="160" height="50" rx="6" class="box"/>
+  <text x="510" y="120" text-anchor="middle" class="ink t">pod A</text>
+  <rect x="430" y="170" width="160" height="50" rx="6" class="box"/>
+  <rect x="430" y="170" width="160" height="50" rx="6" class="focus-s"/>
+  <text x="510" y="200" text-anchor="middle" class="ink t b">pod B</text>
+  <rect x="430" y="250" width="160" height="50" rx="6" class="box"/>
+  <text x="510" y="280" text-anchor="middle" class="ink t">pod C</text>
+
+  <line x1="362" y1="240" x2="426" y2="200" class="line" marker-end="url(#arrow)"/>
+  <text x="610" y="190" class="ink2 n">pod network,</text>
+  <text x="610" y="206" class="ink2 n">no NAT</text>
+</svg>

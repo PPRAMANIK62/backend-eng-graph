@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <!-- left panel: Postgres -->
+  <text x="20" y="26" class="ink t b">Postgres: every version lives in the table</text>
+  <rect x="20" y="52" width="130" height="92" rx="6" class="box"/>
+  <text x="85" y="72" text-anchor="middle" class="ink n b">index on id</text>
+  <text x="34" y="98" class="ink n mono">id 7 → (0,1)</text>
+  <text x="34" y="126" class="ink n mono">id 7 → (0,2)</text>
+
+  <rect x="190" y="44" width="160" height="230" rx="6" class="box"/>
+  <text x="270" y="64" text-anchor="middle" class="ink n b">heap page 0</text>
+  <rect x="202" y="76" width="136" height="72" rx="6" class="old"/>
+  <text x="212" y="96" class="ink n b">item 1: balance 100</text>
+  <text x="212" y="116" class="ink n mono">xmin 100</text>
+  <text x="212" y="134" class="ink n mono">xmax 105</text>
+  <rect x="202" y="186" width="136" height="72" rx="6" class="box"/>
+  <rect x="202" y="186" width="136" height="72" rx="6" class="focus-s"/>
+  <text x="212" y="206" class="ink n b">item 2: balance 70</text>
+  <text x="212" y="226" class="ink n mono">xmin 105</text>
+  <text x="212" y="244" class="ink n mono">xmax 0 (live)</text>
+
+  <line x1="132" y1="94" x2="199" y2="104" class="line" marker-end="url(#arrow)"/>
+  <line x1="132" y1="122" x2="199" y2="210" class="line" marker-end="url(#arrow)"/>
+  <line x1="300" y1="150" x2="300" y2="183" class="line" marker-end="url(#arrow)"/>
+  <text x="306" y="172" class="ink2 n mono">t_ctid</text>
+
+  <text x="20" y="176" class="ink2 n">Old to new chain.</text>
+  <text x="20" y="194" class="ink2 n">Without HOT, each</text>
+  <text x="20" y="212" class="ink2 n">version gets its own</text>
+  <text x="20" y="230" class="ink2 n">index entry.</text>
+  <text x="20" y="300" class="ink2 n">A snapshot from before transaction 105 committed sees item 1.</text>
+  <text x="20" y="318" class="ink2 n">VACUUM removes item 1 once no snapshot can see it.</text>
+
+  <line x1="370" y1="40" x2="370" y2="330" class="line" stroke-dasharray="4 4"/>
+
+  <!-- right panel: InnoDB -->
+  <text x="390" y="26" class="ink t b">InnoDB: newest in place, old values in undo</text>
+  <rect x="390" y="52" width="150" height="92" rx="6" class="box"/>
+  <text x="465" y="72" text-anchor="middle" class="ink n b">secondary index</text>
+  <text x="404" y="100" class="ink n mono">email → id 7</text>
+  <text x="404" y="124" class="ink2 n">a key, not an address</text>
+
+  <rect x="560" y="44" width="150" height="116" rx="6" class="box"/>
+  <rect x="560" y="44" width="150" height="116" rx="6" class="focus-s"/>
+  <text x="635" y="64" text-anchor="middle" class="ink n b">clustered index row</text>
+  <text x="572" y="88" class="ink n b">id 7: balance 70</text>
+  <text x="572" y="110" class="ink n mono">DB_TRX_ID 105</text>
+  <text x="572" y="132" class="ink n mono">DB_ROLL_PTR</text>
+  <line x1="543" y1="98" x2="557" y2="98" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="560" y="200" width="150" height="74" rx="6" class="old"/>
+  <text x="572" y="220" class="ink n b">undo record</text>
+  <text x="572" y="240" class="ink n">balance was 100</text>
+  <text x="572" y="260" class="ink n">(as trx 100 left it)</text>
+  <line x1="660" y1="137" x2="660" y2="197" class="line" marker-end="url(#arrow)"/>
+
+  <text x="390" y="176" class="ink2 n">New to old chain.</text>
+  <text x="390" y="194" class="ink2 n">Indexes don't change</text>
+  <text x="390" y="212" class="ink2 n">unless an indexed</text>
+  <text x="390" y="230" class="ink2 n">column does.</text>
+  <text x="390" y="300" class="ink2 n">An old snapshot rebuilds balance 100 from undo.</text>
+  <text x="390" y="318" class="ink2 n">Purge discards the undo once no snapshot needs it.</text>
+
+</svg>

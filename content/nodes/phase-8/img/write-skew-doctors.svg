@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lanes -->
+  <text x="120" y="28" text-anchor="middle" class="ink t b">T1: Alice goes off call</text>
+  <text x="600" y="28" text-anchor="middle" class="ink t b">T2: Bob goes off call</text>
+  <text x="360" y="28" text-anchor="middle" class="ink t b">doctors table</text>
+  <line x1="120" y1="40" x2="120" y2="300" class="line"/>
+  <line x1="600" y1="40" x2="600" y2="300" class="line"/>
+
+  <!-- starting state -->
+  <rect x="270" y="46" width="180" height="56" rx="6" class="box"/>
+  <text x="284" y="68" class="ink n">Alice</text><text x="330" y="68" class="ink n mono">on_call = true</text>
+  <text x="284" y="90" class="ink n">Bob</text><text x="330" y="90" class="ink n mono">on_call = true</text>
+
+  <!-- counts -->
+  <line x1="266" y1="120" x2="124" y2="120" class="line" marker-end="url(#arrow)"/>
+  <text x="206" y="112" text-anchor="middle" class="ink n mono">count(*) = 2</text>
+  <line x1="454" y1="120" x2="596" y2="120" class="line" marker-end="url(#arrow)"/>
+  <text x="514" y="112" text-anchor="middle" class="ink n mono">count(*) = 2</text>
+  <text x="206" y="140" text-anchor="middle" class="ink2 n">2 ≥ 2, so I can leave</text>
+  <text x="514" y="140" text-anchor="middle" class="ink2 n">2 ≥ 2, so I can leave</text>
+  <text x="360" y="130" text-anchor="middle" class="ink2 n">each reads</text>
+  <text x="360" y="146" text-anchor="middle" class="ink2 n">its own snapshot</text>
+
+  <!-- writes -->
+  <line x1="120" y1="186" x2="266" y2="186" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="203" y="178" text-anchor="middle" class="focus n mono b">UPDATE Alice</text>
+  <line x1="600" y1="206" x2="454" y2="206" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="517" y="198" text-anchor="middle" class="focus n mono b">UPDATE Bob</text>
+  <text x="360" y="182" text-anchor="middle" class="ink2 n">different rows:</text>
+  <text x="360" y="198" text-anchor="middle" class="ink2 n">no write conflict</text>
+  <text x="132" y="240" class="ink n b">commit</text>
+  <text x="588" y="262" text-anchor="end" class="ink n b">commit</text>
+
+  <!-- final state -->
+  <rect x="270" y="278" width="180" height="56" rx="6" class="box"/>
+  <text x="284" y="300" class="ink n">Alice</text><text x="330" y="300" class="ink n mono">on_call = false</text>
+  <text x="284" y="322" class="ink n">Bob</text><text x="330" y="322" class="ink n mono">on_call = false</text>
+  <text x="360" y="356" text-anchor="middle" class="lost t b">nobody on call: rule broken</text>
+
+  <!-- dependency cycle -->
+  <text x="360" y="386" text-anchor="middle" class="ink t b">The dependency graph has a cycle</text>
+  <text x="360" y="412" text-anchor="middle" class="ink2 n">rw: T1 read Bob's row before T2 changed it</text>
+  <rect x="200" y="440" width="70" height="36" rx="6" class="box"/>
+  <text x="235" y="463" text-anchor="middle" class="ink t">T1</text>
+  <rect x="450" y="440" width="70" height="36" rx="6" class="box"/>
+  <text x="485" y="463" text-anchor="middle" class="ink t">T2</text>
+  <path d="M272,448 C330,424 390,424 448,448" class="line" marker-end="url(#arrow)"/>
+  <path d="M448,470 C390,494 330,494 272,470" class="line" marker-end="url(#arrow)"/>
+  <text x="360" y="510" text-anchor="middle" class="ink2 n">rw: T2 read Alice's row before T1 changed it</text>
+</svg>

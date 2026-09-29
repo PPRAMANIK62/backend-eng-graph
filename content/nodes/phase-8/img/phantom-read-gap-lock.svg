@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="360" y="26" text-anchor="middle" class="ink t b">Index on id, after <tspan class="mono">SELECT ... WHERE id &gt; 100 FOR UPDATE</tspan></text>
+
+  <!-- index strip: gap before 90, record 90, gap, record 102, gap after -->
+  <rect x="30" y="70" width="130" height="48" rx="6" class="box"/>
+  <text x="95" y="99" text-anchor="middle" class="ink2 n">gap</text>
+  <rect x="170" y="70" width="80" height="48" rx="6" class="box"/>
+  <text x="210" y="99" text-anchor="middle" class="ink t mono">90</text>
+  <rect x="260" y="70" width="170" height="48" rx="6" class="focus-s"/>
+  <text x="345" y="99" text-anchor="middle" class="focus n b">gap (90, 102) locked</text>
+  <rect x="440" y="70" width="80" height="48" rx="6" class="focus-s"/>
+  <text x="480" y="99" text-anchor="middle" class="focus t mono b">102</text>
+  <rect x="530" y="70" width="160" height="48" rx="6" class="focus-s"/>
+  <text x="610" y="99" text-anchor="middle" class="focus n b">gap after 102 locked</text>
+
+  <!-- brackets: next-key lock and gap lock -->
+  <path d="M262,132 V142 H518 V132" class="focus-s"/>
+  <text x="390" y="160" text-anchor="middle" class="ink n">next-key lock on 102 = record lock + gap before it</text>
+  <path d="M532,132 V142 H688 V132" class="focus-s"/>
+  <text x="610" y="160" text-anchor="middle" class="ink n">gap lock</text>
+
+  <!-- the blocked insert -->
+  <text x="345" y="226" text-anchor="middle" class="ink t">Other session: <tspan class="mono">INSERT id = 101</tspan></text>
+  <line x1="345" y1="210" x2="345" y2="178" class="line" marker-end="url(#arrow)"/>
+  <text x="345" y="248" text-anchor="middle" class="lost n b">blocked: 101 falls in a locked gap</text>
+
+  <text x="30" y="286" class="ink2 n">Without the gap locks, 101 would go in and show up as a phantom when the SELECT runs again.</text>
+</svg>

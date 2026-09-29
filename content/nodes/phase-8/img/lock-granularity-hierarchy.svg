@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">Lock hierarchy</text>
+  <rect x="130" y="40" width="130" height="44" rx="6" class="box"/>
+  <text x="195.0" y="59" text-anchor="middle" class="ink t">database</text>
+  <text x="195.0" y="76" text-anchor="middle" class="focus n b">T1: IX</text>
+  <rect x="130" y="120" width="130" height="44" rx="6" class="box"/>
+  <text x="195.0" y="139" text-anchor="middle" class="ink t">orders table</text>
+  <text x="195.0" y="156" text-anchor="middle" class="focus n b">T1: IX</text>
+  <rect x="40" y="200" width="130" height="44" rx="6" class="box"/>
+  <text x="105.0" y="219" text-anchor="middle" class="ink t">page 1</text>
+  <text x="105.0" y="236" text-anchor="middle" class="focus n b">T1: IX</text>
+  <rect x="220" y="200" width="130" height="44" rx="6" class="box"/>
+  <text x="285.0" y="219" text-anchor="middle" class="ink t">page 2</text>
+  <rect x="20" y="280" width="80" height="44" rx="6" class="box"/>
+  <text x="60.0" y="299" text-anchor="middle" class="ink t">row 7</text>
+  <text x="60.0" y="316" text-anchor="middle" class="focus n b">T1: X</text>
+  <rect x="110" y="280" width="80" height="44" rx="6" class="box"/>
+  <text x="150.0" y="299" text-anchor="middle" class="ink t">row 8</text>
+  <line x1="195" y1="84" x2="195" y2="120" class="line"/>
+  <line x1="195" y1="164" x2="105" y2="200" class="line"/>
+  <line x1="195" y1="164" x2="285" y2="200" class="line"/>
+  <line x1="105" y1="244" x2="60" y2="280" class="line"/>
+  <line x1="105" y1="244" x2="150" y2="280" class="line"/>
+  <line x1="340" y1="142" x2="264" y2="142" class="lost-s" marker-end="url(#arrow)" style="stroke-width:1.5"/>
+  <text x="346" y="138" class="lost n b">T2 asks for S</text>
+  <text x="346" y="154" class="ink2 n">blocked by T1's IX:</text>
+  <text x="346" y="170" class="ink2 n">one check, no row scan</text>
+  <text x="605.0" y="24" text-anchor="middle" class="ink t b">Compatible?</text>
+  <text x="710" y="276" text-anchor="end" class="ink2 n">columns: mode already held</text>
+  <text x="710" y="294" text-anchor="end" class="ink2 n">rows: mode asked for</text>
+  <text x="539.0" y="58" text-anchor="middle" class="ink n b mono">IS</text>
+  <text x="577.0" y="58" text-anchor="middle" class="ink n b mono">IX</text>
+  <text x="615.0" y="58" text-anchor="middle" class="ink n b mono">S</text>
+  <text x="653.0" y="58" text-anchor="middle" class="ink n b mono">SIX</text>
+  <text x="691.0" y="58" text-anchor="middle" class="ink n b mono">X</text>
+  <text x="512" y="92.0" text-anchor="end" class="ink n b mono">IS</text>
+  <rect x="520" y="70" width="38" height="34" class="safe-box"/>
+  <text x="539.0" y="92.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="558" y="70" width="38" height="34" class="safe-box"/>
+  <text x="577.0" y="92.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="596" y="70" width="38" height="34" class="safe-box"/>
+  <text x="615.0" y="92.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="634" y="70" width="38" height="34" class="safe-box"/>
+  <text x="653.0" y="92.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="672" y="70" width="38" height="34" class="box"/>
+  <text x="691.0" y="92.0" text-anchor="middle" class="ink n">no</text>
+  <text x="512" y="126.0" text-anchor="end" class="ink n b mono">IX</text>
+  <rect x="520" y="104" width="38" height="34" class="safe-box"/>
+  <text x="539.0" y="126.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="558" y="104" width="38" height="34" class="safe-box"/>
+  <text x="577.0" y="126.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="596" y="104" width="38" height="34" class="box"/>
+  <text x="615.0" y="126.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="634" y="104" width="38" height="34" class="box"/>
+  <text x="653.0" y="126.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="672" y="104" width="38" height="34" class="box"/>
+  <text x="691.0" y="126.0" text-anchor="middle" class="ink n">no</text>
+  <text x="512" y="160.0" text-anchor="end" class="ink n b mono">S</text>
+  <rect x="520" y="138" width="38" height="34" class="safe-box"/>
+  <text x="539.0" y="160.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="558" y="138" width="38" height="34" class="box"/>
+  <text x="577.0" y="160.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="596" y="138" width="38" height="34" class="safe-box"/>
+  <text x="615.0" y="160.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="634" y="138" width="38" height="34" class="box"/>
+  <text x="653.0" y="160.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="672" y="138" width="38" height="34" class="box"/>
+  <text x="691.0" y="160.0" text-anchor="middle" class="ink n">no</text>
+  <text x="512" y="194.0" text-anchor="end" class="ink n b mono">SIX</text>
+  <rect x="520" y="172" width="38" height="34" class="safe-box"/>
+  <text x="539.0" y="194.0" text-anchor="middle" class="ink n">yes</text>
+  <rect x="558" y="172" width="38" height="34" class="box"/>
+  <text x="577.0" y="194.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="596" y="172" width="38" height="34" class="box"/>
+  <text x="615.0" y="194.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="634" y="172" width="38" height="34" class="box"/>
+  <text x="653.0" y="194.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="672" y="172" width="38" height="34" class="box"/>
+  <text x="691.0" y="194.0" text-anchor="middle" class="ink n">no</text>
+  <text x="512" y="228.0" text-anchor="end" class="ink n b mono">X</text>
+  <rect x="520" y="206" width="38" height="34" class="box"/>
+  <text x="539.0" y="228.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="558" y="206" width="38" height="34" class="box"/>
+  <text x="577.0" y="228.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="596" y="206" width="38" height="34" class="box"/>
+  <text x="615.0" y="228.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="634" y="206" width="38" height="34" class="box"/>
+  <text x="653.0" y="228.0" text-anchor="middle" class="ink n">no</text>
+  <rect x="672" y="206" width="38" height="34" class="box"/>
+  <text x="691.0" y="228.0" text-anchor="middle" class="ink n">no</text>
+</svg>

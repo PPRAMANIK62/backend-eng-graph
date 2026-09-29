@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <text x="20" y="26" class="ink t b">One idle session holds back cleanup for the whole database</text>
+  <line x1="150" y1="300" x2="690" y2="300" class="line" marker-end="url(#arrow)"/>
+  <text x="690" y="318" text-anchor="end" class="ink2 n">time</text>
+
+  <text x="20" y="72" class="ink n b">Session A</text>
+  <text x="20" y="88" class="ink2 n">BEGIN; SELECT …</text>
+  <rect x="160" y="60" width="40" height="30" rx="6" class="box"/>
+  <rect x="200" y="60" width="390" height="30" rx="6" class="box" stroke-dasharray="5 4"/>
+  <text x="395" y="80" text-anchor="middle" class="ink2 n">idle in transaction</text>
+  <rect x="590" y="60" width="60" height="30" rx="6" class="box"/>
+  <text x="620" y="80" text-anchor="middle" class="ink n mono">COMMIT</text>
+
+  <text x="20" y="128" class="ink n b">Other sessions</text>
+  <text x="20" y="144" class="ink2 n">short updates</text>
+  <rect x="170" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="212" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="254" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="296" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="338" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="380" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="422" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="464" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="506" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="548" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="590" y="118" width="26" height="22" rx="4" class="box"/>
+  <rect x="632" y="118" width="26" height="22" rx="4" class="box"/>
+
+  <line x1="180" y1="48" x2="180" y2="300" class="focus-s" stroke-dasharray="5 4"/>
+  <text x="186" y="46" class="focus n b">xmin horizon stuck here</text>
+
+  <text x="20" y="200" class="ink n b">Dead versions</text>
+  <text x="20" y="216" class="ink2 n">VACUUM can't remove</text>
+  <rect x="190" y="278" width="30" height="12" rx="3" class="old"/>
+  <rect x="230" y="266" width="30" height="24" rx="3" class="old"/>
+  <rect x="270" y="254" width="30" height="36" rx="3" class="old"/>
+  <rect x="310" y="242" width="30" height="48" rx="3" class="old"/>
+  <rect x="350" y="230" width="30" height="60" rx="3" class="old"/>
+  <rect x="390" y="218" width="30" height="72" rx="3" class="old"/>
+  <rect x="430" y="206" width="30" height="84" rx="3" class="old"/>
+  <rect x="470" y="194" width="30" height="96" rx="3" class="old"/>
+  <rect x="510" y="182" width="30" height="108" rx="3" class="old"/>
+  <rect x="550" y="170" width="30" height="120" rx="3" class="old"/>
+  <rect x="590" y="158" width="30" height="132" rx="3" class="old"/>
+  <rect x="654" y="280" width="30" height="10" rx="3" class="old"/>
+  <text x="665" y="176" text-anchor="middle" class="ink n">vacuum</text>
+  <text x="665" y="192" text-anchor="middle" class="ink n">catches up</text>
+  <line x1="665" y1="200" x2="665" y2="272" class="line" marker-end="url(#arrow)"/>
+
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="26" class="ink t b">Workers, each running</text>
+  <text x="20" y="46" class="ink n mono">... FOR UPDATE SKIP LOCKED LIMIT 1</text>
+  <text x="470" y="46" class="ink t b">jobs (status = queued)</text>
+  <rect x="470" y="70" width="230" height="38" rx="6" class="box"/>
+  <text x="490" y="94" class="ink t mono">job 1</text>
+  <text x="690" y="94" text-anchor="end" class="focus n b">locked by A</text>
+  <rect x="470" y="118" width="230" height="38" rx="6" class="box"/>
+  <text x="490" y="142" class="ink t mono">job 2</text>
+  <text x="690" y="142" text-anchor="end" class="focus n b">locked by B</text>
+  <rect x="470" y="166" width="230" height="38" rx="6" class="box"/>
+  <text x="490" y="190" class="ink t mono">job 3</text>
+  <text x="690" y="190" text-anchor="end" class="focus n b">locked by C</text>
+  <rect x="470" y="214" width="230" height="38" rx="6" class="box"/>
+  <text x="490" y="238" class="ink t mono">job 4</text>
+  <text x="690" y="238" text-anchor="end" class="ink2 n">free</text>
+  <rect x="470" y="262" width="230" height="38" rx="6" class="box"/>
+  <text x="490" y="286" class="ink t mono">job 5</text>
+  <text x="690" y="286" text-anchor="end" class="ink2 n">free</text>
+  <rect x="20" y="80" width="120" height="44" rx="6" class="box"/>
+  <text x="80" y="107" text-anchor="middle" class="ink t">worker A</text>
+  <rect x="20" y="150" width="120" height="44" rx="6" class="box"/>
+  <text x="80" y="177" text-anchor="middle" class="ink t">worker B</text>
+  <rect x="20" y="220" width="120" height="44" rx="6" class="box"/>
+  <text x="80" y="247" text-anchor="middle" class="ink t">worker C</text>
+  <line x1="142" y1="102" x2="466" y2="89" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="142" y1="172" x2="466" y2="137" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="142" y1="242" x2="466" y2="185" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="300" y="136" text-anchor="middle" class="ink2 n">B skips job 1</text>
+  <text x="300" y="248" text-anchor="middle" class="ink2 n">C skips jobs 1 and 2</text>
+  <text x="20" y="310" class="ink2 n">Without SKIP LOCKED, B and C would both wait behind A on job 1.</text>
+</svg>

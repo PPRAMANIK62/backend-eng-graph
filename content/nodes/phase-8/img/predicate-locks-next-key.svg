@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="250" viewBox="0 0 720 250" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="26" class="ink t b">Index on c1, and a locking read</text>
+  <text x="20" y="48" class="ink n mono">SELECT ... WHERE c1 BETWEEN 10 AND 20 FOR UPDATE</text>
+
+  <!-- locked band -->
+  <rect x="192" y="108" width="356" height="44" rx="6" class="focus" fill-opacity="0.15"/>
+  <text x="370" y="100" text-anchor="middle" class="focus n b">locked: records 10 to 20 and the gaps between</text>
+
+  <!-- number line -->
+  <line x1="50" y1="130" x2="690" y2="130" class="line"/>
+  <text x="56" y="170" class="ink2 n">−∞</text>
+  <text x="684" y="170" text-anchor="end" class="ink2 n">+∞</text>
+
+  <!-- records -->
+  <rect x="184" y="116" width="32" height="28" rx="6" class="box"/>
+  <text x="200" y="135" text-anchor="middle" class="ink n mono b">10</text>
+  <rect x="264" y="116" width="32" height="28" rx="6" class="box"/>
+  <text x="280" y="135" text-anchor="middle" class="ink n mono b">11</text>
+  <rect x="364" y="116" width="32" height="28" rx="6" class="box"/>
+  <text x="380" y="135" text-anchor="middle" class="ink n mono b">13</text>
+  <rect x="524" y="116" width="32" height="28" rx="6" class="box"/>
+  <text x="540" y="135" text-anchor="middle" class="ink n mono b">20</text>
+
+  <!-- next-key intervals -->
+  <text x="20" y="196" class="ink2 n">next-key intervals</text>
+  <path d="M60,206 V214 H200 V206" class="line"/>
+  <text x="130" y="232" text-anchor="middle" class="ink n">(−∞, 10]</text>
+  <path d="M204,206 V214 H280 V206" class="line"/>
+  <text x="242" y="232" text-anchor="middle" class="ink n mono">(10, 11]</text>
+  <path d="M284,206 V214 H380 V206" class="line"/>
+  <text x="332" y="232" text-anchor="middle" class="ink n mono">(11, 13]</text>
+  <path d="M384,206 V214 H540 V206" class="line"/>
+  <text x="462" y="232" text-anchor="middle" class="ink n mono">(13, 20]</text>
+  <path d="M544,206 V214 H680 V206" class="line"/>
+  <text x="612" y="232" text-anchor="middle" class="ink n">(20, +∞)</text>
+
+  <!-- blocked insert -->
+  <text x="436" y="190" class="lost n b">INSERT c1 = 15 waits</text>
+  <line x1="426" y1="194" x2="426" y2="156" class="lost-s" style="stroke-width:1.5" marker-end="url(#arrow)"/>
+</svg>

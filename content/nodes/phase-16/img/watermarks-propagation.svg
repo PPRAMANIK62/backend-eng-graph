@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="325" viewBox="0 0 720 325" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- sources -->
+  <text x="90" y="24" text-anchor="middle" class="ink t b">Kafka partitions</text>
+  <rect x="20" y="40" width="140" height="48" rx="6" class="box"/>
+  <text x="34" y="60" class="ink n">partition 0</text>
+  <text x="34" y="78" class="ink2 n">watermark <tspan class="mono">12:06</tspan></text>
+  <rect x="20" y="104" width="140" height="48" rx="6" class="box"/>
+  <text x="34" y="124" class="ink n">partition 1</text>
+  <text x="34" y="142" class="ink2 n">watermark <tspan class="mono">12:07</tspan></text>
+  <rect x="20" y="168" width="140" height="48" rx="6" class="box"/>
+  <rect x="20" y="168" width="140" height="48" rx="6" class="focus-s"/>
+  <text x="34" y="188" class="ink n">partition 2 (slow)</text>
+  <text x="34" y="206" class="focus n b">watermark <tspan class="mono">12:03</tspan></text>
+
+  <line x1="160" y1="64" x2="257" y2="110" class="line" marker-end="url(#arrow)"/>
+  <line x1="160" y1="128" x2="257" y2="128" class="line" marker-end="url(#arrow)"/>
+  <line x1="160" y1="192" x2="257" y2="146" class="line" marker-end="url(#arrow)"/>
+
+  <!-- window operator -->
+  <text x="385" y="24" text-anchor="middle" class="ink t b">Window operator</text>
+  <rect x="260" y="40" width="250" height="176" rx="6" class="box"/>
+  <text x="276" y="64" class="ink n">input watermark = min of inputs</text>
+  <text x="276" y="84" class="focus t b mono">12:03</text>
+  <rect x="276" y="100" width="218" height="46" rx="6" class="focus-s"/>
+  <text x="288" y="119" class="ink n mono">[12:00, 12:05)</text>
+  <text x="288" y="137" class="ink2 n">open: waiting for 12:05</text>
+  <rect x="276" y="156" width="218" height="46" rx="6" class="box"/>
+  <text x="288" y="175" class="ink n mono">[12:05, 12:10)</text>
+  <text x="288" y="193" class="ink2 n">open: still filling</text>
+
+  <!-- downstream -->
+  <text x="625" y="24" text-anchor="middle" class="ink t b">Downstream</text>
+  <line x1="510" y1="128" x2="567" y2="128" class="line" marker-end="url(#arrow)"/>
+  <rect x="570" y="100" width="130" height="56" rx="6" class="box"/>
+  <text x="635" y="124" text-anchor="middle" class="ink2 n">nothing emitted,</text>
+  <text x="635" y="142" text-anchor="middle" class="ink2 n">watermark 12:03</text>
+
+  <!-- what happens next -->
+  <text x="20" y="252" class="ink n b">When partition 2's watermark reaches 12:06:</text>
+  <text x="20" y="272" class="ink n">1. the input watermark becomes 12:06 (the new minimum)</text>
+  <text x="20" y="290" class="ink n">2. window [12:00, 12:05) fires and its count goes downstream</text>
+  <text x="20" y="308" class="ink n">3. only then is watermark 12:06 forwarded; with no allowed lateness, the window's state is dropped</text>
+</svg>

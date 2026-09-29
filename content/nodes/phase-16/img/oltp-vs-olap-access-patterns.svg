@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">OLTP: look up one order</text>
+  <text x="20" y="44" class="ink2 n mono">SELECT * FROM orders WHERE id = 1042</text>
+  <rect x="20" y="58" width="300" height="216" rx="6" class="box"/>
+  <text x="46.0" y="75" text-anchor="middle" class="ink n b">id</text>
+  <text x="98.0" y="75" text-anchor="middle" class="ink n b">cust</text>
+  <text x="154.0" y="75" text-anchor="middle" class="ink n b">item</text>
+  <text x="216.0" y="75" text-anchor="middle" class="ink n b">region</text>
+  <text x="284.0" y="75" text-anchor="middle" class="ink n b">amount</text>
+  <line x1="20" y1="82" x2="320" y2="82" class="line"/>
+  <text x="46.0" y="98" text-anchor="middle" class="ink2 n mono">1040</text>
+  <text x="98.0" y="98" text-anchor="middle" class="ink2 n mono">c17</text>
+  <text x="154.0" y="98" text-anchor="middle" class="ink2 n mono">mug</text>
+  <text x="216.0" y="98" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="284.0" y="98" text-anchor="middle" class="ink2 n mono">12.50</text>
+  <line x1="20" y1="106" x2="320" y2="106" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="122" text-anchor="middle" class="ink2 n mono">1041</text>
+  <text x="98.0" y="122" text-anchor="middle" class="ink2 n mono">c03</text>
+  <text x="154.0" y="122" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <text x="216.0" y="122" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="284.0" y="122" text-anchor="middle" class="ink2 n mono">40.00</text>
+  <line x1="20" y1="130" x2="320" y2="130" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="146" text-anchor="middle" class="ink2 n mono">1042</text>
+  <text x="98.0" y="146" text-anchor="middle" class="ink2 n mono">c17</text>
+  <text x="154.0" y="146" text-anchor="middle" class="ink2 n mono">desk</text>
+  <text x="216.0" y="146" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="284.0" y="146" text-anchor="middle" class="ink2 n mono">210.00</text>
+  <line x1="20" y1="154" x2="320" y2="154" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="170" text-anchor="middle" class="ink2 n mono">1043</text>
+  <text x="98.0" y="170" text-anchor="middle" class="ink2 n mono">c88</text>
+  <text x="154.0" y="170" text-anchor="middle" class="ink2 n mono">mug</text>
+  <text x="216.0" y="170" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <text x="284.0" y="170" text-anchor="middle" class="ink2 n mono">12.50</text>
+  <line x1="20" y1="178" x2="320" y2="178" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="194" text-anchor="middle" class="ink2 n mono">1044</text>
+  <text x="98.0" y="194" text-anchor="middle" class="ink2 n mono">c41</text>
+  <text x="154.0" y="194" text-anchor="middle" class="ink2 n mono">chair</text>
+  <text x="216.0" y="194" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="284.0" y="194" text-anchor="middle" class="ink2 n mono">95.00</text>
+  <line x1="20" y1="202" x2="320" y2="202" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="218" text-anchor="middle" class="ink2 n mono">1045</text>
+  <text x="98.0" y="218" text-anchor="middle" class="ink2 n mono">c03</text>
+  <text x="154.0" y="218" text-anchor="middle" class="ink2 n mono">pen</text>
+  <text x="216.0" y="218" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="284.0" y="218" text-anchor="middle" class="ink2 n mono">2.20</text>
+  <line x1="20" y1="226" x2="320" y2="226" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="242" text-anchor="middle" class="ink2 n mono">1046</text>
+  <text x="98.0" y="242" text-anchor="middle" class="ink2 n mono">c52</text>
+  <text x="154.0" y="242" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <text x="216.0" y="242" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <text x="284.0" y="242" text-anchor="middle" class="ink2 n mono">40.00</text>
+  <line x1="20" y1="250" x2="320" y2="250" class="line" stroke-opacity=".35"/>
+  <text x="46.0" y="266" text-anchor="middle" class="ink2 n mono">1047</text>
+  <text x="98.0" y="266" text-anchor="middle" class="ink2 n mono">c09</text>
+  <text x="154.0" y="266" text-anchor="middle" class="ink2 n mono">desk</text>
+  <text x="216.0" y="266" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="284.0" y="266" text-anchor="middle" class="ink2 n mono">210.00</text>
+  <rect x="22" y="132" width="296" height="20" rx="4" class="focus-box"/>
+  <text x="390" y="24" class="ink t b">OLAP: revenue by region</text>
+  <text x="390" y="44" class="ink2 n mono">SELECT region, SUM(amount) … GROUP BY region</text>
+  <rect x="390" y="58" width="300" height="216" rx="6" class="box"/>
+  <text x="416.0" y="75" text-anchor="middle" class="ink n b">id</text>
+  <text x="468.0" y="75" text-anchor="middle" class="ink n b">cust</text>
+  <text x="524.0" y="75" text-anchor="middle" class="ink n b">item</text>
+  <text x="586.0" y="75" text-anchor="middle" class="ink n b">region</text>
+  <text x="654.0" y="75" text-anchor="middle" class="ink n b">amount</text>
+  <line x1="390" y1="82" x2="690" y2="82" class="line"/>
+  <text x="416.0" y="98" text-anchor="middle" class="ink2 n mono">1040</text>
+  <text x="468.0" y="98" text-anchor="middle" class="ink2 n mono">c17</text>
+  <text x="524.0" y="98" text-anchor="middle" class="ink2 n mono">mug</text>
+  <text x="586.0" y="98" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="654.0" y="98" text-anchor="middle" class="ink2 n mono">12.50</text>
+  <line x1="390" y1="106" x2="690" y2="106" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="122" text-anchor="middle" class="ink2 n mono">1041</text>
+  <text x="468.0" y="122" text-anchor="middle" class="ink2 n mono">c03</text>
+  <text x="524.0" y="122" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <text x="586.0" y="122" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="654.0" y="122" text-anchor="middle" class="ink2 n mono">40.00</text>
+  <line x1="390" y1="130" x2="690" y2="130" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="146" text-anchor="middle" class="ink2 n mono">1042</text>
+  <text x="468.0" y="146" text-anchor="middle" class="ink2 n mono">c17</text>
+  <text x="524.0" y="146" text-anchor="middle" class="ink2 n mono">desk</text>
+  <text x="586.0" y="146" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="654.0" y="146" text-anchor="middle" class="ink2 n mono">210.00</text>
+  <line x1="390" y1="154" x2="690" y2="154" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="170" text-anchor="middle" class="ink2 n mono">1043</text>
+  <text x="468.0" y="170" text-anchor="middle" class="ink2 n mono">c88</text>
+  <text x="524.0" y="170" text-anchor="middle" class="ink2 n mono">mug</text>
+  <text x="586.0" y="170" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <text x="654.0" y="170" text-anchor="middle" class="ink2 n mono">12.50</text>
+  <line x1="390" y1="178" x2="690" y2="178" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="194" text-anchor="middle" class="ink2 n mono">1044</text>
+  <text x="468.0" y="194" text-anchor="middle" class="ink2 n mono">c41</text>
+  <text x="524.0" y="194" text-anchor="middle" class="ink2 n mono">chair</text>
+  <text x="586.0" y="194" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="654.0" y="194" text-anchor="middle" class="ink2 n mono">95.00</text>
+  <line x1="390" y1="202" x2="690" y2="202" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="218" text-anchor="middle" class="ink2 n mono">1045</text>
+  <text x="468.0" y="218" text-anchor="middle" class="ink2 n mono">c03</text>
+  <text x="524.0" y="218" text-anchor="middle" class="ink2 n mono">pen</text>
+  <text x="586.0" y="218" text-anchor="middle" class="ink2 n mono">EU</text>
+  <text x="654.0" y="218" text-anchor="middle" class="ink2 n mono">2.20</text>
+  <line x1="390" y1="226" x2="690" y2="226" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="242" text-anchor="middle" class="ink2 n mono">1046</text>
+  <text x="468.0" y="242" text-anchor="middle" class="ink2 n mono">c52</text>
+  <text x="524.0" y="242" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <text x="586.0" y="242" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <text x="654.0" y="242" text-anchor="middle" class="ink2 n mono">40.00</text>
+  <line x1="390" y1="250" x2="690" y2="250" class="line" stroke-opacity=".35"/>
+  <text x="416.0" y="266" text-anchor="middle" class="ink2 n mono">1047</text>
+  <text x="468.0" y="266" text-anchor="middle" class="ink2 n mono">c09</text>
+  <text x="524.0" y="266" text-anchor="middle" class="ink2 n mono">desk</text>
+  <text x="586.0" y="266" text-anchor="middle" class="ink2 n mono">US</text>
+  <text x="654.0" y="266" text-anchor="middle" class="ink2 n mono">210.00</text>
+  <rect x="557" y="61" width="58" height="210" rx="4" class="focus-box"/>
+  <rect x="621" y="61" width="66" height="210" rx="4" class="focus-box"/>
+  <text x="20" y="300" class="ink n">One row, every column. Many small queries</text>
+  <text x="20" y="318" class="ink n">like this run at once, next to single-row writes.</text>
+  <text x="390" y="300" class="ink n">Two columns, every row. A few big scans like</text>
+  <text x="390" y="318" class="ink n">this, over data that arrives in bulk.</text>
+</svg>

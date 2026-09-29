@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="290" viewBox="0 0 720 290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="24" class="ink t b">Window [12:00, 12:05), allowed lateness 1 minute</text>
+
+  <!-- regions along the watermark axis -->
+  <rect x="60" y="44" width="220" height="118" rx="6" class="box"/>
+  <text x="170" y="64" text-anchor="middle" class="ink n b">window open</text>
+  <text x="170" y="82" text-anchor="middle" class="ink2 n">events are on time</text>
+
+  <rect x="290" y="44" width="200" height="118" rx="6" class="focus-s"/>
+  <text x="390" y="64" text-anchor="middle" class="focus n b">allowed lateness</text>
+  <text x="390" y="82" text-anchor="middle" class="ink2 n">late events are added;</text>
+  <text x="390" y="98" text-anchor="middle" class="ink2 n">the window fires again</text>
+
+  <rect x="500" y="44" width="200" height="118" rx="6" class="box"/>
+  <text x="600" y="64" text-anchor="middle" class="ink n b">window state deleted</text>
+  <text x="600" y="82" text-anchor="middle" class="ink2 n">late events dropped,</text>
+  <text x="600" y="98" text-anchor="middle" class="ink2 n">or sent to a side output</text>
+
+  <!-- events -->
+  <circle cx="130" cy="130" r="6" class="focus"/>
+  <text x="142" y="134" class="ink n mono">12:02</text>
+  <circle cx="370" cy="130" r="6" class="focus"/>
+  <text x="382" y="134" class="ink n mono">12:03 late</text>
+  <circle cx="580" cy="130" r="6" class="lost"/>
+  <text x="592" y="134" class="ink n mono">12:04 too late</text>
+
+  <!-- axis -->
+  <line x1="60" y1="190" x2="705" y2="190" class="line" marker-end="url(#arrow)"/>
+  <line x1="285" y1="182" x2="285" y2="198" class="line"/>
+  <line x1="495" y1="182" x2="495" y2="198" class="line"/>
+  <text x="285" y="216" text-anchor="middle" class="ink n mono">12:05</text>
+  <text x="495" y="216" text-anchor="middle" class="ink n mono">12:06</text>
+  <text x="705" y="216" text-anchor="end" class="ink2 n">the job's watermark</text>
+
+  <!-- firings -->
+  <text x="285" y="242" text-anchor="middle" class="ink2 n">on-time result fires</text>
+  <text x="495" y="242" text-anchor="middle" class="ink2 n">state removed</text>
+  <text x="20" y="274" class="ink2 n">Each dot is an event from this window, placed where the watermark stood when it arrived; its label is its event time.</text>
+</svg>

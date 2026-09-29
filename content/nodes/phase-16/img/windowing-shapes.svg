@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="365" viewBox="0 0 720 365" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <line x1="90" y1="26" x2="580" y2="26" class="line" marker-end="url(#arrow)"/>
+  <line x1="90" y1="22" x2="90" y2="30" class="line"/>
+  <text x="90" y="16" text-anchor="middle" class="ink2 n">0</text>
+  <line x1="210" y1="22" x2="210" y2="30" class="line"/>
+  <text x="210" y="16" text-anchor="middle" class="ink2 n">5</text>
+  <line x1="330" y1="22" x2="330" y2="30" class="line"/>
+  <text x="330" y="16" text-anchor="middle" class="ink2 n">10</text>
+  <line x1="450" y1="22" x2="450" y2="30" class="line"/>
+  <text x="450" y="16" text-anchor="middle" class="ink2 n">15</text>
+  <line x1="570" y1="22" x2="570" y2="30" class="line"/>
+  <text x="570" y="16" text-anchor="middle" class="ink2 n">20</text>
+  <text x="590" y="30" class="ink2 n">event time (min)</text>
+  <text x="20" y="56" class="ink t b">Tumbling: 5 minutes, no overlap</text>
+  <rect x="90.0" y="66" width="117.0" height="52" rx="6" class="box"/>
+  <rect x="210.0" y="66" width="117.0" height="52" rx="6" class="box"/>
+  <rect x="330.0" y="66" width="117.0" height="52" rx="6" class="box"/>
+  <rect x="450.0" y="66" width="117.0" height="52" rx="6" class="box"/>
+  <text x="76" y="84" text-anchor="end" class="ink2 n">user A</text>
+  <text x="76" y="110" text-anchor="end" class="ink2 n">user B</text>
+  <circle cx="114.0" cy="80" r="5" class="focus"/>
+  <circle cx="138.0" cy="80" r="5" class="focus"/>
+  <circle cx="174.0" cy="80" r="5" class="focus"/>
+  <circle cx="306.0" cy="80" r="5" class="focus"/>
+  <circle cx="342.0" cy="80" r="5" class="focus"/>
+  <circle cx="474.0" cy="80" r="5" class="focus"/>
+  <circle cx="186.0" cy="106" r="5" class="focus"/>
+  <circle cx="234.0" cy="106" r="5" class="focus"/>
+  <circle cx="378.0" cy="106" r="5" class="focus"/>
+  <circle cx="402.0" cy="106" r="5" class="focus"/>
+  <circle cx="522.0" cy="106" r="5" class="focus"/>
+  <text x="590" y="84" class="ink2 n">each event is in</text>
+  <text x="590" y="100" class="ink2 n">exactly one window</text>
+  <text x="20" y="150" class="ink t b">Sliding: 10 minutes, starting every 5</text>
+  <text x="76" y="176" text-anchor="end" class="ink2 n">user A</text>
+  <text x="76" y="202" text-anchor="end" class="ink2 n">user B</text>
+  <circle cx="114.0" cy="172" r="5" class="focus"/>
+  <circle cx="138.0" cy="172" r="5" class="focus"/>
+  <circle cx="174.0" cy="172" r="5" class="focus"/>
+  <circle cx="306.0" cy="172" r="5" class="focus"/>
+  <circle cx="342.0" cy="172" r="5" class="focus"/>
+  <circle cx="474.0" cy="172" r="5" class="focus"/>
+  <circle cx="186.0" cy="198" r="5" class="focus"/>
+  <circle cx="234.0" cy="198" r="5" class="focus"/>
+  <circle cx="378.0" cy="198" r="5" class="focus"/>
+  <circle cx="402.0" cy="198" r="5" class="focus"/>
+  <circle cx="522.0" cy="198" r="5" class="focus"/>
+  <rect x="90.0" y="214" width="237.0" height="14" rx="6" class="box"/>
+  <rect x="330.0" y="214" width="237.0" height="14" rx="6" class="box"/>
+  <rect x="90.0" y="234" width="117.0" height="14" rx="6" class="box"/>
+  <rect x="210.0" y="234" width="237.0" height="14" rx="6" class="box"/>
+  <rect x="450.0" y="234" width="117.0" height="14" rx="6" class="box"/>
+  <text x="590" y="226" class="ink2 n">each event is in</text>
+  <text x="590" y="242" class="ink2 n">two windows</text>
+  <text x="20" y="290" class="ink t b">Session: gap of 3 minutes</text>
+  <rect x="105.0" y="301" width="132.0" height="22" rx="6" class="focus-s"/>
+  <rect x="297.0" y="301" width="108.0" height="22" rx="6" class="focus-s"/>
+  <rect x="465.0" y="301" width="72.0" height="22" rx="6" class="focus-s"/>
+  <rect x="177.0" y="327" width="120.0" height="22" rx="6" class="focus-s"/>
+  <rect x="369.0" y="327" width="96.0" height="22" rx="6" class="focus-s"/>
+  <rect x="513.0" y="327" width="57.6" height="22" rx="6" class="focus-s"/>
+  <text x="76" y="316" text-anchor="end" class="ink2 n">user A</text>
+  <text x="76" y="342" text-anchor="end" class="ink2 n">user B</text>
+  <circle cx="114.0" cy="312" r="5" class="focus"/>
+  <circle cx="138.0" cy="312" r="5" class="focus"/>
+  <circle cx="174.0" cy="312" r="5" class="focus"/>
+  <circle cx="306.0" cy="312" r="5" class="focus"/>
+  <circle cx="342.0" cy="312" r="5" class="focus"/>
+  <circle cx="474.0" cy="312" r="5" class="focus"/>
+  <circle cx="186.0" cy="338" r="5" class="focus"/>
+  <circle cx="234.0" cy="338" r="5" class="focus"/>
+  <circle cx="378.0" cy="338" r="5" class="focus"/>
+  <circle cx="402.0" cy="338" r="5" class="focus"/>
+  <circle cx="522.0" cy="338" r="5" class="focus"/>
+  <text x="590" y="316" class="ink2 n">per user; a quiet</text>
+  <text x="590" y="332" class="ink2 n">gap of 3 minutes</text>
+  <text x="590" y="348" class="ink2 n">ends the session</text>
+</svg>

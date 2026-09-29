@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="290" viewBox="0 0 720 290" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- the two moments -->
+  <text x="250" y="22" text-anchor="middle" class="ink t b">barrier n reaches the sink</text>
+  <text x="250" y="40" text-anchor="middle" class="ink2 n">pre-commit: close file A, save its name</text>
+  <text x="250" y="56" text-anchor="middle" class="ink2 n">in the checkpoint, open file B</text>
+  <text x="500" y="22" text-anchor="middle" class="ink t b">checkpoint n complete</text>
+  <text x="500" y="40" text-anchor="middle" class="ink2 n">commit: move file A into place</text>
+  <text x="500" y="56" text-anchor="middle" class="ink2 n">(atomic, idempotent)</text>
+  <line x1="250" y1="66" x2="250" y2="198" class="line" stroke-dasharray="4 3"/>
+  <line x1="500" y1="66" x2="500" y2="198" class="line" stroke-dasharray="4 3"/>
+
+  <!-- file A -->
+  <text x="16" y="105" class="ink t">file A</text>
+  <rect x="70" y="84" width="178" height="34" rx="6" class="focus"/>
+  <text x="159" y="106" text-anchor="middle" class="ink n b">in-progress (temp)</text>
+  <rect x="252" y="84" width="246" height="34" rx="6" class="box"/>
+  <text x="375" y="106" text-anchor="middle" class="ink n">pending: closed, not visible</text>
+  <rect x="502" y="84" width="200" height="34" rx="6" class="safe-box"/>
+  <text x="602" y="106" text-anchor="middle" class="ink n b">finished: visible</text>
+
+  <!-- file B -->
+  <text x="16" y="159" class="ink t">file B</text>
+  <rect x="252" y="138" width="450" height="34" rx="6" class="focus"/>
+  <text x="477" y="160" text-anchor="middle" class="ink n b">in-progress: writes for checkpoint n+1</text>
+
+  <!-- time axis -->
+  <line x1="70" y1="198" x2="700" y2="198" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="218" text-anchor="end" class="ink2 n">time</text>
+
+  <!-- the crash case -->
+  <circle cx="30" cy="248" r="6" class="lost"/>
+  <text x="46" y="253" class="ink n">Crash after checkpoint n completes but before the commit: restore from n. File A's name</text>
+  <text x="46" y="273" class="ink n">is in the restored state, so the sink commits it again. If it's already in place, nothing happens.</text>
+</svg>

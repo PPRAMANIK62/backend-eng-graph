@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="446" viewBox="0 0 720 446" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="300" height="28" rx="6" class="box"/>
+  <text x="32" y="39" class="ink n mono">"PAR1"  magic, 4 bytes</text>
+  <rect x="20" y="56" width="300" height="178" rx="8" class="old-box"/>
+  <text x="32" y="76" class="ink n b">Row group 1  (a slice of rows)</text>
+  <rect x="32" y="86" width="276" height="40" rx="6" class="box"/>
+  <text x="44" y="111" class="ink n">column chunk: id</text>
+  <rect x="32" y="134" width="276" height="40" rx="6" class="focus-box"/>
+  <text x="44" y="159" class="ink n">column chunk: region</text>
+  <rect x="32" y="182" width="276" height="40" rx="6" class="box"/>
+  <text x="44" y="207" class="ink n">column chunk: price</text>
+  <rect x="20" y="242" width="300" height="40" rx="8" class="old-box"/>
+  <text x="32" y="267" class="ink n">Row group 2  (chunks: id, region, price)</text>
+  <rect x="20" y="290" width="300" height="70" rx="6" class="focus-box"/>
+  <text x="32" y="311" class="ink n b">Footer: file metadata (Thrift)</text>
+  <text x="32" y="331" class="ink n">schema, row groups, where each</text>
+  <text x="32" y="349" class="ink n">chunk starts, min/max per chunk</text>
+  <rect x="20" y="368" width="300" height="28" rx="6" class="box"/>
+  <text x="32" y="387" class="ink n">footer length, 4 bytes, little-endian</text>
+  <rect x="20" y="404" width="300" height="28" rx="6" class="box"/>
+  <text x="32" y="423" class="ink n mono">"PAR1"</text>
+  <path d="M308,134 L380,70" class="line" stroke-dasharray="4 3"/>
+  <path d="M308,174 L380,140" class="line" stroke-dasharray="4 3"/>
+  <text x="380" y="40" class="ink t b">Inside one column chunk: pages</text>
+  <rect x="380" y="70" width="90" height="70" rx="6" class="box"/>
+  <text x="425.0" y="100" text-anchor="middle" class="ink n">dictionary</text>
+  <text x="425.0" y="118" text-anchor="middle" class="ink n">page</text>
+  <rect x="476" y="70" width="66" height="70" rx="6" class="box"/>
+  <text x="509.0" y="100" text-anchor="middle" class="ink n">data</text>
+  <text x="509.0" y="118" text-anchor="middle" class="ink n">page</text>
+  <rect x="548" y="70" width="66" height="70" rx="6" class="box"/>
+  <text x="581.0" y="100" text-anchor="middle" class="ink n">data</text>
+  <text x="581.0" y="118" text-anchor="middle" class="ink n">page</text>
+  <rect x="620" y="70" width="66" height="70" rx="6" class="box"/>
+  <text x="653.0" y="100" text-anchor="middle" class="ink n">data</text>
+  <text x="653.0" y="118" text-anchor="middle" class="ink n">page</text>
+  <text x="380" y="166" class="ink2 n">A data page holds a header, the nesting and null</text>
+  <text x="380" y="184" class="ink2 n">levels, then the encoded values; each page is</text>
+  <text x="380" y="202" class="ink2 n">compressed on its own.</text>
+  <text x="380" y="250" class="ink t b">How a reader uses it</text>
+  <text x="380" y="276" class="ink n">1  Read the last 8 bytes: footer length, magic.</text>
+  <text x="380" y="298" class="ink n">2  Read the footer.</text>
+  <text x="380" y="320" class="ink n">3  Skip row groups whose min/max rule them out.</text>
+  <text x="380" y="342" class="ink n">4  Read only the chunks for the columns it needs.</text>
+  <text x="380" y="376" class="ink2 n">The footer is written last, so a writer can stream</text>
+  <text x="380" y="394" class="ink2 n">the data out in one pass.</text>
+</svg>

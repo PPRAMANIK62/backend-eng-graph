@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="402" viewBox="0 0 720 402" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="75" y="22" class="ink n b" text-anchor="middle">Input splits</text>
+  <text x="265" y="22" class="ink n b" text-anchor="middle">Map tasks</text>
+  <text x="265" y="38" class="ink2 n" text-anchor="middle">write R=2 parts to local disk</text>
+  <text x="505" y="22" class="ink n b" text-anchor="middle">Reduce tasks</text>
+  <text x="505" y="38" class="ink2 n" text-anchor="middle">sort by key, then sum</text>
+  <text x="655" y="22" class="ink n b" text-anchor="middle">Output files</text>
+  <text x="410" y="22" class="ink n b" text-anchor="middle">Shuffle</text>
+  <rect x="15" y="72" width="120" height="56" rx="6" class="box"/>
+  <text x="75.0" y="104.0" class="ink n mono" text-anchor="middle">"the cat sat"</text>
+  <line x1="135" y1="100" x2="176" y2="100" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="60" width="170" height="80" rx="6" class="box"/>
+  <rect x="190" y="68" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="86.0" class="ink n mono">p1: the 1</text>
+  <rect x="190" y="104" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="122.0" class="ink n mono">p2: cat 1, sat 1</text>
+  <rect x="15" y="172" width="120" height="56" rx="6" class="box"/>
+  <text x="75.0" y="204.0" class="ink n mono" text-anchor="middle">"the dog"</text>
+  <line x1="135" y1="200" x2="176" y2="200" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="160" width="170" height="80" rx="6" class="box"/>
+  <rect x="190" y="168" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="186.0" class="ink n mono">p1: the 1, dog 1</text>
+  <rect x="190" y="204" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="222.0" class="ink n mono">p2: (empty)</text>
+  <rect x="15" y="272" width="120" height="56" rx="6" class="box"/>
+  <text x="75.0" y="304.0" class="ink n mono" text-anchor="middle">"cat the"</text>
+  <line x1="135" y1="300" x2="176" y2="300" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="260" width="170" height="80" rx="6" class="box"/>
+  <rect x="190" y="268" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="286.0" class="ink n mono">p1: the 1</text>
+  <rect x="190" y="304" width="150" height="28" rx="6" class="box"/>
+  <text x="198" y="322.0" class="ink n mono">p2: cat 1</text>
+  <rect x="450" y="70" width="110" height="70" rx="6" class="box"/>
+  <text x="505.0" y="101.0" class="ink n" text-anchor="middle">reduce 1</text>
+  <text x="505.0" y="117.0" class="ink n" text-anchor="middle">the 3, dog 1</text>
+  <rect x="450" y="200" width="110" height="70" rx="6" class="box"/>
+  <text x="505.0" y="231.0" class="ink n" text-anchor="middle">reduce 2</text>
+  <text x="505.0" y="247.0" class="ink n" text-anchor="middle">cat 2, sat 1</text>
+  <path d="M340,82 C390,82 400,100 446,100" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M340,182 C390,182 400,100 446,100" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M340,282 C390,282 400,100 446,100" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M340,118 C390,118 400,235 446,235" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M340,218 C390,218 400,235 446,235" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M340,318 C390,318 400,235 446,235" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="600" y="85" width="110" height="40" rx="6" class="safe-box"/>
+  <text x="655.0" y="109.0" class="ink n mono" text-anchor="middle">out-1</text>
+  <rect x="600" y="215" width="110" height="40" rx="6" class="safe-box"/>
+  <text x="655.0" y="239.0" class="ink n mono" text-anchor="middle">out-2</text>
+  <line x1="560" y1="105" x2="596" y2="105" class="line" marker-end="url(#arrow)"/>
+  <line x1="560" y1="235" x2="596" y2="235" class="line" marker-end="url(#arrow)"/>
+  <text x="20" y="372" class="ink2 n">Each map task splits its output by hash(word) mod 2. In the shuffle, each reducer</text>
+  <text x="20" y="390" class="ink2 n">pulls its part from every map task. Which word lands in which part is made up here.</text>
+</svg>

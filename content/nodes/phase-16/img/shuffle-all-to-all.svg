@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="394" viewBox="0 0 720 394" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .dash{stroke:#8a8984;stroke-width:1;fill:none;stroke-dasharray:3 3}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="130" y="22" class="ink n b" text-anchor="middle">Map side: one file per map task,</text>
+  <text x="130" y="38" class="ink2 n" text-anchor="middle">sorted by target partition</text>
+  <text x="580" y="22" class="ink n b" text-anchor="middle">Reduce side: each task</text>
+  <text x="580" y="38" class="ink2 n" text-anchor="middle">fetches its block from every file</text>
+  <text x="20" y="104" class="ink2 n mono">map 1</text>
+  <rect x="80" y="80" width="60" height="40" rx="6" class="box"/>
+  <text x="110.0" y="104.0" class="ink n mono" text-anchor="middle">p1</text>
+  <rect x="140" y="80" width="60" height="40" rx="6" class="focus-box"/>
+  <text x="170.0" y="104.0" class="ink n mono" text-anchor="middle">p2</text>
+  <rect x="200" y="80" width="60" height="40" rx="6" class="box"/>
+  <text x="230.0" y="104.0" class="ink n mono" text-anchor="middle">p3</text>
+  <rect x="80" y="80" width="180" height="40" rx="6" class="line"/>
+  <text x="20" y="204" class="ink2 n mono">map 2</text>
+  <rect x="80" y="180" width="60" height="40" rx="6" class="box"/>
+  <text x="110.0" y="204.0" class="ink n mono" text-anchor="middle">p1</text>
+  <rect x="140" y="180" width="60" height="40" rx="6" class="focus-box"/>
+  <text x="170.0" y="204.0" class="ink n mono" text-anchor="middle">p2</text>
+  <rect x="200" y="180" width="60" height="40" rx="6" class="box"/>
+  <text x="230.0" y="204.0" class="ink n mono" text-anchor="middle">p3</text>
+  <rect x="80" y="180" width="180" height="40" rx="6" class="line"/>
+  <text x="20" y="304" class="ink2 n mono">map 3</text>
+  <rect x="80" y="280" width="60" height="40" rx="6" class="box"/>
+  <text x="110.0" y="304.0" class="ink n mono" text-anchor="middle">p1</text>
+  <rect x="140" y="280" width="60" height="40" rx="6" class="focus-box"/>
+  <text x="170.0" y="304.0" class="ink n mono" text-anchor="middle">p2</text>
+  <rect x="200" y="280" width="60" height="40" rx="6" class="box"/>
+  <text x="230.0" y="304.0" class="ink n mono" text-anchor="middle">p3</text>
+  <rect x="80" y="280" width="180" height="40" rx="6" class="line"/>
+  <rect x="520" y="70" width="120" height="44" rx="6" class="box"/>
+  <text x="580.0" y="96.0" class="ink n" text-anchor="middle">reduce 1</text>
+  <rect x="520" y="180" width="120" height="44" rx="6" class="focus-box"/>
+  <text x="580.0" y="206.0" class="ink n" text-anchor="middle">reduce 2</text>
+  <rect x="520" y="290" width="120" height="44" rx="6" class="box"/>
+  <text x="580.0" y="316.0" class="ink n" text-anchor="middle">reduce 3</text>
+  <path d="M260,82 C380,82 400,84 516,84" class="dash" marker-end="url(#arrow)"/>
+  <path d="M260,90 C380,90 400,194 516,194" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M260,98 C380,98 400,304 516,304" class="dash" marker-end="url(#arrow)"/>
+  <path d="M260,182 C380,182 400,92 516,92" class="dash" marker-end="url(#arrow)"/>
+  <path d="M260,190 C380,190 400,202 516,202" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M260,198 C380,198 400,312 516,312" class="dash" marker-end="url(#arrow)"/>
+  <path d="M260,282 C380,282 400,100 516,100" class="dash" marker-end="url(#arrow)"/>
+  <path d="M260,290 C380,290 400,210 516,210" class="focus-s" marker-end="url(#arrow)"/>
+  <path d="M260,298 C380,298 400,320 516,320" class="dash" marker-end="url(#arrow)"/>
+  <text x="20" y="362" class="ink2 n">3 map tasks × 3 reduce tasks = 9 transfers. Reduce 2's three fetches are highlighted;</text>
+  <text x="20" y="380" class="ink2 n">with M map tasks and R reduce tasks the shuffle has M × R pieces to move.</text>
+</svg>

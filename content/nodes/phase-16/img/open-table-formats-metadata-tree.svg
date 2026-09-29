@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="318" viewBox="0 0 720 318" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .dash{stroke:#8a8984;stroke-width:1;fill:none;stroke-dasharray:3 3}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="75" y="22" class="ink n b" text-anchor="middle">Catalog</text>
+  <text x="235" y="22" class="ink n b" text-anchor="middle">Metadata file</text>
+  <text x="385" y="22" class="ink n b" text-anchor="middle">Manifest list</text>
+  <text x="385" y="38" class="ink2 n" text-anchor="middle">(one per snapshot)</text>
+  <text x="525" y="22" class="ink n b" text-anchor="middle">Manifests</text>
+  <text x="655" y="22" class="ink n b" text-anchor="middle">Data files</text>
+  <text x="655" y="38" class="ink2 n" text-anchor="middle">(Parquet)</text>
+  <rect x="15" y="150" width="120" height="56" rx="6" class="focus-box"/>
+  <text x="75.0" y="174.0" class="ink n" text-anchor="middle">events →</text>
+  <text x="75.0" y="190.0" class="ink n" text-anchor="middle">v2.metadata.json</text>
+  <rect x="170" y="80" width="130" height="44" rx="6" class="old-box"/>
+  <text x="235.0" y="106.0" class="ink2 n" text-anchor="middle">v1.metadata.json</text>
+  <rect x="170" y="210" width="130" height="56" rx="6" class="focus-box"/>
+  <text x="235.0" y="234.0" class="ink n" text-anchor="middle">v2.metadata.json</text>
+  <text x="235.0" y="250.0" class="ink n" text-anchor="middle">snapshots 1, 2</text>
+  <rect x="330" y="80" width="110" height="44" rx="6" class="box"/>
+  <text x="385.0" y="106.0" class="ink n" text-anchor="middle">snapshot 1</text>
+  <rect x="330" y="222" width="110" height="44" rx="6" class="focus-box"/>
+  <text x="385.0" y="248.0" class="ink n" text-anchor="middle">snapshot 2</text>
+  <rect x="470" y="110" width="110" height="44" rx="6" class="box"/>
+  <text x="525.0" y="136.0" class="ink n" text-anchor="middle">manifest A</text>
+  <rect x="470" y="222" width="110" height="44" rx="6" class="focus-box"/>
+  <text x="525.0" y="248.0" class="ink n" text-anchor="middle">manifest B</text>
+  <rect x="605" y="60" width="100" height="36" rx="6" class="box"/>
+  <text x="655.0" y="82.0" class="ink n" text-anchor="middle">file 1</text>
+  <rect x="605" y="112" width="100" height="36" rx="6" class="box"/>
+  <text x="655.0" y="134.0" class="ink n" text-anchor="middle">file 2</text>
+  <rect x="605" y="226" width="100" height="36" rx="6" class="focus-box"/>
+  <text x="655.0" y="248.0" class="ink n" text-anchor="middle">file 3 (new)</text>
+  <path d="M75,150 L75,102 L166,102" class="dash" marker-end="url(#arrow)"/>
+  <text x="84" y="138" class="ink2 n">before</text>
+  <path d="M135,178 L150,178 L150,238 L166,238" class="line" marker-end="url(#arrow)"/>
+  <text x="20" y="232" class="ink n">commit: swap the</text>
+  <text x="20" y="248" class="ink n">pointer with one</text>
+  <text x="20" y="264" class="ink n">check-and-put</text>
+  <line x1="300" y1="102" x2="326" y2="102" class="line" marker-end="url(#arrow)"/>
+  <path d="M300,228 L313,228 L313,110 L326,110" class="line" marker-end="url(#arrow)"/>
+  <line x1="300" y1="244" x2="326" y2="244" class="line" marker-end="url(#arrow)"/>
+  <path d="M440,102 L455,102 L455,128 L466,128" class="line" marker-end="url(#arrow)"/>
+  <path d="M440,236 L455,236 L455,140 L466,140" class="line" marker-end="url(#arrow)"/>
+  <line x1="440" y1="250" x2="466" y2="250" class="line" marker-end="url(#arrow)"/>
+  <path d="M580,124 L592,124 L592,78 L601,78" class="line" marker-end="url(#arrow)"/>
+  <path d="M580,138 L592,138 L592,130 L601,130" class="line" marker-end="url(#arrow)"/>
+  <line x1="580" y1="244" x2="601" y2="244" class="line" marker-end="url(#arrow)"/>
+  <text x="470" y="300" class="ink2 n">Manifest A is reused, not rewritten.</text>
+  <text x="170" y="300" class="ink2 n">v1 stays readable until expired.</text>
+</svg>

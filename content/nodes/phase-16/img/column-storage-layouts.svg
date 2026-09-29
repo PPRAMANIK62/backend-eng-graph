@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="436" viewBox="0 0 720 436" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t mono">SELECT SUM(price) FROM sales WHERE region = 'EU'</text>
+  <text x="20" y="62" class="ink t b">Row store: rows sit one after another in each page</text>
+  <rect x="20" y="74" width="680" height="36" rx="6" class="box"/>
+  <text x="41.25" y="97" text-anchor="middle" class="ink2 n mono">1</text>
+  <text x="83.75" y="97" text-anchor="middle" class="ink2 n mono">mug</text>
+  <line x1="62.5" y1="74" x2="62.5" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="108.0" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="126.25" y="97" text-anchor="middle" class="ink2 n mono">EU</text>
+  <line x1="105.0" y1="74" x2="105.0" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="150.5" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="168.75" y="97" text-anchor="middle" class="ink2 n mono">12.5</text>
+  <line x1="147.5" y1="74" x2="147.5" y2="110" class="line" stroke-opacity=".35"/>
+  <text x="211.25" y="97" text-anchor="middle" class="ink2 n mono">2</text>
+  <line x1="190.0" y1="74" x2="190.0" y2="110" class="line"/>
+  <text x="253.75" y="97" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <line x1="232.5" y1="74" x2="232.5" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="278.0" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="296.25" y="97" text-anchor="middle" class="ink2 n mono">US</text>
+  <line x1="275.0" y1="74" x2="275.0" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="320.5" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="338.75" y="97" text-anchor="middle" class="ink2 n mono">40</text>
+  <line x1="317.5" y1="74" x2="317.5" y2="110" class="line" stroke-opacity=".35"/>
+  <text x="381.25" y="97" text-anchor="middle" class="ink2 n mono">3</text>
+  <line x1="360.0" y1="74" x2="360.0" y2="110" class="line"/>
+  <text x="423.75" y="97" text-anchor="middle" class="ink2 n mono">desk</text>
+  <line x1="402.5" y1="74" x2="402.5" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="448.0" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="466.25" y="97" text-anchor="middle" class="ink2 n mono">EU</text>
+  <line x1="445.0" y1="74" x2="445.0" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="490.5" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="508.75" y="97" text-anchor="middle" class="ink2 n mono">210</text>
+  <line x1="487.5" y1="74" x2="487.5" y2="110" class="line" stroke-opacity=".35"/>
+  <text x="551.25" y="97" text-anchor="middle" class="ink2 n mono">4</text>
+  <line x1="530.0" y1="74" x2="530.0" y2="110" class="line"/>
+  <text x="593.75" y="97" text-anchor="middle" class="ink2 n mono">pen</text>
+  <line x1="572.5" y1="74" x2="572.5" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="618.0" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="636.25" y="97" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <line x1="615.0" y1="74" x2="615.0" y2="110" class="line" stroke-opacity=".35"/>
+  <rect x="660.5" y="78" width="36.5" height="28" rx="3" class="focus-box"/>
+  <text x="678.75" y="97" text-anchor="middle" class="ink2 n mono">2.2</text>
+  <line x1="657.5" y1="74" x2="657.5" y2="110" class="line" stroke-opacity=".35"/>
+  <text x="105.0" y="126" text-anchor="middle" class="ink2 n">row 1</text>
+  <text x="275.0" y="126" text-anchor="middle" class="ink2 n">row 2</text>
+  <text x="445.0" y="126" text-anchor="middle" class="ink2 n">row 3</text>
+  <text x="615.0" y="126" text-anchor="middle" class="ink2 n">row 4</text>
+  <text x="20" y="150" class="ink n">The page comes off disk whole: 16 values read to use the 8 the query needs.</text>
+  <text x="20" y="194" class="ink t b">Column store: each column is stored on its own</text>
+  <text x="20" y="231" class="ink n b">id</text>
+  <rect x="110" y="208" width="264" height="36" rx="6" class="box"/>
+  <text x="143.0" y="231" text-anchor="middle" class="ink2 n mono">1</text>
+  <line x1="176" y1="208" x2="176" y2="244" class="line" stroke-opacity=".35"/>
+  <text x="209.0" y="231" text-anchor="middle" class="ink2 n mono">2</text>
+  <line x1="242" y1="208" x2="242" y2="244" class="line" stroke-opacity=".35"/>
+  <text x="275.0" y="231" text-anchor="middle" class="ink2 n mono">3</text>
+  <line x1="308" y1="208" x2="308" y2="244" class="line" stroke-opacity=".35"/>
+  <text x="341.0" y="231" text-anchor="middle" class="ink2 n mono">4</text>
+  <text x="394" y="231" class="ink2 n">not read</text>
+  <text x="20" y="275" class="ink n b">product</text>
+  <rect x="110" y="252" width="264" height="36" rx="6" class="box"/>
+  <text x="143.0" y="275" text-anchor="middle" class="ink2 n mono">mug</text>
+  <line x1="176" y1="252" x2="176" y2="288" class="line" stroke-opacity=".35"/>
+  <text x="209.0" y="275" text-anchor="middle" class="ink2 n mono">lamp</text>
+  <line x1="242" y1="252" x2="242" y2="288" class="line" stroke-opacity=".35"/>
+  <text x="275.0" y="275" text-anchor="middle" class="ink2 n mono">desk</text>
+  <line x1="308" y1="252" x2="308" y2="288" class="line" stroke-opacity=".35"/>
+  <text x="341.0" y="275" text-anchor="middle" class="ink2 n mono">pen</text>
+  <text x="394" y="275" class="ink2 n">not read</text>
+  <text x="20" y="319" class="ink n b">region</text>
+  <rect x="110" y="296" width="264" height="36" rx="6" class="box"/>
+  <rect x="113" y="299" width="258" height="30" rx="4" class="focus-box"/>
+  <text x="143.0" y="319" text-anchor="middle" class="ink2 n mono">EU</text>
+  <line x1="176" y1="296" x2="176" y2="332" class="line" stroke-opacity=".35"/>
+  <text x="209.0" y="319" text-anchor="middle" class="ink2 n mono">US</text>
+  <line x1="242" y1="296" x2="242" y2="332" class="line" stroke-opacity=".35"/>
+  <text x="275.0" y="319" text-anchor="middle" class="ink2 n mono">EU</text>
+  <line x1="308" y1="296" x2="308" y2="332" class="line" stroke-opacity=".35"/>
+  <text x="341.0" y="319" text-anchor="middle" class="ink2 n mono">APAC</text>
+  <text x="394" y="319" class="ink n b">read</text>
+  <text x="20" y="363" class="ink n b">price</text>
+  <rect x="110" y="340" width="264" height="36" rx="6" class="box"/>
+  <rect x="113" y="343" width="258" height="30" rx="4" class="focus-box"/>
+  <text x="143.0" y="363" text-anchor="middle" class="ink2 n mono">12.5</text>
+  <line x1="176" y1="340" x2="176" y2="376" class="line" stroke-opacity=".35"/>
+  <text x="209.0" y="363" text-anchor="middle" class="ink2 n mono">40</text>
+  <line x1="242" y1="340" x2="242" y2="376" class="line" stroke-opacity=".35"/>
+  <text x="275.0" y="363" text-anchor="middle" class="ink2 n mono">210</text>
+  <line x1="308" y1="340" x2="308" y2="376" class="line" stroke-opacity=".35"/>
+  <text x="341.0" y="363" text-anchor="middle" class="ink2 n mono">2.2</text>
+  <text x="394" y="363" class="ink n b">read</text>
+  <text x="20" y="406" class="ink n">Value 1 of every column is row 1, value 2 is row 2, and so on. The position is the row id,</text>
+  <text x="20" y="424" class="ink n">so none is stored. Only the region and price columns are read.</text>
+</svg>

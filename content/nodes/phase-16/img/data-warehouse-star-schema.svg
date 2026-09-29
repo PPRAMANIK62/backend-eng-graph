@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="428" viewBox="0 0 720 428" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <line x1="200" y1="61.0" x2="250" y2="150" class="line"/>
+  <rect x="20" y="20" width="180" height="82" rx="6" class="box"/>
+  <text x="32" y="42" class="ink t b">date</text>
+  <text x="188" y="42" text-anchor="end" class="ink2 n">dimension</text>
+  <line x1="20" y1="52" x2="200" y2="52" class="line" stroke-opacity=".5"/>
+  <text x="32" y="72" class="ink n mono">date_key  PK</text>
+  <text x="32" y="92" class="ink n mono">day, month, year</text>
+  <line x1="520" y1="61.0" x2="470" y2="150" class="line"/>
+  <rect x="520" y="20" width="180" height="82" rx="6" class="box"/>
+  <text x="532" y="42" class="ink t b">store</text>
+  <text x="688" y="42" text-anchor="end" class="ink2 n">dimension</text>
+  <line x1="520" y1="52" x2="700" y2="52" class="line" stroke-opacity=".5"/>
+  <text x="532" y="72" class="ink n mono">store_key  PK</text>
+  <text x="532" y="92" class="ink n mono">city, region</text>
+  <line x1="200" y1="321.0" x2="250" y2="232" class="line"/>
+  <rect x="20" y="280" width="180" height="82" rx="6" class="box"/>
+  <text x="32" y="302" class="ink t b">product</text>
+  <text x="188" y="302" text-anchor="end" class="ink2 n">dimension</text>
+  <line x1="20" y1="312" x2="200" y2="312" class="line" stroke-opacity=".5"/>
+  <text x="32" y="332" class="ink n mono">product_key  PK</text>
+  <text x="32" y="352" class="ink n mono">name, category</text>
+  <line x1="520" y1="321.0" x2="470" y2="232" class="line"/>
+  <rect x="520" y="280" width="180" height="82" rx="6" class="box"/>
+  <text x="532" y="302" class="ink t b">customer</text>
+  <text x="688" y="302" text-anchor="end" class="ink2 n">dimension</text>
+  <line x1="520" y1="312" x2="700" y2="312" class="line" stroke-opacity=".5"/>
+  <text x="532" y="332" class="ink n mono">customer_key  PK</text>
+  <text x="532" y="352" class="ink n mono">name, segment</text>
+  <rect x="250" y="110" width="220" height="162" rx="6" class="focus-box"/>
+  <text x="262" y="132" class="ink t b">sales</text>
+  <text x="458" y="132" text-anchor="end" class="ink2 n">fact table</text>
+  <line x1="250" y1="142" x2="470" y2="142" class="line" stroke-opacity=".5"/>
+  <text x="262" y="162" class="ink n mono">date_key      FK</text>
+  <text x="262" y="182" class="ink n mono">store_key     FK</text>
+  <text x="262" y="202" class="ink n mono">product_key   FK</text>
+  <text x="262" y="222" class="ink n mono">customer_key  FK</text>
+  <text x="262" y="242" class="ink n mono">quantity</text>
+  <text x="262" y="262" class="ink n mono">amount</text>
+  <text x="20" y="396" class="ink n">One fact row per thing measured (here, one line of a sale). Numbers live in the fact table;</text>
+  <text x="20" y="414" class="ink n">the words you filter and group by live in the dimensions.</text>
+</svg>

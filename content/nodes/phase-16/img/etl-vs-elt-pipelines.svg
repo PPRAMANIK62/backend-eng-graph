@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="316" viewBox="0 0 720 316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="22" class="ink t b">ETL: extract, transform, load</text>
+  <rect x="20" y="34" width="130" height="86" rx="6" class="box"/>
+  <text x="85" y="56" text-anchor="middle" class="ink n b">sources</text>
+  <text x="85" y="76" text-anchor="middle" class="ink2 n">app database</text>
+  <text x="85" y="92" text-anchor="middle" class="ink2 n">CRM, billing</text>
+  <text x="85" y="108" text-anchor="middle" class="ink2 n">event logs</text>
+  <line x1="152" y1="77" x2="212" y2="77" class="line" marker-end="url(#arrow)"/>
+  <text x="182" y="70" text-anchor="middle" class="ink2 n">extract</text>
+  <rect x="216" y="34" width="190" height="86" rx="6" class="focus-box"/>
+  <text x="311" y="56" text-anchor="middle" class="ink n b">transform server</text>
+  <text x="311" y="78" text-anchor="middle" class="ink n">clean, cast, rename</text>
+  <text x="311" y="94" text-anchor="middle" class="ink n">join, apply rules</text>
+  <line x1="408" y1="77" x2="468" y2="77" class="line" marker-end="url(#arrow)"/>
+  <text x="438" y="70" text-anchor="middle" class="ink2 n">load</text>
+  <rect x="472" y="34" width="228" height="86" rx="6" class="box"/>
+  <text x="586" y="56" text-anchor="middle" class="ink n b">warehouse</text>
+  <rect x="492" y="68" width="188" height="36" rx="4" class="box"/>
+  <text x="586" y="91" text-anchor="middle" class="ink n">modeled tables</text>
+  <text x="20" y="146" class="ink n">The target schema is fixed before loading. Only transformed data lands in the warehouse.</text>
+  <text x="20" y="178" class="ink t b">ELT: extract, load, transform</text>
+  <rect x="20" y="190" width="130" height="86" rx="6" class="box"/>
+  <text x="85" y="212" text-anchor="middle" class="ink n b">sources</text>
+  <text x="85" y="232" text-anchor="middle" class="ink2 n">app database</text>
+  <text x="85" y="248" text-anchor="middle" class="ink2 n">CRM, billing</text>
+  <text x="85" y="264" text-anchor="middle" class="ink2 n">event logs</text>
+  <line x1="152" y1="233" x2="212" y2="233" class="line" marker-end="url(#arrow)"/>
+  <text x="182" y="226" text-anchor="middle" class="ink2 n">load</text>
+  <text x="182" y="252" text-anchor="middle" class="ink2 n">as is</text>
+  <rect x="216" y="190" width="484" height="86" rx="6" class="box"/>
+  <text x="228" y="208" class="ink n b">warehouse</text>
+  <rect x="236" y="220" width="150" height="40" rx="4" class="box"/>
+  <text x="311" y="245" text-anchor="middle" class="ink n">raw tables</text>
+  <line x1="388" y1="240" x2="408" y2="240" class="line"/>
+  <rect x="410" y="220" width="112" height="40" rx="4" class="focus-box"/>
+  <text x="466" y="245" text-anchor="middle" class="ink n b">transform</text>
+  <line x1="524" y1="240" x2="544" y2="240" class="line" marker-end="url(#arrow)"/>
+  <rect x="548" y="220" width="136" height="40" rx="4" class="box"/>
+  <text x="616" y="245" text-anchor="middle" class="ink n">modeled tables</text>
+  <text x="20" y="302" class="ink n">Raw data stays in the warehouse. Change a transform and rerun it over all of history.</text>
+</svg>

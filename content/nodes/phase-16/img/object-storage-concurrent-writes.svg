@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="474" viewBox="0 0 720 474" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .dash{stroke:#8a8984;stroke-width:1;fill:none;stroke-dasharray:3 3}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="150" y="24" class="ink2 n">time →</text>
+  <text x="40" y="54" class="ink t b">1. Both writes finish before either read starts</text>
+  <text x="40" y="82" class="ink2 n mono">W1</text>
+  <line x1="80" y1="78" x2="150" y2="78" class="dash"/>
+  <line x1="260" y1="78" x2="530" y2="78" class="dash"/>
+  <rect x="150" y="68" width="110" height="20" rx="6" class="focus-box"/>
+  <text x="158" y="82" class="ink n mono">PUT color=ruby</text>
+  <text x="40" y="110" class="ink2 n mono">W2</text>
+  <line x1="80" y1="106" x2="280" y2="106" class="dash"/>
+  <line x1="390" y1="106" x2="530" y2="106" class="dash"/>
+  <rect x="280" y="96" width="110" height="20" rx="6" class="focus-box"/>
+  <text x="288" y="110" class="ink n mono">PUT color=garnet</text>
+  <text x="40" y="138" class="ink2 n mono">R1</text>
+  <line x1="80" y1="134" x2="410" y2="134" class="dash"/>
+  <line x1="490" y1="134" x2="530" y2="134" class="dash"/>
+  <rect x="410" y="124" width="80" height="20" rx="6" class="box"/>
+  <text x="418" y="138" class="ink n mono">GET</text>
+  <text x="40" y="166" class="ink2 n mono">R2</text>
+  <line x1="80" y1="162" x2="420" y2="162" class="dash"/>
+  <line x1="510" y1="162" x2="530" y2="162" class="dash"/>
+  <rect x="420" y="152" width="90" height="20" rx="6" class="box"/>
+  <text x="428" y="166" class="ink n mono">GET</text>
+  <text x="552" y="82" class="ink n">R1 returns garnet</text>
+  <text x="552" y="100" class="ink n">R2 returns garnet</text>
+  <text x="40" y="208" class="ink t b">2. A read starts before the second write finishes</text>
+  <text x="40" y="236" class="ink2 n mono">W1</text>
+  <line x1="80" y1="232" x2="150" y2="232" class="dash"/>
+  <line x1="260" y1="232" x2="530" y2="232" class="dash"/>
+  <rect x="150" y="222" width="110" height="20" rx="6" class="focus-box"/>
+  <text x="158" y="236" class="ink n mono">PUT color=ruby</text>
+  <text x="40" y="264" class="ink2 n mono">W2</text>
+  <line x1="80" y1="260" x2="280" y2="260" class="dash"/>
+  <line x1="420" y1="260" x2="530" y2="260" class="dash"/>
+  <rect x="280" y="250" width="140" height="20" rx="6" class="focus-box"/>
+  <text x="288" y="264" class="ink n mono">PUT color=garnet</text>
+  <text x="40" y="292" class="ink2 n mono">R1</text>
+  <line x1="80" y1="288" x2="340" y2="288" class="dash"/>
+  <line x1="440" y1="288" x2="530" y2="288" class="dash"/>
+  <rect x="340" y="278" width="100" height="20" rx="6" class="box"/>
+  <text x="348" y="292" class="ink n mono">GET</text>
+  <text x="40" y="320" class="ink2 n mono">R2</text>
+  <line x1="80" y1="316" x2="450" y2="316" class="dash"/>
+  <line x1="520" y1="316" x2="530" y2="316" class="dash"/>
+  <rect x="450" y="306" width="70" height="20" rx="6" class="box"/>
+  <text x="458" y="320" class="ink n mono">GET</text>
+  <text x="552" y="236" class="ink n">R1 may return ruby or garnet</text>
+  <text x="552" y="254" class="ink n">R2 returns garnet</text>
+  <text x="40" y="362" class="ink t b">3. The two writes overlap</text>
+  <text x="40" y="390" class="ink2 n mono">W1</text>
+  <line x1="80" y1="386" x2="150" y2="386" class="dash"/>
+  <line x1="330" y1="386" x2="530" y2="386" class="dash"/>
+  <rect x="150" y="376" width="180" height="20" rx="6" class="focus-box"/>
+  <text x="158" y="390" class="ink n mono">PUT color=ruby</text>
+  <text x="40" y="418" class="ink2 n mono">W2</text>
+  <line x1="80" y1="414" x2="200" y2="414" class="dash"/>
+  <line x1="380" y1="414" x2="530" y2="414" class="dash"/>
+  <rect x="200" y="404" width="180" height="20" rx="6" class="focus-box"/>
+  <text x="208" y="418" class="ink n mono">PUT color=garnet</text>
+  <text x="40" y="446" class="ink2 n mono">R1</text>
+  <line x1="80" y1="442" x2="410" y2="442" class="dash"/>
+  <line x1="500" y1="442" x2="530" y2="442" class="dash"/>
+  <rect x="410" y="432" width="90" height="20" rx="6" class="box"/>
+  <text x="418" y="446" class="ink n mono">GET</text>
+  <text x="552" y="390" class="ink n">Last writer wins, in the order</text>
+  <text x="552" y="408" class="ink n">S3 received them, which you</text>
+  <text x="552" y="426" class="ink n">can't predict. R1 shows which</text>
+  <text x="552" y="444" class="ink n">one it was.</text>
+</svg>

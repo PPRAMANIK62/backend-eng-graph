@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- column headings -->
+  <text x="75" y="24" text-anchor="middle" class="ink t b">Kafka topic</text>
+  <text x="255" y="24" text-anchor="middle" class="ink t b">Stateless</text>
+  <text x="375" y="24" text-anchor="middle" class="ink t b">Shuffle</text>
+  <text x="505" y="24" text-anchor="middle" class="ink t b">Keyed state</text>
+  <text x="660" y="24" text-anchor="middle" class="ink t b">Sink</text>
+
+  <!-- partitions -->
+  <rect x="20" y="50" width="110" height="40" rx="6" class="box"/>
+  <text x="75" y="75" text-anchor="middle" class="ink n">partition 0</text>
+  <rect x="20" y="115" width="110" height="40" rx="6" class="box"/>
+  <text x="75" y="140" text-anchor="middle" class="ink n">partition 1</text>
+  <rect x="20" y="180" width="110" height="40" rx="6" class="box"/>
+  <text x="75" y="205" text-anchor="middle" class="ink n">partition 2</text>
+
+  <!-- stateless tasks -->
+  <rect x="190" y="60" width="130" height="60" rx="6" class="box"/>
+  <text x="255" y="85" text-anchor="middle" class="ink t">task 1</text>
+  <text x="255" y="105" text-anchor="middle" class="ink2 n">parse, filter bots</text>
+  <rect x="190" y="160" width="130" height="60" rx="6" class="box"/>
+  <text x="255" y="185" text-anchor="middle" class="ink t">task 2</text>
+  <text x="255" y="205" text-anchor="middle" class="ink2 n">parse, filter bots</text>
+
+  <line x1="130" y1="70" x2="187" y2="82" class="line" marker-end="url(#arrow)"/>
+  <line x1="130" y1="135" x2="187" y2="100" class="line" marker-end="url(#arrow)"/>
+  <line x1="130" y1="200" x2="187" y2="192" class="line" marker-end="url(#arrow)"/>
+
+  <!-- shuffle by key: crossing arrows -->
+  <line x1="320" y1="80" x2="427" y2="80" class="line" marker-end="url(#arrow)"/>
+  <line x1="320" y1="100" x2="427" y2="180" class="line" marker-end="url(#arrow)"/>
+  <line x1="320" y1="180" x2="427" y2="100" class="line" marker-end="url(#arrow)"/>
+  <line x1="320" y1="200" x2="427" y2="200" class="line" marker-end="url(#arrow)"/>
+  <text x="375" y="42" text-anchor="middle" class="ink2 n">by URL</text>
+
+  <!-- keyed tasks with state -->
+  <rect x="430" y="50" width="150" height="75" rx="6" class="box"/>
+  <text x="505" y="70" text-anchor="middle" class="ink t">count task A</text>
+  <rect x="442" y="80" width="126" height="34" rx="6" class="focus-s"/>
+  <text x="505" y="102" text-anchor="middle" class="focus n mono">/home: 41</text>
+  <rect x="430" y="155" width="150" height="75" rx="6" class="box"/>
+  <text x="505" y="175" text-anchor="middle" class="ink t">count task B</text>
+  <rect x="442" y="185" width="126" height="34" rx="6" class="focus-s"/>
+  <text x="505" y="207" text-anchor="middle" class="focus n mono">/cart: 7</text>
+
+  <!-- sink -->
+  <rect x="615" y="110" width="90" height="60" rx="6" class="box"/>
+  <text x="660" y="135" text-anchor="middle" class="ink n">output topic</text>
+  <text x="660" y="153" text-anchor="middle" class="ink n">or table</text>
+  <line x1="580" y1="95" x2="612" y2="125" class="line" marker-end="url(#arrow)"/>
+  <line x1="580" y1="190" x2="612" y2="158" class="line" marker-end="url(#arrow)"/>
+
+  <!-- notes -->
+  <text x="255" y="265" text-anchor="middle" class="ink2 n">any task can take any record</text>
+  <text x="505" y="265" text-anchor="middle" class="ink2 n">one task owns each URL's count;</text>
+  <text x="505" y="281" text-anchor="middle" class="ink2 n">it must survive a crash</text>
+</svg>

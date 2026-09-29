@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="246" viewBox="0 0 720 246" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="24" class="ink n b">Daily output partitions, one per data interval</text>
+  <rect x="20" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="51.0" y="64.0" class="ink n" text-anchor="middle">day 1</text>
+  <rect x="20" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="51.0" y="174.0" class="ink n" text-anchor="middle">day 1</text>
+  <rect x="88" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="119.0" y="64.0" class="ink n" text-anchor="middle">day 2</text>
+  <rect x="88" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="119.0" y="174.0" class="ink n" text-anchor="middle">day 2</text>
+  <rect x="156" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="187.0" y="64.0" class="ink n" text-anchor="middle">day 3</text>
+  <rect x="156" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="187.0" y="174.0" class="ink n" text-anchor="middle">day 3</text>
+  <rect x="224" y="40" width="62" height="40" rx="6" class="lost-box"/>
+  <text x="255.0" y="64.0" class="ink n" text-anchor="middle">day 4</text>
+  <rect x="224" y="150" width="62" height="40" rx="6" class="focus-box"/>
+  <text x="255.0" y="174.0" class="ink n" text-anchor="middle">day 4</text>
+  <rect x="292" y="40" width="62" height="40" rx="6" class="lost-box"/>
+  <text x="323.0" y="64.0" class="ink n" text-anchor="middle">day 5</text>
+  <rect x="292" y="150" width="62" height="40" rx="6" class="focus-box"/>
+  <text x="323.0" y="174.0" class="ink n" text-anchor="middle">day 5</text>
+  <rect x="360" y="40" width="62" height="40" rx="6" class="lost-box"/>
+  <text x="391.0" y="64.0" class="ink n" text-anchor="middle">day 6</text>
+  <rect x="360" y="150" width="62" height="40" rx="6" class="focus-box"/>
+  <text x="391.0" y="174.0" class="ink n" text-anchor="middle">day 6</text>
+  <rect x="428" y="40" width="62" height="40" rx="6" class="lost-box"/>
+  <text x="459.0" y="64.0" class="ink n" text-anchor="middle">day 7</text>
+  <rect x="428" y="150" width="62" height="40" rx="6" class="focus-box"/>
+  <text x="459.0" y="174.0" class="ink n" text-anchor="middle">day 7</text>
+  <rect x="496" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="527.0" y="64.0" class="ink n" text-anchor="middle">day 8</text>
+  <rect x="496" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="527.0" y="174.0" class="ink n" text-anchor="middle">day 8</text>
+  <rect x="564" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="595.0" y="64.0" class="ink n" text-anchor="middle">day 9</text>
+  <rect x="564" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="595.0" y="174.0" class="ink n" text-anchor="middle">day 9</text>
+  <rect x="632" y="40" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="663.0" y="64.0" class="ink n" text-anchor="middle">day 10</text>
+  <rect x="632" y="150" width="62" height="40" rx="6" class="safe-box"/>
+  <text x="663.0" y="174.0" class="ink n" text-anchor="middle">day 10</text>
+  <text x="20" y="104" class="ink n">Before: a bug shipped before day 4 wrote wrong output for days 4 to 7.</text>
+  <text x="20" y="122" class="ink2 n">The fix ships on day 8.</text>
+  <path d="M224,136 L224,142 L490,142 L490,136" class="line"/>
+  <text x="20" y="214" class="ink n">After: the backfill reruns the fixed job for days 4 to 7. Each run reads only its</text>
+  <text x="20" y="232" class="ink n">own day's input and overwrites its own day's partition, so running it twice is harmless.</text>
+</svg>

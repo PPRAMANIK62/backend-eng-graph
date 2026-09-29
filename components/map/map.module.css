@@ -172,9 +172,11 @@
 }
 
 /* ---------- floating pieces ---------- */
+/* The bar and legend live in the map layout (map-chrome.tsx), so they stay
+   mounted when you switch phases. Phase switches don't animate. */
 .bar {
   composes: float from "../chrome/chrome.module.css";
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 16px;
   left: 16px;
@@ -223,12 +225,6 @@
     sans-serif;
   letter-spacing: -0.02em;
 }
-.meta {
-  margin: 6px 0 0;
-  color: var(--ink-2);
-  font-size: 14.5px;
-}
-.title kbd,
 .keys kbd {
   padding: 0 5px;
   border: 1px solid var(--line);
@@ -522,7 +518,7 @@
 
 .legend {
   composes: float from "../chrome/chrome.module.css";
-  position: absolute;
+  position: fixed;
   z-index: 2;
   right: 16px;
   bottom: 16px;

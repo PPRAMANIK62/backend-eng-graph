@@ -8,10 +8,7 @@ import { zoom, zoomIdentity, zoomTransform, type ZoomBehavior, type ZoomTransfor
 import { ArrowLeft, ArrowRight, Check, Maximize2, Minus, Plus } from "lucide-react";
 import { minutes, phaseHref, type NodeSummary, type PhaseInfo } from "@/lib/graph";
 import { useHydrated, useUnderstood } from "@/lib/progress";
-import { SearchBox } from "@/components/chrome/search-box";
-import { PhaseTabs } from "@/components/chrome/phase-tabs";
-import { ThemeSwitch } from "@/components/chrome/theme-switch";
-import { MORPH_VT, NAV, toward } from "@/components/chrome/nav";
+import { MORPH_VT, NAV } from "@/components/chrome/nav";
 import { CHIP, type PhaseMap } from "./model";
 import { setFocus, useFocus } from "./focus";
 import s from "./map.module.css";
@@ -21,6 +18,7 @@ export type Concept = NodeSummary & { lines: string[] };
 type Props = { map: PhaseMap; concepts: Record<string, Concept>; phases: PhaseInfo[] };
 
 const FOCUS_K = { wide: 1.15, narrow: 0.95 };
+const BOX_PAD = 24; // room around the phase's chips when the default view fits them
 const WIDE = 900; // at or above this width the reading panel sits on the left, below it at the bottom
 
 type EdgeState = "need" | "lead" | "peek" | "dim" | undefined;
@@ -107,6 +105,15 @@ export function ZoomMap({ map, concepts, phases }: Props) {
     };
   }, [paint]);
 
+  // The phase's own chips, without the stubs for other phases: the default view fits this box.
+  const box = useMemo(() => {
+    const xs = map.nodes.map(n => n.x),
+      ys = map.nodes.map(n => n.y);
+    const x = Math.min(...xs) - BOX_PAD,
+      y = Math.min(...ys) - BOX_PAD;
+    return { x, y, w: Math.max(...xs) + CHIP.w + BOX_PAD - x, h: Math.max(...ys) + CHIP.h + BOX_PAD - y };
+  }, [map.nodes]);
+
   /** Where the camera aims: the part of the screen not under the bar, the title or the reading panel. */
   const target = useCallback(
     (id: string | null): ZoomTransform => {
@@ -124,14 +131,14 @@ export function ZoomMap({ map, concepts, phases }: Props) {
       if (!wide) {
         // A phone can't show a whole phase legibly: fit its height, start at step 1, and pan from there.
         const area = { x: 8, y: 176, h: h - 176 - 64 };
-        const k = Math.max(0.5, Math.min(0.9, area.h / map.height));
-        return zoomIdentity.translate(area.x, area.y + (area.h - map.height * k) / 2).scale(k);
+        const k = Math.max(0.5, Math.min(0.9, area.h / box.h));
+        return zoomIdentity.translate(area.x - box.x * k, area.y + (area.h - box.h * k) / 2 - box.y * k).scale(k);
       }
       const area = { x: 24, y: 180, w: w - 48, h: h - 180 - 72 };
-      const k = Math.max(0.2, Math.min(1, area.w / map.width, area.h / map.height));
-      return zoomIdentity.translate(area.x + (area.w - map.width * k) / 2, area.y + (area.h - map.height * k) / 2).scale(k);
+      const k = Math.max(0.2, Math.min(1, area.w / box.w, area.h / box.h));
+      return zoomIdentity.translate(area.x + (area.w - box.w * k) / 2 - box.x * k, area.y + (area.h - box.h * k) / 2 - box.y * k).scale(k);
     },
-    [byId, map.width, map.height],
+    [byId, box],
   );
 
   const fly = useCallback((t: ZoomTransform, animate = true) => {
@@ -170,9 +177,9 @@ export function ZoomMap({ map, concepts, phases }: Props) {
       const c = concepts[id];
       if (!c) return;
       if (byId.has(id)) setFocus(id);
-      else router.push(`${phaseHref(c.phase)}#${id}`, { transitionTypes: toward(map.phase, c.phase) });
+      else router.push(`${phaseHref(c.phase)}#${id}`);
     },
-    [byId, concepts, map.phase, router],
+    [byId, concepts, router],
   );
 
   // Keys: Esc for the whole phase, ← to what it needs, → to what it unlocks, Enter to read.
@@ -191,9 +198,6 @@ export function ZoomMap({ map, concepts, phases }: Props) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [focus, node, byId, router]);
-
-  const items = useMemo(() => Object.values(concepts).map(c => ({ id: c.id, title: c.title, note: c.note, phase: c.phase })), [concepts]);
-  const words = map.nodes.reduce((m, n) => m + concepts[n.id].words, 0);
 
   return (
     <div className={s.stage} ref={stageRef} data-focus={focus ? "" : undefined}>
@@ -281,25 +285,13 @@ export function ZoomMap({ map, concepts, phases }: Props) {
         </g>
       </svg>
 
-      {/* ---------- floating: bar, title, panel, small map, legend, zoom ---------- */}
-      <header className={s.bar}>
-        <Link href="/" className={s.brand}>
-          backend-eng-graph
-        </Link>
-        <PhaseTabs phases={phases} current={map.phase} />
-        <SearchBox items={items} phase={map.phase} onPick={open} />
-        <ThemeSwitch />
-      </header>
+      {/* ---------- floating: title, panel, small map, zoom (the bar and legend are in MapChrome) ---------- */}
 
       <div className={s.title} aria-hidden={!!focus}>
         <p className={s.eyebrow}>
           Phase {map.phase} of {phases.length}
         </p>
         <h1>{phase.title}</h1>
-        <p className={s.meta}>
-          {map.nodes.length} concepts, left to right in the order you can read them. About {Math.round(minutes(words) / 6) / 10} hours of
-          reading. Pick one to fly to it, or press <kbd>/</kbd> to search.
-        </p>
       </div>
 
       <aside className={s.panel} aria-label="Concept" data-open={focus ? "" : undefined}>
@@ -419,21 +411,6 @@ export function ZoomMap({ map, concepts, phases }: Props) {
           <rect ref={miniRef} className={s.miniFrame} rx={24} />
         </svg>
       </nav>
-
-      <div className={s.legend} aria-hidden data-hidden={focus ? "" : undefined}>
-        <span>
-          <i className={s.lgNeed} />
-          needs
-        </span>
-        <span>
-          <i className={s.lgLead} />
-          unlocks
-        </span>
-        <span>
-          <i className={s.lgDone} />
-          understood
-        </span>
-      </div>
 
       <div className={s.zoom} data-focus={focus ? "" : undefined}>
         <button type="button" aria-label="Zoom in" onClick={() => zoomBy(1.3)}>

@@ -3,9 +3,6 @@
 
 export const NAV = { forward: ["forward"], back: ["back"], open: ["open"], close: ["close"] };
 
-/** A later phase slides in from the right, an earlier one from the left. */
-export const toward = (from: number, to: number) => (to < from ? NAV.back : NAV.forward);
-
 /** How a whole page enters and leaves, per type. Untyped navigations (browser back) don't animate. */
 export const PAGE_VT = { forward: "vt-forward", back: "vt-back", open: "vt-open", close: "vt-close", default: "none" };
 

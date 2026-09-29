@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- submitters -->
+  <text x="20" y="28" class="ink t b">Submitters</text>
+  <rect x="20" y="92" width="110" height="40" rx="6" class="box"/>
+  <text x="75" y="117" text-anchor="middle" class="ink n">new task</text>
+  <line x1="134" y1="112" x2="176" y2="112" class="line" marker-end="url(#arrow)"/>
+
+  <!-- queue -->
+  <text x="180" y="28" class="ink t b">Work queue</text>
+  <text x="180" y="46" class="ink2 n">bounded: 5 slots</text>
+  <rect x="180" y="92" width="200" height="40" rx="6" class="box"/>
+  <rect x="186" y="98" width="30" height="28" rx="4" class="focus"/>
+  <rect x="222" y="98" width="30" height="28" rx="4" class="focus"/>
+  <rect x="258" y="98" width="30" height="28" rx="4" class="focus"/>
+  <line x1="384" y1="112" x2="436" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="410" y="102" text-anchor="middle" class="ink2 n">take</text>
+
+  <!-- workers -->
+  <text x="440" y="28" class="ink t b">Worker threads</text>
+  <text x="440" y="46" class="ink2 n">a fixed number, here 4</text>
+  <rect x="440" y="58" width="160" height="30" rx="6" class="box"/>
+  <text x="520" y="78" text-anchor="middle" class="ink n">worker 1: running</text>
+  <rect x="440" y="94" width="160" height="30" rx="6" class="box"/>
+  <text x="520" y="114" text-anchor="middle" class="ink n">worker 2: running</text>
+  <rect x="440" y="130" width="160" height="30" rx="6" class="box"/>
+  <text x="520" y="150" text-anchor="middle" class="ink n">worker 3: blocked on I/O</text>
+  <rect x="440" y="166" width="160" height="30" rx="6" class="box"/>
+  <text x="520" y="186" text-anchor="middle" class="ink n">worker 4: running</text>
+  <line x1="604" y1="127" x2="646" y2="127" class="line" marker-end="url(#arrow)"/>
+  <text x="652" y="131" class="ink n">done</text>
+
+  <!-- full queue -->
+  <line x1="75" y1="136" x2="75" y2="226" class="lost-s" stroke-dasharray="6 4"/>
+  <text x="88" y="200" class="ink2 n">queue full?</text>
+  <rect x="20" y="230" width="680" height="72" rx="6" class="box"/>
+  <text x="36" y="252" class="lost n b">The queue is full: pick what happens</text>
+  <text x="36" y="274" class="ink n">reject it (throw an error)  ·  run it on the submitter's thread, which slows it down</text>
+  <text x="36" y="292" class="ink n">drop the new task  ·  drop the oldest queued task and try again</text>
+</svg>

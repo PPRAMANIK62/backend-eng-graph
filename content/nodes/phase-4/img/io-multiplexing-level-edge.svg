@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" class="ink t b">Same socket, same data, two notification modes</text>
+
+  <!-- shared steps -->
+  <rect x="20" y="48" width="150" height="56" rx="6" class="box"/>
+  <text x="95" y="71" text-anchor="middle" class="focus n b">2 kB arrive</text>
+  <text x="95" y="90" text-anchor="middle" class="ink2 n">buffer: 2 kB</text>
+  <line x1="174" y1="76" x2="194" y2="76" class="line" marker-end="url(#arrow)"/>
+  <rect x="198" y="48" width="150" height="56" rx="6" class="box"/>
+  <text x="273" y="71" text-anchor="middle" class="ink n mono">epoll_wait()</text>
+  <text x="273" y="90" text-anchor="middle" class="ink2 n">returns: fd is readable</text>
+  <line x1="352" y1="76" x2="372" y2="76" class="line" marker-end="url(#arrow)"/>
+  <rect x="376" y="48" width="150" height="56" rx="6" class="box"/>
+  <text x="451" y="71" text-anchor="middle" class="ink n mono">read 1 kB</text>
+  <text x="451" y="90" text-anchor="middle" class="ink2 n">buffer: 1 kB left</text>
+  <line x1="530" y1="76" x2="560" y2="76" class="line"/>
+  <line x1="560" y1="76" x2="560" y2="150" class="line"/>
+  <line x1="560" y1="150" x2="584" y2="150" class="line" marker-end="url(#arrow)"/>
+  <line x1="560" y1="76" x2="560" y2="240" class="line"/>
+  <line x1="560" y1="240" x2="584" y2="240" class="line" marker-end="url(#arrow)"/>
+  <text x="570" y="68" class="ink2 n">then</text>
+  <text x="570" y="84" class="ink n mono">epoll_wait()</text>
+  <text x="570" y="100" class="ink2 n">again</text>
+
+  <!-- level -->
+  <text x="20" y="146" class="ink t b">Level-triggered (default)</text>
+  <text x="20" y="166" class="ink2 n">Reports the fd while the condition holds:</text>
+  <text x="20" y="182" class="ink2 n">data is still there, so it's readable.</text>
+  <rect x="588" y="126" width="112" height="48" rx="6" class="safe-box"/>
+  <text x="644" y="146" text-anchor="middle" class="ink n b">returns at once</text>
+  <text x="644" y="164" text-anchor="middle" class="ink n">1 kB to read</text>
+
+  <!-- edge -->
+  <text x="20" y="236" class="ink t b">Edge-triggered (EPOLLET)</text>
+  <text x="20" y="256" class="ink2 n">Reports only changes. Nothing new arrived since the</text>
+  <text x="20" y="272" class="ink2 n">last event, so the leftover 1 kB never wakes you.</text>
+  <rect x="588" y="216" width="112" height="48" rx="6" class="box"/>
+  <text x="644" y="236" text-anchor="middle" class="lost n b">may wait forever</text>
+  <text x="644" y="254" text-anchor="middle" class="ink n">client waits too</text>
+  <text x="20" y="304" class="ink n">Rule for edge-triggered: keep reading until <tspan class="mono">EAGAIN</tspan>, then wait.</text>
+</svg>

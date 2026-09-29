@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="206" viewBox="0 0 720 206" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="10" y="20" class="ink n">Each poll runs the function forward to the next unfinished await, then returns.</text>
+  <rect x="10" y="76" width="100" height="52" rx="6" class="box"/>
+  <text x="60.0" y="107" text-anchor="middle" class="ink t b">Start</text>
+  <text x="60.0" y="152" text-anchor="middle" class="ink2 n">not polled</text>
+  <text x="60.0" y="168" text-anchor="middle" class="ink2 n">yet</text>
+  <line x1="110" y1="102.0" x2="152" y2="102.0" class="line" marker-end="url(#arrow)"/>
+  <rect x="155" y="76" width="100" height="52" rx="6" class="box"/>
+  <text x="205.0" y="107" text-anchor="middle" class="ink t b">Reading</text>
+  <text x="205.0" y="152" text-anchor="middle" class="ink2 n mono">conn,</text>
+  <text x="205.0" y="168" text-anchor="middle" class="ink2 n mono">read future</text>
+  <line x1="255" y1="102.0" x2="297" y2="102.0" class="line" marker-end="url(#arrow)"/>
+  <path d="M183.0,76 C175.0,36 235.0,36 229.0,73" class="line" marker-end="url(#arrow)"/>
+  <text x="205.0" y="40" text-anchor="middle" class="focus n mono">Pending</text>
+  <rect x="300" y="76" width="100" height="52" rx="6" class="box"/>
+  <text x="350.0" y="107" text-anchor="middle" class="ink t b">Querying</text>
+  <text x="350.0" y="152" text-anchor="middle" class="ink2 n mono">conn, req,</text>
+  <text x="350.0" y="168" text-anchor="middle" class="ink2 n mono">query future</text>
+  <line x1="400" y1="102.0" x2="442" y2="102.0" class="line" marker-end="url(#arrow)"/>
+  <path d="M328.0,76 C320.0,36 380.0,36 374.0,73" class="line" marker-end="url(#arrow)"/>
+  <text x="350.0" y="40" text-anchor="middle" class="focus n mono">Pending</text>
+  <rect x="445" y="76" width="100" height="52" rx="6" class="box"/>
+  <text x="495.0" y="107" text-anchor="middle" class="ink t b">Writing</text>
+  <text x="495.0" y="152" text-anchor="middle" class="ink2 n mono">write future</text>
+  <line x1="545" y1="102.0" x2="587" y2="102.0" class="line" marker-end="url(#arrow)"/>
+  <path d="M473.0,76 C465.0,36 525.0,36 519.0,73" class="line" marker-end="url(#arrow)"/>
+  <text x="495.0" y="40" text-anchor="middle" class="focus n mono">Pending</text>
+  <rect x="590" y="76" width="100" height="52" rx="6" class="safe-box"/>
+  <text x="640.0" y="107" text-anchor="middle" class="ink t b">Done</text>
+  <text x="640.0" y="152" text-anchor="middle" class="ink2 n">returns Ready</text>
+  <text x="10" y="194" class="ink2 n">Below each state: what it keeps. An arrow right means the awaited future returned Ready.</text>
+</svg>

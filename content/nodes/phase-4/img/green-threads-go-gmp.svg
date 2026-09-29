@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="332" viewBox="0 0 720 332" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect x="170" y="20" width="360" height="44" rx="6" class="box"/>
+  <text x="186" y="47" text-anchor="start" class="ink t b">Global run queue</text>
+  <circle cx="420" cy="42" r="12" class="box"/>
+  <text x="420" y="46" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="452" cy="42" r="12" class="box"/>
+  <text x="452" y="46" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="484" cy="42" r="12" class="box"/>
+  <text x="484" y="46" text-anchor="middle" class="ink n b">G</text>
+  <rect x="20" y="100" width="270" height="100" rx="6" class="box"/>
+  <text x="36" y="124" text-anchor="start" class="ink t b">P0</text>
+  <text x="64" y="124" text-anchor="start" class="ink2 n">local run queue (up to 256)</text>
+  <circle cx="48" cy="162" r="12" class="box"/>
+  <text x="48" y="166" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="80" cy="162" r="12" class="box"/>
+  <text x="80" y="166" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="112" cy="162" r="12" class="box"/>
+  <text x="112" y="166" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="144" cy="162" r="12" class="box"/>
+  <text x="144" y="166" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="176" cy="162" r="12" class="box"/>
+  <text x="176" y="166" text-anchor="middle" class="ink n b">G</text>
+  <text x="36" y="190" text-anchor="start" class="ink2 n">runnext: the G readied last runs next</text>
+  <rect x="20" y="222" width="270" height="48" rx="6" class="box"/>
+  <text x="36" y="251" text-anchor="start" class="ink t b">M0  OS thread</text>
+  <circle cx="250" cy="246" r="12" class="focus"/>
+  <text x="250" y="250" text-anchor="middle" class="ink n b">G</text>
+  <text x="222" y="251" text-anchor="end" class="ink2 n">runs</text>
+  <line x1="155" y1="202" x2="155" y2="219" class="line" marker-end="url(#arrow)"/>
+  <rect x="320" y="100" width="180" height="100" rx="6" class="box"/>
+  <text x="336" y="124" text-anchor="start" class="ink t b">P1</text>
+  <text x="366" y="124" text-anchor="start" class="ink2 n">queue was empty</text>
+  <circle cx="360" cy="172" r="12" class="box"/>
+  <text x="360" y="176" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="392" cy="172" r="12" class="box"/>
+  <text x="392" y="176" text-anchor="middle" class="ink n b">G</text>
+  <text x="420" y="176" text-anchor="start" class="ink2 n">stolen</text>
+  <path d="M190,164 C240,150 300,150 343,170" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="252" y="146" text-anchor="middle" class="focus n b">steals half</text>
+  <rect x="320" y="222" width="180" height="48" rx="6" class="box"/>
+  <text x="336" y="251" text-anchor="start" class="ink t b">M1  OS thread</text>
+  <circle cx="470" cy="246" r="12" class="focus"/>
+  <text x="470" y="250" text-anchor="middle" class="ink n b">G</text>
+  <line x1="410" y1="202" x2="410" y2="219" class="line" marker-end="url(#arrow)"/>
+  <rect x="530" y="100" width="170" height="100" rx="6" class="box"/>
+  <text x="546" y="124" text-anchor="start" class="ink t b">Netpoller</text>
+  <text x="546" y="142" text-anchor="start" class="ink2 n mono">epoll, edge-triggered</text>
+  <circle cx="562" cy="166" r="12" class="box"/>
+  <text x="562" y="170" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="594" cy="166" r="12" class="box"/>
+  <text x="594" y="170" text-anchor="middle" class="ink n b">G</text>
+  <circle cx="626" cy="166" r="12" class="box"/>
+  <text x="626" y="170" text-anchor="middle" class="ink n b">G</text>
+  <text x="546" y="194" text-anchor="start" class="ink2 n">parked on sockets</text>
+  <path d="M615,98 C615,70 560,50 533,44" class="line" marker-end="url(#arrow)"/>
+  <text x="622" y="74" text-anchor="start" class="ink2 n">ready Gs go back</text>
+  <text x="622" y="90" text-anchor="start" class="ink2 n">to run queues</text>
+  <rect x="530" y="222" width="170" height="48" rx="6" class="box"/>
+  <text x="546" y="245" text-anchor="start" class="ink t b">M2  in a syscall</text>
+  <text x="546" y="262" text-anchor="start" class="ink2 n">blocked, no P</text>
+  <circle cx="676" cy="246" r="12" class="box"/>
+  <text x="676" y="250" text-anchor="middle" class="ink n b">G</text>
+  <text x="20" y="300" text-anchor="start" class="ink2 n">An M needs a P to run Go code. There are GOMAXPROCS Ps. The kernel schedules the Ms onto CPU cores.</text>
+  <text x="20" y="318" text-anchor="start" class="ink2 n">If M2 stays in its syscall, its P is handed to another M so Go code keeps running.</text>
+</svg>

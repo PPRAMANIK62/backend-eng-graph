@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="384" viewBox="0 0 720 384" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <!-- zones -->
+  <text x="20" y="28" class="ink t b">Your program</text>
+  <text x="20" y="368" class="ink t b">Kernel</text>
+  <rect x="150" y="108" width="550" height="176" rx="6" class="box" fill-opacity="0.35"/>
+  <text x="286" y="272" class="ink2 n">both rings: memory shared with the kernel</text>
+
+  <!-- program side actions -->
+  <rect x="150" y="44" width="250" height="44" rx="6" class="box"/>
+  <text x="275" y="63" text-anchor="middle" class="ink n">fill an SQE, move the SQ tail</text>
+  <text x="275" y="79" text-anchor="middle" class="ink2 n mono">READ fd=7 len=4096 user_data=42</text>
+  <rect x="450" y="44" width="250" height="44" rx="6" class="box"/>
+  <text x="575" y="63" text-anchor="middle" class="ink n">read a CQE, move the CQ head</text>
+  <text x="575" y="79" text-anchor="middle" class="ink2 n mono">user_data=42 res=512</text>
+
+  <!-- SQ ring -->
+  <rect x="170" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="210" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="250" y="140" width="36" height="36" rx="6" class="box"/><rect x="250" y="140" width="36" height="36" rx="6" class="focus-s"/>
+  <rect x="290" y="140" width="36" height="36" rx="6" class="box"/><rect x="290" y="140" width="36" height="36" rx="6" class="focus-s"/>
+  <rect x="330" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="370" y="140" width="36" height="36" rx="6" class="box"/>
+  <text x="268" y="163" text-anchor="middle" class="focus n mono">SQE</text>
+  <text x="308" y="163" text-anchor="middle" class="focus n mono">SQE</text>
+  <line x1="348" y1="92" x2="348" y2="136" class="line" marker-end="url(#arrow)"/>
+  <text x="262" y="198" text-anchor="end" class="ink2 n">head</text>
+  <text x="354" y="198" class="ink2 n">tail</text>
+  <text x="290" y="226" class="ink n b">Submission queue</text>
+  <text x="290" y="244" class="ink2 n">you add, kernel takes</text>
+
+  <!-- CQ ring -->
+  <rect x="480" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="520" y="140" width="36" height="36" rx="6" class="safe-box"/>
+  <rect x="560" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="600" y="140" width="36" height="36" rx="6" class="box"/>
+  <rect x="640" y="140" width="36" height="36" rx="6" class="box"/>
+  <text x="538" y="163" text-anchor="middle" class="ink n mono">CQE</text>
+  <line x1="538" y1="136" x2="538" y2="92" class="line" marker-end="url(#arrow)"/>
+  <text x="532" y="198" text-anchor="end" class="ink2 n">head</text>
+  <text x="584" y="198" class="ink2 n">tail</text>
+  <text x="570" y="226" text-anchor="end" class="ink n b">Completion queue</text>
+  <text x="570" y="244" text-anchor="end" class="ink2 n">kernel adds, you take</text>
+
+  <!-- kernel side -->
+  <rect x="150" y="310" width="550" height="56" rx="6" class="box"/>
+  <text x="425" y="332" text-anchor="middle" class="ink n">does the I/O: reads the socket or file into your buffer</text>
+  <text x="425" y="352" text-anchor="middle" class="ink2 n">results can come back in any order; user_data says which request</text>
+  <line x1="268" y1="180" x2="268" y2="306" class="line" marker-end="url(#arrow)"/>
+  <line x1="578" y1="306" x2="578" y2="180" class="line" marker-end="url(#arrow)"/>
+
+  <!-- enter -->
+  <text x="20" y="150" class="ink n mono">io_uring_enter()</text>
+  <text x="20" y="168" class="ink2 n">one system call:</text>
+  <text x="20" y="184" class="ink2 n">"I added N entries,</text>
+  <text x="20" y="200" class="ink2 n">wait for M results"</text>
+  <text x="20" y="232" class="ink2 n">(none at all with</text>
+  <text x="20" y="248" class="ink2 n">SQPOLL while busy)</text>
+</svg>

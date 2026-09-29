@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="354" viewBox="0 0 720 354" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- threads -->
+  <text x="150" y="28" text-anchor="middle" class="ink t b">Core 1 runs thread 1</text>
+  <text x="570" y="28" text-anchor="middle" class="ink t b">Core 2 runs thread 2</text>
+  <rect x="40" y="42" width="220" height="62" rx="6" class="box"/>
+  <text x="60" y="67" class="ink t mono">1: x = 1</text>
+  <text x="60" y="91" class="ink t mono">2: r1 = y</text>
+  <rect x="460" y="42" width="220" height="62" rx="6" class="box"/>
+  <text x="480" y="67" class="ink t mono">1: y = 1</text>
+  <text x="480" y="91" class="ink t mono">2: r2 = x</text>
+
+  <!-- write queues -->
+  <line x1="100" y1="106" x2="100" y2="138" class="line" marker-end="url(#arrow)"/>
+  <rect x="40" y="142" width="170" height="44" rx="6" class="focus-s"/>
+  <text x="54" y="160" class="ink2 n">write queue</text>
+  <text x="54" y="178" class="focus t mono b">x = 1 waits</text>
+  <line x1="620" y1="106" x2="620" y2="138" class="line" marker-end="url(#arrow)"/>
+  <rect x="510" y="142" width="170" height="44" rx="6" class="focus-s"/>
+  <text x="524" y="160" class="ink2 n">write queue</text>
+  <text x="524" y="178" class="focus t mono b">y = 1 waits</text>
+
+  <!-- reads go straight to memory -->
+  <line x1="240" y1="106" x2="240" y2="232" class="line" marker-end="url(#arrow)"/>
+  <text x="252" y="164" class="ink2 n">r1 reads y: 0</text>
+  <line x1="480" y1="106" x2="480" y2="232" class="line" marker-end="url(#arrow)"/>
+  <text x="468" y="164" text-anchor="end" class="ink2 n">r2 reads x: 0</text>
+
+  <!-- shared memory -->
+  <rect x="40" y="236" width="640" height="44" rx="6" class="box"/>
+  <text x="56" y="263" class="ink t b">Shared memory</text>
+  <text x="240" y="263" text-anchor="middle" class="ink t mono">y = 0</text>
+  <text x="480" y="263" text-anchor="middle" class="ink t mono">x = 0</text>
+
+  <text x="360" y="316" text-anchor="middle" class="lost t b">Result: r1 = 0 and r2 = 0</text>
+  <text x="360" y="338" text-anchor="middle" class="ink2 n">Impossible under sequential consistency, allowed on x86 and on ARM/POWER</text>
+</svg>

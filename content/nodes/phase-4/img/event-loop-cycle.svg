@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="304" viewBox="0 0 720 304" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" class="ink t b">One turn of the loop, on one thread</text>
+
+  <!-- cycle boxes -->
+  <rect x="240" y="48" width="240" height="48" rx="6" class="box"/>
+  <text x="360" y="69" text-anchor="middle" class="ink n b">1  work out the timeout</text>
+  <text x="360" y="86" text-anchor="middle" class="ink2 n">time until the next timer is due</text>
+
+  <rect x="460" y="136" width="240" height="48" rx="6" class="box"/>
+  <text x="580" y="157" text-anchor="middle" class="ink n b">2  wait for I/O</text>
+  <text x="580" y="174" text-anchor="middle" class="ink2 n mono">epoll_wait(timeout)</text>
+
+  <rect x="240" y="224" width="240" height="64" rx="6" class="box"/>
+  <rect x="240" y="224" width="240" height="64" rx="6" class="focus-s"/>
+  <text x="360" y="245" text-anchor="middle" class="ink n b">3  run a handler per ready socket</text>
+  <text x="360" y="262" text-anchor="middle" class="ink2 n">accept, read what's there, advance</text>
+  <text x="360" y="278" text-anchor="middle" class="ink2 n">that connection's state, write</text>
+
+  <rect x="20" y="136" width="240" height="48" rx="6" class="box"/>
+  <text x="140" y="157" text-anchor="middle" class="ink n b">4  run timers that are due</text>
+  <text x="140" y="174" text-anchor="middle" class="ink2 n">timeouts, periodic jobs</text>
+
+  <!-- arrows -->
+  <path d="M484,72 C560,72 580,100 580,132" class="line" marker-end="url(#arrow)"/>
+  <path d="M580,188 C580,230 540,256 484,256" class="line" marker-end="url(#arrow)"/>
+  <path d="M236,256 C170,256 140,230 140,188" class="line" marker-end="url(#arrow)"/>
+  <path d="M140,132 C140,100 170,72 236,72" class="line" marker-end="url(#arrow)"/>
+
+  <text x="360" y="150" text-anchor="middle" class="ink2 n">the thread sleeps only in step 2;</text>
+  <text x="360" y="166" text-anchor="middle" class="ink2 n">every other step must be quick</text>
+</svg>

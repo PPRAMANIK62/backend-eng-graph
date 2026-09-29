@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="366" viewBox="0 0 720 366" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <rect x="120" y="40" width="80" height="38" rx="6" class="box"/>
+  <text x="160" y="64" text-anchor="middle" class="ink t">new item</text>
+  <line x1="202" y1="59" x2="244" y2="59" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="40" width="38" height="38" rx="6" class="focus"/><rect x="294" y="40" width="38" height="38" rx="6" class="focus"/><rect x="338" y="40" width="38" height="38" rx="6" class="focus"/><rect x="382" y="40" width="38" height="38" rx="6" class="focus"/><rect x="426" y="40" width="38" height="38" rx="6" class="focus"/>
+  <text x="360" y="30" text-anchor="middle" class="ink n b">queue at its limit (5 of 5)</text>
+  <line x1="472" y1="59" x2="520" y2="59" class="line" marker-end="url(#arrow)"/>
+  <rect x="524" y="40" width="110" height="38" rx="6" class="box"/>
+  <text x="579" y="64" text-anchor="middle" class="ink t">workers</text>
+  <text x="24" y="116" class="ink t b">What happens to the new item</text>
+
+  <rect x="24" y="130" width="130" height="34" rx="6" class="box"/>
+  <text x="89" y="152" text-anchor="middle" class="ink t b">Block</text>
+  <text x="170" y="145" class="ink t">the sender waits until a slot frees up</text>
+  <text x="170" y="161" class="ink2 n mono">full Go channel, plain send</text>
+  <rect x="24" y="176" width="130" height="34" rx="6" class="box"/>
+  <text x="89" y="198" text-anchor="middle" class="ink t b">Reject</text>
+  <text x="170" y="191" class="ink t">the sender gets an error right away</text>
+  <text x="170" y="207" class="ink2 n mono">AbortPolicy; Go select with default</text>
+  <rect x="24" y="222" width="130" height="34" rx="6" class="box"/>
+  <text x="89" y="244" text-anchor="middle" class="ink t b">Drop newest</text>
+  <text x="170" y="237" class="ink t">the new item is thrown away, often silently</text>
+  <text x="170" y="253" class="ink2 n mono">DiscardPolicy; Go select with default</text>
+  <rect x="24" y="268" width="130" height="34" rx="6" class="box"/>
+  <text x="89" y="290" text-anchor="middle" class="ink t b">Drop oldest</text>
+  <text x="170" y="283" class="ink t">the item at the head is thrown away, the new one queued</text>
+  <text x="170" y="299" class="ink2 n mono">DiscardOldestPolicy</text>
+  <rect x="24" y="314" width="130" height="34" rx="6" class="box"/>
+  <text x="89" y="336" text-anchor="middle" class="ink t b">Caller runs</text>
+  <text x="170" y="329" class="ink t">the sender does the work itself, and so slows down</text>
+  <text x="170" y="345" class="ink2 n mono">CallerRunsPolicy</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <!-- left panel: race -->
+  <text x="180" y="26" text-anchor="middle" class="ink t b">No ordering: reported</text>
+  <text x="90" y="54" text-anchor="middle" class="ink t">goroutine A</text>
+  <text x="270" y="54" text-anchor="middle" class="ink t">goroutine B</text>
+  <line x1="90" y1="64" x2="90" y2="90" class="line"/>
+  <line x1="90" y1="152" x2="90" y2="250" class="line"/>
+  <line x1="270" y1="64" x2="270" y2="170" class="line"/>
+  <line x1="270" y1="232" x2="270" y2="250" class="line"/>
+
+  <rect x="30" y="90" width="120" height="34" rx="6" class="box"/>
+  <text x="90" y="112" text-anchor="middle" class="ink t mono">x = 1</text>
+  <text x="90" y="142" text-anchor="middle" class="ink2 n">write, clock A:1</text>
+
+  <rect x="210" y="170" width="120" height="34" rx="6" class="box"/>
+  <text x="270" y="192" text-anchor="middle" class="ink t mono">print(x)</text>
+  <text x="270" y="222" text-anchor="middle" class="ink2 n">read, hasn't seen A:1</text>
+
+  <line x1="150" y1="107" x2="210" y2="187" class="lost-s" stroke-dasharray="6 5"/>
+  <text x="180" y="278" text-anchor="middle" class="lost t b">WARNING: DATA RACE</text>
+  <text x="180" y="298" text-anchor="middle" class="ink2 n">same address, one write, no happens-before</text>
+
+  <!-- right panel: ordered -->
+  <text x="540" y="26" text-anchor="middle" class="ink t b">Channel orders them: quiet</text>
+  <text x="450" y="54" text-anchor="middle" class="ink t">goroutine A</text>
+  <text x="630" y="54" text-anchor="middle" class="ink t">goroutine B</text>
+  <line x1="450" y1="64" x2="450" y2="250" class="line"/>
+  <line x1="630" y1="64" x2="630" y2="250" class="line"/>
+
+  <rect x="390" y="76" width="120" height="34" rx="6" class="box"/>
+  <text x="450" y="98" text-anchor="middle" class="ink t mono">x = 1</text>
+  <rect x="390" y="124" width="120" height="34" rx="6" class="box"/>
+  <text x="450" y="146" text-anchor="middle" class="ink t mono">c &lt;- true</text>
+
+  <rect x="570" y="160" width="120" height="34" rx="6" class="box"/>
+  <text x="630" y="182" text-anchor="middle" class="ink t mono">&lt;-c</text>
+  <rect x="570" y="208" width="120" height="34" rx="6" class="box"/>
+  <text x="630" y="230" text-anchor="middle" class="ink t mono">print(x)</text>
+
+  <line x1="510" y1="141" x2="567" y2="177" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="540" y="278" text-anchor="middle" class="focus t b">happens-before</text>
+  <text x="540" y="298" text-anchor="middle" class="ink2 n">the send happens before the receive completes,</text>
+  <text x="540" y="314" text-anchor="middle" class="ink2 n">so the write is ordered before the read</text>
+</svg>

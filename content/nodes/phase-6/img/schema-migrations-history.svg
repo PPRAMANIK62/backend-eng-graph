@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="306" viewBox="0 0 720 306" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="170" y="28" text-anchor="middle" class="ink t b">Migration files on disk</text>
+  <rect x="60" y="44" width="220" height="40" rx="6" class="box"/>
+  <text x="76" y="69" class="ink n mono">V1  create orders</text>
+  <rect x="60" y="94" width="220" height="40" rx="6" class="box"/>
+  <text x="76" y="119" class="ink n mono">V2  add shipped_at</text>
+  <rect x="60" y="144" width="220" height="40" rx="6" class="box"/>
+  <text x="76" y="169" class="ink n mono">V3  add index</text>
+  <rect x="60" y="194" width="220" height="40" rx="6" class="box"/>
+  <text x="76" y="219" class="ink n mono">V4  add customers</text>
+
+  <text x="530" y="28" text-anchor="middle" class="ink t b">History table in the database</text>
+  <rect x="420" y="44" width="220" height="40" rx="6" class="safe-box"/>
+  <text x="436" y="69" class="ink n mono">V1  ran</text>
+  <rect x="420" y="94" width="220" height="40" rx="6" class="safe-box"/>
+  <text x="436" y="119" class="ink n mono">V2  ran</text>
+  <rect x="420" y="144" width="220" height="40" rx="6" class="box" stroke-dasharray="5 4"/>
+  <text x="436" y="169" class="ink2 n">no row yet</text>
+  <rect x="420" y="194" width="220" height="40" rx="6" class="box" stroke-dasharray="5 4"/>
+  <text x="436" y="219" class="ink2 n">no row yet</text>
+
+  <line x1="284" y1="64" x2="414" y2="64" class="line" marker-end="url(#arrow)"/>
+  <line x1="284" y1="114" x2="414" y2="114" class="line" marker-end="url(#arrow)"/>
+  <text x="349" y="92" text-anchor="middle" class="ink2 n">already applied</text>
+
+  <line x1="284" y1="164" x2="414" y2="164" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="284" y1="214" x2="414" y2="214" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="349" y="192" text-anchor="middle" class="focus t b">pending</text>
+
+  <text x="360" y="268" text-anchor="middle" class="ink n">The tool runs V3, then V4, and adds a row after each one succeeds.</text>
+  <text x="360" y="288" text-anchor="middle" class="ink2 n">Run it again and nothing is pending, so nothing happens.</text>
+</svg>

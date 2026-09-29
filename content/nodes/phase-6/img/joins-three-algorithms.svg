@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="344" viewBox="0 0 720 344" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<text x="120" y="28" text-anchor="middle" class="ink t b">Nested loop</text>
+<text x="360" y="28" text-anchor="middle" class="ink t b">Hash join</text>
+<text x="600" y="28" text-anchor="middle" class="ink t b">Merge join</text>
+<line x1="240" y1="14" x2="240" y2="330" class="line" stroke-dasharray="4 4"/>
+<line x1="480" y1="14" x2="480" y2="330" class="line" stroke-dasharray="4 4"/>
+<text x="40" y="58" text-anchor="middle" class="ink2 n">outer</text>
+<text x="180" y="58" text-anchor="middle" class="ink2 n">inner (index)</text>
+<rect x="18" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="40.0" y="86" text-anchor="middle" class="ink n mono">3</text>
+<rect x="18" y="110" width="44" height="24" rx="4" class="box"/>
+<text x="40.0" y="126" text-anchor="middle" class="ink n mono">1</text>
+<rect x="18" y="150" width="44" height="24" rx="4" class="box"/>
+<text x="40.0" y="166" text-anchor="middle" class="ink n mono">7</text>
+<rect x="158" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="86" text-anchor="middle" class="ink n mono">1</text>
+<rect x="158" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="116" text-anchor="middle" class="ink n mono">2</text>
+<rect x="158" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="146" text-anchor="middle" class="ink n mono">3</text>
+<rect x="158" y="160" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="176" text-anchor="middle" class="ink n mono">5</text>
+<rect x="158" y="190" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="206" text-anchor="middle" class="ink n mono">7</text>
+<rect x="158" y="220" width="44" height="24" rx="4" class="box"/>
+<text x="180.0" y="236" text-anchor="middle" class="ink n mono">9</text>
+<line x1="64" y1="82" x2="154" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+<line x1="64" y1="122" x2="154" y2="82" class="focus-s" marker-end="url(#arrow)"/>
+<line x1="64" y1="162" x2="154" y2="202" class="focus-s" marker-end="url(#arrow)"/>
+<text x="120" y="272" text-anchor="middle" class="ink n">for each outer row,</text>
+<text x="120" y="290" text-anchor="middle" class="ink n">look up matches in inner</text>
+<text x="120" y="312" text-anchor="middle" class="ink2 n">any condition; fast with</text>
+<text x="120" y="328" text-anchor="middle" class="ink2 n">few outer rows + an index</text>
+<text x="290" y="58" text-anchor="middle" class="ink2 n">smaller</text>
+<rect x="268" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="290.0" y="86" text-anchor="middle" class="ink n mono">3</text>
+<rect x="268" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="290.0" y="116" text-anchor="middle" class="ink n mono">1</text>
+<rect x="268" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="290.0" y="146" text-anchor="middle" class="ink n mono">7</text>
+<text x="362" y="58" text-anchor="middle" class="focus n b">hash table</text>
+<rect x="340" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="362.0" y="86" text-anchor="middle" class="focus n mono b">1</text>
+<rect x="340" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="362.0" y="116" text-anchor="middle" class="focus n mono b">3</text>
+<rect x="340" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="362.0" y="146" text-anchor="middle" class="focus n mono b">7</text>
+<line x1="314" y1="112" x2="336" y2="112" class="line" marker-end="url(#arrow)"/>
+<text x="304" y="176" text-anchor="middle" class="ink2 n">1 build</text>
+<text x="440" y="58" text-anchor="middle" class="ink2 n">larger</text>
+<rect x="418" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="440.0" y="86" text-anchor="middle" class="ink n mono">7</text>
+<rect x="418" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="440.0" y="116" text-anchor="middle" class="ink n mono">2</text>
+<rect x="418" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="440.0" y="146" text-anchor="middle" class="ink n mono">1</text>
+<rect x="418" y="160" width="44" height="24" rx="4" class="box"/>
+<text x="440.0" y="176" text-anchor="middle" class="ink n mono">3</text>
+<rect x="418" y="190" width="44" height="24" rx="4" class="box"/>
+<text x="440.0" y="206" text-anchor="middle" class="ink n mono">7</text>
+<line x1="416" y1="82" x2="388" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+<line x1="416" y1="142" x2="388" y2="82" class="focus-s" marker-end="url(#arrow)"/>
+<line x1="416" y1="172" x2="388" y2="112" class="focus-s" marker-end="url(#arrow)"/>
+<line x1="416" y1="202" x2="388" y2="142" class="focus-s" marker-end="url(#arrow)"/>
+<text x="402" y="238" text-anchor="middle" class="ink2 n">2 probe</text>
+<text x="360" y="272" text-anchor="middle" class="ink n">hash one side once,</text>
+<text x="360" y="290" text-anchor="middle" class="ink n">stream the other past it</text>
+<text x="360" y="312" text-anchor="middle" class="ink2 n">equality only; needs memory</text>
+<text x="360" y="328" text-anchor="middle" class="ink2 n">for the smaller side</text>
+<text x="540" y="58" text-anchor="middle" class="ink2 n">sorted A</text>
+<text x="660" y="58" text-anchor="middle" class="ink2 n">sorted B</text>
+<rect x="518" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="540.0" y="86" text-anchor="middle" class="ink n mono">1</text>
+<rect x="518" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="540.0" y="116" text-anchor="middle" class="ink n mono">2</text>
+<rect x="518" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="540.0" y="146" text-anchor="middle" class="ink n mono">4</text>
+<rect x="518" y="160" width="44" height="24" rx="4" class="box"/>
+<text x="540.0" y="176" text-anchor="middle" class="ink n mono">6</text>
+<rect x="638" y="70" width="44" height="24" rx="4" class="box"/>
+<text x="660.0" y="86" text-anchor="middle" class="ink n mono">1</text>
+<rect x="638" y="100" width="44" height="24" rx="4" class="box"/>
+<text x="660.0" y="116" text-anchor="middle" class="ink n mono">2</text>
+<rect x="638" y="130" width="44" height="24" rx="4" class="box"/>
+<text x="660.0" y="146" text-anchor="middle" class="ink n mono">2</text>
+<rect x="638" y="160" width="44" height="24" rx="4" class="box"/>
+<text x="660.0" y="176" text-anchor="middle" class="ink n mono">5</text>
+<rect x="638" y="190" width="44" height="24" rx="4" class="box"/>
+<text x="660.0" y="206" text-anchor="middle" class="ink n mono">6</text>
+<line x1="564" y1="82" x2="634" y2="82" class="focus-s"/>
+<line x1="564" y1="112" x2="634" y2="112" class="focus-s"/>
+<line x1="564" y1="112" x2="634" y2="142" class="focus-s"/>
+<line x1="564" y1="172" x2="634" y2="202" class="focus-s"/>
+<path d="M508,70 V218" class="line" marker-end="url(#arrow)"/>
+<path d="M692,70 V218" class="line" marker-end="url(#arrow)"/>
+<text x="600" y="242" text-anchor="middle" class="ink2 n">two cursors move down together</text>
+<text x="600" y="272" text-anchor="middle" class="ink n">sort both sides, then</text>
+<text x="600" y="290" text-anchor="middle" class="ink n">zip them in one pass</text>
+<text x="600" y="312" text-anchor="middle" class="ink2 n">best when inputs are already</text>
+<text x="600" y="328" text-anchor="middle" class="ink2 n">sorted, e.g. by an index</text>
+</svg>

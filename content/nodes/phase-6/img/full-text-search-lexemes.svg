@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" text-anchor="start" class="ink t b">1. Build the tsvector</text>
+  <rect x="20" y="44" width="680" height="36" rx="6" class="box"/>
+  <text x="360" y="67" text-anchor="middle" class="ink t mono">The cats ate the rats</text>
+  <line x1="360" y1="82" x2="360" y2="104" class="line" marker-end="url(#arrow)"/>
+  <text x="372" y="98" text-anchor="start" class="ink2 n">split into tokens</text>
+  <rect x="110" y="108" width="90" height="32" rx="6" class="box"/>
+  <text x="155" y="129" text-anchor="middle" class="ink t mono">The</text>
+  <text x="155" y="156" text-anchor="middle" class="ink2 n">pos 1</text>
+  <rect x="220" y="108" width="90" height="32" rx="6" class="box"/>
+  <text x="265" y="129" text-anchor="middle" class="ink t mono">cats</text>
+  <text x="265" y="156" text-anchor="middle" class="ink2 n">pos 2</text>
+  <rect x="330" y="108" width="90" height="32" rx="6" class="box"/>
+  <text x="375" y="129" text-anchor="middle" class="ink t mono">ate</text>
+  <text x="375" y="156" text-anchor="middle" class="ink2 n">pos 3</text>
+  <rect x="440" y="108" width="90" height="32" rx="6" class="box"/>
+  <text x="485" y="129" text-anchor="middle" class="ink t mono">the</text>
+  <text x="485" y="156" text-anchor="middle" class="ink2 n">pos 4</text>
+  <rect x="550" y="108" width="90" height="32" rx="6" class="box"/>
+  <text x="595" y="129" text-anchor="middle" class="ink t mono">rats</text>
+  <text x="595" y="156" text-anchor="middle" class="ink2 n">pos 5</text>
+  <line x1="360" y1="164" x2="360" y2="186" class="line" marker-end="url(#arrow)"/>
+  <text x="372" y="180" text-anchor="start" class="ink2 n">normalise: lower case, strip suffix, drop stop words</text>
+  <text x="155" y="211" text-anchor="middle" class="ink2 n">dropped</text>
+  <rect x="220" y="190" width="90" height="32" rx="6" class="box"/>
+  <text x="265" y="211" text-anchor="middle" class="focus t mono b">cat</text>
+  <rect x="330" y="190" width="90" height="32" rx="6" class="box"/>
+  <text x="375" y="211" text-anchor="middle" class="focus t mono b">ate</text>
+  <text x="485" y="211" text-anchor="middle" class="ink2 n">dropped</text>
+  <rect x="550" y="190" width="90" height="32" rx="6" class="box"/>
+  <text x="595" y="211" text-anchor="middle" class="focus t mono b">rat</text>
+  <line x1="360" y1="228" x2="360" y2="250" class="line" marker-end="url(#arrow)"/>
+  <rect x="170" y="254" width="380" height="34" rx="6" class="box"/>
+  <text x="360" y="276" text-anchor="middle" class="ink t mono">tsvector:  'ate':3  'cat':2  'rat':5</text>
+  <text x="20" y="326" text-anchor="start" class="ink t b">2. A GIN index: one entry per lexeme, a list of rows</text>
+  <rect x="40" y="342" width="90" height="30" rx="6" class="box"/>
+  <text x="85" y="362" text-anchor="middle" class="focus t mono b">ate</text>
+  <line x1="132" y1="357" x2="176" y2="357" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="342" width="170" height="30" rx="6" class="box"/>
+  <text x="192" y="362" text-anchor="start" class="ink t mono">rows 1, 3, 42</text>
+  <rect x="40" y="382" width="90" height="30" rx="6" class="box"/>
+  <text x="85" y="402" text-anchor="middle" class="focus t mono b">cat</text>
+  <line x1="132" y1="397" x2="176" y2="397" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="382" width="170" height="30" rx="6" class="box"/>
+  <text x="192" y="402" text-anchor="start" class="ink t mono">rows 1, 7, 42</text>
+  <rect x="40" y="422" width="90" height="30" rx="6" class="box"/>
+  <text x="85" y="442" text-anchor="middle" class="focus t mono b">rat</text>
+  <line x1="132" y1="437" x2="176" y2="437" class="line" marker-end="url(#arrow)"/>
+  <rect x="180" y="422" width="170" height="30" rx="6" class="box"/>
+  <text x="192" y="442" text-anchor="start" class="ink t mono">rows 1, 42, 90</text>
+  <text x="400" y="376" text-anchor="start" class="ink t mono">search  cat &amp; rat</text>
+  <text x="400" y="400" text-anchor="start" class="ink2 n">intersect the two lists</text>
+  <rect x="400" y="410" width="170" height="30" rx="6" class="safe-box"/>
+  <text x="412" y="430" text-anchor="start" class="ink t mono">rows 1, 42</text>
+</svg>

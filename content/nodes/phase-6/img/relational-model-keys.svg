@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+<text x="20" y="92" class="ink t b mono">customers</text>
+<rect x="20" y="100" width="168" height="96" rx="6" class="box"/>
+<line x1="20" y1="124" x2="188" y2="124" class="line"/>
+<text x="28" y="116" class="focus n b mono">customer_id</text>
+<text x="28" y="140" class="ink n mono">1</text>
+<text x="28" y="164" class="ink n mono">2</text>
+<text x="28" y="188" class="ink n mono">3</text>
+<line x1="124" y1="100" x2="124" y2="196" class="line"/>
+<text x="132" y="116" class="ink n b mono">name</text>
+<text x="132" y="140" class="ink n mono">Ana</text>
+<text x="132" y="164" class="ink n mono">Ben</text>
+<text x="132" y="188" class="ink n mono">Cy</text>
+<text x="262" y="92" class="ink t b mono">orders</text>
+<rect x="262" y="100" width="188" height="96" rx="6" class="box"/>
+<line x1="262" y1="124" x2="450" y2="124" class="line"/>
+<text x="270" y="116" class="focus n b mono">order_id</text>
+<text x="270" y="140" class="ink n mono">10</text>
+<text x="270" y="164" class="ink n mono">11</text>
+<text x="270" y="188" class="ink n mono">12</text>
+<line x1="346" y1="100" x2="346" y2="196" class="line"/>
+<text x="354" y="116" class="ink n b mono">customer_id</text>
+<text x="354" y="140" class="ink n mono">1</text>
+<text x="354" y="164" class="ink n mono">1</text>
+<text x="354" y="188" class="ink n mono">3</text>
+<text x="520" y="92" class="ink t b mono">order_items</text>
+<rect x="520" y="100" width="192" height="96" rx="6" class="box"/>
+<line x1="520" y1="124" x2="712" y2="124" class="line"/>
+<text x="528" y="116" class="focus n b mono">order_id</text>
+<text x="528" y="140" class="ink n mono">10</text>
+<text x="528" y="164" class="ink n mono">10</text>
+<text x="528" y="188" class="ink n mono">12</text>
+<line x1="604" y1="100" x2="604" y2="196" class="line"/>
+<text x="612" y="116" class="focus n b mono">product</text>
+<text x="612" y="140" class="ink n mono">bolt</text>
+<text x="612" y="164" class="ink n mono">nut</text>
+<text x="612" y="188" class="ink n mono">bolt</text>
+<line x1="668" y1="100" x2="668" y2="196" class="line"/>
+<text x="676" y="116" class="ink n b mono">qty</text>
+<text x="676" y="140" class="ink n mono">4</text>
+<text x="676" y="164" class="ink n mono">9</text>
+<text x="676" y="188" class="ink n mono">1</text>
+<path d="M398,100 V46 H110 V97" class="line" marker-end="url(#arrow)"/>
+<text x="254.0" y="38" text-anchor="middle" class="ink2 n">foreign key → primary key</text>
+<path d="M562,196 V230 H304 V199" class="line" marker-end="url(#arrow)"/>
+<text x="433.0" y="248" text-anchor="middle" class="ink2 n">foreign key → primary key</text>
+<text x="20" y="280" class="ink2 n">Blue columns form each table's primary key. Links are values that match a key, not pointers.</text>
+<text x="20" y="298" class="ink2 n">Rows have no order: a query without ORDER BY may return them in any order.</text>
+</svg>

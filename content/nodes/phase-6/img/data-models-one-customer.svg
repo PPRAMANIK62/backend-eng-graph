@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="548" viewBox="0 0 720 548" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <rect x="20" y="14" width="330" height="172" rx="6" class="box" fill-opacity=".35"/>
+  <text x="32" y="36" class="ink t b">Relational</text>
+  <text x="32" y="174" class="ink2 n">Alice's orders: a join on customer_id</text>
+  <text x="34" y="62" class="ink n mono b">customers</text>
+  <rect x="34" y="68" width="110" height="40" rx="4" class="box"/>
+  <text x="40" y="83" class="ink2 n mono">id</text>
+  <text x="80" y="83" class="ink2 n mono">name</text>
+  <text x="40" y="103" class="ink n mono">42</text>
+  <text x="80" y="103" class="ink n mono">Alice</text>
+  <text x="166" y="62" class="ink n mono b">orders</text>
+  <rect x="166" y="68" width="164" height="60" rx="4" class="box"/>
+  <text x="172" y="83" class="ink2 n mono">id</text>
+  <text x="216" y="83" class="ink2 n mono">customer_id</text>
+  <text x="172" y="103" class="ink n mono">123</text>
+  <text x="216" y="103" class="ink n mono">42</text>
+  <text x="172" y="123" class="ink n mono">456</text>
+  <text x="216" y="123" class="ink n mono">42</text>
+  <line x1="166" y1="113" x2="147" y2="103" class="line" marker-end="url(#arrow)"/>
+  <rect x="370" y="14" width="330" height="172" rx="6" class="box" fill-opacity=".35"/>
+  <text x="382" y="36" class="ink t b">Document</text>
+  <text x="382" y="174" class="ink2 n">Alice's orders: one read, already nested</text>
+  <text x="384" y="64" class="ink n mono" xml:space="preserve">{ "_id": 42, "name": "Alice",</text>
+  <text x="384" y="82" class="ink n mono" xml:space="preserve">  "orders": [</text>
+  <text x="384" y="100" class="ink n mono" xml:space="preserve">    { "id": 123, "items": [...] },</text>
+  <text x="384" y="118" class="ink n mono" xml:space="preserve">    { "id": 456, "items": [...] }</text>
+  <text x="384" y="136" class="ink n mono" xml:space="preserve">  ] }</text>
+  <rect x="20" y="200" width="330" height="160" rx="6" class="box" fill-opacity=".35"/>
+  <text x="32" y="222" class="ink t b">Key-value</text>
+  <text x="32" y="348" class="ink2 n">Alice's orders: get the key, decode in the app</text>
+  <rect x="36" y="250" width="110" height="34" rx="4" class="focus" fill-opacity=".18"/><rect x="36" y="250" width="110" height="34" rx="4" class="focus-s"/>
+  <text x="91" y="272" text-anchor="middle" class="ink n mono">customer:42</text>
+  <line x1="148" y1="267" x2="186" y2="267" class="line" marker-end="url(#arrow)"/>
+  <rect x="190" y="250" width="144" height="34" rx="4" class="box"/>
+  <text x="262" y="272" text-anchor="middle" class="ink2 n mono">0x8f 3a 11 c0 ...</text>
+  <text x="36" y="304" class="ink2 n">The store sees opaque bytes; only</text>
+  <text x="36" y="320" class="ink2 n">get, set and delete by key.</text>
+  <rect x="370" y="200" width="330" height="160" rx="6" class="box" fill-opacity=".35"/>
+  <text x="382" y="222" class="ink t b">Wide-column</text>
+  <text x="382" y="348" class="ink2 n">Alice's orders: read one row</text>
+  <text x="384" y="250" class="ink2 n">row key</text>
+  <rect x="384" y="256" width="50" height="40" rx="4" class="box"/>
+  <text x="409" y="281" text-anchor="middle" class="ink n mono">42</text>
+  <rect x="440" y="256" width="80" height="40" rx="4" class="box"/>
+  <text x="480" y="272" text-anchor="middle" class="ink2 n mono">info:name</text>
+  <text x="480" y="289" text-anchor="middle" class="ink n mono">Alice</text>
+  <rect x="524" y="256" width="80" height="40" rx="4" class="box"/>
+  <text x="564" y="272" text-anchor="middle" class="ink2 n mono">orders:123</text>
+  <text x="564" y="289" text-anchor="middle" class="ink n mono">...</text>
+  <rect x="608" y="256" width="80" height="40" rx="4" class="box"/>
+  <text x="648" y="272" text-anchor="middle" class="ink2 n mono">orders:456</text>
+  <text x="648" y="289" text-anchor="middle" class="ink n mono">...</text>
+  <text x="384" y="318" class="ink2 n">family:qualifier columns; rows sorted by key</text>
+  <rect x="20" y="374" width="680" height="164" rx="6" class="box" fill-opacity=".35"/>
+  <text x="32" y="396" class="ink t b">Graph</text>
+  <text x="32" y="526" class="ink2 n">Alice's orders: follow her PLACED relationships</text>
+  <rect x="40" y="430" width="120" height="44" rx="22" class="box"/>
+  <text x="100" y="449" text-anchor="middle" class="ink2 n">Customer</text>
+  <text x="100" y="466" text-anchor="middle" class="ink n b">Alice</text>
+  <rect x="300" y="410" width="120" height="44" rx="22" class="box"/>
+  <text x="360" y="429" text-anchor="middle" class="ink2 n">Order</text>
+  <text x="360" y="446" text-anchor="middle" class="ink n b">123</text>
+  <rect x="300" y="466" width="120" height="44" rx="22" class="box"/>
+  <text x="360" y="485" text-anchor="middle" class="ink2 n">Order</text>
+  <text x="360" y="502" text-anchor="middle" class="ink n b">456</text>
+  <rect x="560" y="410" width="120" height="44" rx="22" class="box"/>
+  <text x="620" y="429" text-anchor="middle" class="ink2 n">Product</text>
+  <text x="620" y="446" text-anchor="middle" class="ink n b">Lamp</text>
+  <line x1="160" y1="446" x2="297" y2="432" class="line" marker-end="url(#arrow)"/>
+  <line x1="160" y1="458" x2="297" y2="486" class="line" marker-end="url(#arrow)"/>
+  <line x1="420" y1="432" x2="557" y2="432" class="line" marker-end="url(#arrow)"/>
+  <text x="228" y="430" text-anchor="middle" class="ink2 n mono">PLACED</text>
+  <text x="228" y="490" text-anchor="middle" class="ink2 n mono">PLACED</text>
+  <text x="488" y="426" text-anchor="middle" class="ink2 n mono">CONTAINS</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="216" viewBox="0 0 720 216" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <text x="30" y="26" class="ink t b" xml:space="preserve">One stored document</text>
+  <rect x="30" y="38" width="220" height="40" rx="6" class="box"/>
+  <text x="140" y="63" text-anchor="middle" class="ink n mono" xml:space="preserve">{"foo": {"bar": "baz"}}</text>
+  <line x1="250" y1="52" x2="316" y2="46" class="line" marker-end="url(#arrow)"/>
+  <line x1="250" y1="66" x2="316" y2="140" class="line" marker-end="url(#arrow)"/>
+  <text x="330" y="26" class="ink t b" xml:space="preserve">jsonb_ops (default): each key and value</text>
+  <rect x="330" y="38" width="70" height="32" rx="6" class="focus" fill-opacity=".18"/><rect x="330" y="38" width="70" height="32" rx="6" class="focus-s"/>
+  <text x="365" y="59" text-anchor="middle" class="ink n mono" xml:space="preserve">foo</text>
+  <rect x="410" y="38" width="70" height="32" rx="6" class="focus" fill-opacity=".18"/><rect x="410" y="38" width="70" height="32" rx="6" class="focus-s"/>
+  <text x="445" y="59" text-anchor="middle" class="ink n mono" xml:space="preserve">bar</text>
+  <rect x="490" y="38" width="70" height="32" rx="6" class="focus" fill-opacity=".18"/><rect x="490" y="38" width="70" height="32" rx="6" class="focus-s"/>
+  <text x="525" y="59" text-anchor="middle" class="ink n mono" xml:space="preserve">baz</text>
+  <text x="330" y="90" class="ink2 n" xml:space="preserve">Answers ? (key exists), @>, @? and @@</text>
+  <text x="330" y="120" class="ink t b" xml:space="preserve">jsonb_path_ops: each value, hashed with its path</text>
+  <rect x="330" y="132" width="230" height="32" rx="6" class="focus" fill-opacity=".18"/><rect x="330" y="132" width="230" height="32" rx="6" class="focus-s"/>
+  <text x="445" y="153" text-anchor="middle" class="ink n mono" xml:space="preserve">hash(foo, bar, baz)</text>
+  <text x="330" y="184" class="ink2 n" xml:space="preserve">Answers @>, @? and @@ only; smaller and more specific,</text>
+  <text x="330" y="200" class="ink2 n" xml:space="preserve">but can't tell you whether foo exists as a key</text>
+</svg>

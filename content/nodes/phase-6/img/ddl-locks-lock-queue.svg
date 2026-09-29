@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="376" viewBox="0 0 720 376" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- row labels -->
+  <text x="20" y="62" class="ink t b">Slow report</text>
+  <text x="20" y="80" class="ink2 n mono">SELECT ... orders</text>
+  <text x="20" y="132" class="ink t b">Migration</text>
+  <text x="20" y="150" class="ink2 n mono">ALTER TABLE orders</text>
+  <text x="20" y="202" class="ink t b">App queries</text>
+  <text x="20" y="220" class="ink2 n mono">SELECT ... id = 123</text>
+
+  <!-- report holds ACCESS SHARE -->
+  <rect x="190" y="48" width="330" height="34" rx="6" class="box"/>
+  <text x="206" y="70" class="ink n">holds ACCESS SHARE</text>
+
+  <!-- ALTER waits then runs -->
+  <rect x="260" y="118" width="260" height="34" rx="6" class="box" stroke-dasharray="5 4"/>
+  <text x="276" y="140" class="ink2 n">waits for ACCESS EXCLUSIVE</text>
+  <rect x="522" y="118" width="44" height="34" rx="6" class="focus"/>
+  <text x="580" y="140" class="focus n">runs, done</text>
+
+  <!-- app queries queue behind -->
+  <rect x="300" y="186" width="266" height="12" rx="4" class="box" stroke-dasharray="4 3"/>
+  <rect x="360" y="202" width="206" height="12" rx="4" class="box" stroke-dasharray="4 3"/>
+  <rect x="420" y="218" width="146" height="12" rx="4" class="box" stroke-dasharray="4 3"/>
+  <rect x="480" y="234" width="86" height="12" rx="4" class="box" stroke-dasharray="4 3"/>
+  <rect x="568" y="186" width="10" height="12" rx="3" class="focus"/>
+  <rect x="568" y="202" width="10" height="12" rx="3" class="focus"/>
+  <rect x="568" y="218" width="10" height="12" rx="3" class="focus"/>
+  <rect x="568" y="234" width="10" height="12" rx="3" class="focus"/>
+  <text x="590" y="222" class="ink2 n">then all run</text>
+
+  <!-- outage bracket -->
+  <line x1="260" y1="272" x2="566" y2="272" class="lost-s"/>
+  <line x1="260" y1="264" x2="260" y2="280" class="lost-s"/>
+  <line x1="566" y1="264" x2="566" y2="280" class="lost-s"/>
+  <text x="413" y="300" text-anchor="middle" class="lost t b">every query on orders is blocked</text>
+  <text x="413" y="318" text-anchor="middle" class="ink2 n">queued behind the waiting ALTER, not behind the report</text>
+
+  <!-- time axis -->
+  <line x1="190" y1="344" x2="700" y2="344" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="364" text-anchor="end" class="ink2 n">time</text>
+</svg>

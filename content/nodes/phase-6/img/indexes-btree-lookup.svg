@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="490" viewBox="0 0 720 490" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+<text x="20" y="58" class="ink2 n">root</text>
+<text x="20" y="168" class="ink2 n">leaf pages</text>
+<text x="20" y="186" class="ink2 n">(sorted, linked)</text>
+<text x="20" y="352" class="ink2 n">table heap</text>
+<text x="20" y="370" class="ink2 n">(no order)</text>
+<rect x="290" y="34" width="200" height="40" rx="6" class="box"/>
+<text x="390" y="59" class="ink t b" text-anchor="middle">root page</text>
+<rect x="130" y="140" width="170" height="64" rx="6" class="box"/>
+<rect x="320" y="140" width="170" height="64" rx="6" class="box"/>
+<rect x="510" y="140" width="170" height="64" rx="6" class="box"/>
+<text x="142" y="164" class="ink n mono">aaron@example.com</text>
+<text x="142" y="190" class="ink n mono">ada@example.com</text>
+<text x="332" y="164" class="ink n mono">ben@example.com</text>
+<text x="332" y="190" class="ink n mono">kim@example.com</text>
+<text x="522" y="164" class="ink n mono">lee@example.com</text>
+<text x="522" y="190" class="ink n mono">zoe@example.com</text>
+<rect x="136" y="176" width="158" height="22" rx="4" class="focus-s"/>
+<line x1="360" y1="74" x2="215" y2="138" class="line" marker-end="url(#arrow)"/>
+<line x1="390" y1="74" x2="405" y2="138" class="line" marker-end="url(#arrow)"/>
+<line x1="420" y1="74" x2="595" y2="138" class="line" marker-end="url(#arrow)"/>
+<line x1="300" y1="172" x2="318" y2="172" class="line" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<line x1="490" y1="172" x2="508" y2="172" class="line" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<rect x="130" y="320" width="110" height="80" rx="6" class="box"/>
+<text x="185" y="420" class="ink2 n" text-anchor="middle">heap page 7</text>
+<text x="142" y="348" class="ink n mono">row: ada</text>
+<text x="142" y="378" class="ink n mono">row: kim</text>
+<rect x="260" y="320" width="110" height="80" rx="6" class="box"/>
+<text x="315" y="420" class="ink2 n" text-anchor="middle">heap page 2</text>
+<text x="272" y="348" class="ink n mono">row: zoe</text>
+<text x="272" y="378" class="ink n mono">row: lee</text>
+<rect x="390" y="320" width="110" height="80" rx="6" class="box"/>
+<text x="445" y="420" class="ink2 n" text-anchor="middle">heap page 9</text>
+<text x="402" y="348" class="ink n mono">row: ben</text>
+<text x="402" y="378" class="ink n mono">row: aaron</text>
+<rect x="520" y="320" width="110" height="80" rx="6" class="box"/>
+<text x="575" y="420" class="ink2 n" text-anchor="middle">heap page 4</text>
+<text x="532" y="348" class="ink n mono">row: bob</text>
+<text x="532" y="378" class="ink n mono">row: eve</text>
+<rect x="136" y="332" width="98" height="22" rx="4" class="focus-s"/>
+<line x1="185" y1="200" x2="185" y2="316" class="focus-s" marker-end="url(#arrow)"/>
+<path d="M470,200 C470,260 450,280 450,316" class="line" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+<circle cx="505" cy="58" r="11" class="focus"/>
+<text x="505" y="63" class="t b" fill="#ffffff" text-anchor="middle">1</text>
+<text x="523" y="63" class="ink n">walk the tree: one page per level</text>
+<circle cx="310" cy="228" r="11" class="focus"/>
+<text x="310" y="233" class="t b" fill="#ffffff" text-anchor="middle">2</text>
+<text x="328" y="233" class="ink n">follow the leaf chain</text>
+<circle cx="208" cy="270" r="11" class="focus"/>
+<text x="208" y="275" class="t b" fill="#ffffff" text-anchor="middle">3</text>
+<text x="226" y="275" class="ink n">fetch each row from the heap</text>
+<text x="20" y="452" class="ink2 n">Steps 1 and 2 read the index. Step 3 can cost one heap page per matching row,</text>
+<text x="20" y="470" class="ink2 n">because matching rows are scattered across the table pages.</text>
+</svg>

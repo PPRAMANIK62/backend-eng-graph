@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="352" viewBox="0 0 720 352" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- app -->
+  <rect x="20" y="60" width="110" height="56" rx="6" class="box"/>
+  <text x="75" y="93" text-anchor="middle" class="ink t b">App</text>
+  <line x1="132" y1="88" x2="196" y2="88" class="line" marker-end="url(#arrow)"/>
+  <text x="164" y="78" text-anchor="middle" class="ink2 n">writes</text>
+
+  <!-- original -->
+  <rect x="200" y="50" width="170" height="76" rx="6" class="box"/>
+  <text x="285" y="82" text-anchor="middle" class="ink t b">orders</text>
+  <text x="285" y="104" text-anchor="middle" class="ink2 n">old schema, live</text>
+
+  <!-- shadow -->
+  <rect x="530" y="50" width="170" height="76" rx="6" class="focus-s"/>
+  <text x="615" y="82" text-anchor="middle" class="ink t b">shadow table</text>
+  <text x="615" y="104" text-anchor="middle" class="focus n">new schema</text>
+
+  <!-- chunked copy -->
+  <line x1="372" y1="72" x2="526" y2="72" class="line" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="449" y="62" text-anchor="middle" class="ink n">3  copy rows in chunks</text>
+
+  <!-- capture -->
+  <line x1="285" y1="128" x2="285" y2="176" class="line" marker-end="url(#arrow)"/>
+  <text x="297" y="158" class="ink n">2  capture every write</text>
+  <rect x="200" y="180" width="170" height="64" rx="6" class="box"/>
+  <text x="285" y="206" text-anchor="middle" class="ink t b">captured changes</text>
+  <text x="285" y="226" text-anchor="middle" class="ink2 n">trigger or log</text>
+
+  <!-- replay -->
+  <path d="M372,212 L615,212 L615,131" class="line" marker-end="url(#arrow)"/>
+  <text x="494" y="202" text-anchor="middle" class="ink n">4  replay onto shadow</text>
+
+  <!-- cut-over -->
+  <rect x="200" y="280" width="500" height="56" rx="6" class="focus-s"/>
+  <text x="216" y="304" class="ink t b">5  cut-over</text>
+  <text x="216" y="324" class="ink2 n">brief lock on orders, apply the last changes, swap the names</text>
+  <text x="20" y="304" class="ink2 n">1  create the</text>
+  <text x="20" y="320" class="ink2 n">shadow table first</text>
+</svg>

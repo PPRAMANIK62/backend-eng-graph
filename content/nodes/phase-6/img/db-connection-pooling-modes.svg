@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" text-anchor="start" class="ink t b">Session pooling</text>
+  <text x="20" y="63" text-anchor="start" class="ink n">server conn 1</text>
+  <line x1="150" y1="58" x2="700" y2="58" class="line"/>
+  <rect x="150" y="44" width="550" height="28" rx="4" class="box"/>
+  <text x="425.0" y="63" text-anchor="middle" class="ink n">client A: whole session, busy or idle</text>
+  <text x="20" y="101" text-anchor="start" class="ink n">server conn 2</text>
+  <line x1="150" y1="96" x2="700" y2="96" class="line"/>
+  <rect x="150" y="82" width="550" height="28" rx="4" class="box"/>
+  <text x="425.0" y="101" text-anchor="middle" class="ink n">client B: whole session, busy or idle</text>
+  <text x="20" y="139" text-anchor="start" class="ink n">client C</text>
+  <line x1="150" y1="134" x2="700" y2="134" class="line"/>
+  <rect x="150" y="120" width="550" height="28" rx="4" class="box" stroke-dasharray="4 3"/>
+  <text x="425.0" y="139" text-anchor="middle" class="ink n">waiting for a free server connection</text>
+  <text x="20" y="176" text-anchor="start" class="ink t b">Transaction pooling</text>
+  <text x="20" y="211" text-anchor="start" class="ink n">server conn 1</text>
+  <line x1="150" y1="206" x2="700" y2="206" class="line"/>
+  <text x="20" y="249" text-anchor="start" class="ink n">server conn 2</text>
+  <line x1="150" y1="244" x2="700" y2="244" class="line"/>
+  <text x="425" y="290" text-anchor="middle" class="ink2 n">each connection goes to whoever has the next transaction</text>
+  <text x="700" y="308" text-anchor="end" class="ink2 n">time →</text>
+  <rect x="150" y="192" width="90" height="28" rx="4" class="box"/>
+  <text x="195.0" y="211" text-anchor="middle" class="ink n">A tx</text>
+  <rect x="260" y="192" width="90" height="28" rx="4" class="box"/>
+  <text x="305.0" y="211" text-anchor="middle" class="ink n">C tx</text>
+  <rect x="380" y="192" width="90" height="28" rx="4" class="box"/>
+  <text x="425.0" y="211" text-anchor="middle" class="ink n">A tx</text>
+  <rect x="600" y="192" width="90" height="28" rx="4" class="box"/>
+  <text x="645.0" y="211" text-anchor="middle" class="ink n">B tx</text>
+  <rect x="170" y="230" width="110" height="28" rx="4" class="box"/>
+  <text x="225.0" y="249" text-anchor="middle" class="ink n">B tx</text>
+  <rect x="290" y="230" width="70" height="28" rx="4" class="box"/>
+  <text x="325.0" y="249" text-anchor="middle" class="ink n">A tx</text>
+  <rect x="400" y="230" width="100" height="28" rx="4" class="box"/>
+  <text x="450.0" y="249" text-anchor="middle" class="ink n">C tx</text>
+  <rect x="520" y="230" width="70" height="28" rx="4" class="box"/>
+  <text x="555.0" y="249" text-anchor="middle" class="ink n">B tx</text>
+</svg>

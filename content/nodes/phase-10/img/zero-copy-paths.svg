@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="392" viewBox="0 0 720 392" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">read() then write()</text>
+  <text x="700" y="24" text-anchor="end" class="ink2 n b">4 copies, 2 system calls</text>
+  <text x="20" y="68" class="ink2 n">user space</text>
+  <line x1="20" y1="98" x2="700" y2="98" class="line" stroke-dasharray="4 4"/>
+  <text x="20" y="116" class="ink2 n">kernel</text>
+  <rect x="20" y="134" width="110" height="44" rx="6" class="box"/>
+  <text x="75.0" y="161" text-anchor="middle" class="ink t">Disk</text>
+  <rect x="170" y="134" width="130" height="44" rx="6" class="box"/>
+  <text x="235.0" y="161" text-anchor="middle" class="ink t">Page cache</text>
+  <rect x="420" y="134" width="130" height="44" rx="6" class="box"/>
+  <text x="485.0" y="161" text-anchor="middle" class="ink t">Socket buffer</text>
+  <rect x="570" y="134" width="130" height="44" rx="6" class="box"/>
+  <text x="635.0" y="161" text-anchor="middle" class="ink t">Network card</text>
+  <line x1="132" y1="156" x2="167" y2="156" class="line" marker-end="url(#arrow)"/>
+  <text x="150" y="148" text-anchor="middle" class="ink2 n">1</text>
+  <rect x="295" y="46" width="130" height="40" rx="6" class="box"/>
+  <text x="360" y="71" text-anchor="middle" class="ink t">Your buffer</text>
+  <line x1="260" y1="132" x2="310" y2="89" class="line" marker-end="url(#arrow)"/>
+  <text x="258" y="110" text-anchor="end" class="ink2 n mono">2 read()</text>
+  <line x1="410" y1="88" x2="465" y2="131" class="line" marker-end="url(#arrow)"/>
+  <text x="466" y="110" class="ink2 n mono">3 write()</text>
+  <line x1="552" y1="156" x2="567" y2="156" class="line" marker-end="url(#arrow)"/>
+  <text x="560" y="148" text-anchor="middle" class="ink2 n">4</text>
+  <text x="20" y="224" class="ink t b">sendfile()</text>
+  <text x="700" y="224" text-anchor="end" class="focus n b">1 system call, only the copy to the card left</text>
+  <text x="20" y="268" class="ink2 n">user space</text>
+  <line x1="20" y1="298" x2="700" y2="298" class="line" stroke-dasharray="4 4"/>
+  <text x="20" y="316" class="ink2 n">kernel</text>
+  <rect x="20" y="334" width="110" height="44" rx="6" class="box"/>
+  <text x="75.0" y="361" text-anchor="middle" class="ink t">Disk</text>
+  <rect x="170" y="334" width="130" height="44" rx="6" class="box"/>
+  <text x="235.0" y="361" text-anchor="middle" class="ink t">Page cache</text>
+  <rect x="570" y="334" width="130" height="44" rx="6" class="box"/>
+  <text x="635.0" y="361" text-anchor="middle" class="ink t">Network card</text>
+  <line x1="132" y1="356" x2="167" y2="356" class="line" marker-end="url(#arrow)"/>
+  <text x="150" y="348" text-anchor="middle" class="ink2 n">1</text>
+  <line x1="302" y1="356" x2="566" y2="356" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="434" y="346" text-anchor="middle" class="focus n mono b">sendfile()</text>
+  <text x="434" y="378" text-anchor="middle" class="ink2 n">sent straight from the page cache</text>
+  <text x="360" y="271" text-anchor="middle" class="ink2 n">your program never touches the bytes</text>
+</svg>

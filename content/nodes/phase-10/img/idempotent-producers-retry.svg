@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="40" y="14" width="140" height="36" rx="6" class="box"/><text x="110" y="37" text-anchor="middle" class="ink t b">Producer</text>
+  <rect x="370" y="14" width="160" height="36" rx="6" class="box"/><text x="450" y="37" text-anchor="middle" class="ink t b">Partition leader</text>
+  <line x1="110" y1="50" x2="110" y2="460" class="line" stroke-dasharray="4 4"/>
+  <line x1="450" y1="50" x2="450" y2="460" class="line" stroke-dasharray="4 4"/>
+  <line x1="110" y1="84" x2="447" y2="84" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="76" text-anchor="middle" class="ink n mono">batch: PID 7, seq 0–9</text>
+  <text x="462" y="80" class="ink2 n">appended at offsets 100–109</text>
+  <line x1="450" y1="130" x2="300" y2="130" class="line"/>
+  <text x="280" y="136" text-anchor="middle" class="lost t b">✕</text>
+  <text x="280" y="122" text-anchor="middle" class="lost n">ack lost</text>
+  <text x="98" y="172" text-anchor="end" class="ink2 n">timeout</text>
+  <text x="98" y="188" text-anchor="end" class="ink2 n">retry</text>
+  <line x1="110" y1="206" x2="447" y2="206" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="198" text-anchor="middle" class="focus n mono b">same batch: PID 7, seq 0–9</text>
+  <text x="462" y="196" class="focus n b">seq 0–9 matches a cached batch</text>
+  <text x="462" y="212" class="ink2 n">(last 5 per producer): duplicate,</text>
+  <text x="462" y="228" class="ink2 n">nothing written</text>
+  <line x1="450" y1="266" x2="113" y2="266" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="258" text-anchor="middle" class="ink n mono">ok: offsets 100–109</text>
+  <text x="462" y="266" class="ink2 n">same offsets as the first time</text>
+  <line x1="110" y1="326" x2="447" y2="326" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="318" text-anchor="middle" class="ink n mono">batch: PID 7, seq 10–19</text>
+  <text x="462" y="322" class="ink2 n">appended at offsets 110–119</text>
+  <line x1="450" y1="366" x2="113" y2="366" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="358" text-anchor="middle" class="ink n mono">ok: offsets 110–119</text>
+  <line x1="110" y1="426" x2="447" y2="426" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="418" text-anchor="middle" class="lost n mono b">batch: PID 7, seq 25–34</text>
+  <text x="462" y="416" class="lost n b">gap after 19: rejected,</text>
+  <text x="462" y="432" class="ink2 n mono">OutOfOrderSequenceException</text>
+</svg>

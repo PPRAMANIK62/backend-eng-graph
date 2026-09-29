@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="185" y="24" text-anchor="middle" class="ink t b">Group billing: 2 consumers</text>
+  <text x="535" y="24" text-anchor="middle" class="ink t b">Group search: 5 consumers</text>
+  <text x="185" y="44" text-anchor="middle" class="ink2 n">topic orders</text>
+  <text x="535" y="44" text-anchor="middle" class="ink2 n">topic orders (same partitions)</text>
+  <rect x="30" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="65" y="77" text-anchor="middle" class="ink t mono">P0</text>
+  <rect x="110" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="145" y="77" text-anchor="middle" class="ink t mono">P1</text>
+  <rect x="190" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="225" y="77" text-anchor="middle" class="ink t mono">P2</text>
+  <rect x="270" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="305" y="77" text-anchor="middle" class="ink t mono">P3</text>
+  <rect x="380" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="415" y="77" text-anchor="middle" class="ink t mono">P0</text>
+  <rect x="460" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="495" y="77" text-anchor="middle" class="ink t mono">P1</text>
+  <rect x="540" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="575" y="77" text-anchor="middle" class="ink t mono">P2</text>
+  <rect x="620" y="54" width="70" height="36" rx="6" class="box"/>
+  <text x="655" y="77" text-anchor="middle" class="ink t mono">P3</text>
+  <rect x="50" y="160" width="120" height="40" rx="6" class="box"/>
+  <rect x="50" y="160" width="120" height="40" rx="6" class="focus-s"/>
+  <text x="110" y="185" text-anchor="middle" class="ink t">consumer 1</text>
+  <rect x="200" y="160" width="120" height="40" rx="6" class="box"/>
+  <rect x="200" y="160" width="120" height="40" rx="6" class="focus-s"/>
+  <text x="260" y="185" text-anchor="middle" class="ink t">consumer 2</text>
+  <line x1="65" y1="90" x2="95" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="145" y1="90" x2="125" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="225" y1="90" x2="245" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="305" y1="90" x2="275" y2="157" class="line" marker-end="url(#arrow)"/>
+  <rect x="380" y="160" width="56" height="40" rx="6" class="box"/>
+  <rect x="380" y="160" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="408" y="185" text-anchor="middle" class="ink t">C1</text>
+  <rect x="446" y="160" width="56" height="40" rx="6" class="box"/>
+  <rect x="446" y="160" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="474" y="185" text-anchor="middle" class="ink t">C2</text>
+  <rect x="512" y="160" width="56" height="40" rx="6" class="box"/>
+  <rect x="512" y="160" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="540" y="185" text-anchor="middle" class="ink t">C3</text>
+  <rect x="578" y="160" width="56" height="40" rx="6" class="box"/>
+  <rect x="578" y="160" width="56" height="40" rx="6" class="focus-s"/>
+  <text x="606" y="185" text-anchor="middle" class="ink t">C4</text>
+  <rect x="644" y="160" width="56" height="40" rx="6" class="old"/>
+  <text x="672" y="185" text-anchor="middle" class="ink t">C5</text>
+  <text x="672" y="220" text-anchor="middle" class="ink2 n">idle</text>
+  <line x1="415" y1="90" x2="408" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="495" y1="90" x2="474" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="575" y1="90" x2="540" y2="157" class="line" marker-end="url(#arrow)"/>
+  <line x1="655" y1="90" x2="606" y2="157" class="line" marker-end="url(#arrow)"/>
+  <text x="185" y="228" text-anchor="middle" class="ink2 n">2 partitions each</text>
+  <text x="470" y="228" text-anchor="middle" class="ink2 n">1 partition each</text>
+
+</svg>

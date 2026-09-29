@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="270" viewBox="0 0 720 270" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <rect x="40" y="90" width="54" height="44" rx="6" class="box"/>
+  <rect x="40" y="90" width="54" height="44" rx="6" class="old"/>
+  <text x="67.0" y="117" text-anchor="middle" class="ink2 t mono">0</text>
+  <rect x="94" y="90" width="54" height="44" rx="6" class="box"/>
+  <rect x="94" y="90" width="54" height="44" rx="6" class="old"/>
+  <text x="121.0" y="117" text-anchor="middle" class="ink2 t mono">1</text>
+  <rect x="148" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="175.0" y="117" text-anchor="middle" class="ink t mono">2</text>
+  <rect x="202" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="229.0" y="117" text-anchor="middle" class="ink t mono">3</text>
+  <rect x="256" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="283.0" y="117" text-anchor="middle" class="ink t mono">4</text>
+  <rect x="310" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="337.0" y="117" text-anchor="middle" class="ink t mono">5</text>
+  <rect x="364" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="391.0" y="117" text-anchor="middle" class="ink t mono">6</text>
+  <rect x="418" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="445.0" y="117" text-anchor="middle" class="ink t mono">7</text>
+  <rect x="472" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="499.0" y="117" text-anchor="middle" class="ink t mono">8</text>
+  <rect x="526" y="90" width="54" height="44" rx="6" class="box"/>
+  <text x="553.0" y="117" text-anchor="middle" class="ink t mono">9</text>
+  <rect x="582" y="92" width="50" height="40" rx="6" class="focus-s" stroke-dasharray="4 3"/>
+  <text x="607.0" y="117" text-anchor="middle" class="focus t mono">10</text>
+  <path d="M42,82 V74 H146 V82" class="line"/>
+  <text x="40" y="48" class="ink2 n">removed by retention</text>
+  <text x="40" y="64" class="ink2 n">(age or size)</text>
+  <text x="607.0" y="30" text-anchor="middle" class="ink t b">Producer</text>
+  <line x1="607.0" y1="38" x2="607.0" y2="87" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="595.0" y="64" text-anchor="end" class="focus n">appends at the end</text>
+  <line x1="229.0" y1="178" x2="229.0" y2="138" class="line" marker-end="url(#arrow)"/>
+  <text x="229.0" y="198" text-anchor="middle" class="ink t b">Billing</text>
+  <text x="229.0" y="216" text-anchor="middle" class="ink2 n mono">next offset: 3</text>
+  <line x1="445.0" y1="178" x2="445.0" y2="138" class="line" marker-end="url(#arrow)"/>
+  <text x="445.0" y="198" text-anchor="middle" class="ink t b">Search</text>
+  <text x="445.0" y="216" text-anchor="middle" class="ink2 n mono">next offset: 7</text>
+  <text x="40" y="256" class="ink2 n">Reading moves a consumer's position. It never removes a record.</text>
+</svg>

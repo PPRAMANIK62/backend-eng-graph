@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="330" viewBox="0 0 720 330" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" class="ink t b">Before cleaning</text>
+  <text x="51" y="48" text-anchor="middle" class="ink2 n mono">0</text>
+  <rect x="20" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="51" y="83" text-anchor="middle" class="ink n mono">A=1</text>
+  <text x="117" y="48" text-anchor="middle" class="ink2 n mono">1</text>
+  <rect x="86" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="117" y="83" text-anchor="middle" class="ink n mono">B=1</text>
+  <text x="183" y="48" text-anchor="middle" class="ink2 n mono">2</text>
+  <rect x="152" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="183" y="83" text-anchor="middle" class="ink n mono">A=2</text>
+  <text x="249" y="48" text-anchor="middle" class="ink2 n mono">3</text>
+  <rect x="218" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="249" y="83" text-anchor="middle" class="ink n mono">C=1</text>
+  <text x="315" y="48" text-anchor="middle" class="ink2 n mono">4</text>
+  <rect x="284" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="315" y="83" text-anchor="middle" class="ink n mono">B=2</text>
+  <text x="381" y="48" text-anchor="middle" class="ink2 n mono">5</text>
+  <rect x="350" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="381" y="83" text-anchor="middle" class="ink n mono">A=3</text>
+  <text x="447" y="48" text-anchor="middle" class="ink2 n mono">6</text>
+  <rect x="416" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="447" y="83" text-anchor="middle" class="lost n mono b">B=null</text>
+  <text x="513" y="48" text-anchor="middle" class="ink2 n mono">7</text>
+  <rect x="482" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="513" y="83" text-anchor="middle" class="ink n mono">D=1</text>
+  <text x="595" y="48" text-anchor="middle" class="ink2 n mono">8</text>
+  <rect x="564" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="595" y="83" text-anchor="middle" class="ink n mono">E=1</text>
+  <text x="661" y="48" text-anchor="middle" class="ink2 n mono">9</text>
+  <rect x="630" y="56" width="62" height="44" rx="6" class="box"/>
+  <text x="661" y="83" text-anchor="middle" class="ink n mono">E=2</text>
+  <line x1="20" y1="112" x2="544" y2="112" class="line"/>
+  <text x="282" y="130" text-anchor="middle" class="ink2 n">closed segments: the cleaner works here</text>
+  <line x1="564" y1="112" x2="692" y2="112" class="line"/>
+  <text x="628" y="130" text-anchor="middle" class="ink2 n">active segment</text>
+  <text x="447" y="118" text-anchor="middle" class="ink2 n"></text>
+  <text x="20" y="176" class="ink t b">After one pass</text>
+  <text x="51" y="200" text-anchor="middle" class="ink2 n mono">0</text>
+  <rect x="20" y="208" width="62" height="44" rx="6" class="old" opacity=".45"/>
+  <text x="117" y="200" text-anchor="middle" class="ink2 n mono">1</text>
+  <rect x="86" y="208" width="62" height="44" rx="6" class="old" opacity=".45"/>
+  <text x="183" y="200" text-anchor="middle" class="ink2 n mono">2</text>
+  <rect x="152" y="208" width="62" height="44" rx="6" class="old" opacity=".45"/>
+  <text x="249" y="200" text-anchor="middle" class="ink2 n mono">3</text>
+  <rect x="218" y="208" width="62" height="44" rx="6" class="safe-box"/>
+  <text x="249" y="235" text-anchor="middle" class="ink n mono">C=1</text>
+  <text x="315" y="200" text-anchor="middle" class="ink2 n mono">4</text>
+  <rect x="284" y="208" width="62" height="44" rx="6" class="old" opacity=".45"/>
+  <text x="381" y="200" text-anchor="middle" class="ink2 n mono">5</text>
+  <rect x="350" y="208" width="62" height="44" rx="6" class="safe-box"/>
+  <text x="381" y="235" text-anchor="middle" class="ink n mono">A=3</text>
+  <text x="447" y="200" text-anchor="middle" class="ink2 n mono">6</text>
+  <rect x="416" y="208" width="62" height="44" rx="6" class="safe-box"/>
+  <text x="447" y="235" text-anchor="middle" class="lost n mono b">B=null</text>
+  <text x="513" y="200" text-anchor="middle" class="ink2 n mono">7</text>
+  <rect x="482" y="208" width="62" height="44" rx="6" class="safe-box"/>
+  <text x="513" y="235" text-anchor="middle" class="ink n mono">D=1</text>
+  <text x="595" y="200" text-anchor="middle" class="ink2 n mono">8</text>
+  <rect x="564" y="208" width="62" height="44" rx="6" class="box"/>
+  <text x="595" y="235" text-anchor="middle" class="ink n mono">E=1</text>
+  <text x="661" y="200" text-anchor="middle" class="ink2 n mono">9</text>
+  <rect x="630" y="208" width="62" height="44" rx="6" class="box"/>
+  <text x="661" y="235" text-anchor="middle" class="ink n mono">E=2</text>
+  <text x="447" y="274" text-anchor="middle" class="lost n">tombstone, kept</text>
+  <text x="447" y="290" text-anchor="middle" class="lost n">for delete.retention.ms</text>
+  <text x="628" y="274" text-anchor="middle" class="ink2 n">untouched</text>
+  <path d="M117,262 L117,284 L249,284 L249,264" class="line" marker-end="url(#arrow)"/>
+  <text x="96" y="306" class="ink2 n">a read from offset 1 starts at 3</text>
+  <text x="20" y="324" class="ink2 n">Grey gaps: older values of A and B, removed. Offsets never change.</text>
+</svg>

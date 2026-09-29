@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="40" class="ink t b">Change log</text>
+  <rect x="160" y="46" width="44" height="30" rx="6" class="box"/>
+  <text x="182.0" y="66" text-anchor="middle" class="ink n mono">k2</text>
+  <rect x="212" y="46" width="44" height="30" rx="6" class="box"/>
+  <text x="234.0" y="66" text-anchor="middle" class="ink n mono">k6</text>
+  <line x1="274" y1="16" x2="274" y2="86" class="line"/>
+  <text x="274" y="36" text-anchor="middle" class="ink t b">L</text>
+  <rect x="292" y="46" width="44" height="30" rx="6" class="box"/>
+  <text x="314.0" y="66" text-anchor="middle" class="ink n mono">k1</text>
+  <rect x="344" y="46" width="44" height="30" rx="6" class="box"/>
+  <text x="366.0" y="66" text-anchor="middle" class="ink n mono">k3</text>
+  <line x1="406" y1="16" x2="406" y2="86" class="line"/>
+  <text x="406" y="36" text-anchor="middle" class="ink t b">H</text>
+  <rect x="424" y="46" width="44" height="30" rx="6" class="box"/>
+  <text x="446.0" y="66" text-anchor="middle" class="ink n mono">k2</text>
+  <line x1="480" y1="61" x2="526" y2="61" class="line" marker-end="url(#arrow)"/>
+  <text x="530" y="65" class="ink2 n">time</text>
+  <text x="340.0" y="100" text-anchor="middle" class="ink2 n">window: k1, k3 changed</text>
+  <text x="20" y="150" class="ink t b">Chunk read</text>
+  <text x="20" y="168" class="ink2 n">between L and H</text>
+  <rect x="160" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="182.0" y="156" text-anchor="middle" class="ink2 n mono">k1</text>
+  <line x1="164" y1="162" x2="200" y2="140" class="lost-s"/>
+  <rect x="212" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="234.0" y="156" text-anchor="middle" class="focus n mono b">k2</text>
+  <rect x="264" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="286.0" y="156" text-anchor="middle" class="ink2 n mono">k3</text>
+  <line x1="268" y1="162" x2="304" y2="140" class="lost-s"/>
+  <rect x="316" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="338.0" y="156" text-anchor="middle" class="focus n mono b">k4</text>
+  <rect x="368" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="390.0" y="156" text-anchor="middle" class="focus n mono b">k5</text>
+  <rect x="420" y="136" width="44" height="30" rx="6" class="box"/>
+  <text x="442.0" y="156" text-anchor="middle" class="focus n mono b">k6</text>
+  <text x="478" y="146" class="lost n b">k1, k3 dropped:</text>
+  <text x="478" y="162" class="lost n">the log has newer versions</text>
+  <text x="20" y="250" class="ink t b">Output</text>
+  <rect x="160" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="180.0" y="252" text-anchor="middle" class="ink n mono">k2</text>
+  <rect x="206" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="226.0" y="252" text-anchor="middle" class="ink n mono">k6</text>
+  <rect x="252" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="272.0" y="252" text-anchor="middle" class="ink n mono">k1</text>
+  <rect x="298" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="318.0" y="252" text-anchor="middle" class="ink n mono">k3</text>
+  <rect x="344" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="364.0" y="252" text-anchor="middle" class="focus n mono b">k2</text>
+  <rect x="390" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="410.0" y="252" text-anchor="middle" class="focus n mono b">k4</text>
+  <rect x="436" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="456.0" y="252" text-anchor="middle" class="focus n mono b">k5</text>
+  <rect x="482" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="502.0" y="252" text-anchor="middle" class="focus n mono b">k6</text>
+  <rect x="528" y="232" width="40" height="30" rx="6" class="box"/>
+  <text x="548.0" y="252" text-anchor="middle" class="ink n mono">k2</text>
+  <text x="160" y="286" class="ink2 n">log events up to H</text>
+  <text x="344" y="286" class="focus n">remaining chunk rows</text>
+  <text x="528" y="286" class="ink2 n">later log</text>
+  <line x1="340" y1="228" x2="340" y2="268" class="line"/>
+  <line x1="524" y1="228" x2="524" y2="268" class="line"/>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="272" viewBox="0 0 720 272" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- left: stream with snapshot -->
+  <text x="20" y="28" class="ink t b">Loading account 7</text>
+  <rect x="20" y="42" width="310" height="30" rx="6" class="old"/>
+  <text x="32" y="62" class="ink n mono">v1 AccountOpened</text>
+  <rect x="20" y="78" width="310" height="30" rx="6" class="old"/>
+  <text x="32" y="98" class="ink n mono">v2 MoneyDeposited 100</text>
+  <rect x="20" y="114" width="310" height="30" rx="6" class="old"/>
+  <text x="32" y="134" class="ink n mono">v3 MoneyDeposited 30</text>
+  <rect x="20" y="150" width="310" height="30" rx="6" class="box"/>
+  <text x="32" y="170" class="focus n mono b">snapshot at v3: balance 130</text>
+  <rect x="20" y="186" width="310" height="30" rx="6" class="box"/>
+  <text x="32" y="206" class="ink n mono">v4 MoneyWithdrawn 20</text>
+  <text x="20" y="240" class="ink2 n">skip v1 to v3, start from the snapshot,</text>
+  <text x="20" y="256" class="ink2 n">replay v4:</text>
+  <text x="90" y="256" class="ink n mono b">balance 110</text>
+
+  <!-- right: expected version -->
+  <text x="380" y="28" class="ink t b">Two appends, expected version 4</text>
+  <rect x="380" y="42" width="150" height="50" rx="6" class="box"/>
+  <text x="455" y="64" text-anchor="middle" class="ink n b">handler A</text>
+  <text x="455" y="82" text-anchor="middle" class="ink2 n">sees v4, 110</text>
+  <rect x="550" y="42" width="150" height="50" rx="6" class="box"/>
+  <text x="625" y="64" text-anchor="middle" class="ink n b">handler B</text>
+  <text x="625" y="82" text-anchor="middle" class="ink2 n">sees v4, 110</text>
+  <line x1="455" y1="94" x2="500" y2="146" class="line" marker-end="url(#arrow)"/>
+  <line x1="625" y1="94" x2="580" y2="146" class="line" marker-end="url(#arrow)"/>
+  <text x="440" y="126" text-anchor="end" class="ink2 n mono">append v5</text>
+  <text x="640" y="126" class="ink2 n mono">append v5</text>
+  <rect x="440" y="150" width="200" height="40" rx="6" class="box"/>
+  <text x="540" y="175" text-anchor="middle" class="ink n b">event store: stream 7</text>
+  <rect x="380" y="206" width="150" height="50" rx="6" class="safe-box"/>
+  <text x="455" y="228" text-anchor="middle" class="ink n b">A: accepted</text>
+  <text x="455" y="246" text-anchor="middle" class="ink2 n">stream now v5</text>
+  <rect x="550" y="206" width="150" height="50" rx="6" class="box"/>
+  <text x="625" y="228" text-anchor="middle" class="ink n b">B: rejected</text>
+  <text x="625" y="246" text-anchor="middle" class="ink2 n">not at v4, reload</text>
+</svg>

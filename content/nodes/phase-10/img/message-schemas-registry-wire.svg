@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="346" viewBox="0 0 720 346" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="260" y="20" width="200" height="48" rx="6" class="box"/>
+  <text x="360" y="49" text-anchor="middle" class="ink t b">Schema registry</text>
+  <rect x="20" y="150" width="160" height="48" rx="6" class="box"/>
+  <text x="100" y="179" text-anchor="middle" class="ink t">Producer</text>
+  <rect x="280" y="150" width="160" height="48" rx="6" class="box"/>
+  <text x="360" y="179" text-anchor="middle" class="ink t">Kafka topic</text>
+  <rect x="540" y="150" width="160" height="48" rx="6" class="box"/>
+  <text x="620" y="179" text-anchor="middle" class="ink t">Consumer</text>
+  <line x1="120" y1="147" x2="280" y2="71" class="line" marker-end="url(#arrow)"/>
+  <text x="150" y="100" text-anchor="end" class="ink2 n">1. register schema,</text>
+  <text x="150" y="116" text-anchor="end" class="ink2 n">get back ID 42</text>
+  <line x1="600" y1="147" x2="440" y2="71" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="100" text-anchor="end" class="ink2 n">3. read ID 42 from the bytes,</text>
+  <text x="700" y="116" text-anchor="end" class="ink2 n">look up schema 42</text>
+  <line x1="180" y1="174" x2="277" y2="174" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="228" y="166" text-anchor="middle" class="focus n b">2. bytes</text>
+  <line x1="440" y1="174" x2="537" y2="174" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="20" y="238" text-anchor="start" class="ink t b">One message value on the wire (default format)</text>
+  <rect x="20" y="250" width="80" height="44" rx="6" class="box"/>
+  <text x="60" y="277" text-anchor="middle" class="ink t mono">00</text>
+  <rect x="100" y="250" width="200" height="44" rx="6" class="box"/>
+  <rect x="100" y="250" width="200" height="44" rx="6" class="focus-s"/>
+  <text x="200" y="277" text-anchor="middle" class="focus t mono b">00 00 00 2A</text>
+  <rect x="300" y="250" width="400" height="44" rx="6" class="box"/>
+  <text x="500" y="277" text-anchor="middle" class="ink t">data encoded with schema 42</text>
+  <text x="60" y="314" text-anchor="middle" class="ink2 n">byte 0</text>
+  <text x="60" y="330" text-anchor="middle" class="ink2 n">version</text>
+  <text x="200" y="314" text-anchor="middle" class="ink2 n">bytes 1-4</text>
+  <text x="200" y="330" text-anchor="middle" class="ink2 n">schema ID, big-endian</text>
+  <text x="500" y="314" text-anchor="middle" class="ink2 n">bytes 5 on</text>
+  <text x="500" y="330" text-anchor="middle" class="ink2 n">payload (Protobuf puts message indexes first)</text>
+
+</svg>

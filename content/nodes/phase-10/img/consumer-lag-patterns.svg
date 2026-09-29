@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="120.0" y="24" text-anchor="middle" class="ink t b">OK</text>
+  <path d="M30,50 V170 H220" class="line"/>
+  <text x="24" y="42" text-anchor="start" class="ink2 n">lag</text>
+  <text x="220" y="186" text-anchor="end" class="ink2 n">time</text>
+  <text x="120.0" y="210" text-anchor="middle" class="ink2 n">offset moving; lag rises and</text>
+  <text x="120.0" y="226" text-anchor="middle" class="ink2 n">falls, and touches zero</text>
+  <text x="360.0" y="24" text-anchor="middle" class="ink t b">Slow (warning)</text>
+  <path d="M270,50 V170 H460" class="line"/>
+  <text x="264" y="42" text-anchor="start" class="ink2 n">lag</text>
+  <text x="460" y="186" text-anchor="end" class="ink2 n">time</text>
+  <text x="360.0" y="210" text-anchor="middle" class="ink2 n">offset moving, but lag</text>
+  <text x="360.0" y="226" text-anchor="middle" class="ink2 n">never goes down</text>
+  <text x="600.0" y="24" text-anchor="middle" class="ink t b">Stalled (error)</text>
+  <path d="M510,50 V170 H700" class="line"/>
+  <text x="504" y="42" text-anchor="start" class="ink2 n">lag</text>
+  <text x="700" y="186" text-anchor="end" class="ink2 n">time</text>
+  <text x="600.0" y="210" text-anchor="middle" class="ink2 n">offset not moving;</text>
+  <text x="600.0" y="226" text-anchor="middle" class="ink2 n">lag steady or growing</text>
+  <path d="M34,168 L60,130 L80,168 L105,120 L125,160 L150,125 L170,168 L195,135 L215,155" style="fill:none;fill-opacity:0;stroke-width:2.5" class="safe-box"/>
+  <path d="M274,155 L310,145 L340,145 L370,120 L400,110 L430,85 L455,70" style="fill:none;fill-opacity:0;stroke-width:2.5" class="focus-s"/>
+  <path d="M514,150 L560,135 L610,110 L660,80 L695,60" style="fill:none;fill-opacity:0;stroke-width:2.5" class="lost-s"/>
+
+</svg>

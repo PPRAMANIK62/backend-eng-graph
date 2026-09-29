@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="326" viewBox="0 0 720 326" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="360" y="22" text-anchor="middle" class="ink t b">One share-partition, as the broker tracks it</text>
+  <line x1="161" y1="48" x2="559" y2="48" class="focus-s"/><line x1="161" y1="48" x2="161" y2="56" class="focus-s"/><line x1="559" y1="48" x2="559" y2="56" class="focus-s"/>
+  <text x="360.0" y="42" text-anchor="middle" class="ink n">in-flight records</text>
+  <text x="37" y="80" text-anchor="end" class="ink2 n">offset</text>
+  <text x="37" y="118" text-anchor="end" class="ink2 n">state</text>
+  <text x="37" y="160" text-anchor="end" class="ink2 n">count</text>
+  <rect x="43" y="62" width="54" height="70" rx="6" class="old-box"/>
+  <text x="70.0" y="84" text-anchor="middle" class="ink t b mono">0</text>
+  <text x="70.0" y="118" text-anchor="middle" class="ink n">Archived</text>
+  <rect x="101" y="62" width="54" height="70" rx="6" class="old-box"/>
+  <text x="128.0" y="84" text-anchor="middle" class="ink t b mono">1</text>
+  <text x="128.0" y="118" text-anchor="middle" class="ink n">Archived</text>
+  <rect x="159" y="62" width="54" height="70" rx="6" class="focus-box"/>
+  <text x="186.0" y="84" text-anchor="middle" class="ink t b mono">2</text>
+  <text x="186.0" y="118" text-anchor="middle" class="ink n">Acquired</text>
+  <text x="186.0" y="160" text-anchor="middle" class="ink n mono">1</text>
+  <rect x="217" y="62" width="54" height="70" rx="6" class="box"/>
+  <text x="244.0" y="84" text-anchor="middle" class="ink t b mono">3</text>
+  <text x="244.0" y="118" text-anchor="middle" class="ink n">Available</text>
+  <text x="244.0" y="160" text-anchor="middle" class="ink n mono">2</text>
+  <rect x="275" y="62" width="54" height="70" rx="6" class="focus-box"/>
+  <text x="302.0" y="84" text-anchor="middle" class="ink t b mono">4</text>
+  <text x="302.0" y="118" text-anchor="middle" class="ink n">Acquired</text>
+  <text x="302.0" y="160" text-anchor="middle" class="ink n mono">1</text>
+  <rect x="333" y="62" width="54" height="70" rx="6" class="safe-box"/>
+  <text x="360.0" y="84" text-anchor="middle" class="ink t b mono">5</text>
+  <text x="360.0" y="118" text-anchor="middle" class="ink n">Acked</text>
+  <rect x="391" y="62" width="54" height="70" rx="6" class="lost-box"/>
+  <text x="418.0" y="84" text-anchor="middle" class="ink t b mono">6</text>
+  <text x="418.0" y="118" text-anchor="middle" class="ink n">Archived</text>
+  <rect x="449" y="62" width="54" height="70" rx="6" class="box"/>
+  <text x="476.0" y="84" text-anchor="middle" class="ink t b mono">7</text>
+  <text x="476.0" y="118" text-anchor="middle" class="ink n">Available</text>
+  <rect x="507" y="62" width="54" height="70" rx="6" class="box"/>
+  <text x="534.0" y="84" text-anchor="middle" class="ink t b mono">8</text>
+  <text x="534.0" y="118" text-anchor="middle" class="ink n">Available</text>
+  <rect x="565" y="62" width="54" height="70" rx="6" class="box"/>
+  <text x="592.0" y="84" text-anchor="middle" class="ink t b mono">9</text>
+  <text x="592.0" y="118" text-anchor="middle" class="ink n">Available</text>
+  <rect x="623" y="62" width="54" height="70" rx="6" class="box"/>
+  <text x="650.0" y="84" text-anchor="middle" class="ink t b mono">…</text>
+  <text x="650.0" y="118" text-anchor="middle" class="ink n">Available</text>
+  <line x1="186.0" y1="200" x2="186.0" y2="172" class="line" marker-end="url(#arrow)"/>
+  <text x="186.0" y="218" text-anchor="middle" class="ink n">start offset</text>
+  <line x1="534.0" y1="200" x2="534.0" y2="172" class="line" marker-end="url(#arrow)"/>
+  <text x="534.0" y="218" text-anchor="middle" class="ink n">end offset</text>
+  <text x="41" y="250" class="ink2 n">Before the start offset: finished, never delivered again.</text>
+  <text x="41" y="268" class="ink2 n">3: released or timed out twice, waiting for a third try.   6: rejected as unprocessable, so archived.</text>
+  <text x="41" y="286" class="ink2 n">From 9 on: in the log, not yet handed out. The window can hold at most</text>
+  <text x="41" y="304" class="ink2 n"><tspan class="mono">group.share.partition.max.record.locks</tspan> records (2,000 by default).</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="310" viewBox="0 0 720 310" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="30" class="ink t b">WAL on the Postgres server</text>
+  <!-- removable segments -->
+  <rect x="20" y="44" width="80" height="40" rx="6" class="old"/>
+  <rect x="106" y="44" width="80" height="40" rx="6" class="old"/>
+  <rect x="192" y="44" width="80" height="40" rx="6" class="old"/>
+  <text x="146" y="104" text-anchor="middle" class="ink2 n">can be removed</text>
+  <!-- retained -->
+  <rect x="290" y="44" width="80" height="40" rx="6" class="box"/>
+  <rect x="376" y="44" width="80" height="40" rx="6" class="box"/>
+  <rect x="462" y="44" width="80" height="40" rx="6" class="box"/>
+  <rect x="548" y="44" width="80" height="40" rx="6" class="box"/>
+  <text x="400" y="104" text-anchor="middle" class="ink2 n">kept until the consumer confirms it</text>
+  <line x1="640" y1="64" x2="700" y2="64" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="36" text-anchor="end" class="ink2 n">new writes</text>
+
+  <!-- slot marker -->
+  <line x1="281" y1="30" x2="281" y2="150" class="focus-s"/>
+  <rect x="200" y="150" width="162" height="50" rx="6" class="box"/>
+  <text x="281" y="172" text-anchor="middle" class="focus t b">replication slot</text>
+  <text x="281" y="190" text-anchor="middle" class="ink2 n">confirmed LSN</text>
+
+  <!-- decoding path -->
+  <rect x="420" y="150" width="280" height="50" rx="6" class="box"/>
+  <text x="560" y="172" text-anchor="middle" class="ink t b">logical decoding</text>
+  <text x="560" y="190" text-anchor="middle" class="ink2 n">+ output plugin</text>
+  <line x1="600" y1="86" x2="610" y2="148" class="line" marker-end="url(#arrow)"/>
+  <line x1="560" y1="202" x2="560" y2="240" class="line" marker-end="url(#arrow)"/>
+  <rect x="420" y="244" width="280" height="50" rx="6" class="box"/>
+  <text x="560" y="266" text-anchor="middle" class="ink t b">consumer</text>
+  <text x="560" y="284" text-anchor="middle" class="ink2 n mono">INSERT orders 1042 …</text>
+  <path d="M420,269 H281 V202" class="line" marker-end="url(#arrow)"/>
+  <text x="300" y="262" class="ink2 n">confirms position</text>
+
+  <text x="20" y="232" class="lost n b">If the consumer stops,</text>
+  <text x="20" y="248" class="lost n b">the kept WAL keeps growing</text>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="62" class="ink t b">Thread</text>
+  <text x="20" y="138" class="ink t b">CPU profiler</text>
+  <text x="20" y="154" class="ink2 n">samples on a timer</text>
+  <text x="20" y="238" class="ink t b">Off-CPU tracer</text>
+  <text x="20" y="254" class="ink2 n">hooks the scheduler</text>
+  <rect x="150" y="40" width="100" height="36" class="box"/>
+  <text x="200.0" y="63" text-anchor="middle" class="ink t mono">A()</text>
+  <rect x="250" y="40" width="90" height="36" class="box"/>
+  <text x="295.0" y="63" text-anchor="middle" class="ink t mono">B()</text>
+  <rect x="340" y="40" width="200" height="36" class="old" rx="0"/>
+  <text x="440.0" y="63" text-anchor="middle" class="ink t">blocked in read()</text>
+  <rect x="540" y="40" width="70" height="36" class="box"/>
+  <text x="575.0" y="63" text-anchor="middle" class="ink t mono">B()</text>
+  <rect x="610" y="40" width="90" height="36" class="box"/>
+  <text x="655.0" y="63" text-anchor="middle" class="ink t mono">A()</text>
+  <text x="440" y="96" text-anchor="middle" class="ink2 n">off-CPU: waiting for the disk</text>
+  <text x="150" y="96" class="ink2 n">on-CPU</text>
+  <line x1="165" y1="112" x2="165" y2="122" class="line"/>
+  <circle cx="165" cy="140" r="6" class="focus"/>
+  <line x1="195" y1="112" x2="195" y2="122" class="line"/>
+  <circle cx="195" cy="140" r="6" class="focus"/>
+  <line x1="225" y1="112" x2="225" y2="122" class="line"/>
+  <circle cx="225" cy="140" r="6" class="focus"/>
+  <line x1="255" y1="112" x2="255" y2="122" class="line"/>
+  <circle cx="255" cy="140" r="6" class="focus"/>
+  <line x1="285" y1="112" x2="285" y2="122" class="line"/>
+  <circle cx="285" cy="140" r="6" class="focus"/>
+  <line x1="315" y1="112" x2="315" y2="122" class="line"/>
+  <circle cx="315" cy="140" r="6" class="focus"/>
+  <line x1="345" y1="112" x2="345" y2="122" class="line"/>
+  <circle cx="345" cy="140" r="6" class="line"/>
+  <line x1="375" y1="112" x2="375" y2="122" class="line"/>
+  <circle cx="375" cy="140" r="6" class="line"/>
+  <line x1="405" y1="112" x2="405" y2="122" class="line"/>
+  <circle cx="405" cy="140" r="6" class="line"/>
+  <line x1="435" y1="112" x2="435" y2="122" class="line"/>
+  <circle cx="435" cy="140" r="6" class="line"/>
+  <line x1="465" y1="112" x2="465" y2="122" class="line"/>
+  <circle cx="465" cy="140" r="6" class="line"/>
+  <line x1="495" y1="112" x2="495" y2="122" class="line"/>
+  <circle cx="495" cy="140" r="6" class="line"/>
+  <line x1="525" y1="112" x2="525" y2="122" class="line"/>
+  <circle cx="525" cy="140" r="6" class="line"/>
+  <line x1="555" y1="112" x2="555" y2="122" class="line"/>
+  <circle cx="555" cy="140" r="6" class="focus"/>
+  <line x1="585" y1="112" x2="585" y2="122" class="line"/>
+  <circle cx="585" cy="140" r="6" class="focus"/>
+  <line x1="615" y1="112" x2="615" y2="122" class="line"/>
+  <circle cx="615" cy="140" r="6" class="focus"/>
+  <line x1="645" y1="112" x2="645" y2="122" class="line"/>
+  <circle cx="645" cy="140" r="6" class="focus"/>
+  <line x1="675" y1="112" x2="675" y2="122" class="line"/>
+  <circle cx="675" cy="140" r="6" class="focus"/>
+  <text x="440" y="172" text-anchor="middle" class="ink2 n">ticks here find the thread asleep: no sample</text>
+  <text x="200" y="172" text-anchor="middle" class="ink2 n">sample: stack A</text>
+  <text x="295" y="190" text-anchor="middle" class="ink2 n">sample: stack A;B</text>
+  <line x1="295" y1="178" x2="295" y2="150" class="line" marker-end="url(#arrow)"/>
+  <line x1="340" y1="206" x2="340" y2="226" class="focus-s"/>
+  <line x1="540" y1="206" x2="540" y2="226" class="focus-s"/>
+  <line x1="342" y1="216" x2="538" y2="216" class="focus-s" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="440" y="206" text-anchor="middle" class="ink n">blocked time, recorded once</text>
+  <text x="340" y="246" text-anchor="middle" class="ink2 n">switched off:</text>
+  <text x="340" y="262" text-anchor="middle" class="ink2 n">note the time</text>
+  <text x="560" y="246" class="ink2 n">back on CPU: add the</text>
+  <text x="560" y="262" class="ink2 n">gap to stack</text>
+  <text x="560" y="278" class="ink2 n mono">A;B;read</text>
+</svg>

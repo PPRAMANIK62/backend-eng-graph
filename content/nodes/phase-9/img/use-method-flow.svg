@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="20" y="40" width="120" height="60" rx="6" class="box"/>
+  <text x="80.0" y="67.0" text-anchor="middle" class="ink t b">Pick a</text>
+  <text x="80.0" y="84.0" text-anchor="middle" class="ink2 n">resource</text>
+  <rect x="170" y="40" width="120" height="60" rx="6" class="box"/>
+  <text x="230.0" y="67.0" text-anchor="middle" class="ink t b">Errors?</text>
+  <text x="230.0" y="84.0" text-anchor="middle" class="ink2 n">counters rising</text>
+  <rect x="320" y="40" width="120" height="60" rx="6" class="box"/>
+  <text x="380.0" y="67.0" text-anchor="middle" class="ink t b">Utilization?</text>
+  <text x="380.0" y="84.0" text-anchor="middle" class="ink2 n">busy % high</text>
+  <rect x="470" y="40" width="120" height="60" rx="6" class="box"/>
+  <text x="530.0" y="67.0" text-anchor="middle" class="ink t b">Saturation?</text>
+  <text x="530.0" y="84.0" text-anchor="middle" class="ink2 n">work queued</text>
+  <rect x="620" y="40" width="80" height="60" rx="6" class="box"/>
+  <text x="660.0" y="67.0" text-anchor="middle" class="ink t b">Next</text>
+  <text x="660.0" y="84.0" text-anchor="middle" class="ink2 n">resource</text>
+  <line x1="142" y1="70.0" x2="168" y2="70.0" class="line" marker-end="url(#arrow)"/>
+  <line x1="292" y1="70.0" x2="318" y2="70.0" class="line" marker-end="url(#arrow)"/>
+  <text x="305.0" y="62.0" text-anchor="middle" class="ink2 n">no</text>
+  <line x1="442" y1="70.0" x2="468" y2="70.0" class="line" marker-end="url(#arrow)"/>
+  <text x="455.0" y="62.0" text-anchor="middle" class="ink2 n">no</text>
+  <line x1="592" y1="70.0" x2="618" y2="70.0" class="line" marker-end="url(#arrow)"/>
+  <text x="605.0" y="62.0" text-anchor="middle" class="ink2 n">no</text>
+  <path d="M660,40 L660,22 L80,22 L80,38" class="line" marker-end="url(#arrow)"/>
+  <text x="370" y="16" text-anchor="middle" class="ink2 n">repeat for every resource on the list</text>
+  <line x1="230" y1="102" x2="230" y2="168" class="line" marker-end="url(#arrow)"/>
+  <text x="238" y="130" class="ink2 n">yes</text>
+  <line x1="380" y1="102" x2="380" y2="168" class="line" marker-end="url(#arrow)"/>
+  <text x="388" y="130" class="ink2 n">yes</text>
+  <line x1="530" y1="102" x2="530" y2="168" class="line" marker-end="url(#arrow)"/>
+  <text x="538" y="130" class="ink2 n">yes</text>
+  <rect x="170" y="170" width="420" height="56" rx="6" class="focus-s"/>
+  <text x="380.0" y="195.0" text-anchor="middle" class="ink t b">A suspect: investigate it</text>
+  <text x="380.0" y="212.0" text-anchor="middle" class="ink2 n">then come back; the first problem may not be the only one</text>
+  <text x="20" y="200" class="ink2 n">errors first:</text>
+  <text x="20" y="216" class="ink2 n">quickest to read</text>
+</svg>

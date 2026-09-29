@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+<text x="20" y="40" class="ink t b">Plan</text>
+<line x1="120" y1="36" x2="650" y2="36" class="line"/>
+<line x1="130" y1="28" x2="130" y2="44" class="line"/>
+<line x1="180" y1="28" x2="180" y2="44" class="line"/>
+<line x1="230" y1="28" x2="230" y2="44" class="line"/>
+<line x1="280" y1="28" x2="280" y2="44" class="line"/>
+<line x1="330" y1="28" x2="330" y2="44" class="line"/>
+<line x1="380" y1="28" x2="380" y2="44" class="line"/>
+<line x1="430" y1="28" x2="430" y2="44" class="line"/>
+<line x1="480" y1="28" x2="480" y2="44" class="line"/>
+<line x1="530" y1="28" x2="530" y2="44" class="line"/>
+<line x1="580" y1="28" x2="580" y2="44" class="line"/>
+<line x1="630" y1="28" x2="630" y2="44" class="line"/>
+<text x="20" y="58" class="ink2 n">one send per tick</text>
+<rect x="190" y="56" width="300" height="24" rx="6" class="box"/>
+<text x="340.0" y="73" text-anchor="middle" class="ink2 n">server stalls</text>
+<text x="20" y="130" class="ink t b">Closed loop</text>
+<text x="20" y="148" class="ink2 n">records</text><text x="20" y="164" class="ink2 n">(height = latency)</text>
+<line x1="120" y1="190" x2="650" y2="190" class="line"/>
+<rect x="123" y="182" width="14" height="8" class="focus"/>
+<rect x="523" y="182" width="14" height="8" class="focus"/>
+<rect x="573" y="182" width="14" height="8" class="focus"/>
+<rect x="623" y="182" width="14" height="8" class="focus"/>
+<rect x="173" y="112" width="14" height="78" class="focus"/>
+<text x="194" y="124" class="focus n b">one slow sample</text>
+<text x="230" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="280" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="330" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="380" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="430" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="480" y="184" text-anchor="middle" class="lost n b">✕</text>
+<text x="355.0" y="210" text-anchor="middle" class="lost n">planned sends never made, never timed</text>
+<text x="20" y="260" class="ink t b">Corrected</text>
+<text x="20" y="278" class="ink2 n">records</text><text x="20" y="294" class="ink2 n">(height = latency)</text>
+<line x1="120" y1="350" x2="650" y2="350" class="line"/>
+<rect x="123" y="342" width="14" height="8" class="focus"/>
+<rect x="523" y="342" width="14" height="8" class="focus"/>
+<rect x="573" y="342" width="14" height="8" class="focus"/>
+<rect x="623" y="342" width="14" height="8" class="focus"/>
+<rect x="173" y="272" width="14" height="78" class="focus"/>
+<rect x="223" y="283" width="14" height="67" class="focus"/>
+<rect x="273" y="294" width="14" height="56" class="focus"/>
+<rect x="323" y="305" width="14" height="45" class="focus"/>
+<rect x="373" y="316" width="14" height="34" class="focus"/>
+<rect x="423" y="327" width="14" height="23" class="focus"/>
+<rect x="473" y="338" width="14" height="12" class="focus"/>
+<text x="344" y="272" class="focus n b">each timed from when it should have been sent</text>
+<text x="380" y="372" text-anchor="middle" class="ink2 n">time →</text>
+</svg>

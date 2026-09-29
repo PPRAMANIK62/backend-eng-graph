@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="44" class="ink t b">DNS</text>
+  <text x="20" y="61" class="ink2 n">one answer per lookup</text>
+  <text x="20" y="124" class="ink t b">Router</text>
+  <text x="20" y="141" class="ink2 n">ECMP hash per packet</text>
+  <text x="20" y="204" class="ink t b">L4 balancers</text>
+  <text x="20" y="221" class="ink2 n">pick per connection</text>
+  <text x="20" y="284" class="ink t b">L7 proxies</text>
+  <text x="20" y="301" class="ink2 n">pick per request</text>
+  <text x="20" y="364" class="ink t b">Backends</text>
+  <rect x="300" y="24" width="120" height="36" rx="6" class="box"/>
+  <text x="360" y="47" text-anchor="middle" class="ink t">Client</text>
+  <rect x="175" y="24" width="90" height="36" rx="6" class="box"/>
+  <text x="220" y="47" text-anchor="middle" class="ink t">DNS</text>
+  <line x1="300" y1="42" x2="268" y2="42" class="line" marker-end="url(#arrow)"/>
+  <rect x="290" y="104" width="140" height="36" rx="6" class="box"/>
+  <text x="360" y="127" text-anchor="middle" class="ink t">Router</text>
+  <line x1="360" y1="60" x2="360" y2="101" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="370" y="86" class="ink2 n">to the virtual IP</text>
+  <rect x="185" y="184" width="100" height="36" rx="6" class="box"/>
+  <text x="235" y="207" text-anchor="middle" class="ink t">L4</text>
+  <rect x="310" y="184" width="100" height="36" rx="6" class="box"/>
+  <text x="360" y="207" text-anchor="middle" class="ink t">L4</text>
+  <rect x="435" y="184" width="100" height="36" rx="6" class="box"/>
+  <text x="485" y="207" text-anchor="middle" class="ink t">L4</text>
+  <line x1="360" y1="140" x2="235" y2="181" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="140" x2="360" y2="181" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="360" y1="140" x2="485" y2="181" class="line" marker-end="url(#arrow)"/>
+  <rect x="215" y="264" width="110" height="36" rx="6" class="box"/>
+  <text x="270" y="287" text-anchor="middle" class="ink t">L7 proxy</text>
+  <rect x="395" y="264" width="110" height="36" rx="6" class="box"/>
+  <text x="450" y="287" text-anchor="middle" class="ink t">L7 proxy</text>
+  <line x1="235" y1="220" x2="270" y2="261" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="235" y1="220" x2="450" y2="261" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="360" y1="220" x2="270" y2="261" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="360" y1="220" x2="450" y2="261" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="485" y1="220" x2="270" y2="261" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="485" y1="220" x2="450" y2="261" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <text x="214" y="246" text-anchor="end" class="focus n b">one whole connection</text>
+  <rect x="180" y="344" width="84" height="36" rx="6" class="box"/>
+  <text x="222" y="367" text-anchor="middle" class="ink n">Backend</text>
+  <rect x="272" y="344" width="84" height="36" rx="6" class="box"/>
+  <text x="314" y="367" text-anchor="middle" class="ink n">Backend</text>
+  <rect x="364" y="344" width="84" height="36" rx="6" class="box"/>
+  <text x="406" y="367" text-anchor="middle" class="ink n">Backend</text>
+  <rect x="456" y="344" width="84" height="36" rx="6" class="box"/>
+  <text x="498" y="367" text-anchor="middle" class="ink n">Backend</text>
+  <line x1="270" y1="300" x2="222" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="270" y1="300" x2="314" y2="341" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="270" y1="300" x2="406" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="270" y1="300" x2="498" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="450" y1="300" x2="222" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="450" y1="300" x2="314" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="450" y1="300" x2="406" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <line x1="450" y1="300" x2="498" y2="341" class="line" marker-end="url(#arrow)" stroke-opacity=".5"/>
+  <text x="360" y="410" text-anchor="middle" class="focus n b">each request can go to a different backend</text>
+  <rect x="572" y="84" width="136" height="310" rx="6" fill="none" class="line" stroke-dasharray="5 4"/>
+  <text x="640" y="104" text-anchor="middle" class="ink t b">Client-side</text>
+  <text x="640" y="124" text-anchor="middle" class="ink2 n">picks per call,</text>
+  <text x="640" y="140" text-anchor="middle" class="ink2 n">no balancer between</text>
+  <rect x="584" y="160" width="112" height="52" rx="6" class="box"/>
+  <text x="640" y="182" text-anchor="middle" class="ink n">Caller with</text>
+  <text x="640" y="199" text-anchor="middle" class="ink n">LB library</text>
+  <rect x="584" y="344" width="32" height="36" rx="6" class="box"/>
+  <text x="600" y="367" text-anchor="middle" class="ink n">B</text>
+  <rect x="624" y="344" width="32" height="36" rx="6" class="box"/>
+  <text x="640" y="367" text-anchor="middle" class="ink n">B</text>
+  <rect x="664" y="344" width="32" height="36" rx="6" class="box"/>
+  <text x="680" y="367" text-anchor="middle" class="ink n">B</text>
+  <line x1="640" y1="212" x2="600" y2="341" class="line" marker-end="url(#arrow)"/>
+  <line x1="640" y1="212" x2="640" y2="341" class="line" marker-end="url(#arrow)"/>
+  <line x1="640" y1="212" x2="680" y2="341" class="focus-s" marker-end="url(#arrow)"/>
+</svg>

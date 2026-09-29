@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- corpus -->
+  <rect x="30" y="40" width="170" height="64" rx="6" class="box"/>
+  <text x="115" y="66" text-anchor="middle" class="ink t b">Corpus</text>
+  <text x="115" y="86" text-anchor="middle" class="ink2 n">seeds + kept inputs</text>
+
+  <!-- mutator -->
+  <line x1="200" y1="72" x2="247" y2="72" class="line" marker-end="url(#arrow)"/>
+  <rect x="250" y="40" width="130" height="64" rx="6" class="box"/>
+  <text x="315" y="66" text-anchor="middle" class="ink t b">Mutate</text>
+  <text x="315" y="86" text-anchor="middle" class="ink2 n">small random changes</text>
+
+  <!-- input -->
+  <line x1="380" y1="72" x2="427" y2="72" class="line" marker-end="url(#arrow)"/>
+  <rect x="430" y="40" width="130" height="64" rx="6" class="box"/>
+  <text x="495" y="66" text-anchor="middle" class="focus t b">New input</text>
+  <text x="495" y="86" text-anchor="middle" class="ink2 n mono">raw request bytes</text>
+
+  <!-- two parsers -->
+  <path d="M495,104 V130 H245 V147" class="line" marker-end="url(#arrow)"/>
+  <path d="M495,104 V130 H575 V147" class="line" marker-end="url(#arrow)"/>
+  <rect x="150" y="150" width="190" height="56" rx="6" class="box"/>
+  <text x="245" y="174" text-anchor="middle" class="ink t b">Your parser</text>
+  <text x="245" y="194" text-anchor="middle" class="ink2 n">under test</text>
+  <rect x="480" y="150" width="190" height="56" rx="6" class="box"/>
+  <text x="575" y="174" text-anchor="middle" class="ink t b">Reference parser</text>
+  <text x="575" y="194" text-anchor="middle" class="ink2 n">another implementation</text>
+
+  <!-- compare -->
+  <path d="M245,206 V230 H410 V245" class="line" marker-end="url(#arrow)"/>
+  <path d="M575,206 V230 H410" class="line"/>
+  <rect x="280" y="248" width="260" height="56" rx="6" class="box"/>
+  <text x="410" y="272" text-anchor="middle" class="ink t b">Compare the answers</text>
+  <text x="410" y="292" text-anchor="middle" class="ink2 n">accept or reject? where does it end?</text>
+
+  <!-- outcomes -->
+  <line x1="540" y1="276" x2="587" y2="276" class="line" marker-end="url(#arrow)"/>
+  <text x="596" y="266" class="lost n b">Disagree or crash:</text>
+  <text x="596" y="282" class="ink2 n">minimize, save,</text>
+  <text x="596" y="298" class="ink2 n">look at it by hand</text>
+
+  <path d="M280,276 H115 V107" class="line" marker-end="url(#arrow)"/>
+  <text x="125" y="236" class="ink2 n">Agree, and it reached</text>
+  <text x="125" y="252" class="ink2 n">new code: keep it</text>
+</svg>

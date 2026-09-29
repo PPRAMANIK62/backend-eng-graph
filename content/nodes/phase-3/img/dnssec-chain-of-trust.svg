@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+    <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <rect x="60" y="12" width="260" height="36" rx="6" class="safe-box"/>
+  <text x="76" y="35" class="ink t b">Trust anchor: the root key</text>
+  <text x="336" y="35" class="ink2 n">configured in the resolver ahead of time</text>
+  <line x1="190" y1="50" x2="190" y2="93" class="line" marker-end="url(#arrow)"/>
+  <text x="200" y="66" class="ink2 n">matches</text>
+  <rect x="40" y="70" width="640" height="100" rx="6" class="line"/>
+  <text x="52" y="88" class="ink2 n">root zone</text>
+  <rect x="60" y="96" width="260" height="56" rx="6" class="box"/>
+  <text x="76" y="120" class="ink t b mono">DNSKEY</text>
+  <text x="76" y="140" class="ink2 n">root's public key</text>
+  <rect x="420" y="96" width="240" height="56" rx="6" class="box"/>
+  <text x="436" y="120" class="ink t b mono">DS  com</text>
+  <text x="436" y="140" class="ink2 n">digest of com's key</text>
+  <line x1="322" y1="124" x2="417" y2="124" class="line" marker-end="url(#arrow)"/>
+  <text x="370" y="116" text-anchor="middle" class="ink2 n">signs</text>
+  <line x1="540" y1="154" x2="194" y2="223" class="line" marker-end="url(#arrow)"/>
+  <text x="552" y="188" class="ink2 n">points at</text>
+  <rect x="40" y="200" width="640" height="100" rx="6" class="line"/>
+  <text x="52" y="218" class="ink2 n">com zone</text>
+  <rect x="60" y="226" width="260" height="56" rx="6" class="box"/>
+  <text x="76" y="250" class="ink t b mono">DNSKEY</text>
+  <text x="76" y="270" class="ink2 n">com's public key</text>
+  <rect x="420" y="226" width="240" height="56" rx="6" class="box"/>
+  <text x="436" y="250" class="ink t b mono">DS  example.com</text>
+  <text x="436" y="270" class="ink2 n">digest of example.com's key</text>
+  <line x1="322" y1="254" x2="417" y2="254" class="line" marker-end="url(#arrow)"/>
+  <text x="370" y="246" text-anchor="middle" class="ink2 n">signs</text>
+  <line x1="540" y1="284" x2="194" y2="353" class="line" marker-end="url(#arrow)"/>
+  <text x="552" y="318" class="ink2 n">points at</text>
+  <rect x="40" y="330" width="640" height="100" rx="6" class="line"/>
+  <text x="52" y="348" class="ink2 n">example.com zone</text>
+  <rect x="60" y="356" width="260" height="56" rx="6" class="box"/>
+  <text x="76" y="380" class="ink t b mono">DNSKEY</text>
+  <text x="76" y="400" class="ink2 n">example.com's public key</text>
+  <rect x="420" y="356" width="240" height="56" rx="6" class="box"/>
+  <rect x="420" y="356" width="240" height="56" rx="6" class="focus-s"/>
+  <text x="436" y="380" class="focus t b mono">A  api.example.com</text>
+  <text x="436" y="400" class="ink2 n">with its RRSIG signature</text>
+  <line x1="322" y1="384" x2="417" y2="384" class="line" marker-end="url(#arrow)"/>
+  <text x="370" y="376" text-anchor="middle" class="ink2 n">signs</text>
+</svg>

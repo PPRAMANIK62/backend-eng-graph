@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- the five layers -->
+
+  <!-- lanes -->
+  <text x="300" y="30" text-anchor="middle" class="ink t b">Browser and its cache</text>
+  <text x="620" y="30" text-anchor="middle" class="ink t b">Origin server</text>
+  <line x1="300" y1="42" x2="300" y2="178" class="line"/>
+  <line x1="300" y1="218" x2="300" y2="358" class="line"/>
+  <line x1="300" y1="398" x2="300" y2="405" class="line"/>
+  <line x1="620" y1="42" x2="620" y2="405" class="line"/>
+
+  <!-- state of the stored copy, left bar -->
+  <rect x="30" y="134" width="12" height="124" rx="3" class="focus"/>
+  <text transform="translate(58,199) rotate(-90)" text-anchor="middle" class="ink2 n">fresh</text>
+  <rect x="30" y="262" width="12" height="82" rx="3" class="old"/>
+  <text transform="translate(58,303) rotate(-90)" text-anchor="middle" class="ink2 n">stale</text>
+  <rect x="30" y="348" width="12" height="57" rx="3" class="focus"/>
+  <text transform="translate(58,376) rotate(-90)" text-anchor="middle" class="ink2 n">fresh</text>
+
+  <!-- 1: miss -->
+  <text x="80" y="74" class="ink n b">t = 0</text>
+  <text x="80" y="90" class="ink2 n">miss</text>
+  <line x1="300" y1="62" x2="617" y2="84" class="line" marker-end="url(#arrow)"/>
+  <text x="400" y="60" text-anchor="middle" class="ink n mono">GET /app.css</text>
+  <line x1="620" y1="110" x2="303" y2="132" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="470" y="112" text-anchor="middle" class="focus n mono b">200 OK, max-age=3600, ETag "v7"</text>
+  <text x="312" y="152" class="ink2 n">stored, body and headers</text>
+
+  <!-- 2: fresh hit -->
+  <text x="80" y="194" class="ink n b">t = 10 min</text>
+  <text x="80" y="210" class="ink2 n">fresh hit</text>
+  <rect x="190" y="178" width="220" height="40" rx="6" class="safe-box"/>
+  <text x="300" y="203" text-anchor="middle" class="ink n">served from cache, no request</text>
+
+  <!-- 3: stale, revalidate -->
+  <text x="80" y="284" class="ink n b">t = 70 min</text>
+  <text x="80" y="300" class="ink2 n">stale, so ask</text>
+  <line x1="300" y1="280" x2="617" y2="302" class="line" marker-end="url(#arrow)"/>
+  <text x="440" y="278" text-anchor="middle" class="ink n mono">GET /app.css, If-None-Match: "v7"</text>
+  <line x1="620" y1="322" x2="303" y2="344" class="line" marker-end="url(#arrow)"/>
+  <text x="470" y="324" text-anchor="middle" class="ink n mono">304 Not Modified, no body</text>
+  <rect x="190" y="358" width="220" height="40" rx="6" class="safe-box"/>
+  <text x="300" y="383" text-anchor="middle" class="ink n">headers updated, fresh for 1 h</text>
+</svg>

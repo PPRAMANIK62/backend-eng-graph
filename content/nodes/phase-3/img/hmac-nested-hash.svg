@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="24" class="ink2 n">K = the secret key, padded with zeros to the hash's block size</text>
+
+  <!-- inner -->
+  <text x="40" y="56" class="ink t b">Inner hash</text>
+  <rect x="40" y="66" width="140" height="44" rx="6" class="box"/>
+  <text x="110" y="93" text-anchor="middle" class="ink n mono">K xor ipad</text>
+  <rect x="180" y="66" width="150" height="44" rx="6" class="box"/>
+  <text x="255" y="93" text-anchor="middle" class="ink n">message</text>
+  <line x1="332" y1="88" x2="387" y2="88" class="line" marker-end="url(#arrow)"/>
+  <rect x="390" y="66" width="90" height="44" rx="6" class="box"/>
+  <text x="435" y="93" text-anchor="middle" class="ink t b">H</text>
+  <line x1="482" y1="88" x2="537" y2="88" class="line" marker-end="url(#arrow)"/>
+  <rect x="540" y="66" width="150" height="44" rx="6" class="box"/>
+  <text x="615" y="93" text-anchor="middle" class="ink n">inner result</text>
+  <text x="110" y="128" text-anchor="middle" class="ink2 n mono">ipad = 0x36 repeated</text>
+
+  <!-- feed inner result into outer -->
+  <path d="M615,112 V150 H255 V183" class="line" marker-end="url(#arrow)"/>
+
+  <!-- outer -->
+  <text x="40" y="176" class="ink t b">Outer hash</text>
+  <rect x="40" y="186" width="140" height="44" rx="6" class="box"/>
+  <text x="110" y="213" text-anchor="middle" class="ink n mono">K xor opad</text>
+  <rect x="180" y="186" width="150" height="44" rx="6" class="box"/>
+  <text x="255" y="213" text-anchor="middle" class="ink n">inner result</text>
+  <line x1="332" y1="208" x2="387" y2="208" class="line" marker-end="url(#arrow)"/>
+  <rect x="390" y="186" width="90" height="44" rx="6" class="box"/>
+  <text x="435" y="213" text-anchor="middle" class="ink t b">H</text>
+  <line x1="482" y1="208" x2="537" y2="208" class="line" marker-end="url(#arrow)"/>
+  <rect x="540" y="186" width="150" height="44" rx="6" class="box"/>
+  <rect x="540" y="186" width="150" height="44" rx="6" class="focus-s"/>
+  <text x="615" y="213" text-anchor="middle" class="focus t b">tag</text>
+  <text x="110" y="248" text-anchor="middle" class="ink2 n mono">opad = 0x5C repeated</text>
+
+  <text x="40" y="284" class="ink2 n mono">HMAC(K, m) = H(K xor opad, H(K xor ipad, m))</text>
+
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="490" viewBox="0 0 720 490" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lanes -->
+  <text x="80" y="26" text-anchor="middle" class="ink t b">Client</text>
+  <text x="640" y="26" text-anchor="middle" class="ink t b">Server</text>
+  <text x="360" y="26" text-anchor="middle" class="ink2 n">one HTTP/2 stream = one call</text>
+  <line x1="80" y1="36" x2="80" y2="372" class="line"/>
+  <line x1="640" y1="36" x2="640" y2="372" class="line"/>
+
+  <!-- request HEADERS -->
+  <text x="100" y="58" class="ink t b mono">HEADERS</text>
+  <line x1="80" y1="66" x2="637" y2="66" class="line" marker-end="url(#arrow)"/>
+  <text x="100" y="86" class="ink2 n mono">:method = POST</text>
+  <text x="100" y="102" class="ink2 n mono">:path = /google.pubsub.v2.PublisherService/CreateTopic</text>
+  <text xml:space="preserve" x="100" y="118" class="ink2 n mono">grpc-timeout = 1S     te = trailers</text>
+  <text x="100" y="134" class="ink2 n mono">content-type = application/grpc+proto</text>
+
+  <!-- request DATA -->
+  <text x="100" y="164" class="focus t b mono">DATA  (END_STREAM)</text>
+  <line x1="80" y1="172" x2="637" y2="172" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="100" y="192" class="ink2 n">one length-prefixed request message</text>
+
+  <!-- response HEADERS -->
+  <text x="620" y="222" text-anchor="end" class="ink t b mono">HEADERS</text>
+  <line x1="640" y1="230" x2="83" y2="230" class="line" marker-end="url(#arrow)"/>
+  <text xml:space="preserve" x="620" y="250" text-anchor="end" class="ink2 n mono">:status = 200   content-type = application/grpc+proto</text>
+
+  <!-- response DATA -->
+  <text x="620" y="280" text-anchor="end" class="focus t b mono">DATA</text>
+  <line x1="640" y1="288" x2="83" y2="288" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="620" y="308" text-anchor="end" class="ink2 n">one length-prefixed response message (more if streaming)</text>
+
+  <!-- trailers -->
+  <text x="620" y="338" text-anchor="end" class="ink t b mono">HEADERS  (END_STREAM): trailers</text>
+  <line x1="640" y1="346" x2="83" y2="346" class="line" marker-end="url(#arrow)"/>
+  <text xml:space="preserve" x="620" y="366" text-anchor="end" class="ink2 n mono">grpc-status = 0   grpc-message = ...</text>
+
+  <!-- message layout -->
+  <line x1="40" y1="392" x2="680" y2="392" class="line" stroke-dasharray="4 4"/>
+  <text x="40" y="420" class="ink t b">Each message in DATA</text>
+  <rect x="220" y="404" width="70" height="34" rx="6" class="box"/>
+  <text x="255" y="426" text-anchor="middle" class="ink n mono">0 or 1</text>
+  <rect x="296" y="404" width="150" height="34" rx="6" class="box"/>
+  <text x="371" y="426" text-anchor="middle" class="ink n mono">length</text>
+  <rect x="452" y="404" width="228" height="34" rx="6" class="box"/>
+  <text x="566" y="426" text-anchor="middle" class="focus n b">protobuf bytes</text>
+  <text x="255" y="458" text-anchor="middle" class="ink2 n">1 byte:</text>
+  <text x="255" y="474" text-anchor="middle" class="ink2 n">compressed?</text>
+  <text x="371" y="458" text-anchor="middle" class="ink2 n">4 bytes,</text>
+  <text x="371" y="474" text-anchor="middle" class="ink2 n">big-endian</text>
+  <text x="566" y="458" text-anchor="middle" class="ink2 n">that many bytes</text>
+</svg>

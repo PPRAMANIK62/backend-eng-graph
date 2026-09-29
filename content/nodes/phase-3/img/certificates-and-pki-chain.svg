@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="462" viewBox="0 0 720 462" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- root -->
+  <rect x="40" y="20" width="320" height="76" rx="6" class="safe-box"/>
+  <text x="56" y="44" class="ink t b">Root CA certificate</text>
+  <text x="56" y="64" class="ink2 n">holds the root's public key</text>
+  <text x="56" y="82" class="ink2 n">self-signed; the CA flag is set</text>
+
+  <line x1="200" y1="98" x2="200" y2="143" class="line" marker-end="url(#arrow)"/>
+  <text x="212" y="126" class="ink2 n">root key signs</text>
+
+  <!-- intermediate -->
+  <rect x="40" y="146" width="320" height="76" rx="6" class="box"/>
+  <text x="56" y="170" class="ink t b">Intermediate CA certificate</text>
+  <text x="56" y="190" class="ink2 n">holds the intermediate's public key</text>
+  <text x="56" y="208" class="ink2 n">issuer: the root; the CA flag is set</text>
+
+  <line x1="200" y1="224" x2="200" y2="269" class="line" marker-end="url(#arrow)"/>
+  <text x="212" y="252" class="ink2 n">intermediate key signs</text>
+
+  <!-- leaf -->
+  <rect x="40" y="272" width="320" height="76" rx="6" class="box"/>
+  <rect x="40" y="272" width="320" height="76" rx="6" class="focus-s"/>
+  <text x="56" y="296" class="focus t b">Leaf: api.example.com</text>
+  <text x="56" y="316" class="ink2 n">holds the server's public key</text>
+  <text x="56" y="334" class="ink2 n">issuer: the intermediate; not a CA</text>
+
+  <!-- brackets -->
+  <path d="M376,20 H384 V96 H376" class="line"/>
+  <text x="394" y="54" class="ink n b">already on the client</text>
+  <text x="394" y="72" class="ink2 n">in its trust store</text>
+  <path d="M376,146 H384 V348 H376" class="line"/>
+  <text x="394" y="240" class="ink n b">sent by the server</text>
+  <text x="394" y="258" class="ink2 n">in the TLS handshake</text>
+
+  <!-- checks -->
+  <text x="40" y="386" class="ink t b">What the client checks</text>
+  <text x="40" y="408" class="ink2 n">1. each signature, with the public key one level up</text>
+  <text x="40" y="426" class="ink2 n">2. the chain ends at a root in its trust store</text>
+  <text x="40" y="444" class="ink2 n">3. every certificate is inside its validity period now</text>
+  <text x="380" y="408" class="ink2 n">4. only certificates with the CA flag signed others</text>
+  <text x="380" y="426" class="ink2 n">5. the name it dialed is in the leaf</text>
+
+</svg>

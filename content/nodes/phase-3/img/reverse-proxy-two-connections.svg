@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="312" viewBox="0 0 720 312" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <!-- browser -->
+  <rect x="20" y="120" width="130" height="56" rx="6" class="box"/>
+  <text x="85" y="144" text-anchor="middle" class="ink t b">Browser</text>
+  <text x="85" y="162" text-anchor="middle" class="ink2 n mono">203.0.113.7</text>
+
+  <!-- proxy -->
+  <rect x="250" y="40" width="220" height="220" rx="6" class="box"/>
+  <rect x="250" y="40" width="220" height="220" rx="6" class="focus-s"/>
+  <text x="360" y="66" text-anchor="middle" class="focus t b">Reverse proxy</text>
+  <text x="268" y="100" class="ink n">1  terminate TLS</text>
+  <text x="268" y="126" class="ink n">2  parse the HTTP request</text>
+  <text x="268" y="152" class="ink n">3  pick a route and a backend</text>
+  <text x="268" y="178" class="ink n">4  edit headers (Host, hop-by-hop,</text>
+  <text x="286" y="194" class="ink n">X-Forwarded-For)</text>
+  <text x="268" y="220" class="ink n">5  send on a pooled connection</text>
+  <text x="268" y="246" class="ink2 n">buffers, timeouts, retries</text>
+
+  <!-- backends -->
+  <rect x="570" y="40" width="130" height="50" rx="6" class="box"/>
+  <text x="635" y="61" text-anchor="middle" class="ink t">Backend A</text>
+  <text x="635" y="79" text-anchor="middle" class="ink2 n mono">10.0.0.11:8080</text>
+  <rect x="570" y="125" width="130" height="50" rx="6" class="box"/>
+  <text x="635" y="146" text-anchor="middle" class="ink t b">Backend B</text>
+  <text x="635" y="164" text-anchor="middle" class="ink2 n mono">10.0.0.12:8080</text>
+  <rect x="570" y="210" width="130" height="50" rx="6" class="box"/>
+  <text x="635" y="231" text-anchor="middle" class="ink t">Backend C</text>
+  <text x="635" y="249" text-anchor="middle" class="ink2 n mono">10.0.0.13:8080</text>
+
+  <!-- connection 1 -->
+  <line x1="152" y1="148" x2="247" y2="148" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="200" y="110" text-anchor="middle" class="ink n">connection 1</text>
+  <text x="200" y="126" text-anchor="middle" class="ink2 n">TLS over TCP</text>
+
+  <!-- pooled connections -->
+  <line x1="472" y1="100" x2="567" y2="68" class="line"/>
+  <line x1="472" y1="150" x2="567" y2="150" class="focus-s" marker-end="url(#arrow)"/>
+  <line x1="472" y1="200" x2="567" y2="232" class="line"/>
+  <text x="520" y="138" text-anchor="middle" class="ink n">connection 2</text>
+  <text x="520" y="178" text-anchor="middle" class="ink2 n">kept open,</text>
+  <text x="520" y="194" text-anchor="middle" class="ink2 n">reused</text>
+
+  <!-- sides -->
+  <text x="130" y="296" text-anchor="middle" class="ink2 n">downstream (client side)</text>
+  <text x="600" y="296" text-anchor="middle" class="ink2 n">upstream (backend side)</text>
+  <text x="360" y="296" text-anchor="middle" class="ink2 n">the backend sees the proxy's address</text>
+</svg>

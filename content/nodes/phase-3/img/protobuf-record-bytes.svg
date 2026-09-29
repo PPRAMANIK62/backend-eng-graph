@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="372" viewBox="0 0 720 372" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- schema -->
+  <text x="40" y="30" class="ink2 n mono">message Test1 { int32 a = 1; }   a = 150</text>
+
+  <!-- row 1: the three bytes -->
+  <text x="40" y="66" class="ink t b">Encoded message</text>
+  <rect x="220" y="46" width="70" height="36" rx="6" class="box"/>
+  <text x="255" y="70" text-anchor="middle" class="ink t mono b">08</text>
+  <rect x="300" y="46" width="70" height="36" rx="6" class="box"/>
+  <text x="335" y="70" text-anchor="middle" class="focus t mono b">96</text>
+  <rect x="380" y="46" width="70" height="36" rx="6" class="box"/>
+  <text x="415" y="70" text-anchor="middle" class="focus t mono b">01</text>
+
+  <!-- tag byte breakdown -->
+  <line x1="255" y1="84" x2="255" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="255" y="132" text-anchor="middle" class="ink t mono">0 0001 000</text>
+  <text x="255" y="152" text-anchor="middle" class="ink2 n">tag: field 1, wire type 0</text>
+  <text x="255" y="168" text-anchor="middle" class="ink2 n">(VARINT)</text>
+
+  <!-- varint bracket -->
+  <path d="M300,92 V100 H450 V92" class="focus-s"/>
+  <line x1="375" y1="100" x2="375" y2="112" class="line" marker-end="url(#arrow)"/>
+  <text x="375" y="132" text-anchor="middle" class="focus t b">150</text>
+  <text x="375" y="152" text-anchor="middle" class="ink2 n">payload: a varint</text>
+
+  <!-- formula -->
+  <text x="490" y="60" class="ink2 n">tag = (field number &lt;&lt; 3) | wire type</text>
+    <text x="490" y="104" class="ink2 n">No field name, no type:</text>
+  <text x="490" y="120" class="ink2 n">the reader needs the .proto</text>
+  <text x="490" y="136" class="ink2 n">to know what field 1 is.</text>
+
+  <!-- row 2: nested -->
+  <line x1="40" y1="192" x2="680" y2="192" class="line" stroke-dasharray="4 4"/>
+  <text x="40" y="216" class="ink2 n mono">message Test3 { Test1 c = 3; }   c.a = 150</text>
+  <text x="40" y="256" class="ink t b">Nested message</text>
+  <rect x="220" y="236" width="70" height="36" rx="6" class="box"/>
+  <text x="255" y="260" text-anchor="middle" class="ink t mono b">1a</text>
+  <rect x="300" y="236" width="70" height="36" rx="6" class="box"/>
+  <text x="335" y="260" text-anchor="middle" class="ink t mono b">03</text>
+  <rect x="380" y="236" width="70" height="36" rx="6" class="box"/>
+  <text x="415" y="260" text-anchor="middle" class="focus t mono b">08</text>
+  <rect x="460" y="236" width="70" height="36" rx="6" class="box"/>
+  <text x="495" y="260" text-anchor="middle" class="focus t mono b">96</text>
+  <rect x="540" y="236" width="70" height="36" rx="6" class="box"/>
+  <text x="575" y="260" text-anchor="middle" class="focus t mono b">01</text>
+
+  <line x1="255" y1="274" x2="255" y2="302" class="line" marker-end="url(#arrow)"/>
+  <text x="255" y="322" text-anchor="middle" class="ink t mono">0 0011 010</text>
+  <text x="255" y="342" text-anchor="middle" class="ink2 n">field 3, wire type 2</text>
+  <text x="255" y="358" text-anchor="middle" class="ink2 n">(LEN)</text>
+  <line x1="335" y1="274" x2="335" y2="302" class="line" marker-end="url(#arrow)"/>
+  <text x="335" y="322" text-anchor="middle" class="ink t mono">3</text>
+  <text x="335" y="342" text-anchor="middle" class="ink2 n">length</text>
+  <path d="M380,282 V290 H610 V282" class="focus-s"/>
+  <text x="495" y="310" text-anchor="middle" class="focus n b">the same three bytes as above</text>
+</svg>

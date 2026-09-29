@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="425" viewBox="0 0 720 425" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="220" y="28" text-anchor="middle" class="ink t b">Client</text>
+  <text x="500" y="28" text-anchor="middle" class="ink t b">Server</text>
+  <line x1="220" y1="40" x2="220" y2="330" class="line"/>
+  <line x1="500" y1="40" x2="500" y2="410" class="line"/>
+
+  <!-- ClientHello with ticket -->
+  <line x1="220" y1="64" x2="497" y2="104" class="line" marker-end="url(#arrow)"/>
+  <text x="232" y="60" class="ink n mono b">ClientHello</text>
+  <text x="208" y="68" text-anchor="end" class="ink2 n">ticket, key share,</text>
+  <text x="208" y="83" text-anchor="end" class="ink2 n">early_data flag</text>
+
+  <!-- early data -->
+  <line x1="220" y1="100" x2="497" y2="140" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="208" y="112" text-anchor="end" class="focus n b">early data:</text>
+  <text x="208" y="127" text-anchor="end" class="focus n mono">first request</text>
+  <text x="512" y="146" class="ink2 n">processed before any</text>
+  <text x="512" y="161" class="ink2 n">round trip has finished</text>
+
+  <!-- server flight -->
+  <line x1="500" y1="180" x2="223" y2="220" class="line" marker-end="url(#arrow)"/>
+  <text x="488" y="176" text-anchor="end" class="ink n mono b">ServerHello, Finished, response</text>
+  <text x="512" y="194" class="ink2 n">EncryptedExtensions</text>
+  <text x="512" y="209" class="ink2 n">says early data accepted;</text>
+  <text x="512" y="224" class="ink2 n">no certificate sent</text>
+
+  <!-- client finished -->
+  <line x1="220" y1="250" x2="497" y2="290" class="line" marker-end="url(#arrow)"/>
+  <text x="232" y="246" class="ink n mono b">EndOfEarlyData, Finished</text>
+
+  <!-- attacker replay -->
+  <rect x="40" y="342" width="200" height="40" rx="6" class="box"/>
+  <text x="140" y="367" text-anchor="middle" class="ink t b">Attacker</text>
+  <line x1="242" y1="362" x2="497" y2="392" class="lost-s" style="stroke-width:2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+  <text x="252" y="352" class="lost n b">replays the copied first flight</text>
+  <text x="512" y="398" class="lost n">may run the request twice</text>
+
+</svg>

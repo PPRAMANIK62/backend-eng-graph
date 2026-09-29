@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="250" viewBox="0 0 720 250" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <rect x="40" y="40" width="200" height="56" rx="6" class="box"/>
+  <text x="140.0" y="64" text-anchor="middle" class="ink t b">Length</text>
+  <text x="140.0" y="84" text-anchor="middle" class="ink2 n">24 bits</text>
+  <rect x="240" y="40" width="90" height="56" rx="6" class="box"/>
+  <text x="285.0" y="64" text-anchor="middle" class="ink t b">Type</text>
+  <text x="285.0" y="84" text-anchor="middle" class="ink2 n">8 bits</text>
+  <rect x="330" y="40" width="90" height="56" rx="6" class="box"/>
+  <text x="375.0" y="64" text-anchor="middle" class="ink t b">Flags</text>
+  <text x="375.0" y="84" text-anchor="middle" class="ink2 n">8 bits</text>
+  <rect x="420" y="40" width="30" height="56" rx="6" class="box"/>
+  <text x="435.0" y="64" text-anchor="middle" class="ink t b">R</text>
+  <text x="435.0" y="84" text-anchor="middle" class="ink2 n">1</text>
+  <rect x="450" y="40" width="230" height="56" rx="6" class="box"/>
+  <text x="565.0" y="64" text-anchor="middle" class="focus t b">Stream Identifier</text>
+  <text x="565.0" y="84" text-anchor="middle" class="ink2 n">31 bits</text>
+  <text x="40" y="26" class="ink2 n">9-byte frame header</text>
+  <path d="M42,108 V116 H238 V108" class="line"/>
+  <text x="140.0" y="134" text-anchor="middle" class="ink2 n">3 bytes</text>
+  <path d="M242,108 V116 H328 V108" class="line"/>
+  <text x="285.0" y="134" text-anchor="middle" class="ink2 n">1 byte</text>
+  <path d="M332,108 V116 H418 V108" class="line"/>
+  <text x="375.0" y="134" text-anchor="middle" class="ink2 n">1 byte</text>
+  <path d="M422,108 V116 H678 V108" class="line"/>
+  <text x="550.0" y="134" text-anchor="middle" class="ink2 n">4 bytes</text>
+  <rect x="40" y="186" width="640" height="48" rx="6" class="box"/>
+  <text x="360" y="215" text-anchor="middle" class="ink t">Frame payload: Length bytes, format set by Type</text>
+  <text x="550" y="154" text-anchor="middle" class="ink2 n">0 = the connection itself</text>
+  <text x="550" y="170" text-anchor="middle" class="ink2 n">odd = opened by the client</text>
+</svg>

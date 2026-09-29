@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lanes -->
+  <text x="220" y="28" text-anchor="middle" class="ink t b">Client</text>
+  <text x="500" y="28" text-anchor="middle" class="ink t b">Server</text>
+  <line x1="220" y1="40" x2="220" y2="400" class="line"/>
+  <line x1="500" y1="40" x2="500" y2="400" class="line"/>
+  <text x="360" y="58" text-anchor="middle" class="ink2 n">TCP handshake already done</text>
+
+  <!-- ClientHello -->
+  <line x1="220" y1="80" x2="497" y2="120" class="line" marker-end="url(#arrow)"/>
+  <text x="232" y="76" class="ink n mono b">ClientHello</text>
+  <text x="208" y="84" text-anchor="end" class="ink2 n">random, versions,</text>
+  <text x="208" y="99" text-anchor="end" class="ink2 n">cipher suites, SNI,</text>
+  <text x="208" y="114" text-anchor="end" class="ink2 n">key share (guessed)</text>
+
+  <!-- ServerHello -->
+  <line x1="500" y1="136" x2="223" y2="176" class="line" marker-end="url(#arrow)"/>
+  <text x="488" y="132" text-anchor="end" class="ink n mono b">ServerHello + key share</text>
+  <text x="512" y="140" class="ink2 n">both sides can now</text>
+  <text x="512" y="155" class="ink2 n">compute handshake keys</text>
+
+  <!-- encrypted server flight -->
+  <line x1="500" y1="196" x2="223" y2="236" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="488" y="192" text-anchor="end" class="focus n b">encrypted from here on</text>
+  <text x="512" y="196" class="focus n mono">EncryptedExtensions</text>
+  <text x="512" y="212" class="focus n mono">Certificate</text>
+  <text x="512" y="228" class="focus n mono">CertificateVerify</text>
+  <text x="512" y="244" class="focus n mono">Finished</text>
+  <text x="208" y="244" text-anchor="end" class="ink2 n">checks the chain,</text>
+  <text x="208" y="259" text-anchor="end" class="ink2 n">the name and</text>
+  <text x="208" y="274" text-anchor="end" class="ink2 n">the signature</text>
+
+  <!-- client finished + request -->
+  <line x1="220" y1="290" x2="497" y2="330" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="232" y="286" class="focus n mono b">Finished + first request</text>
+
+  <!-- response -->
+  <line x1="500" y1="346" x2="223" y2="386" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="488" y="342" text-anchor="end" class="focus n mono b">response</text>
+
+  <!-- round trip bracket -->
+  <path d="M40,80 H48 V236 H40" class="line"/>
+  <text x="56" y="162" class="ink2 n">TLS: 1 round trip</text>
+
+  <!-- legend -->
+  <line x1="200" y1="440" x2="240" y2="440" class="line"/>
+  <text x="248" y="444" class="ink2 n">in the clear</text>
+  <line x1="380" y1="440" x2="420" y2="440" class="focus-s"/>
+  <text x="428" y="444" class="ink2 n">encrypted</text>
+
+</svg>

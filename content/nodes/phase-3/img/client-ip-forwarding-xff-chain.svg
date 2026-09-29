@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+
+  <!-- four hops -->
+  <rect x="20" y="30" width="140" height="56" rx="6" class="box"/>
+  <text x="90" y="54" text-anchor="middle" class="ink t b">Client</text>
+  <text x="90" y="72" text-anchor="middle" class="ink2 n mono">203.0.113.7</text>
+  <rect x="200" y="30" width="140" height="56" rx="6" class="box"/>
+  <text x="270" y="54" text-anchor="middle" class="ink t b">Proxy A (edge)</text>
+  <text x="270" y="72" text-anchor="middle" class="ink2 n mono">192.0.2.10</text>
+  <rect x="380" y="30" width="140" height="56" rx="6" class="box"/>
+  <text x="450" y="54" text-anchor="middle" class="ink t b">Proxy B</text>
+  <text x="450" y="72" text-anchor="middle" class="ink2 n mono">10.0.0.5</text>
+  <rect x="560" y="30" width="140" height="56" rx="6" class="box"/>
+  <text x="630" y="54" text-anchor="middle" class="ink t b">Backend</text>
+  <text x="630" y="72" text-anchor="middle" class="ink2 n">socket peer: <tspan class="mono">10.0.0.5</tspan></text>
+  <line x1="162" y1="58" x2="197" y2="58" class="line" marker-end="url(#arrow)"/>
+  <line x1="342" y1="58" x2="377" y2="58" class="line" marker-end="url(#arrow)"/>
+  <line x1="522" y1="58" x2="557" y2="58" class="line" marker-end="url(#arrow)"/>
+
+  <!-- header on each hop -->
+  <text x="20" y="122" class="ink n b">X-Forwarded-For on each hop</text>
+  <text x="20" y="148" class="ink2 n">client to A:</text>
+  <text x="150" y="148" class="lost n mono b">198.51.100.9</text>
+  <text x="258" y="148" class="ink2 n">(the client wrote this itself)</text>
+  <text x="20" y="172" class="ink2 n">A to B:</text>
+  <text x="150" y="172" class="ink n mono"><tspan class="lost">198.51.100.9</tspan>, 203.0.113.7</text>
+  <text x="520" y="172" class="ink2 n">A appends its peer</text>
+  <text x="20" y="196" class="ink2 n">B to backend:</text>
+  <text x="150" y="196" class="ink n mono"><tspan class="lost">198.51.100.9</tspan>, 203.0.113.7, 192.0.2.10</text>
+  <text x="520" y="196" class="ink2 n">B appends its peer (A)</text>
+
+  <!-- reading from the right -->
+  <rect x="20" y="222" width="680" height="104" rx="6" class="box"/>
+  <text x="36" y="246" class="ink n b">The backend reads the list from the right, trusting only its own proxies (A and B)</text>
+  <text x="36" y="272" class="ink n mono"><tspan class="lost">198.51.100.9</tspan>,  <tspan class="focus" font-weight="600">203.0.113.7</tspan>,  192.0.2.10</text>
+  <text x="440" y="272" class="ink2 n">skip 192.0.2.10: it's proxy A</text>
+  <text x="36" y="296" class="focus n b">first address that isn't one of your proxies: 203.0.113.7, the real client</text>
+  <text x="36" y="316" class="lost n b">leftmost value: forged, never use it for security</text>
+</svg>

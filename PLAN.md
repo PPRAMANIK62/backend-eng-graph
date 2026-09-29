@@ -177,10 +177,12 @@ Concepts, roughly:
 - hashes, symmetric and public-key crypto, HMAC, at concept level
 - TLS 1.3, certificates and PKI, resumption, mTLS
 - DNSSEC, encrypted DNS (DoT and DoH)
-- HTTP semantics, HTTP/1.1, HTTP/2, QUIC, HTTP/3, WebSockets, SSE
+- HTTP semantics, HTTP caching, HTTP/1.1, HTTP/2, QUIC, HTTP/3,
+  WebSockets, SSE
 - protobuf and gRPC, connection pooling
-- reverse proxies, request smuggling, load balancing and its algorithms,
-  health checks, service discovery, CDNs, fuzzing
+- reverse proxies, request smuggling, client IP forwarding, zero-downtime
+  reloads, load balancing and its algorithms, health checks, service
+  discovery, CDNs, fuzzing
 
 ### Phase 4: Concurrency and I/O models
 Skill 3.
@@ -188,21 +190,23 @@ Skill 3.
 Concepts, roughly:
 - race conditions, mutexes, deadlocks, memory models, lock-free
   structures, message passing
-- blocking and non-blocking I/O, epoll, io_uring
+- blocking vs non-blocking I/O, epoll, io_uring
 - thread-per-connection, thread pools, event loops, async/await, green
   threads, C10K
 - CPU-bound vs I/O-bound, latency percentiles, backpressure, bounded
   queues, graceful shutdown
+- race detectors and the Redis protocol, because the phase 4 build uses
+  both
 
 ### Phase 5: APIs and contracts
 Skill 4.
 
 Concepts, roughly:
 - API design, REST, GraphQL, OpenAPI, pagination, versioning, schema
-  evolution, error design, validation, conditional requests, long-running
-  operations
+  evolution, backwards compatibility, error design, validation,
+  conditional requests, long-running operations, long polling
 - timeouts, idempotency and idempotency keys, retries with backoff,
-  delivery guarantees, dead-letter queues, webhooks
+  delivery guarantees, dead-letter queues, request signing, webhooks
 - rate limiting and its algorithms, API gateways
 
 ### Phase 6: Databases I, using Postgres well
@@ -213,29 +217,31 @@ Concepts, roughly:
   CTEs, window functions, other data models, JSONB
 - indexes and their types, composite, covering and partial indexes, the
   query planner, statistics, EXPLAIN, N+1, ORMs, full-text search
-- Postgres architecture, SQLite, connection pooling, migrations, DDL
-  locks, zero-downtime migrations, online schema change
+- Postgres architecture at a glance, SQLite, database connection pooling
+- migrations, DDL locks, zero-downtime migrations, triggers, online
+  schema change
 
 ### Phase 7: Databases II, storage engines
 Skill 6.
 
 Concepts, roughly:
 - storage engines, pages, heap files, the buffer pool, B+trees
-- the write-ahead log, group commit, checkpoints, crash recovery, torn
-  writes
+- the write-ahead log, group commit, checkpoints, full-page writes,
+  crash recovery
 - log-structured hash tables, skip lists, LSM trees, SSTables,
   compaction, bloom filters, compression
-- read, write and space amplification, storage benchmarks
+- read, write and space amplification, storage benchmarks, and
+  model-based testing, because the phase 7 harness is one
 
 ### Phase 8: Databases III, transactions
 Skill 6.
 
 Concepts, roughly:
-- transactions, ACID, isolation levels
+- transactions, ACID, isolation levels, serializability
 - anomalies: dirty reads, non-repeatable reads, phantoms, lost updates,
   write skew
-- two-phase locking, lock granularity, deadlock detection, explicit and
-  advisory locks, optimistic concurrency
+- two-phase locking, lock granularity, predicate locks, deadlock
+  detection, explicit and advisory locks, optimistic concurrency
 - MVCC, snapshot isolation, serializable snapshot isolation, vacuum,
   long-running transactions
 - checking histories for anomalies
@@ -244,21 +250,25 @@ Concepts, roughly:
 Skill 7.
 
 Concepts, roughly:
-- caching, cache-aside, write-through, write-behind, invalidation,
-  stampedes, eviction policies
-- Redis internals and its protocol, HTTP caching
+- caching, caching patterns (cache-aside, write-through, write-behind),
+  invalidation, stampedes, eviction policies and the count-min sketch
+- Redis internals and its persistence (HTTP caching moved to phase 3,
+  Redis's protocol to phase 4)
 - the USE and RED methods, profiling, flame graphs, eBPF
-- tail latency, Little's law, queueing theory, Amdahl's law
-- load testing, coordinated omission, benchmarking pitfalls, capacity
-  planning
+- Little's law, queueing theory, Amdahl's law, capacity planning
+- tail latency, latency histograms, load testing, coordinated omission,
+  benchmarking pitfalls
 
 ### Phase 10: Messaging and streams
 Skill 8.
 
 Concepts, roughly:
 - message queues, pub/sub, logs vs queues, Kafka's architecture,
-  ordering, consumer groups, offsets, lag, log compaction
-- exactly-once processing, poison messages, message schemas
+  ordering
+- inside a log broker: segment files and retention, log compaction,
+  zero-copy, idempotent producers
+- consumer groups, offsets, lag, exactly-once processing, poison
+  messages, message schemas
 - dual writes, the transactional outbox, logical replication, change data
   capture
 - event sourcing, CQRS, background jobs, job scheduling
@@ -268,9 +278,10 @@ Skill 9.
 
 Concepts, roughly:
 - what makes distributed systems hard, the fallacies, failure models,
-  network partitions, fault injection
-- replication: leader-follower, sync vs async, lag, failover,
-  multi-leader, leaderless, quorums, conflict resolution, CRDTs
+  network partitions, process pauses, fault injection
+- replication: leader-follower, sync vs async, in-sync replicas, lag,
+  failover, multi-leader, leaderless, quorums, read repair and
+  anti-entropy, conflict resolution, CRDTs
 - partitioning: range vs hash, consistent hashing, rebalancing, hot
   spots, secondary indexes
 - consistency models, eventual and causal consistency, linearizability
@@ -281,11 +292,12 @@ Concepts, roughly:
 Skill 10.
 
 Concepts, roughly:
-- failure detection, gossip, consensus, FLP, replicated state machines,
-  leader election
-- Raft (snapshots, membership changes, linearizable reads), Paxos, chain
-  replication, Byzantine fault tolerance
-- leases, fencing tokens, distributed locks, coordination services
+- failure detection, gossip, consensus, FLP, replicated state machines
+- Raft (elections, log replication, snapshots, membership changes,
+  linearizable reads), Paxos, chain replication, Byzantine fault
+  tolerance
+- leases, fencing tokens, coordination services, leader election,
+  distributed locks
 - two-phase commit, sagas, distributed transactions
 - deterministic simulation testing
 
@@ -294,33 +306,36 @@ Skill 11.
 
 Concepts, roughly:
 - SLIs, SLOs and SLAs, error budgets, availability math, failure domains
-- deadline propagation, retry budgets, circuit breakers, load shedding,
-  admission control, bulkheads, graceful degradation
-- thundering herds, cascading and metastable failures, cell-based
-  architecture, chaos engineering
-- backups, disaster recovery, incident response, on-call, runbooks,
-  postmortems
+- deadline propagation, retry budgets, circuit breakers, bulkheads
+- goodput, load shedding, admission control, graceful degradation,
+  thundering herds, cascading and metastable failures, cell-based
+  architecture
+- chaos engineering, backups, disaster recovery
+- incident response, on-call, postmortems
 
 ### Phase 14: Running it: containers, deploys, observability
 Skill 12.
 
 Concepts, roughly:
-- namespaces, cgroups, overlayfs, containers, images, VMs
-- control loops, Kubernetes, its networking, probes
-- infrastructure as code, config and secrets, CI/CD, deploy strategies,
-  feature flags
-- observability, structured logs, metrics, histograms, cardinality,
-  distributed tracing, OpenTelemetry, continuous profiling, alerting
+- namespaces, cgroups, overlayfs, containers, images, container
+  runtimes, VMs
+- control loops, Kubernetes and its networking
+- observability, structured logs, metrics, cardinality,
+  distributed tracing, trace sampling, OpenTelemetry, continuous
+  profiling, alerting
+- infrastructure as code, configuration, CI/CD, deploy strategies,
+  canary analysis, feature flags, autoscaling
 
 ### Phase 15: Security, authentication and authorization
 Skill 13.
 
 Concepts, roughly:
-- threat modeling, password hashing, cookies, sessions, JWT, OAuth2,
-  OIDC, passkeys, MFA
+- threat modeling, password hashing, cookies, sessions, JWT, API keys,
+  OAuth2, OIDC, passkeys, MFA
 - authorization models, Zanzibar and the new-enemy problem,
   multi-tenancy, row-level security, audit logs
-- the OWASP API Top 10, BOLA, SQL injection, SSRF, CSRF, CORS
+- the OWASP API Top 10, BOLA, SQL injection, SSRF, the same-origin
+  policy, CSRF, CORS
 - secrets management, envelope encryption, zero trust, supply chain
   security
 
@@ -329,21 +344,25 @@ Skill 14.
 
 Concepts, roughly:
 - OLTP vs OLAP, column storage, vectorized execution, Parquet,
-  warehouses
-- object storage, open table formats, lakehouses, ETL vs ELT
+  warehouses, ETL vs ELT
+- object storage, and open table formats (what a lakehouse is built on)
 - batch processing, shuffles, backfills
-- stream processing, event time, windows, watermarks, late data,
-  stateful streaming, the Dataflow model, lambda vs kappa
+- stream processing, event time, windows, watermarks, late data, the
+  Dataflow model, lambda vs kappa
+- state inside a stream job, distributed snapshots, and exactly-once
+  output through transactional sinks, because the phase 16 build does
+  all three
 
 ### Phase 17: Putting it together: system design and durable execution
 Skill 15.
 
 Concepts, roughly:
-- a method for system design, back-of-the-envelope estimates
-- monoliths vs microservices, service meshes, ID generation, fan-out,
-  distributed rate limiting, multi-region, real-time sync, search
-- durable execution, workflow determinism, durable timers,
-  orchestration vs choreography
+- back-of-the-envelope estimates, a method for system design
+- monoliths vs microservices, service meshes, ID generation, feed
+  fan-out, distributed rate limiting, real-time sync,
+  search, multi-region
+- orchestration vs choreography, durable execution, workflow
+  determinism, durable timers
 
 ## Stack
 

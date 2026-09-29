@@ -20,25 +20,25 @@ How to read the tables:
 |---|---|---|---|---|
 | 1 | The machine under the backend | 12 | 20 | 32 |
 | 2 | Networking I, packets to transport | 9 | 20 | 29 |
-| 3 | Networking II, secure protocols and proxies | 11 | 18 | 29 |
-| 4 | Concurrency and I/O models | 8 | 14 | 22 |
-| 5 | APIs and contracts | 11 | 10 | 21 |
-| 6 | Databases I, using Postgres well | 12 | 17 | 29 |
-| 7 | Databases II, storage engines | 8 | 11 | 19 |
-| 8 | Databases III, transactions | 10 | 10 | 20 |
-| 9 | Caching and performance | 10 | 13 | 23 |
-| 10 | Messaging and streams | 8 | 12 | 20 |
-| 11 | Distributed systems I, replication and partitioning | 15 | 17 | 32 |
-| 12 | Distributed systems II, consensus and coordination | 11 | 10 | 21 |
-| 13 | Reliability engineering | 9 | 13 | 22 |
-| 14 | Running it: containers, deploys, observability | 10 | 14 | 24 |
-| 15 | Security, authentication and authorization | 11 | 14 | 25 |
-| 16 | Data systems | 8 | 12 | 20 |
-| 17 | Putting it together: system design and durable execution | 6 | 8 | 14 |
-| | | **169** | **233** | **402** |
+| 3 | Networking II, secure protocols and proxies | 12 | 20 | 32 |
+| 4 | Concurrency and I/O models | 8 | 16 | 24 |
+| 5 | APIs and contracts | 10 | 14 | 24 |
+| 6 | Databases I, using Postgres well | 10 | 21 | 31 |
+| 7 | Databases II, storage engines | 7 | 15 | 22 |
+| 8 | Databases III, transactions | 10 | 13 | 23 |
+| 9 | Caching and performance | 10 | 17 | 27 |
+| 10 | Messaging and streams | 8 | 16 | 24 |
+| 11 | Distributed systems I, replication and partitioning | 16 | 24 | 40 |
+| 12 | Distributed systems II, consensus and coordination | 12 | 15 | 27 |
+| 13 | Reliability engineering | 8 | 16 | 24 |
+| 14 | Running it: containers, deploys, observability | 12 | 18 | 30 |
+| 15 | Security, authentication and authorization | 11 | 22 | 33 |
+| 16 | Data systems | 9 | 13 | 22 |
+| 17 | Putting it together: system design and durable execution | 5 | 11 | 16 |
+| | | **169** | **291** | **460** |
 
-That's a lot of writing: roughly 169 × 2,000 + 233 × 700 words, about
-501,000 words, three times ai-eng-graph. It's meant to take a long time.
+That's a lot of writing: roughly 169 × 2,000 + 291 × 700 words, about
+542,000 words, three times ai-eng-graph. It's meant to take a long time.
 Phases 1 to 8 stand on their own if I stop there.
 
 ## The spine
@@ -180,31 +180,34 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
 | `http-semantics` | deep | Methods, status codes and headers as HTTP defines them, including which methods are safe and idempotent. | tcp | |
-| `http-1-1` | deep | Text framing, keep-alive, chunked encoding, and why pipelining failed. | http-semantics | |
-| `http2` | deep | Binary frames, many streams on one connection, header compression, and TCP head-of-line blocking. | http-1-1, head-of-line-blocking | |
-| `quic` | deep | A transport on UDP with streams, built-in TLS and connection migration. | udp, tls, head-of-line-blocking | tcp |
+| `http-1-1` | deep | Text framing, keep-alive, chunked encoding, and why pipelining failed. | http-semantics | http2 |
+| `http2` | deep | Binary frames, many streams on one connection, header compression, and TCP head-of-line blocking. | http-1-1, head-of-line-blocking | http-1-1, connection-pooling |
+| `quic` | deep | A transport on UDP with streams, built-in TLS and connection migration. | udp, tls, head-of-line-blocking, tcp-handshake, nat | tcp |
 | `http3` | short | HTTP on QUIC, and what changes from HTTP/2. | quic, http2 | |
-| `websockets` | short | A two-way channel upgraded from an HTTP request. | http-1-1 | server-sent-events |
-| `server-sent-events` | short | A one-way stream of events from server to client over plain HTTP. | http-1-1 | websockets |
+| `websockets` | short | A two-way channel upgraded from an HTTP request. | http-1-1, http2 | server-sent-events |
+| `server-sent-events` | short | A one-way stream of events from server to client over plain HTTP. | http-1-1, http2 | websockets |
 | `protobuf` | short | A binary format with a schema and numbered fields. | binary-encoding | |
 | `grpc` | deep | Remote calls over HTTP/2 with protobuf: unary and streaming calls, deadlines, status codes. | http2, protobuf | |
 | `dnssec`* | short | Signatures on DNS answers, so a resolver can check an answer came from the zone's owner. | dns, public-key-crypto | |
 | `encrypted-dns`* | short | DNS over TLS and DNS over HTTPS: hiding lookups from the network. | dns, tls | |
-| `connection-pooling` | short | Keeping connections open to reuse them, and how big the pool should be. | tcp-handshake, tls | |
-| `fuzzing`* | short | Feeding generated input to a parser to find crashes and disagreements. The phase 3 build's harness. | | fault-injection |
+| `connection-pooling` | short | Keeping connections open to reuse them, and how big the pool should be. | tcp-handshake, tls, tcp-keepalive | http2 |
+| `fuzzing`* | short | Feeding generated input to a parser to find crashes and disagreements. The phase 3 build's harness. | http-1-1, request-smuggling | fault-injection |
 
 **Proxies and load balancing**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `reverse-proxy` | deep | A server that takes client requests and forwards them to backends. What it can add: TLS, retries, caching, limits. | http-1-1 | |
-| `request-smuggling` | short | When a proxy and a backend disagree about where one request ends and the next begins. | http-1-1, reverse-proxy | |
+| `reverse-proxy` | deep | A server that takes client requests and forwards them to backends. What it can add: TLS, retries, caching, limits. | http-1-1, connection-pooling | |
+| `request-smuggling` | short | When a proxy and a backend disagree about where one request ends and the next begins. | http-1-1, reverse-proxy, http2 | |
+| `client-ip-forwarding`* | short | How a backend learns the real client address behind a proxy: X-Forwarded-For, Forwarded, the PROXY protocol, and why the header can lie. | reverse-proxy | |
+| `zero-downtime-reload`* | short | Changing a proxy's config or binary without dropping connections: SO_REUSEPORT, passing sockets, draining. | reverse-proxy, ports-and-sockets | |
 | `load-balancing` | deep | Spreading requests across backends so none is overloaded and dead ones get skipped. | reverse-proxy | |
-| `l4-vs-l7` | short | Balancing connections vs balancing requests. What each can see and do. | load-balancing | |
+| `l4-vs-l7` | short | Balancing connections vs balancing requests. What each can see and do. | load-balancing, network-layers | |
 | `load-balancing-algorithms` | deep | Round robin, least connections, power of two choices, and how each behaves under uneven load. | load-balancing | |
 | `health-checks` | short | Active probes vs watching real traffic, and taking bad backends out. | load-balancing | |
-| `service-discovery` | short | How a client finds the current list of backend addresses. | dns, dns-records, load-balancing | |
-| `cdn` | deep | Caches at the edge, near users. What they can and can't serve. | anycast, reverse-proxy | |
+| `service-discovery` | short | How a client finds the current list of backend addresses. | dns, dns-records, load-balancing, health-checks | |
+| `http-caching`* | deep | Cache-Control, validation with ETags, and shared vs private caches. Moved from phase 9 because `cdn` needs it. | http-semantics | |
+| `cdn` | deep | Caches at the edge, near users. What they can and can't serve. | anycast, reverse-proxy, http-caching | |
 
 ## Phase 4: Concurrency and I/O models (skill 3)
 
@@ -212,38 +215,52 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `concurrency-vs-parallelism` | short | Dealing with many things at once vs doing many things at once. | thread | |
-| `race-condition` | deep | Two threads touch the same data, and the result depends on timing. | thread | |
-| `mutex` | short | A lock only one thread can hold at a time. | race-condition | message-passing |
-| `deadlock` | short | Threads each waiting on a lock another holds, forever. | mutex | |
-| `memory-model` | deep | When one thread's writes become visible to another. Atomics and happens-before. | race-condition, cpu-cache | |
-| `lock-free-structures` | short | Data structures built on atomic compare-and-swap instead of locks, and their traps. | memory-model | |
-| `message-passing` | short | Threads share data by sending it over channels instead of locking it. | thread | mutex |
+| `concurrency-vs-parallelism` | short | Dealing with many things at once vs doing many things at once. | thread |  |
+| `race-condition` | deep | When the result depends on timing: data races on memory, and check-then-act races on anything shared, like files or rows. | thread |  |
+| `mutex` | short | A lock only one thread can hold at a time. | race-condition | message-passing, lock-free-structures, atomics |
+| `deadlock` | short | Threads each waiting on a lock another holds, forever. | mutex | message-passing |
+| `memory-model` | deep | When one thread's writes become visible to another. Atomics and happens-before. | race-condition, cpu-cache |  |
+| `lock-free-structures` | short | Data structures built on atomic compare-and-swap instead of locks, and their traps. | memory-model, atomics | mutex |
+| `message-passing` | short | Threads share data by sending it over channels instead of locking it. | thread | mutex, deadlock |
 
 **I/O models**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `blocking-io` | short | A read that waits until data arrives, holding its thread the whole time. | system-call | non-blocking-io |
-| `non-blocking-io` | short | A read that returns right away with "nothing yet". | blocking-io | blocking-io |
-| `io-multiplexing` | deep | select, poll, epoll, kqueue: one thread watching thousands of sockets. | non-blocking-io, file-descriptor | |
-| `io-uring` | deep | Queues shared with the kernel: submit I/O, collect results, few system calls. | io-multiplexing | io-multiplexing |
-| `thread-per-connection` | short | One thread for each client. Simple, until there are many clients. | thread, ports-and-sockets | event-loop |
-| `thread-pool` | short | A fixed set of threads taking work from a queue. | thread | |
-| `event-loop` | deep | One thread running handlers when I/O is ready. How nginx, Node and Redis serve many clients. | io-multiplexing | thread-per-connection |
-| `async-await` | deep | How languages turn callbacks back into straight-line code: futures, state machines, colored functions. | event-loop | green-threads |
-| `green-threads` | deep | Cheap user-space threads run on a few OS threads. Go's scheduler. | thread, io-multiplexing | async-await |
-| `c10k` | short | The problem that moved servers from threads to event loops. | thread-per-connection, event-loop | |
+| `non-blocking-io` | short | A blocking read holds its thread until data arrives; a non-blocking one returns "nothing yet" (EAGAIN) right away. | system-call, ports-and-sockets | io-uring |
+| `io-multiplexing` | deep | select, poll, epoll, kqueue: one thread watching thousands of sockets. Level vs edge triggered. | non-blocking-io, file-descriptor | io-uring |
+| `io-uring` | deep | Queues shared with the kernel: submit I/O, collect results, few system calls. Completion instead of readiness. | io-multiplexing | io-multiplexing, non-blocking-io, zero-copy |
+| `thread-per-connection` | short | One thread for each client. Simple, until there are many clients. | thread, ports-and-sockets | event-loop, thread-pool, green-threads |
+| `thread-pool` | short | A fixed set of threads taking work from a queue, and how many threads to have. | thread, cpu-bound-vs-io-bound | thread-per-connection, event-loop, async-await |
+| `event-loop` | deep | One thread running handlers when I/O is ready. How nginx, Node and Redis serve many clients. | io-multiplexing, cpu-bound-vs-io-bound | thread-per-connection, thread-pool |
+| `async-await` | deep | How languages turn callbacks back into straight-line code: futures, state machines, colored functions. | event-loop, cpu-bound-vs-io-bound | green-threads, c10k, thread-pool |
+| `green-threads` | deep | Cheap user-space threads run on a few OS threads. Go's scheduler and Java's virtual threads. | context-switch, io-multiplexing | async-await, thread-per-connection, c10k |
+| `c10k` | short | The problem that moved servers from threads to event loops, and what memory per connection costs. | thread-per-connection, event-loop | green-threads, async-await |
 
 **Load on a server**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `cpu-bound-vs-io-bound` | short | Whether work waits on the CPU or on I/O, and why it changes the right design. | thread | |
-| `latency-percentiles` | short | p50, p99, p99.9: why the average hides the requests people complain about. | | |
-| `backpressure` | deep | Making a fast producer slow down to what the consumer can handle, instead of piling up. | event-loop | |
-| `bounded-queues` | short | A queue with a limit, and what to do when it's full. | backpressure | |
-| `graceful-shutdown` | short | Stop taking new work, finish what's in flight, then exit. | signals, event-loop | |
+| `cpu-bound-vs-io-bound` | short | Whether work waits on the CPU or on I/O, and why it changes the right design. | thread |  |
+| `latency-percentiles` | short | p50, p99, p99.9: why the average hides the requests people complain about. |  |  |
+| `backpressure` | deep | Making a fast producer slow down to what the consumer can handle, instead of piling up. | event-loop, tcp-flow-control | stream-processing |
+| `bounded-queues` | short | A queue with a limit, and what to do when it's full: block, drop or reject. | backpressure | littles-law |
+| `graceful-shutdown` | short | Stop taking new work, finish what's in flight, then exit, after the load balancer stops sending. | signals, load-balancing | zero-downtime-reload |
+
+**Tools the build uses**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `race-detector`* | short | Tools like Go's -race and ThreadSanitizer that watch a running program for data races. They only see races that happen in the run. The phase 4 build's harness. | race-condition, memory-model | history-checking, model-based-testing |
+| `resp-protocol` | short | The simple text protocol Redis clients speak: typed lines ending in CRLF, and pipelining. | tcp | http-1-1 |
+| `atomics`* | short | Operations the CPU does as one step, like compare-and-swap, and the memory ordering each one promises. | memory-model | mutex |
+
+`blocking-io` is gone: blocking is the default that `system-call` and
+`thread` already explain, and it can't stand without its contrast, so
+`non-blocking-io` covers both. The accept queue (a server that can't keep
+up) is covered in `tcp-handshake`; `bounded-queues` links it in the text.
+`resp-protocol` moved here from phase 9, so phase 9's table drops it and
+`redis-internals` should list it in needs.
 
 ## Phase 5: APIs and contracts (skill 4)
 
@@ -251,37 +268,50 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `api-design` | deep | Resources vs actions, naming, consistency. An API is a promise you can't easily take back. | http-semantics | |
-| `rest` | deep | What Fielding defined, and what "REST API" means in practice. | http-semantics | grpc, graphql |
-| `graphql` | deep | The client picks the fields. Resolvers, the N+1 problem, and why caching gets harder. | api-design | rest |
-| `openapi` | short | Machine-readable API contracts, and generating clients and servers from them. | rest | |
-| `pagination` | short | Offset vs cursor, and why offsets break on changing data. | api-design | |
-| `api-versioning` | short | URL, header or never: ways to change an API without breaking clients. | api-design | |
-| `schema-evolution` | deep | Changing message shapes without breaking old readers or writers: forward and backward compatibility. | protobuf | |
-| `error-design` | short | Status codes and error bodies a client can act on. Problem details. | http-semantics | |
-| `validation-at-boundary`* | short | Parse and check outside data once, where it enters, and trust it inside. | api-design | |
-| `conditional-requests` | short | ETags and If-Match: stopping two clients from overwriting each other over HTTP. | http-semantics | |
-| `long-running-operations` | short | Accept now, finish later: 202 with a status URL, or a callback. | api-design | |
+| `api-design` | deep | Resource-oriented design: resources, standard and custom methods, consistent names. An API is a promise you can't easily take back. | http-semantics | rest |
+| `rest` | deep | What Fielding defined, and what "REST API" means in practice. | http-semantics | grpc, graphql, api-design |
+| `graphql` | deep | The client picks the fields. Resolvers, the N+1 problem, and why caching gets harder. | api-design | rest, n-plus-one, rate-limiting, api-versioning |
+| `openapi` | short | Machine-readable API contracts, and generating clients and servers from them. | rest | protobuf, webhooks |
+| `pagination` | short | Offset vs cursor, and why offsets break on changing data. | api-design | indexes |
+| `api-versioning` | short | URL, header or never: ways to change an API without breaking clients, and what counts as breaking (Hyrum's law). | api-design, schema-evolution, backwards-compatibility | graphql, zero-downtime-migrations |
+| `schema-evolution` | deep | Changing message shapes without breaking old readers or writers: forward and backward compatibility. | protobuf, binary-encoding | backwards-compatibility, deployment-strategies |
+| `error-design` | short | Status codes and error bodies a client can act on: problem details, and saying whether a retry can help. | http-semantics | retries-with-backoff |
+| `validation-at-boundary`* | short | Parse and check outside data once, where it enters, and trust it inside. | api-design | sql-injection |
+| `conditional-requests` | short | If-Match and 412: stopping two clients from overwriting each other over HTTP. | http-caching | optimistic-concurrency, lost-update, idempotency |
+| `long-running-operations` | short | Accept now, finish later: 202 with a status URL, or a callback. | api-design, idempotency-keys | webhooks, durable-execution |
 
 **Doing it once, even when it's retried**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `timeouts` | short | Every network call needs a limit, and picking one is harder than it looks. | network-latency | |
-| `idempotency` | deep | Running an operation twice has the same effect as running it once. Why retries need it. | http-semantics | |
-| `idempotency-keys` | deep | The client sends a unique key, and the server stores the result under it. | idempotency | |
-| `retries-with-backoff` | deep | Retrying with exponential backoff and jitter so retries don't pile on. | idempotency, timeouts | |
-| `delivery-guarantees` | deep | At most once, at least once, and what "exactly once" can really mean. | idempotency, retries-with-backoff | |
-| `dead-letter-queue` | short | Where a message or delivery goes after its last retry fails. | retries-with-backoff | |
-| `webhooks` | deep | The server calls the client: signing, retries, ordering, and endpoints that are down for days. | delivery-guarantees, hmac | |
+| `timeouts` | short | Every network call needs a limit, and picking one is harder than it looks. Connect, read and total timeouts. | network-latency | tcp-keepalive |
+| `idempotency` | deep | Running an operation twice has the same effect as running it once. Why retries need it. | http-semantics | transactional-sinks, conditional-requests, leader-election, control-loops |
+| `idempotency-keys` | deep | The client sends a unique key, and the server stores the result under it, including for a duplicate that arrives while the first is still running. | idempotency | idempotent-producers, transactional-outbox, exactly-once-processing |
+| `retries-with-backoff` | deep | Retrying with exponential backoff and jitter so retries don't pile on. | idempotency, timeouts | tcp-retransmission, error-design, deadline-propagation, hedged-requests |
+| `delivery-guarantees` | deep | At most once, at least once, and what "exactly once" can really mean. | idempotency, retries-with-backoff | two-phase-commit |
+| `dead-letter-queue` | short | Where a message or delivery goes after its last retry fails, and replaying it from there. | retries-with-backoff | message-ordering |
+| `request-signing`* | short | Signing a request with a shared key and a timestamp, so the receiver can check who sent it and refuse replays. Webhook signatures, AWS SigV4. | hmac, http-semantics |  |
+| `webhooks` | deep | The server calls the client: retries, ordering per endpoint, and endpoints that are down for days. | delivery-guarantees, request-signing, retries-with-backoff, dead-letter-queue | long-running-operations, openapi |
 
 **Protecting the API**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `rate-limiting` | deep | Capping how much each client can send, and where to enforce it. | api-design | |
-| `rate-limiting-algorithms` | deep | Token bucket, leaky bucket, fixed and sliding windows, GCRA: what each allows through. | rate-limiting | |
-| `api-gateway` | short | One front door for many services: auth, limits, routing. | reverse-proxy, rate-limiting | |
+| `rate-limiting` | short | Capping how much each client can send, where to enforce it, and telling the client with 429 and Retry-After. | http-semantics | graphql, load-shedding |
+| `rate-limiting-algorithms` | deep | Token bucket, leaky bucket, fixed and sliding windows, GCRA: what each allows through. | rate-limiting |  |
+| `api-gateway` | short | One front door for many services: auth, limits, routing. | reverse-proxy, rate-limiting | service-mesh |
+| `backwards-compatibility`* | short | What counts as a breaking change to an API, and how to add things without breaking the clients you have. | api-design | schema-evolution |
+| `long-polling`* | short | A request the server holds open until it has something to send back. Push over plain HTTP. | http-semantics | server-sent-events, websockets, realtime-sync |
+
+`rate-limiting` went from deep to short: the substance (what each
+algorithm lets through, which the build's decision record weighs) is in
+`rate-limiting-algorithms`. `request-signing` is new: `hmac` had nothing
+leading from it, the webhook build signs every delivery, and phase 15's
+`jwt` can compare with it. That keeps `webhooks` to one concept (the
+delivery pattern). The N+1 problem gets its own node in phase 6
+(`n-plus-one`); `graphql` links it in the text. Phase 8's
+`optimistic-concurrency` could compare with `conditional-requests`, and
+phase 13's `deadline-propagation` could need `grpc`.
 
 ## Phase 6: Databases I, using Postgres well (skill 5)
 
@@ -289,94 +319,183 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `relational-model` | deep | Data as tables of rows linked by keys, and why it has lasted fifty years. | | data-models |
-| `sql` | deep | Say what you want, not how to get it. What the database does with a query. | relational-model | |
-| `joins` | deep | Combining tables, and the three ways a database runs a join: nested loop, hash, merge. | sql | |
-| `normalization` | deep | Storing each fact once so it can't disagree with itself. | relational-model | denormalization |
-| `denormalization` | short | Copying data on purpose to make reads faster, and paying for it on writes. | normalization | normalization |
-| `primary-keys` | short | Natural vs surrogate keys, sequences vs UUIDv4 vs UUIDv7, and why key order affects the index. | relational-model | |
-| `constraints` | short | Foreign keys, unique and check constraints: rules the database enforces for you. | relational-model | |
-| `ctes` | short | Named subqueries with WITH, including recursive ones. | sql | |
-| `window-functions` | short | Running totals, rankings and "previous row" without collapsing rows. | sql | |
-| `data-models` | deep | Document, key-value, wide-column and graph databases: what each is good at. | relational-model | relational-model |
-| `jsonb` | short | JSON columns in Postgres, and when a document column is the right call. | data-models | |
+| `relational-model` | deep | Data as tables of rows linked by keys, and why it has lasted fifty years. |  | data-models |
+| `sql` | deep | Say which rows you want, not how to find them. Sets, NULLs, and the order a query's clauses really run in. | relational-model |  |
+| `joins` | deep | Combining tables, and the three ways a database runs a join: nested loop, hash, merge. | sql | n-plus-one |
+| `normalization` | deep | Storing each fact once so it can't disagree with itself. | relational-model | denormalization, star-schema |
+| `denormalization` | short | Copying data on purpose to make reads faster, and paying for it on writes. | normalization | normalization, caching |
+| `primary-keys` | short | Natural vs surrogate keys, sequences vs UUIDv4 vs UUIDv7, and why key order affects the index. | relational-model | heap-files |
+| `constraints` | short | Foreign keys, unique and check constraints: rules the database enforces for you. | relational-model | triggers, acid |
+| `ctes` | short | Named subqueries with WITH, including recursive ones. | sql |  |
+| `window-functions` | short | Running totals, rankings and "previous row" without collapsing rows. | sql | windowing |
+| `data-models` | deep | Document, key-value, wide-column and graph databases: what each is good at. | relational-model | relational-model, column-storage |
+| `jsonb` | short | JSON columns in Postgres, and when a document column is the right call. | data-models, index-types | table-statistics |
 
 **Making queries fast**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `indexes` | deep | An extra structure that finds rows without reading the whole table, and what it costs every write. | sql | |
-| `index-types` | short | B-tree, hash, GIN, GiST, BRIN: what each is for in Postgres. | indexes | |
-| `composite-indexes` | short | Indexes on several columns, and why column order decides which queries use them. | indexes | |
-| `covering-indexes` | short | Answering a query from the index alone, with no trip to the table. | indexes | |
-| `partial-indexes` | short | Indexing only the rows a query cares about. | indexes | |
-| `query-planner` | deep | How the database picks a plan from many, using statistics and a cost model. | indexes, joins | |
-| `table-statistics` | short | What the planner knows about your data, and how stale statistics produce bad plans. | query-planner | |
-| `explain` | deep | Reading EXPLAIN ANALYZE: estimated vs actual rows, where the time went. | query-planner | |
-| `n-plus-one` | short | One query for the list, then one more per item. | sql | |
-| `orm` | short | What an ORM hides, and when that hurts. | n-plus-one | |
-| `full-text-search` | short | tsvector, GIN indexes and ranking in Postgres. Where it runs out. | index-types | |
+| `indexes` | deep | An extra structure that finds rows without reading the whole table, and what it costs every write. | sql | pagination |
+| `index-types` | short | B-tree, hash, GIN, GiST, BRIN: what each is for in Postgres. | indexes |  |
+| `composite-indexes` | short | Indexes on several columns, and why column order decides which queries use them. | indexes |  |
+| `covering-indexes` | short | Answering a query from the index alone, with no trip to the table. | indexes, composite-indexes |  |
+| `partial-indexes` | short | Indexing only the rows a query cares about. | indexes | table-partitioning |
+| `query-planner` | deep | How the database picks a plan from many, using statistics and a cost model. | indexes, joins |  |
+| `table-statistics` | short | What the planner knows about your data, and how stale statistics produce bad plans. | query-planner, explain | jsonb |
+| `explain` | deep | Reading EXPLAIN ANALYZE: scan and join nodes, estimated vs actual rows, where the time went. | query-planner | n-plus-one |
+| `n-plus-one` | short | One query for the list, then one more per item. | sql | joins, graphql, explain |
+| `orm` | short | What an ORM hides, and when that hurts. | n-plus-one | sql-injection |
+| `full-text-search` | short | tsvector, GIN indexes and ranking in Postgres. Where it runs out. | index-types |  |
 
-**Running it**
+**Running Postgres**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `postgres-architecture` | deep | One process per connection, shared buffers, the WAL writer, autovacuum: the moving parts at a glance. | process | sqlite |
+| `postgres-architecture` | short | The moving parts at a glance: a process per connection, shared buffers, the WAL writer, autovacuum. | process | sqlite |
 | `sqlite` | short | A database in a file inside your process. When that's enough. | relational-model | postgres-architecture |
-| `db-connection-pooling` | short | Why Postgres connections are expensive, and what PgBouncer's pooling modes break. | connection-pooling, postgres-architecture | |
-| `schema-migrations` | deep | Versioned, ordered changes to the schema, run the same way everywhere. | constraints | |
-| `ddl-locks`* | short | Which ALTER TABLE statements lock the table, for how long, and the lock queue behind them. | schema-migrations | |
-| `zero-downtime-migrations` | deep | Expand, migrate, contract: changing a schema while the app keeps running. | schema-migrations, ddl-locks | |
-| `online-schema-change` | deep | Shadow-table tools: copy the table, capture changes, then swap. How gh-ost, pt-osc and pgroll differ. | zero-downtime-migrations | |
+| `db-connection-pooling` | short | Why Postgres connections are expensive, and what PgBouncer's pooling modes break. | connection-pooling, postgres-architecture |  |
+
+**Changing the schema**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `schema-migrations` | short | Versioned, ordered changes to the schema, run the same way everywhere. | constraints |  |
+| `ddl-locks`* | short | Which ALTER TABLE statements lock or rewrite the table, and how one waiting ALTER blocks every query behind it. lock_timeout. | schema-migrations | long-running-transactions |
+| `zero-downtime-migrations` | deep | Expand, migrate, contract: changing a schema while the app keeps running. | schema-migrations, ddl-locks | deployment-strategies, api-versioning |
+| `triggers`* | short | Code the database runs on every insert, update or delete, and what it adds to each write. How trigger-based change capture works. | sql | constraints, logical-replication |
+| `online-schema-change` | deep | Shadow-table tools: copy the table, capture changes, backfill in batches, then swap. How gh-ost, pt-osc and pgroll differ. | zero-downtime-migrations, triggers |  |
+| `table-partitioning`* | short | Splitting one big Postgres table into child tables by range, list or hash, all on one server. | indexes | partial-indexes, partitioning |
+
+`postgres-architecture` is a short overview on purpose: each part it names
+has its own node later (`buffer-pool` and `write-ahead-log` in phase 7,
+`mvcc` and `vacuum` in phase 8), so it links out instead of explaining
+them. It keeps the process-per-connection cost, which
+`db-connection-pooling` leans on.
+
+The build compares trigger capture with logical replication, which is
+`logical-replication` in phase 10 (it needs `write-ahead-log`). Flag it when
+the build gets there; phase 10's `logical-replication` should compare
+`triggers`.
 
 ## Phase 7: Databases II, storage engines (skill 6)
 
+**Pages and trees**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `storage-engine` | deep | The part of a database that lays data on disk and finds it again. | filesystem, page-cache | |
-| `database-pages` | short | Fixed-size pages and the slotted layout that holds rows inside them. | storage-engine | |
-| `heap-files` | short | Rows stored in no particular order, found through indexes. | database-pages | |
-| `buffer-pool` | deep | The database's own cache of pages, its eviction policy, and why it doesn't just trust the OS. | page-cache, database-pages | mmap |
-| `b-plus-tree` | deep | The on-disk tree behind most indexes: high fanout, splits and merges. | database-pages | lsm-tree |
-| `write-ahead-log` | deep | Write the change to a log before touching the data, so a crash can be undone or redone. | fsync, append-only-log | |
-| `group-commit` | short | Many transactions sharing one fsync. | write-ahead-log | |
-| `checkpoints` | short | Flushing pages so recovery doesn't replay the whole log. | write-ahead-log | |
-| `crash-recovery` | deep | Redo and undo after a crash. The ideas behind ARIES. | write-ahead-log, checkpoints | |
-| `full-page-writes` | short | How databases survive a page only half written at power loss: Postgres full-page writes, the InnoDB double-write buffer. | torn-writes, database-pages | |
-| `log-structured-hash-table` | short | Append every write to a log, keep an in-memory map of offsets. Bitcask. | append-only-log | lsm-tree |
-| `skip-list` | short | A sorted structure built from layered linked lists. Common in memtables. | | b-plus-tree |
-| `lsm-tree` | deep | Buffer writes in memory, flush sorted files, merge them later. | write-ahead-log | b-plus-tree |
-| `sstable` | short | An immutable sorted file with an index and filter blocks. | lsm-tree, bloom-filter | |
-| `compaction` | deep | Merging sorted files: leveled vs tiered, and what each costs. | sstable | |
-| `bloom-filter` | short | A small structure that says "definitely not here" or "maybe here". | | |
-| `block-compression` | short | Compressing pages or blocks: trading CPU for less I/O. | | |
-| `amplification` | deep | Read, write and space amplification: the three costs every storage engine trades between. | b-plus-tree, lsm-tree | |
-| `storage-benchmarks` | short | YCSB workloads, and what a fair engine benchmark has to control. | storage-engine | |
+| `storage-engine` | short | The part of a database that lays data on disk and finds it again. Update in place vs log-structured. | filesystem, page-cache |  |
+| `database-pages` | short | Fixed-size pages and the slotted layout that holds rows inside them. | storage-engine |  |
+| `b-plus-tree` | deep | The on-disk tree behind most indexes: high fanout, splits and merges. | database-pages, indexes | lsm-tree, skip-list |
+| `heap-files` | short | Rows kept in no order with indexes pointing at them, vs a table stored inside its primary key's B+tree. | database-pages, b-plus-tree, indexes | primary-keys |
+| `buffer-pool` | deep | The database's own cache of pages, its eviction policy, and why it doesn't just trust the OS. | page-cache, direct-io, database-pages | mmap, eviction-policies, latches |
+
+**Logging and recovery**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `write-ahead-log` | deep | Log the change and fsync it before touching the data pages. Log records, LSNs, and when a commit counts. | fsync, append-only-log | redis-persistence, open-table-formats |
+| `group-commit` | short | Many transactions sharing one fsync. | write-ahead-log |  |
+| `checkpoints` | short | Flushing dirty pages so recovery doesn't replay the whole log, and the I/O spike that comes with it. | write-ahead-log, buffer-pool | distributed-snapshots |
+| `full-page-writes` | short | How databases survive a page only half written at power loss: Postgres full-page writes, the InnoDB double-write buffer. | torn-writes, write-ahead-log, checkpoints |  |
+| `crash-recovery` | deep | Rebuilding a consistent state from the log after a crash: redo, undo, and the ideas behind ARIES. | write-ahead-log, checkpoints, buffer-pool, full-page-writes |  |
+
+**Log-structured engines**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `log-structured-hash-table` | short | Append every write to a log, keep an in-memory map of offsets. Bitcask. | append-only-log, storage-engine | lsm-tree |
+| `skip-list` | short | A sorted structure built from layered linked lists. Common in memtables. |  | b-plus-tree |
+| `lsm-tree` | deep | Buffer writes in a memtable, flush sorted files, merge them later. | write-ahead-log, log-structured-hash-table, skip-list, storage-engine | b-plus-tree, log-structured-hash-table, column-storage |
+| `bloom-filter` | short | A small structure that says "definitely not here" or "maybe here". |  | count-min-sketch |
+| `block-compression` | short | Compressing pages or blocks: trading CPU for less I/O. |  |  |
+| `sstable` | short | An immutable sorted file of blocks, with a block index and a bloom filter. | lsm-tree, bloom-filter, block-compression, binary-encoding, checksums |  |
+| `compaction` | deep | Merging sorted files: leveled vs tiered, and what each costs. | sstable, lsm-tree | log-compaction, vacuum, tombstones |
+
+**Comparing and testing engines**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `amplification` | deep | Read, write and space amplification: the three costs every storage engine trades between. | b-plus-tree, lsm-tree, compaction, ssd-internals |  |
+| `storage-benchmarks` | short | YCSB workloads, and what a storage benchmark has to control: data bigger than the cache, compaction settled, same durability settings. | amplification, latency-percentiles | benchmarking-pitfalls |
+| `model-based-testing`* | short | Run random operations against the real thing and a simple model of it, and compare after every step. The phase 7 harness. | fuzzing | race-detector, deterministic-simulation-testing, crash-testing |
+| `latches`* | short | Short locks that guard in-memory structures like B-tree pages, and how they differ from transaction locks. | b-plus-tree, mutex | buffer-pool, two-phase-locking |
+| `overflow-pages`* | short | Where a database puts a value too big for one page: overflow pages, and Postgres's TOAST. | database-pages |  |
+
+`write-ahead-log` owns the log and its rule (what's in a record, when a
+commit is durable); `crash-recovery` owns what happens at restart (redo,
+undo, ARIES, and replaying the WAL into a memtable for an LSM tree). They
+overlap if either drifts.
+
+`storage-benchmarks` keeps only what's specific to storage engines. General
+benchmark traps (warmup, noise, frequency scaling) stay in phase 9's
+`benchmarking-pitfalls`, which should compare `storage-benchmarks`.
+
+Phase 16's `stateful-stream-processing` needs `checkpoints`, but a stream
+processor's checkpoint (a consistent snapshot of operator state) is a
+different concept from a database checkpoint. Phase 16 should link it only
+as a comparison.
 
 ## Phase 8: Databases III, transactions (skill 6)
 
+**Transactions and what they promise**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `transaction` | deep | A group of reads and writes that succeeds or fails as one. | sql | |
-| `acid` | deep | What each letter really promises, and why C is mostly your job. | transaction | |
-| `isolation-levels` | deep | Read committed, repeatable read, serializable: what each lets concurrent transactions see. | transaction | |
-| `dirty-read` | short | Seeing another transaction's uncommitted writes. | isolation-levels | |
-| `non-repeatable-read` | short | Reading the same row twice and getting different values. | isolation-levels | |
-| `phantom-read` | short | Running the same query twice and getting new rows. | isolation-levels | |
-| `lost-update` | deep | Two read-modify-write cycles run at once and one write disappears. | isolation-levels | |
-| `write-skew` | deep | Two transactions each check a rule, both pass, and together they break it. | isolation-levels | lost-update |
-| `two-phase-locking` | deep | Take locks as you go, release them only at the end. How it gives serializability. | isolation-levels | mvcc |
-| `lock-granularity` | short | Row, page and table locks, and intention locks between them. | two-phase-locking | |
-| `deadlock-detection` | short | The database finds a cycle of waiting transactions and kills one. | deadlock, two-phase-locking | |
-| `explicit-locking` | short | SELECT FOR UPDATE, NOWAIT and SKIP LOCKED. | two-phase-locking | |
-| `advisory-locks` | short | Locks on numbers you choose, for coordinating app code through Postgres. | explicit-locking | |
-| `optimistic-concurrency` | short | Don't lock, check a version at commit, retry on conflict. | transaction | two-phase-locking |
-| `mvcc` | deep | Keep several versions of each row so readers don't block writers. | isolation-levels | two-phase-locking |
-| `snapshot-isolation` | deep | Every transaction reads from one consistent snapshot. What it prevents and what it lets through. | mvcc | |
-| `serializable-snapshot-isolation` | deep | Snapshot isolation plus tracking dangerous read-write patterns. Postgres's SERIALIZABLE. | snapshot-isolation, write-skew | two-phase-locking |
-| `vacuum` | short | Cleaning dead row versions in Postgres: bloat and transaction ID wraparound. | mvcc | |
-| `long-running-transactions` | short | What one open transaction holds back for everyone else. | mvcc | |
-| `history-checking` | deep | Record every operation, then check the history for anomalies. How Jepsen's Elle finds isolation bugs. | isolation-levels | |
+| `transaction` | deep | A group of reads and writes that succeeds or fails as one: BEGIN, COMMIT, ROLLBACK, and what autocommit hides. | sql, write-ahead-log |  |
+| `acid` | short | What each letter really promises. Most of them point to another mechanism, and C is mostly your job. | transaction | isolation-levels, constraints |
+| `isolation-levels` | deep | Read committed, repeatable read, serializable: what each lets concurrent transactions see, and where the SQL standard's definitions fall short. | transaction | consistency-models, acid |
+| `serializability`* | deep | The result matches some one-at-a-time order of the transactions. Conflicts, and the dependency graph that must have no cycles. | isolation-levels | linearizability |
+
+**Anomalies**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `dirty-read` | short | Seeing another transaction's uncommitted writes. | isolation-levels | non-repeatable-read |
+| `non-repeatable-read` | short | Reading the same row twice and getting different values. Also called read skew. | isolation-levels | dirty-read, phantom-read |
+| `phantom-read` | short | Running the same query twice and getting new rows. | isolation-levels | non-repeatable-read, write-skew |
+| `lost-update` | deep | Two read-modify-write cycles run at once and one write disappears. Atomic updates, row locks, version checks. | isolation-levels, race-condition | write-skew, conditional-requests, optimistic-concurrency |
+| `write-skew` | deep | Two transactions each check a rule, both pass, and together they break it. | isolation-levels, serializability, constraints | lost-update, phantom-read, predicate-locks, optimistic-concurrency |
+
+**Locking**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `two-phase-locking` | deep | Take locks as you go, release them only at the end. How it gives serializability. | serializability, latches | mvcc, optimistic-concurrency, serializable-snapshot-isolation, latches |
+| `lock-granularity` | short | Row, page and table locks, and intention locks between them. | two-phase-locking | predicate-locks |
+| `predicate-locks`* | short | Locking a search condition instead of rows, so new matching rows can't slip in. Next-key locks in InnoDB, SIREAD locks in Postgres. | phantom-read, two-phase-locking | lock-granularity, write-skew |
+| `deadlock-detection` | short | The database finds a cycle of waiting transactions and kills one. | deadlock, two-phase-locking |  |
+| `explicit-locking` | short | SELECT FOR UPDATE, NOWAIT and SKIP LOCKED. | two-phase-locking, lost-update |  |
+| `advisory-locks` | short | Locks on numbers you choose, for coordinating app code through Postgres. | explicit-locking, db-connection-pooling | distributed-locks, fencing-tokens |
+| `optimistic-concurrency` | short | Don't lock, check a version at commit, retry on conflict. | transaction | two-phase-locking, conditional-requests, lost-update, write-skew, fencing-tokens, redis-transactions |
+
+**Multiversion**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `mvcc` | deep | Keep several versions of each row so readers don't block writers. Where the old versions live: in the table or in an undo log. | isolation-levels, heap-files | two-phase-locking, open-table-formats |
+| `snapshot-isolation` | deep | Every transaction reads from one consistent snapshot, and the first committer wins a write conflict. What it prevents and what it lets through. | mvcc, isolation-levels |  |
+| `serializable-snapshot-isolation` | deep | Snapshot isolation plus tracking dangerous read-write patterns. Postgres's SERIALIZABLE. | snapshot-isolation, write-skew, predicate-locks, serializability | two-phase-locking |
+| `vacuum` | short | Cleaning up dead row versions: Postgres's VACUUM, table bloat and transaction ID wraparound, vs purging an undo log. | mvcc | compaction |
+| `long-running-transactions` | short | What one open or idle-in-transaction session holds back for everyone else: cleanup, locks, disk. | vacuum | ddl-locks |
+
+**Checking**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `history-checking` | deep | Record every operation, then look for cycles in the dependency graph. How Jepsen's Elle finds isolation bugs. | serializability | linearizability-checking, race-detector |
+| `hot-updates`* | short | Heap-only tuples: how Postgres skips index writes on an update when no indexed column changed. | mvcc, indexes |  |
+
+The three read anomalies stay separate nodes (this answers the open
+question), and so do `lost-update` and `write-skew`: the build attaches a
+real Postgres history to each one, and each has its own fix.
+`serializability` is new because `two-phase-locking`,
+`serializable-snapshot-isolation`, `write-skew` and `history-checking` all
+lean on the dependency-graph idea, and it's the node `linearizability`
+(phase 11) gets confused with; phase 11's `linearizability` could compare
+with `serializability` instead of `serializable-snapshot-isolation`.
+`predicate-locks` is new because the engine's SSI has to notice range
+reads, not only row reads (the "conflict detection for SSI" decision).
+`acid` is short because each letter hands off to another node.
 
 ## Phase 9: Caching and performance (skill 7)
 
@@ -384,59 +503,124 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `caching` | deep | Keeping a copy closer to where it's needed. Hit ratios and what a miss costs. | memory-hierarchy | |
-| `cache-aside` | short | The app checks the cache, and on a miss reads the database and fills the cache. | caching | write-through-cache |
-| `write-through-cache` | short | Every write goes to the cache and the database together. | caching | write-behind-cache |
-| `write-behind-cache` | short | Writes go to the cache and reach the database later. Fast, and risky. | caching | write-through-cache |
-| `cache-invalidation` | deep | Keeping cached data from going stale: TTLs, deletes on write, and their races. | cache-aside | |
-| `cache-stampede` | short | A popular key expires and every request hits the database at once. | cache-invalidation | thundering-herd |
-| `eviction-policies` | deep | LRU, LFU, ARC, W-TinyLFU, S3-FIFO: deciding what to drop when the cache is full. | caching | |
-| `redis-internals` | deep | One thread on an event loop, its data structures, and persistence with RDB and AOF. | event-loop | |
-| `resp-protocol` | short | The simple text protocol Redis clients speak. | redis-internals | |
-| `http-caching` | deep | Cache-Control, validation with ETags, and shared vs private caches. | http-semantics, cdn | |
+| `caching` | deep | Keeping a copy closer to where it's needed. Hit ratios and what a miss costs. | memory-hierarchy | http-caching, denormalization, hot-spots |
+| `caching-patterns` | short | Cache-aside, read-through, write-through and write-behind: who fills the cache, and when a write reaches the database. | caching |  |
+| `cache-invalidation` | deep | Keeping cached data from going stale: TTLs, deletes on write, and their races. | caching-patterns, redis-internals | change-data-capture, dual-writes |
+| `cache-stampede` | short | A popular key expires and every request hits the database at once. Request coalescing and early refresh. | cache-invalidation, caching | thundering-herd, http-caching, hot-spots |
+| `eviction-policies` | deep | LRU, LFU, ARC, W-TinyLFU, S3-FIFO: deciding what to drop when the cache is full, and comparing them by hit ratio at each cache size. | caching | buffer-pool |
+| `count-min-sketch`* | short | A small table of counters that estimates how often each key was seen. The frequency filter inside W-TinyLFU. | bloom-filter, eviction-policies | bloom-filter |
+| `redis-internals` | deep | One thread on an event loop, its data structures and their compact encodings, and where it added I/O threads. | event-loop, resp-protocol |  |
+| `redis-persistence`* | short | RDB snapshots taken with fork and copy-on-write, the append-only file and its fsync settings, and what each loses in a crash. | redis-internals, process, fsync | write-ahead-log |
 
-**Performance method**
+**Finding the bottleneck**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `use-method` | short | Utilization, saturation, errors for every resource: a checklist for finding bottlenecks. | | red-method |
-| `red-method` | short | Rate, errors, duration for every service. | latency-percentiles | use-method |
-| `profiling` | deep | Sampling where the CPU spends time, and where threads wait (on-CPU vs off-CPU). | system-call | |
-| `flame-graphs` | short | Reading a profile as stacked bars. | profiling | |
-| `ebpf` | deep | Small safe programs running inside the kernel, for seeing almost anything as it happens. | system-call | |
-| `tail-latency` | deep | Why the slowest 1% matter most at scale, and how fan-out multiplies them. | latency-percentiles | |
-| `littles-law` | short | Items in the system = arrival rate × time in the system. | | |
-| `queueing-theory` | deep | Why wait time shoots up as a server gets busy, and why 80% utilization can already feel slow. | littles-law | |
-| `amdahls-law` | short | The part you can't parallelize caps your speedup. | concurrency-vs-parallelism | |
-| `load-testing` | deep | Open vs closed workload models, and designing a test that finds the real limit. | latency-percentiles | |
-| `coordinated-omission` | short | How most load generators hide the worst latency, and how to measure it correctly. | load-testing | |
-| `benchmarking-pitfalls` | short | Warmup, noise, CPU frequency scaling, and comparing numbers that aren't comparable. | load-testing | |
-| `capacity-planning` | short | Working out how much hardware a load needs, with headroom. | queueing-theory | |
+| `use-method` | short | Utilization, saturation, errors for every resource: a checklist for finding bottlenecks. |  | red-method, queueing-theory |
+| `red-method` | short | Rate, errors, duration for every service. | latency-percentiles, histograms | use-method |
+| `profiling` | deep | Sampling where the CPU spends time, and where threads wait (on-CPU vs off-CPU). | system-call |  |
+| `flame-graphs` | short | Reading a profile as stacked bars. | profiling |  |
+| `ebpf` | deep | Small safe programs running inside the kernel, for seeing almost anything as it happens. | system-call | strace |
+
+**Queues and limits**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `littles-law` | short | Items in the system = arrival rate × time in the system. |  | bounded-queues, amdahls-law |
+| `queueing-theory` | deep | Why wait time shoots up as a server gets busy, and why 80% utilization can already feel slow. | littles-law | use-method, load-balancing-algorithms |
+| `amdahls-law` | short | The part you can't parallelize caps your speedup, and why more threads can even make it slower. | concurrency-vs-parallelism | littles-law |
+| `capacity-planning` | short | Working out how much hardware a load needs, with headroom. | queueing-theory, load-testing | back-of-envelope-estimation, cascading-failures, load-shedding |
+
+**Measuring latency under load**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `tail-latency` | deep | Why the slowest 1% matter most at scale, how fan-out multiplies them, and hedged requests. | latency-percentiles, queueing-theory | trace-sampling |
+| `histograms` | short | Recording latencies in buckets so percentiles can be read and merged later. Why you can't average percentiles. | latency-percentiles |  |
+| `load-testing` | deep | Open vs closed workload models, and designing a test that finds the real limit. | latency-percentiles, littles-law |  |
+| `coordinated-omission` | short | How most load generators hide the worst latency, and how to measure it correctly. | load-testing, histograms |  |
+| `benchmarking-pitfalls` | deep | Warmup, noise, CPU frequency scaling, and comparing numbers that aren't comparable. | load-testing | storage-benchmarks |
+| `redis-transactions`* | short | Making several Redis steps atomic: MULTI/EXEC, WATCH and Lua scripts, and what they don't promise. | redis-internals | optimistic-concurrency |
+| `universal-scalability-law`* | short | Why throughput stops growing, then falls, as you add workers: contention plus the cost of keeping them in step. | amdahls-law |  |
+| `hedged-requests`* | short | Sending a second copy of a slow request to another replica and taking whichever answer comes first. | tail-latency | retries-with-backoff |
+| `stack-walking`* | short | How a profiler finds the call stack of a sample: frame pointers, DWARF unwinding and symbol maps for JIT code. | profiling |  |
+| `quantile-sketches`* | short | Small summaries like t-digest and DDSketch that estimate percentiles and can be merged across machines. | histograms |  |
+
+`cache-aside`, `write-through-cache` and `write-behind-cache` merge into
+`caching-patterns` (this answers the open question): each is one
+paragraph on its own, they only make sense side by side, and the races
+between cache and database live in `cache-invalidation`. `resp-protocol`
+moved to phase 4 (the phase 4 server speaks it), so `redis-internals`
+needs it. `redis-persistence` is split out so `redis-internals` stays one
+concept; it leans on the written `process` (fork, copy-on-write),
+`fsync` and `huge-pages` nodes. `count-min-sketch` is new because the
+cache build implements W-TinyLFU, which rests on it. `histograms` moved
+here from phase 14, so phase 14's table should drop it (its `metrics`
+can link to it). HTTP caching lives in phase 3 (`http-caching`, written).
 
 ## Phase 10: Messaging and streams (skill 8)
 
+**Queues and logs**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `message-queue` | deep | A broker between producers and consumers, so neither waits on the other. | delivery-guarantees | |
-| `pub-sub` | short | One message delivered to many subscribers. | message-queue | |
-| `log-based-messaging` | deep | A queue that deletes messages vs a log that keeps them and lets readers track their place. | message-queue | |
-| `kafka-architecture` | deep | Topics, partitions, brokers, and replication through in-sync replicas. | log-based-messaging | |
-| `message-ordering` | short | Order holds within a partition, not across partitions. Choosing the key. | kafka-architecture | |
-| `consumer-groups` | short | Splitting a topic's partitions among consumers, and rebalancing. | kafka-architecture | |
-| `offsets-and-commits` | short | A consumer's place in the log, and when to save it. | consumer-groups | |
-| `consumer-lag` | short | How far behind the consumers are, and what it tells you. | offsets-and-commits | |
-| `log-compaction` | short | Keeping only the latest value for each key instead of deleting by age. | kafka-architecture | |
-| `exactly-once-processing` | deep | Idempotent producers, transactions, and what "exactly once" means from end to end. | delivery-guarantees, offsets-and-commits | |
-| `poison-messages` | short | A message that crashes every consumer that reads it. | dead-letter-queue, message-queue | |
-| `message-schemas` | short | Schema registries, and keeping producers and consumers compatible. | schema-evolution, message-queue | |
-| `dual-writes` | short | Writing to the database and the queue separately, and how they drift apart. | transaction, message-queue | transactional-outbox |
-| `transactional-outbox` | deep | Write the event in the same transaction as the data, and relay it later. | transaction, message-queue | dual-writes |
-| `logical-replication` | short | Postgres decoding its WAL into a stream of row changes. | write-ahead-log | |
-| `change-data-capture` | deep | Turning a database's own change log into events. Debezium and friends. | logical-replication, log-based-messaging | |
-| `event-sourcing` | deep | Store the events, derive the current state from them. | log-based-messaging | |
-| `cqrs` | short | Separate models for writes and for reads. | event-sourcing | |
-| `background-jobs` | deep | Job queues on Postgres with SKIP LOCKED vs Redis vs a broker. | message-queue, explicit-locking | |
-| `job-scheduling` | short | Cron jobs and delayed jobs that run once, even with several workers. | background-jobs | |
+| `message-queue` | deep | A broker between producers and consumers, so neither waits on the other. Acks, redelivery and competing consumers. | delivery-guarantees | log-based-messaging, pub-sub, share-groups |
+| `pub-sub` | short | One message delivered to every subscriber, instead of to one worker. | message-queue | message-queue, log-based-messaging, feed-fan-out |
+| `log-based-messaging` | deep | A queue deletes messages once they're handled; a log keeps them and lets each reader track its own place. | message-queue | message-queue, pub-sub, total-order-broadcast |
+| `kafka-architecture` | deep | Topics split into partitions, spread over brokers, one leader per partition: how Kafka lays a log across machines. | log-based-messaging |  |
+| `message-ordering` | short | Order holds within a partition, not across partitions. Choosing the key. | kafka-architecture | dead-letter-queue, hot-spots, idempotent-producers |
+
+**Inside a log broker**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `log-segments`* | short | A log stored as a chain of segment files with an offset index, where retention deletes whole old segments. The phase 10 broker's disk format. | append-only-log, log-based-messaging |  |
+| `log-compaction` | short | Keeping only the latest value for each key instead of deleting by age. | log-segments | compaction, idempotent-producers, event-sourcing |
+| `zero-copy`* | short | Sending file bytes to a socket without copying them through the program: sendfile, and why log brokers lean on it. | page-cache, system-call | mmap, io-uring |
+| `idempotent-producers`* | short | The broker drops a producer's retried duplicates by checking a sequence number per partition. | kafka-architecture, idempotency, delivery-guarantees | idempotency-keys, log-compaction, message-ordering |
+
+**Consuming a log**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `consumer-groups` | short | Splitting a topic's partitions among consumers, and rebalancing when one joins or leaves. | kafka-architecture | rebalancing |
+| `offsets-and-commits` | short | A consumer's place in the log, and when to save it. | consumer-groups, delivery-guarantees |  |
+| `consumer-lag` | short | How far behind the consumers are, and what it tells you. | offsets-and-commits, log-segments, littles-law | replication-lag |
+| `exactly-once-processing` | deep | Read, process and write as one transaction, and what "exactly once" means from end to end. | idempotent-producers, offsets-and-commits, delivery-guarantees | transactional-outbox, idempotency-keys |
+| `poison-messages` | short | A message that crashes every consumer that reads it. | dead-letter-queue, message-queue, offsets-and-commits, message-schemas | share-groups |
+| `message-schemas` | short | Schema registries, and keeping producers and consumers compatible. | schema-evolution, message-queue |  |
+
+**Getting changes out of the database**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `dual-writes` | short | Writing to the database and the queue separately, and how they drift apart. | transaction, message-queue | transactional-outbox, cache-invalidation, zanzibar, search-architecture |
+| `transactional-outbox` | deep | Write the event in the same transaction as the data, and relay it later. | dual-writes, transaction, idempotency | dual-writes, change-data-capture, idempotency-keys, exactly-once-processing, event-sourcing |
+| `logical-replication` | short | Postgres decoding its WAL into a stream of row changes, read through a replication slot. | write-ahead-log | triggers, leader-follower-replication |
+| `change-data-capture` | deep | Turning a database's own change log into events. Debezium and friends. | logical-replication, log-based-messaging, log-compaction | transactional-outbox, event-sourcing, cache-invalidation |
+
+**Built on logs**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `event-sourcing` | deep | Store the events, derive the current state from them. | log-based-messaging, optimistic-concurrency | change-data-capture, log-compaction, transactional-outbox |
+| `cqrs` | short | Separate models for writes and for reads. | event-sourcing, denormalization | search-architecture |
+
+**Jobs**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `background-jobs` | deep | Job queues on Postgres with SKIP LOCKED vs Redis vs a broker. | message-queue, explicit-locking, transactional-outbox, idempotency, poison-messages, dead-letter-queue | durable-execution, leases |
+| `job-scheduling` | short | Cron jobs and delayed jobs that run once, even with several workers. | background-jobs | durable-timers, leader-election, backfills |
+| `share-groups`* | short | Queue-style consumption on a Kafka topic: consumers share partitions and acknowledge each record. | consumer-groups | message-queue, poison-messages |
+
+`kafka-architecture` was two or three concepts. Its storage moved to
+`log-segments`, its replication through in-sync replicas to
+`in-sync-replicas` in phase 11 (it needs `sync-vs-async-replication`), and
+idempotent producers to `idempotent-producers`, since the broker build
+makes each of these on its own. Links to written nodes this adds:
+`log-segments` needs `append-only-log`, `zero-copy` needs `page-cache` and
+`system-call`, `zero-copy` compares `mmap`.
 
 ## Phase 11: Distributed systems I, replication and partitioning (skill 9)
 
@@ -444,106 +628,212 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `distributed-system` | deep | Many machines acting as one, and the three new problems: partial failure, an unreliable network, no shared clock. | network-latency | |
-| `fallacies-of-distributed-computing` | short | The eight assumptions everyone makes about networks, and why each is false. | distributed-system | |
-| `failure-models` | short | Crash-stop, crash-recover, omission and Byzantine failures. | distributed-system | |
-| `network-partitions` | short | Some machines can't reach others, and neither side knows why. | distributed-system | |
-| `fault-injection` | deep | Breaking networks, disks and processes on purpose to see what the system does. netem, toxiproxy, Jepsen. | network-partitions, crash-testing | |
+| `distributed-system` | deep | Many machines acting as one, and the three new problems: partial failure, an unreliable network, no shared clock. | network-latency |  |
+| `fallacies-of-distributed-computing` | short | The eight assumptions everyone makes about networks, and why each is false. | distributed-system |  |
+| `failure-models` | short | What an algorithm assumes can go wrong: crash-stop, crash-recover, omission or Byzantine nodes, and how late a message may arrive. | distributed-system | byzantine-fault-tolerance |
+| `network-partitions` | short | Some machines can't reach others, and neither side knows why. | distributed-system | failure-detection |
+| `process-pauses`* | short | A process can freeze for seconds (GC, a VM migration, SIGSTOP) and carry on as if no time passed. | distributed-system, garbage-collection | failover |
+| `fault-injection` | deep | Breaking networks, disks, clocks and processes on purpose to see what the system does. netem, toxiproxy, Jepsen. The phase 11 build. | network-partitions, process-pauses, crash-testing, history-checking | fuzzing |
 
 **Replication**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `replication` | deep | Keeping copies on several machines, for availability, lower latency and more reads. | distributed-system | partitioning |
-| `leader-follower-replication` | deep | One node takes writes and ships its log to the others. | replication, write-ahead-log | leaderless-replication |
-| `sync-vs-async-replication` | short | Wait for followers before confirming, or don't, and what each loses. | leader-follower-replication | |
-| `replication-lag` | deep | Followers behind the leader: read-your-writes and monotonic reads. | sync-vs-async-replication | |
-| `failover` | deep | Promoting a follower when the leader dies: split brain and lost writes. | leader-follower-replication | |
-| `multi-leader-replication` | short | Several nodes take writes, and conflicts become normal. | replication | |
+| `replication` | deep | Keeping copies on several machines, for availability, lower latency and more reads. | distributed-system | partitioning, backups |
+| `leader-follower-replication` | deep | One node takes writes and ships its log to the others. | replication, write-ahead-log | leaderless-replication, logical-replication, failure-detection, consensus, replicated-state-machine |
+| `sync-vs-async-replication` | short | Wait for followers before confirming, or don't, and what each loses. Semi-sync in between. | leader-follower-replication | quorums |
+| `in-sync-replicas`* | short | Kafka's rule: the leader waits for the followers that are caught up and drops slow ones from the set. | sync-vs-async-replication, kafka-architecture | quorums |
+| `replication-lag` | deep | Followers behind the leader: read-your-writes and monotonic reads. | sync-vs-async-replication | consumer-lag, causal-consistency, new-enemy-problem |
+| `failover` | deep | Promoting a follower when the leader dies: split brain and lost writes. | leader-follower-replication | process-pauses, disaster-recovery |
+| `multi-leader-replication` | short | Several nodes take writes, and conflicts become normal. | replication |  |
 | `leaderless-replication` | deep | Dynamo-style: write to several nodes, read from several, fix up differences. | replication | leader-follower-replication |
-| `quorums` | short | W + R > N, and why it's less of a guarantee than it looks. | leaderless-replication | |
-| `conflict-resolution` | deep | Last write wins, version vectors, and merging. | multi-leader-replication, leaderless-replication | |
-| `crdts` | deep | Data types that merge concurrent changes without coordinating. | conflict-resolution | |
+| `quorums` | short | W + R > N, sloppy quorums and hinted handoff, and why it's less of a guarantee than it looks. | leaderless-replication | in-sync-replicas, sync-vs-async-replication, consensus, paxos, split-brain, flexible-quorums |
+| `anti-entropy`* | deep | How leaderless copies catch up: read repair when a read spots a stale copy, Merkle trees in the background. | leaderless-replication | gossip-protocols |
+| `conflict-resolution` | deep | Last write wins, version vectors, and merging. | multi-leader-replication, leaderless-replication, clock-skew | vector-clocks, eventual-consistency |
+| `crdts` | deep | Data types that merge concurrent changes without coordinating. | conflict-resolution, vector-clocks, eventual-consistency | consensus, operational-transformation |
 
 **Partitioning**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `partitioning` | deep | Splitting data across machines so each holds a part. | distributed-system | replication |
-| `range-vs-hash-partitioning` | short | Split by key ranges or by a hash of the key, and what each makes easy. | partitioning | |
-| `consistent-hashing` | deep | Placing keys on a ring so adding a node moves only a few keys. | partitioning | |
-| `rebalancing` | short | Moving partitions when nodes join or leave. | partitioning | |
-| `hot-spots` | short | One key or partition getting most of the traffic. | partitioning | |
-| `partitioned-secondary-indexes` | short | Local vs global secondary indexes when data is split. | partitioning, indexes | |
+| `partitioning` | deep | Splitting data across machines so each holds a part. | distributed-system | replication, table-partitioning |
+| `range-vs-hash-partitioning` | short | Split by key ranges or by a hash of the key, and what each makes easy. | partitioning |  |
+| `consistent-hashing` | deep | Placing keys on a ring so adding a node moves only a few keys. | partitioning | load-balancing-algorithms, rebalancing |
+| `rebalancing` | short | Moving partitions when nodes join or leave. | partitioning | consumer-groups, consistent-hashing, stateful-stream-processing |
+| `hot-spots` | short | One key or partition getting most of the traffic. | partitioning | message-ordering, cache-stampede, caching, shuffle |
+| `partitioned-secondary-indexes` | short | Local vs global secondary indexes when data is split. | partitioning, indexes |  |
 
 **Consistency and time**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `consistency-models` | deep | The ladder from eventual to linearizable: what each lets a reader see. | replication | isolation-levels |
-| `eventual-consistency` | short | Stop writing and copies agree eventually. What it doesn't promise. | consistency-models | |
-| `causal-consistency` | short | Everyone sees causes before their effects. | consistency-models | |
-| `linearizability` | deep | The system acts like a single copy, and every operation happens at one instant. | consistency-models | serializable-snapshot-isolation |
-| `linearizability-checking` | short | Checking a recorded history for linearizability. Knossos and Porcupine. | linearizability, history-checking | |
-| `cap-theorem` | deep | What it actually says about partitions, and why most people quote it wrong. | linearizability, network-partitions | |
-| `pacelc` | short | Even with no partition, you trade latency against consistency. | cap-theorem | |
-| `clock-skew` | deep | Machine clocks drift and jump. NTP, and why timestamps can't order events safely. | distributed-system | |
-| `lamport-clocks` | short | A counter that orders events by cause, not by wall time. | clock-skew | |
-| `vector-clocks` | short | One counter per node, so you can tell "happened before" from "concurrent". | lamport-clocks | |
-| `hybrid-logical-clocks` | short | Wall time plus a logical counter. | lamport-clocks, clock-skew | |
+| `consistency-models` | deep | The ladder from eventual to linearizable: what each lets a reader see. | replication | isolation-levels, session-guarantees |
+| `eventual-consistency` | short | Stop writing and copies agree eventually. What it doesn't promise. | consistency-models | causal-consistency, conflict-resolution |
+| `causal-consistency` | short | Everyone sees causes before their effects. | consistency-models, lamport-clocks, vector-clocks | session-guarantees, replication-lag, eventual-consistency, new-enemy-problem |
+| `linearizability` | deep | The system acts like a single copy, and every operation happens at one instant. | consistency-models | serializability, distributed-locks |
+| `linearizability-checking` | short | Checking a recorded history for linearizability. Knossos and Porcupine. The phase 11 harness. | linearizability, history-checking | history-checking, deterministic-simulation-testing |
+| `cap-theorem` | deep | What it actually says about partitions, and why most people quote it wrong. | linearizability, network-partitions |  |
+| `pacelc` | short | Even with no partition, you trade latency against consistency. | cap-theorem, sync-vs-async-replication, quorums |  |
+| `clock-skew` | deep | Machine clocks drift and jump. NTP, wall vs monotonic clocks, and why timestamps can't order events safely. | distributed-system | event-time-vs-processing-time |
+| `lamport-clocks` | short | A counter that orders events by cause, not by wall time. | clock-skew | replicated-state-machine, id-generation |
+| `vector-clocks` | short | One counter per node, so you can tell "happened before" from "concurrent". | lamport-clocks, clock-skew | conflict-resolution |
+| `hybrid-logical-clocks` | short | Wall time plus a logical counter. | lamport-clocks, clock-skew |  |
+| `session-guarantees`* | short | Read your writes, monotonic reads, monotonic writes and writes follow reads: what one client can count on. | replication-lag, eventual-consistency | causal-consistency, consistency-models |
+| `split-brain`* | short | Two nodes that both think they are the leader, and how quorums and fencing stop it. | failover, network-partitions | fencing-tokens, quorums |
+| `merkle-trees`* | short | A tree of hashes that lets two replicas find which key ranges differ by comparing a few hashes. | cryptographic-hashes | tamper-evident-logs |
+| `tombstones`* | short | Marking a key as deleted instead of removing it, so a replica that missed the delete can't bring it back. | leaderless-replication | compaction |
+| `strict-serializability`* | short | Serializable plus real-time order: transactions look one at a time, in the order they actually happened. | serializability, linearizability |  |
+
+New nodes: `process-pauses` because the fault injector pauses processes
+and phase 12's `leases` and `fencing-tokens` exist because of pauses (they
+could list it in `needs`); `in-sync-replicas`, split out of phase 10's
+`kafka-architecture`; `anti-entropy`, because the leaderless mode builds
+read repair. `failure-models` now also covers timing assumptions, which
+FLP in phase 12 leans on. Links to written nodes this adds:
+`process-pauses` needs `garbage-collection`, `fault-injection` needs
+`crash-testing` and compares `fuzzing`, `consistent-hashing` compares
+`load-balancing-algorithms`.
 
 ## Phase 12: Distributed systems II, consensus and coordination (skill 10)
 
+**Detecting failure**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `failure-detection` | deep | Heartbeats and timeouts, phi accrual, and why you can't tell slow from dead. | distributed-system | |
-| `gossip-protocols` | short | Spreading state by random peer-to-peer chatter. SWIM membership. | failure-detection | |
-| `consensus` | deep | Getting nodes to agree on one value despite crashes. | failure-models | |
-| `flp-impossibility` | short | No algorithm can guarantee consensus in a fully asynchronous system with even one crash. | consensus | |
-| `replicated-state-machine` | deep | Same commands, same order, same state on every node. | consensus | |
-| `leader-election` | deep | Picking one node to be in charge, and making sure there's never two. | failure-detection | |
-| `raft` | deep | Consensus built to be understood: terms, elections, log replication and the safety rules. | replicated-state-machine, leader-election, leader-follower-replication | paxos |
-| `raft-snapshots` | short | Compacting the log so it doesn't grow forever. | raft | |
-| `raft-membership-changes` | short | Adding and removing nodes without two majorities. | raft | |
-| `linearizable-reads` | short | Serving reads from a consensus group without returning stale data. ReadIndex and leases. | raft, linearizability | |
-| `paxos` | deep | The original consensus algorithm, and Multi-Paxos. | consensus | raft |
-| `chain-replication` | short | Writes go down a chain of nodes, reads come from the tail. | replication | raft |
-| `byzantine-fault-tolerance` | short | Consensus when some nodes lie, and why most backends don't need it. | consensus | |
-| `leases` | short | A lock that expires on its own. Safe only if clocks behave. | clock-skew | |
-| `fencing-tokens` | short | A number that rises with every new lock holder, so an old holder can be refused. | leases | |
-| `distributed-locks` | deep | Why locks across machines are hard, and the Redlock argument. | fencing-tokens | |
-| `coordination-services` | short | ZooKeeper and etcd: what they're for and what they're not. | raft | |
-| `two-phase-commit` | deep | Prepare then commit across machines, and what happens when the coordinator dies. | transaction, failure-detection | sagas |
-| `sagas` | deep | A long operation as local steps, with a compensating step to undo each one. | two-phase-commit | two-phase-commit |
-| `distributed-transactions` | deep | How Spanner and CockroachDB run transactions across shards, with consensus and clocks. | two-phase-commit, raft, clock-skew | |
-| `deterministic-simulation-testing` | deep | Running a whole cluster in one deterministic process to replay any failure. FoundationDB, TigerBeetle. | fault-injection | |
+| `failure-detection` | deep | Deciding a node is dead from missing heartbeats, when slow and dead look the same. Phi accrual. | distributed-system, timeouts, process-pauses, flp-impossibility | health-checks, network-partitions, leader-follower-replication |
+| `gossip-protocols` | short | Spreading state and membership by random peer-to-peer chatter. SWIM. | failure-detection | anti-entropy |
+
+**Consensus**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `consensus` | deep | Getting nodes to agree on one value despite crashes, by needing a majority. | failure-models | leader-follower-replication, crdts, quorums, two-phase-commit |
+| `flp-impossibility` | short | No algorithm can guarantee consensus in a fully asynchronous system with even one crash. | consensus, failure-models |  |
+| `replicated-state-machine` | deep | Same commands in the same order give the same state on every node. Consensus picks the order. | consensus | lamport-clocks, leader-follower-replication, workflow-determinism |
+
+**Raft**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `raft` | deep | Consensus built to be understood: terms, one leader, and the rules that keep a committed entry from ever being lost. | replicated-state-machine, leader-follower-replication | paxos, chain-replication |
+| `raft-elections` | deep | How Raft picks a leader: randomized timeouts, votes only for nodes with an up-to-date log. Pre-vote and check-quorum. | raft, failure-detection | leader-election |
+| `raft-log-replication` | deep | How the leader copies entries to followers, repairs their logs, and decides an entry is committed. | raft |  |
+| `raft-snapshots` | short | Compacting the log into a snapshot so it doesn't grow forever, and sending it to followers that fell too far behind. | raft-log-replication |  |
+| `raft-membership-changes` | short | Adding and removing nodes without ever having two majorities. | raft-log-replication |  |
+| `linearizable-reads` | short | Serving reads from a Raft group without returning stale data. ReadIndex and lease reads. | raft-log-replication, linearizability, leases |  |
+
+**Other ways to agree**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `paxos` | deep | The original consensus algorithm, and Multi-Paxos for a whole log. | replicated-state-machine, flp-impossibility | raft, leases, quorums |
+| `chain-replication` | short | Writes go down a chain of nodes, reads come from the tail. | replication, consensus | raft |
+| `byzantine-fault-tolerance` | short | Consensus when some nodes lie, and why most backends don't need it. | consensus | failure-models |
+
+**Leases and locks**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `leases` | short | A lock that expires on its own. Safe only if clocks behave. | clock-skew, process-pauses | background-jobs, paxos |
+| `fencing-tokens` | short | A number that rises with every new lock holder, so an old holder can be refused. | leases, process-pauses | advisory-locks, optimistic-concurrency, split-brain |
+| `coordination-services` | short | ZooKeeper and etcd: a small, consistent store for leases, locks and config. What they're for and what they're not. | raft, leases | service-discovery |
+| `leader-election` | short | Picking one node to be in charge, usually with a lease in etcd or ZooKeeper, and fencing so an old leader can't act. | coordination-services, fencing-tokens, split-brain | raft-elections, distributed-locks, job-scheduling, idempotency, control-loops |
+| `distributed-locks` | deep | Why locks across machines are hard, and the Redlock argument. | fencing-tokens, coordination-services, leases, process-pauses | leader-election, advisory-locks, linearizability |
+
+**Transactions across machines**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `two-phase-commit` | deep | Prepare then commit across machines, and what happens when the coordinator dies. | transaction, failure-detection | sagas, delivery-guarantees, consensus |
+| `sagas` | deep | A long operation as local steps, with a compensating step to undo each one. | two-phase-commit, transactional-outbox | two-phase-commit, durable-execution, distributed-transactions |
+| `distributed-transactions` | deep | How Spanner and CockroachDB run transactions across shards: two-phase commit over Raft groups, with clocks to order them. | two-phase-commit, raft, hybrid-logical-clocks, partitioned-secondary-indexes, mvcc, clock-skew | sagas |
+
+**Testing**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `deterministic-simulation-testing` | deep | Running a whole cluster in one process on a seeded scheduler, so any failure replays exactly. FoundationDB, TigerBeetle. The phase 12 harness. | fault-injection | fuzzing, chaos-engineering, model-based-testing, linearizability-checking, workflow-determinism |
+| `flexible-quorums`* | short | Paxos only needs its election quorum and its replication quorum to overlap, not both to be majorities. | paxos | quorums |
+| `leadership-transfer`* | short | Handing Raft leadership to a chosen follower on purpose, for maintenance, without waiting for a timeout. | raft-elections |  |
+| `total-order-broadcast`* | short | Delivering the same messages in the same order to every node, and why that is the same problem as consensus. | consensus | log-based-messaging |
+| `commit-wait`* | short | Waiting out the clock's uncertainty before a commit becomes visible, so timestamps respect real time. Spanner's trick. | clock-skew, distributed-transactions |  |
+
+`raft` was a candidate for "two concepts" (open question). It's split:
+`raft` is the map (terms, roles, the safety rules and how the parts fit),
+and `raft-elections` and `raft-log-replication` are the two halves. Each
+is a build step with its own decision record (timeout ranges, batching).
+`leader-election` is now the general pattern (a lease in a coordination
+service plus fencing), so it's short and sits after the lease nodes; how
+consensus elects a leader lives in `raft-elections`.
+
+Links to written nodes: `failure-detection` compares with `health-checks`
+(a load balancer's health check is a failure detector);
+`deterministic-simulation-testing` compares with `fuzzing` (it fuzzes
+timing and faults instead of input).
 
 ## Phase 13: Reliability engineering (skill 11)
 
+**Targets**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `sli-slo-sla` | deep | What you measure, what you aim for, and what you promise. | latency-percentiles, availability-math | |
-| `error-budgets` | short | The failure your SLO allows, spent on shipping. | sli-slo-sla | |
-| `availability-math` | short | Nines, and how availability combines across dependencies in series and in parallel. | | |
-| `failure-domains` | short | Things that fail together: a disk, a rack, a zone, a region. | | |
-| `deadline-propagation` | short | Passing the remaining time budget down every call. | timeouts | |
-| `retry-budgets` | short | Capping retries as a share of traffic, so they can't multiply load. | retries-with-backoff | |
-| `circuit-breakers` | deep | Stop calling a dependency that's failing, and probe it before trusting it again. | timeouts | |
-| `load-shedding` | deep | Rejecting some work on purpose to keep serving the rest. | queueing-theory, bounded-queues | |
-| `admission-control` | short | Deciding at the door which requests get in, by priority. | load-shedding | |
-| `bulkheads` | short | Separate pools per dependency, so one slow one can't take everything. | thread-pool | |
-| `graceful-degradation` | short | Turning off the nice-to-have parts to keep the core working. | load-shedding | |
+| `availability-math` | short | Nines, and how availability combines across dependencies in series and in parallel. |  |  |
+| `sli-slo-sla` | deep | What you measure, what you aim for, and what you promise. | latency-percentiles, availability-math, red-method | observability |
+| `error-budgets` | short | The failure your SLO allows, spent on shipping. | sli-slo-sla | postmortems, canary-analysis |
+| `failure-domains` | short | Things that fail together: a disk, a rack, a zone, a region. | availability-math |  |
+
+**Calls between services**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `deadline-propagation` | short | Passing the remaining time budget down every call, so nobody keeps working on a request the caller gave up on. | timeouts, grpc | retries-with-backoff |
+| `retry-budgets` | short | Capping retries as a share of traffic, so retries at every layer can't multiply load. | retries-with-backoff | circuit-breakers |
+| `circuit-breakers` | deep | Stop calling a dependency that's failing, and probe it before trusting it again. | timeouts | health-checks, retry-budgets, graceful-degradation, metastable-failures |
+| `bulkheads` | short | Separate pools per dependency, so one slow one can't take everything. | thread-pool, connection-pooling | shuffle-sharding, cell-based-architecture, noisy-neighbor |
+
+**Overload**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `goodput` | short | Requests finished in time to be useful, as opposed to all requests processed. Under overload the two split apart. | queueing-theory |  |
+| `load-shedding` | deep | Rejecting some work on purpose, cheaply and early, to keep serving the rest. | goodput, bounded-queues, backpressure | autoscaling, rate-limiting, capacity-planning, metastable-failures |
+| `admission-control` | short | Letting in only as much work as the server can finish, often with a concurrency limit that adapts to latency. | load-shedding, littles-law | congestion-control |
+| `graceful-degradation` | short | Turning off the nice-to-have parts to keep the core working. | load-shedding | circuit-breakers |
 | `thundering-herd` | short | Many clients waking up and retrying at the same moment. | retries-with-backoff | cache-stampede |
-| `cascading-failures` | deep | One overloaded part pushes load onto the next until everything falls over. | load-shedding | |
-| `metastable-failures` | deep | The system stays down after the trigger is gone, held there by its own retries and queues. | retry-budgets, queueing-theory | cascading-failures |
-| `cell-based-architecture` | deep | Splitting a service into independent copies to shrink the blast radius. | partitioning, failure-domains | |
-| `chaos-engineering` | deep | Running failure experiments in production-like systems, with a hypothesis. | fault-injection | |
-| `backups` | short | Logical vs physical backups, and point-in-time recovery. | write-ahead-log | |
-| `disaster-recovery` | deep | RPO and RTO, and restore drills. A backup you haven't restored isn't a backup. | backups, replication | |
-| `incident-response` | deep | Roles, communication, and mitigating first while you investigate. | | |
-| `on-call` | short | Rotations, pages that deserve waking someone, and not burning out. | incident-response | |
-| `runbooks` | short | Written steps for known problems. | incident-response | |
-| `postmortems` | short | Blameless write-ups that fix the system, not the person. | incident-response | |
+| `cascading-failures` | deep | One overloaded part pushes load onto the next until everything falls over. | load-shedding, load-balancing, retries-with-backoff, thundering-herd, health-checks | metastable-failures, capacity-planning |
+| `metastable-failures` | deep | The system stays down after the trigger is gone, held there by its own retries and queues. | retry-budgets, goodput, caching | cascading-failures, load-shedding, circuit-breakers |
+| `cell-based-architecture` | short | Splitting a service into independent copies, with shuffle sharding, to shrink the blast radius. | partitioning, failure-domains | multi-tenancy, multi-region, bulkheads |
+
+**Testing and recovery**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `chaos-engineering` | deep | Failure experiments with a hypothesis, a steady-state measure and a stop condition. The phase 13 harness. | fault-injection, sli-slo-sla, postmortems | deterministic-simulation-testing |
+| `backups` | short | Logical vs physical backups, and point-in-time recovery from the WAL. | write-ahead-log | replication |
+| `disaster-recovery` | deep | RPO and RTO, and restore drills. A backup you haven't restored isn't a backup. | backups, replication | failover |
+
+**Incidents**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `incident-response` | deep | Roles, communication, and mitigating first while you investigate. |  |  |
+| `on-call` | short | Being the one who gets paged: rotations, pages worth waking for, runbooks for known problems, not burning out. | incident-response |  |
+| `postmortems` | short | Blameless write-ups that fix the system, not the person. | incident-response | error-budgets |
+| `shuffle-sharding`* | short | Giving each customer its own random small set of workers, so one bad customer can't take down the rest. | cell-based-architecture, failure-domains, retries-with-backoff | bulkheads |
+| `soft-deletion`* | short | Marking data deleted and purging it later, so a bad delete can be undone before the data is gone. | backups |  |
+
+`goodput` is new: the done-when line is a goodput curve, and load
+shedding, admission control, cascading and metastable failures all lean
+on the idea. `runbooks` is folded into `on-call`; on its own it was one
+line. `cell-based-architecture` is short now, since no build uses it.
+
+Links to written nodes: `deadline-propagation` needs `grpc` (gRPC
+deadlines are the worked example); `cascading-failures` needs
+`load-balancing` (a balancer moves a dead backend's load onto the rest;
+panic thresholds); `bulkheads` needs `connection-pooling`;
+`circuit-breakers` compares with `health-checks` (outlier ejection is a
+per-host breaker); `admission-control` compares with `congestion-control`
+(adaptive concurrency limits borrow TCP's approach).
 
 ## Phase 14: Running it: containers, deploys, observability (skill 12)
 
@@ -551,40 +841,56 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `linux-namespaces` | deep | Giving a process its own view of PIDs, network, mounts and users. | process | |
-| `cgroups` | deep | Limiting and measuring a group of processes' CPU, memory and I/O. | process | |
-| `overlayfs` | short | Stacking read-only layers under one writable layer. | filesystem | |
+| `linux-namespaces` | deep | Giving a process its own view of PIDs, network, mounts and users. | process | cgroups |
+| `cgroups` | deep | Limiting and measuring a group of processes' CPU, memory and I/O with cgroups v2, and why page cache counts against the memory limit. | process, page-cache | linux-namespaces |
+| `overlayfs` | short | Stacking read-only layers under one writable layer. | filesystem |  |
 | `containers` | deep | Processes with namespaces, cgroups and a layered filesystem. Not little VMs. | linux-namespaces, cgroups, overlayfs | virtual-machines |
-| `container-images` | short | The OCI image format: layers, manifests, registries. | containers | |
+| `container-images` | short | The OCI image format: layers, manifests, registries. | containers, overlayfs | supply-chain-security |
+| `container-runtimes`* | deep | The OCI runtime spec, runc and crun, and the containerd and CRI layers above them. What the phase 14 build imitates. | containers, container-images |  |
 | `virtual-machines` | short | Hypervisors, and microVMs like Firecracker. | process | containers |
-| `control-loops` | short | Compare desired state with actual state, act, repeat. | | |
-| `kubernetes` | deep | Desired state stored in etcd, and controllers that make it real. | containers, control-loops | |
-| `kubernetes-networking` | short | Pods, Services and how traffic reaches a pod. | kubernetes, load-balancing | |
-| `probes` | short | Liveness, readiness and startup probes, and how wrong ones cause outages. | kubernetes, health-checks | |
-
-**Shipping**
-
-| id | depth | note | needs | compare |
-|---|---|---|---|---|
-| `infrastructure-as-code` | deep | Declaring infrastructure in files. Terraform's plan, state and drift. | control-loops | |
-| `config-and-secrets` | short | Config in the environment, secrets kept out of code and logs. | | |
-| `ci-cd` | short | Build, test and deploy on every merge. | | |
-| `deployment-strategies` | deep | Rolling, blue-green and canary deploys, and rolling back. | load-balancing, health-checks, ci-cd | |
-| `feature-flags` | short | Shipping code switched off, and turning it on separately. | | deployment-strategies |
+| `control-loops` | short | Compare desired state with actual state, act, repeat. |  | leader-election, idempotency |
+| `kubernetes` | deep | Desired state stored in etcd, and controllers that make it real. Pods, scheduling, and where health checks and shutdown fit. | containers, control-loops, coordination-services, container-runtimes | infrastructure-as-code |
+| `kubernetes-networking` | deep | Pods, Services and how traffic reaches a pod: a flat pod network, kube-proxy's address rewriting, DNS names. | kubernetes, service-discovery, nat | grpc |
 
 **Observability**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `observability` | deep | Logs, metrics and traces: which question each one answers. | | |
-| `structured-logging` | short | Logs as fields a machine can query, not sentences. | observability | |
-| `metrics` | deep | Counters, gauges and histograms. Pull vs push. | observability, latency-percentiles | |
-| `histograms` | short | Why you can't average percentiles, and how histograms fix it. | metrics | |
-| `cardinality` | short | Why a user ID in a metric label breaks the metrics system. | metrics | |
-| `distributed-tracing` | deep | Following one request through many services with spans and propagated context. | observability | |
-| `opentelemetry` | short | The standard API and wire format for traces, metrics and logs. | distributed-tracing | |
-| `continuous-profiling` | short | Profiling production all the time, cheaply. | profiling | |
-| `alerting` | deep | Alert on what users feel, not on causes. SLO burn-rate alerts. | sli-slo-sla, metrics | |
+| `observability` | deep | Logs, metrics and traces: which question each one answers. |  | alerting, sli-slo-sla |
+| `structured-logging` | short | Logs as fields a machine can query, not sentences. | observability |  |
+| `metrics` | deep | Counters, gauges and histograms. Pull vs push. | observability, histograms |  |
+| `cardinality` | short | Why a user ID in a metric label breaks the metrics system. | metrics |  |
+| `distributed-tracing` | deep | Following one request through many services with spans and propagated context. | observability, http-semantics, structured-logging |  |
+| `trace-sampling`* | short | Keeping only some traces: head vs tail sampling, and what each one misses. | distributed-tracing | tail-latency |
+| `opentelemetry` | short | The standard API and wire format for traces, metrics and logs. | distributed-tracing, metrics |  |
+| `continuous-profiling` | short | Profiling production all the time, cheaply. | profiling, flame-graphs, ebpf |  |
+| `alerting` | deep | Alert on what users feel, not on causes. SLO burn-rate alerts. | sli-slo-sla, metrics, red-method, error-budgets, on-call | observability |
+
+**Deploying and scaling**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `infrastructure-as-code` | deep | Declaring infrastructure in files. Terraform's plan, state and drift. | control-loops | kubernetes |
+| `configuration`* | short | Keeping config out of the build, and treating a config change as carefully as a deploy. |  | feature-flags |
+| `ci-cd` | short | Build, test and deploy on every merge. |  |  |
+| `deployment-strategies` | deep | Rolling, blue-green and canary deploys, and rolling back. | load-balancing, health-checks, graceful-shutdown, ci-cd | zero-downtime-migrations, feature-flags, schema-evolution |
+| `canary-analysis`* | short | Comparing a canary's metrics with the old version's, and rolling back on its own when it's worse. The phase 14 build's rollback. | deployment-strategies, alerting, sli-slo-sla | error-budgets |
+| `feature-flags` | short | Shipping code switched off, and turning it on separately. | ci-cd | deployment-strategies, configuration |
+| `autoscaling`* | short | Adding and removing copies of a service from a metric, and why it reacts too late for a sudden spike. | kubernetes, metrics, capacity-planning, health-checks | load-shedding |
+| `seccomp`* | short | A system call filter that limits what a container's processes can ask the kernel to do. | system-call, containers |  |
+| `linux-capabilities`* | short | Root's power split into separate privileges, so a process can have some of them without being full root. | process, containers |  |
+| `kube-proxy`* | short | How a Kubernetes Service's virtual IP becomes packet-rewriting rules on every node: iptables, IPVS or nftables. | kubernetes-networking, nat |  |
+| `exemplars`* | short | A trace id attached to a metric sample, so a spike on a graph leads to a request that caused it. | metrics, distributed-tracing |  |
+
+`configuration` replaces `config-and-secrets`: secrets now live only in
+phase 15's `secrets-management`, so the two nodes don't overlap.
+
+`probes` is gone: the written `health-checks` node already covers
+readiness vs liveness and how a liveness probe that fails under load
+restarts busy pods. `kubernetes` links there and to `signals` for pod
+shutdown. Linux capabilities and seccomp stay inside `containers`
+("Where it gets tricky": containers aren't a strong security boundary)
+unless the runtime build implements them; add a short node then.
 
 ## Phase 15: Security, authentication and authorization (skill 13)
 
@@ -592,85 +898,148 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `threat-modeling` | deep | Listing what can go wrong before building: assets, attackers, trust boundaries. | | |
-| `password-hashing` | deep | Slow, salted hashes: bcrypt, scrypt, Argon2. | cryptographic-hashes | |
-| `cookies` | short | HttpOnly, Secure, SameSite, and what each stops. | http-semantics | |
-| `sessions` | deep | A random ID in a cookie, and the session stored on the server. | cookies | jwt |
-| `jwt` | deep | Signed tokens a server can check without a lookup, and the classic mistakes. | hmac, public-key-crypto | sessions |
-| `oauth2` | deep | Letting an app act for a user without their password. The auth code flow with PKCE. | tls | |
-| `oidc` | short | Logging in with OAuth2: the ID token. | oauth2, jwt | |
-| `passkeys` | short | WebAuthn: logging in with a key pair instead of a password. | public-key-crypto | password-hashing |
-| `mfa` | short | A second factor, and which kinds resist phishing. | password-hashing | |
+| `threat-modeling` | deep | Listing what can go wrong before building: assets, attackers, trust boundaries. |  |  |
+| `password-hashing` | deep | Slow, salted hashes: bcrypt, scrypt, Argon2. | cryptographic-hashes | passkeys |
+| `cookies` | short | HttpOnly, Secure, SameSite, and what each stops. | http-semantics |  |
+| `sessions` | deep | A random ID in a cookie, and the session stored on the server. | cookies | jwt, oidc |
+| `jwt` | deep | Signed tokens a server can check without a lookup, and the classic mistakes. | hmac, public-key-crypto | sessions, api-keys, ssrf |
+| `api-keys`* | short | Long-lived secrets that identify a calling program: stored hashed, prefixed so leaks can be spotted, rotated. | cryptographic-hashes | jwt |
+| `oauth2` | deep | Letting an app act for a user without their password. The auth code flow with PKCE. | tls | csrf |
+| `oidc` | short | Logging in with OAuth2: the ID token. | oauth2, jwt | sessions |
+| `passkeys` | deep | WebAuthn: logging in with a key pair bound to the site, so there's nothing to phish. Registration, sign-in and synced passkeys. | public-key-crypto, sessions | password-hashing, mfa |
+| `mfa` | short | A second factor, and which kinds resist phishing. | password-hashing | passkeys |
 
 **What you're allowed to do**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `authorization-models` | deep | RBAC, ABAC and relationship-based access: who can do what, and how to express it. | | |
-| `zanzibar` | deep | Google's authorization system: relation tuples, the check API and consistent snapshots. | authorization-models, consistency-models | |
-| `new-enemy-problem` | short | A permission change applied out of order lets the wrong person in. How zookies stop it. | zanzibar | |
-| `multi-tenancy` | deep | Keeping customers' data apart: shared tables, schema per tenant, database per tenant. | authorization-models | |
-| `row-level-security` | short | Postgres filtering rows per user inside the database. | multi-tenancy | |
-| `audit-logging` | short | An append-only record of who did what, that holds up later. | structured-logging | |
+| `authorization-models` | deep | RBAC, ABAC and relationship-based access: who can do what, and how to express it. |  |  |
+| `zanzibar` | deep | Google's authorization system: relation tuples, the check API and consistent snapshots. | authorization-models, consistency-models | dual-writes |
+| `new-enemy-problem` | short | A permission change applied out of order lets the wrong person in. How zookies stop it. | zanzibar | replication-lag, row-level-security, causal-consistency |
+| `multi-tenancy` | deep | Keeping customers' data apart: shared tables, schema per tenant, database per tenant. | authorization-models | cell-based-architecture, bola |
+| `row-level-security` | short | Postgres filtering rows per user inside the database. | multi-tenancy, sql | new-enemy-problem |
+| `audit-logging` | short | An append-only record of who did what, that holds up later. | structured-logging, append-only-log, cryptographic-hashes |  |
 
 **Attacks and defenses**
 
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `owasp-api-top-10` | short | The standard checklist of API security risks. | threat-modeling | |
-| `bola` | deep | Broken object-level authorization: changing an ID in the URL to read someone else's data. | authorization-models | |
-| `sql-injection` | short | User input run as SQL, and parameterized queries. | sql | |
-| `ssrf` | deep | Tricking the server into calling internal addresses for you. | http-semantics | |
-| `csrf` | short | Another site making the browser send an authenticated request. | cookies | |
-| `cors` | deep | What CORS actually protects, and what it doesn't. | http-semantics | csrf |
-| `secrets-management` | short | Vaults, KMS and rotating secrets. | config-and-secrets | |
-| `envelope-encryption` | short | Encrypting data with a data key, and the data key with a master key. | symmetric-encryption, secrets-management | |
-| `zero-trust` | short | No trusted network: every call proves who it's from. | mtls | |
-| `supply-chain-security` | short | Dependencies you didn't write: lockfiles, SBOMs and signed builds. | threat-modeling | |
+| `owasp-api-top-10` | short | The standard checklist of API security risks. | threat-modeling |  |
+| `bola` | short | Broken object-level authorization: changing an ID in the URL to read someone else's data. | authorization-models, owasp-api-top-10 | multi-tenancy |
+| `sql-injection` | short | User input run as SQL, and parameterized queries. | sql | validation-at-boundary, orm |
+| `ssrf` | deep | Tricking the server into calling internal addresses for you. | http-semantics, dns, webhooks, owasp-api-top-10 | dns-rebinding, jwt, csrf |
+| `same-origin-policy`* | short | The browser rule that a page from one site can't read responses from another. What CSRF slips past and CORS relaxes. | http-semantics, cookies |  |
+| `csrf` | short | Another site making the browser send an authenticated request. | cookies, same-origin-policy, sessions | cors, oauth2, ssrf, dns-rebinding |
+| `cors` | deep | What CORS actually protects, and what it doesn't. | same-origin-policy | csrf, http-caching |
+| `secrets-management` | short | Vaults, KMS and rotating secrets. | configuration |  |
+| `envelope-encryption` | short | Encrypting data with a data key, and the data key with a master key. | symmetric-encryption, secrets-management |  |
+| `zero-trust` | short | No trusted network: every call proves who it's from. | mtls | dns-rebinding |
+| `supply-chain-security` | short | Dependencies you didn't write: lockfiles, SBOMs and signed builds. | threat-modeling | container-images |
+| `dns-rebinding`* | short | A hostname that resolves to a safe address when it is checked and to a private one when it is used. | dns, same-origin-policy | ssrf, csrf, zero-trust |
+| `noisy-neighbor`* | short | One tenant using so much of a shared resource that the others slow down, and the limits that stop it. | multi-tenancy | bulkheads |
+| `egress-proxy`* | short | Sending every outbound request through one proxy that refuses internal addresses. A defence against SSRF. | ssrf, reverse-proxy |  |
+| `tamper-evident-logs`* | short | Logs chained together with hashes, so anyone can tell if an old entry was changed or removed. | audit-logging, cryptographic-hashes | merkle-trees |
+| `account-recovery`* | short | Getting back into an account after losing a password, phone or passkey, and why it's the weakest way in. | mfa, passkeys |  |
+| `sender-constrained-tokens`* | short | Access tokens bound to the client's key (DPoP, mTLS), so a stolen token is useless on its own. | oauth2, mtls |  |
+
+Cross-site scripting stays out as frontend; `cookies` explains HttpOnly
+by what it defends against and says so. Request smuggling, the third
+attack the build tests, is the written phase 3 `request-smuggling` node.
 
 ## Phase 16: Data systems (skill 14)
 
+**Analytical storage**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `oltp-vs-olap` | deep | Many small transactions vs a few huge scans, and why one database rarely does both well. | transaction | |
-| `column-storage` | deep | Storing each column together so scans read only what they need and compress well. | oltp-vs-olap, block-compression | |
-| `vectorized-execution` | short | Processing a batch of values per operation instead of one row at a time. | column-storage | |
-| `parquet` | short | The columnar file format: row groups, pages, encodings and statistics. | column-storage | |
-| `data-warehouse` | short | A database built for analytics. | oltp-vs-olap | |
-| `object-storage` | deep | S3's model: keys and objects, the consistency it promises, and the cost model. | http-semantics | filesystem |
-| `open-table-formats` | deep | Iceberg and Delta: tables built from files on object storage, with snapshots and atomic commits. | parquet, object-storage | |
-| `lakehouse` | short | Warehouse features on top of files in object storage. | open-table-formats, data-warehouse | |
-| `etl-vs-elt` | short | Transform before loading or after. | data-warehouse | |
-| `batch-processing` | deep | MapReduce and Spark: split the input, map, shuffle, reduce. | partitioning | stream-processing |
-| `shuffle` | short | Moving data between machines so matching keys meet. The expensive step. | batch-processing | |
-| `backfills` | short | Recomputing history after a bug or a new column. | batch-processing | |
-| `stream-processing` | deep | Computing over events as they arrive, without end. | log-based-messaging | batch-processing |
-| `event-time-vs-processing-time` | short | When it happened vs when you saw it. | stream-processing | |
-| `windowing` | short | Tumbling, sliding and session windows. | event-time-vs-processing-time | |
-| `watermarks` | deep | How a stream processor decides a window is complete. | event-time-vs-processing-time | |
-| `late-data` | short | Events that arrive after their window closed. | watermarks | |
-| `stateful-stream-processing` | deep | Keeping state inside a stream job and checkpointing it. How Flink does it. | stream-processing, checkpoints | |
-| `dataflow-model` | short | One model for batch and streaming: what, where, when, how. | watermarks, windowing | |
-| `lambda-vs-kappa` | short | Two pipelines (batch and stream) or one stream for everything. | batch-processing, stream-processing | |
+| `oltp-vs-olap` | deep | Many small transactions vs a few huge scans, and why one database rarely does both well. | transaction |  |
+| `column-storage` | deep | Storing each column together so scans read only what they need and compress well. | oltp-vs-olap, block-compression | data-models, lsm-tree |
+| `vectorized-execution` | short | Processing a batch of values per operation instead of one row at a time. How DuckDB and ClickHouse run queries. | column-storage, cpu-cache |  |
+| `parquet` | short | The columnar file format: row groups, pages, encodings and statistics. | column-storage, binary-encoding |  |
+| `data-warehouse` | short | A separate database for analytics, loaded from the databases that run the product. | oltp-vs-olap | open-table-formats |
+| `etl-vs-elt` | short | Transform the data before loading it into the warehouse, or after. | data-warehouse | backfills |
+| `object-storage` | deep | S3's model: keys and objects, the consistency it promises, conditional writes, and the cost model. | http-semantics, conditional-requests | filesystem |
+| `open-table-formats` | deep | Iceberg and Delta: tables made of Parquet files on object storage, with snapshots and atomic commits. What a lakehouse is built on. | parquet, object-storage | data-warehouse, transactional-sinks, write-ahead-log, mvcc |
+
+**Batch**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `batch-processing` | deep | MapReduce and Spark: split the input, map, shuffle, reduce. | partitioning, atomic-rename | stream-processing |
+| `shuffle` | short | Moving data between machines so matching keys meet. The expensive step. | batch-processing | stateful-stream-processing, hot-spots |
+| `backfills` | short | Recomputing history after a bug or a new column. | batch-processing, idempotency | etl-vs-elt, lambda-vs-kappa, job-scheduling |
+
+**Streams**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `stream-processing` | deep | Computing over events as they arrive, without end. | log-based-messaging | batch-processing, backpressure |
+| `event-time-vs-processing-time` | short | When it happened vs when you saw it. | stream-processing | clock-skew |
+| `windowing` | short | Tumbling, sliding and session windows. | event-time-vs-processing-time | window-functions |
+| `watermarks` | deep | How a stream processor decides a window is complete. | windowing |  |
+| `late-data` | short | Events that arrive after their window closed: drop them, send them aside, or update the result. | watermarks |  |
+| `dataflow-model` | short | One model for batch and streaming: what is computed, where in event time, when results come out, and how later results refine earlier ones. | watermarks, late-data | lambda-vs-kappa |
+| `lambda-vs-kappa` | short | Two pipelines (batch and stream) or one stream for everything. | batch-processing, stream-processing | dataflow-model, backfills |
+
+**State, checkpoints and output**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `stateful-stream-processing` | deep | Keeping per-key state inside a stream job, where it lives, and how it moves when the job rescales. How Flink does it. | stream-processing, partitioning | shuffle, rebalancing |
+| `distributed-snapshots`* | deep | Saving a consistent copy of a running job's state without stopping it: Chandy-Lamport, and the checkpoint barriers Flink uses. | stateful-stream-processing, offsets-and-commits | checkpoints |
+| `transactional-sinks`* | short | Making a stream job's output exactly once: stage the files, and commit them only when the checkpoint completes. | distributed-snapshots, exactly-once-processing, two-phase-commit, object-storage | idempotency, open-table-formats |
+| `star-schema`* | short | A fact table of events surrounded by dimension tables: the classic data warehouse layout. | data-warehouse | normalization |
+
+`lakehouse` is folded into `open-table-formats`: a lakehouse is open
+table formats plus a query engine, and made no sense as its own node.
+`stateful-stream-processing` no longer carries checkpointing: the
+snapshot algorithm is its own node (`distributed-snapshots`), because the
+build's harness and its checkpoint-design decision both rest on it.
+`transactional-sinks` covers the build's output commit protocol;
+`exactly-once-processing` (phase 10) stays about the broker's side.
+`checkpoints` (phase 7) is the WAL sense of the word, hence the compare.
+Triggers and accumulation go inside `dataflow-model` and `late-data`,
+not a node of their own.
 
 ## Phase 17: Putting it together: system design and durable execution (skill 15)
 
+**Designing a system**
+
 | id | depth | note | needs | compare |
 |---|---|---|---|---|
-| `system-design-method` | deep | Requirements, rough numbers, data model, API, then the bottlenecks. | backend-engineer, back-of-envelope-estimation | |
-| `back-of-envelope-estimation` | deep | Rough math on traffic, storage and bandwidth before any diagram. | latency-numbers | |
-| `monolith-vs-microservices` | deep | What splitting a system into services buys and what it costs. | distributed-system | |
-| `service-mesh` | short | Sidecar proxies that handle retries, mTLS and telemetry for every service. | mtls, load-balancing | |
-| `id-generation` | short | Unique IDs across machines: sequences, Snowflake IDs, UUIDv7. | primary-keys, clock-skew | |
-| `fan-out` | short | Fan-out on write vs on read, like a timeline. | caching | |
-| `distributed-rate-limiting` | short | Rate limits shared across many servers. | rate-limiting-algorithms, redis-internals | |
-| `multi-region` | deep | Active-passive vs active-active across regions, and where the data lives. | replication, failover | |
-| `realtime-sync` | deep | Keeping many clients in sync live: operational transforms vs CRDTs, and a server in the middle. | crdts, websockets | |
-| `search-architecture` | short | Inverted indexes split across machines, and keeping them fed. | full-text-search, partitioning | |
-| `durable-execution` | deep | Workflows that survive crashes by recording each step and replaying the history. Temporal, Restate, DBOS. | event-sourcing, idempotency, replicated-state-machine | sagas |
-| `workflow-determinism` | short | Why workflow code has to make the same choices when it's replayed. | durable-execution | |
-| `durable-timers` | short | Sleeping for a week inside a workflow, surviving restarts. | durable-execution | |
-| `orchestration-vs-choreography` | short | One coordinator calls the steps vs services reacting to each other's events. | sagas | |
+| `back-of-envelope-estimation` | short | Rough math on traffic, storage and bandwidth before any diagram. | latency-numbers, littles-law | capacity-planning |
+| `system-design-method` | deep | Requirements, rough numbers, data model, API, then the bottlenecks. | backend-engineer, back-of-envelope-estimation | monolith-vs-microservices, feed-fan-out |
+| `monolith-vs-microservices` | deep | What splitting a system into services buys and what it costs. | distributed-system | system-design-method, orchestration-vs-choreography |
+| `service-mesh` | short | Proxies beside every service that handle retries, mTLS and telemetry, so the services don't have to. | mtls, load-balancing, service-discovery, monolith-vs-microservices, retry-budgets, zero-trust | api-gateway |
+| `id-generation` | short | Unique IDs across machines: sequences, Snowflake IDs, UUIDv7. | primary-keys, clock-skew, partitioning | lamport-clocks |
+| `feed-fan-out` | short | Building a feed: copy each post into followers' feeds when it's written, or gather posts when the feed is read. | caching, denormalization, hot-spots | pub-sub, system-design-method |
+| `distributed-rate-limiting` | short | Rate limits shared across many servers. | rate-limiting-algorithms, redis-internals, redis-transactions, clock-skew |  |
+| `realtime-sync` | deep | Keeping many clients in sync live: operational transforms vs CRDTs, and a server in the middle. | crdts, websockets, fencing-tokens, operational-transformation | long-polling |
+| `search-architecture` | short | Inverted indexes split across machines, and keeping them fed. | full-text-search, partitioning, change-data-capture | cqrs, dual-writes |
+| `multi-region` | deep | Active-passive vs active-active across regions, and where the data lives. | replication, failover, sync-vs-async-replication, disaster-recovery | cell-based-architecture |
+
+**Durable execution**
+
+| id | depth | note | needs | compare |
+|---|---|---|---|---|
+| `orchestration-vs-choreography` | short | One coordinator calls the steps vs services reacting to each other's events. | sagas | monolith-vs-microservices |
+| `durable-execution` | deep | Workflows that survive crashes by recording each step's result and replaying the history. Temporal, Restate, DBOS. | event-sourcing, idempotency-keys, replicated-state-machine, orchestration-vs-choreography | sagas, background-jobs, long-running-operations |
+| `workflow-determinism` | short | Why workflow code has to make the same choices when it's replayed. | durable-execution | replicated-state-machine, deterministic-simulation-testing |
+| `durable-timers` | short | Sleeping for a week inside a workflow, surviving restarts. | durable-execution | job-scheduling |
+| `operational-transformation`* | short | Rewriting concurrent edits against each other so every copy of a shared document ends up the same. | eventual-consistency | crdts |
+| `workflow-versioning`* | short | Changing workflow code while old runs are still in flight: patches, version markers and pinned workers. | workflow-determinism |  |
+
+`back-of-envelope-estimation` is short now: the numbers live in
+`latency-numbers` (deep, written) and sizing real hardware in
+`capacity-planning` (phase 9), so what's left is the method.
+`fan-out` is renamed `feed-fan-out`, so it isn't confused with request
+fan-out in `tail-latency`. `long-polling` is new because the build's
+"how workers poll" decision rests on it and `realtime-sync` weighs it
+against WebSockets; it would also fit phase 5 if that phase wants it.
+Changing workflow code while old runs are still going (versioning,
+patching) belongs in `workflow-determinism`'s tricky section, not a node.
+Task queues and workers are part of `durable-execution`, which compares
+with `background-jobs` (phase 10).
 
 ## Choices baked into this guess
 
@@ -697,11 +1066,13 @@ process → virtual-memory → page-cache → fsync → crash-consistency
 
 ## Open questions for later phases
 
-- **Some shorts may be too small.** `dirty-read`, `non-repeatable-read` and
-  `phantom-read` might read better as one node. `cache-aside`,
-  `write-through-cache` and `write-behind-cache` too. Decide when writing.
-- **Some deeps may be two concepts.** `raft` (elections plus log
-  replication), `kafka-architecture`, `postgres-architecture`.
+- **Settled at the phase 4-17 shape review:** the three read anomalies
+  stay separate (the phase 8 build reproduces each); `cache-aside`,
+  `write-through-cache` and `write-behind-cache` merged into
+  `caching-patterns`; `raft` split into an overview plus `raft-elections`
+  and `raft-log-replication`; `kafka-architecture` split into
+  `log-segments`, `idempotent-producers` and `in-sync-replicas`;
+  `postgres-architecture` became a short overview.
 - **Missing on purpose:** language-specific framework knowledge, frontend,
   mobile, ML. AI engineering lives in `ai-eng-graph`.
 - **Possibly missing:** `search-engines` in depth, `graph-databases`,

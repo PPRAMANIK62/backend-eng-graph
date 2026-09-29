@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- incident commander -->
+  <rect x="220" y="20" width="280" height="64" rx="6" class="box"/>
+  <rect x="220" y="20" width="280" height="64" rx="6" class="focus-s"/>
+  <text x="360" y="46" text-anchor="middle" class="ink t b">Incident commander</text>
+  <text x="360" y="68" text-anchor="middle" class="ink2 n">holds every role not handed out</text>
+
+  <!-- connectors -->
+  <line x1="360" y1="84" x2="360" y2="110" class="line"/>
+  <line x1="130" y1="110" x2="590" y2="110" class="line"/>
+  <line x1="130" y1="110" x2="130" y2="137" class="line" marker-end="url(#arrow)"/>
+  <line x1="360" y1="110" x2="360" y2="137" class="line" marker-end="url(#arrow)"/>
+  <line x1="590" y1="110" x2="590" y2="137" class="line" marker-end="url(#arrow)"/>
+
+  <!-- three leads -->
+  <rect x="20" y="140" width="220" height="100" rx="6" class="box"/>
+  <text x="130" y="166" text-anchor="middle" class="ink t b">Operations lead</text>
+  <text x="130" y="190" text-anchor="middle" class="ink2 n">rollbacks, drains, config</text>
+  <text x="130" y="208" text-anchor="middle" class="ink2 n">the only one who changes</text>
+  <text x="130" y="224" text-anchor="middle" class="ink2 n">the system</text>
+
+  <rect x="250" y="140" width="220" height="100" rx="6" class="box"/>
+  <text x="360" y="166" text-anchor="middle" class="ink t b">Communications lead</text>
+  <text x="360" y="190" text-anchor="middle" class="ink2 n">regular updates to</text>
+  <text x="360" y="208" text-anchor="middle" class="ink2 n">stakeholders and customers,</text>
+  <text x="360" y="224" text-anchor="middle" class="ink2 n">answers their questions</text>
+
+  <rect x="480" y="140" width="220" height="100" rx="6" class="box"/>
+  <text x="590" y="166" text-anchor="middle" class="ink t b">Planning / scribe</text>
+  <text x="590" y="190" text-anchor="middle" class="ink2 n">timeline, bugs, handoffs,</text>
+  <text x="590" y="208" text-anchor="middle" class="ink2 n">changes to revert later</text>
+
+  <!-- SMEs under ops -->
+  <line x1="130" y1="240" x2="130" y2="267" class="line" marker-end="url(#arrow)"/>
+  <rect x="20" y="270" width="220" height="70" rx="6" class="box"/>
+  <text x="130" y="296" text-anchor="middle" class="ink t b">Subject matter experts</text>
+  <text x="130" y="320" text-anchor="middle" class="ink2 n">report condition, actions, needs</text>
+
+  <text x="480" y="296" class="ink2 n">Small incident: one person holds</text>
+  <text x="480" y="314" class="ink2 n">all of these. Big incident: each</text>
+  <text x="480" y="332" class="ink2 n">lead can run a team of their own.</text>
+</svg>

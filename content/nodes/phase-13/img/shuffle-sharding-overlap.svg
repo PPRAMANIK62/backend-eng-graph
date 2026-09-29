@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="286" viewBox="0 0 720 286" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe{fill:#1baf7a}
+    .dash{stroke-dasharray:5 4}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .old{fill:#5c5b57}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe{fill:#199e70}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="28" y="30" class="ink t b">Alice's shard: C, F, L</text>
+  <text x="692" y="30" text-anchor="end" class="ink2 n">hashed from her customer ID</text>
+  <rect x="28" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="48" y="63" text-anchor="middle" class="ink t mono">A</text>
+  <rect x="76" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="96" y="63" text-anchor="middle" class="ink t mono">B</text>
+  <rect x="124" y="40" width="40" height="36" rx="6" class="focus-box"/>
+  <text x="144" y="63" text-anchor="middle" class="ink t mono">C</text>
+  <rect x="172" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="192" y="63" text-anchor="middle" class="ink t mono">D</text>
+  <rect x="220" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="240" y="63" text-anchor="middle" class="ink t mono">E</text>
+  <rect x="268" y="40" width="40" height="36" rx="6" class="focus-box"/>
+  <text x="288" y="63" text-anchor="middle" class="ink t mono">F</text>
+  <rect x="316" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="336" y="63" text-anchor="middle" class="ink t mono">G</text>
+  <rect x="364" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="384" y="63" text-anchor="middle" class="ink t mono">H</text>
+  <rect x="412" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="432" y="63" text-anchor="middle" class="ink t mono">I</text>
+  <rect x="460" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="480" y="63" text-anchor="middle" class="ink t mono">J</text>
+  <rect x="508" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="528" y="63" text-anchor="middle" class="ink t mono">K</text>
+  <rect x="556" y="40" width="40" height="36" rx="6" class="focus-box"/>
+  <text x="576" y="63" text-anchor="middle" class="ink t mono">L</text>
+  <rect x="604" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="624" y="63" text-anchor="middle" class="ink t mono">M</text>
+  <rect x="652" y="40" width="40" height="36" rx="6" class="box"/>
+  <text x="672" y="63" text-anchor="middle" class="ink t mono">N</text>
+  <text x="28" y="112" class="ink t b">Bob's shard: B, F, M</text>
+  <text x="692" y="112" text-anchor="end" class="ink2 n">his poison request breaks all three</text>
+  <rect x="28" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="48" y="145" text-anchor="middle" class="ink t mono">A</text>
+  <rect x="76" y="122" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="96" y="145" text-anchor="middle" class="ink t mono">B</text>
+  <rect x="124" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="144" y="145" text-anchor="middle" class="ink t mono">C</text>
+  <rect x="172" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="192" y="145" text-anchor="middle" class="ink t mono">D</text>
+  <rect x="220" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="240" y="145" text-anchor="middle" class="ink t mono">E</text>
+  <rect x="268" y="122" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="288" y="145" text-anchor="middle" class="ink t mono">F</text>
+  <rect x="316" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="336" y="145" text-anchor="middle" class="ink t mono">G</text>
+  <rect x="364" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="384" y="145" text-anchor="middle" class="ink t mono">H</text>
+  <rect x="412" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="432" y="145" text-anchor="middle" class="ink t mono">I</text>
+  <rect x="460" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="480" y="145" text-anchor="middle" class="ink t mono">J</text>
+  <rect x="508" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="528" y="145" text-anchor="middle" class="ink t mono">K</text>
+  <rect x="556" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="576" y="145" text-anchor="middle" class="ink t mono">L</text>
+  <rect x="604" y="122" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="624" y="145" text-anchor="middle" class="ink t mono">M</text>
+  <rect x="652" y="122" width="40" height="36" rx="6" class="box"/>
+  <text x="672" y="145" text-anchor="middle" class="ink t mono">N</text>
+  <text x="28" y="194" class="ink t b">Alice during the incident: C and L still work</text>
+  <text x="692" y="194" text-anchor="end" class="ink2 n">her client retries on them</text>
+  <rect x="28" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="48" y="227" text-anchor="middle" class="ink t mono">A</text>
+  <rect x="76" y="204" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="96" y="227" text-anchor="middle" class="ink t mono">B</text>
+  <rect x="124" y="204" width="40" height="36" rx="6" class="safe-box"/>
+  <text x="144" y="227" text-anchor="middle" class="ink t mono">C</text>
+  <rect x="172" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="192" y="227" text-anchor="middle" class="ink t mono">D</text>
+  <rect x="220" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="240" y="227" text-anchor="middle" class="ink t mono">E</text>
+  <rect x="268" y="204" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="288" y="227" text-anchor="middle" class="ink t mono">F</text>
+  <rect x="316" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="336" y="227" text-anchor="middle" class="ink t mono">G</text>
+  <rect x="364" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="384" y="227" text-anchor="middle" class="ink t mono">H</text>
+  <rect x="412" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="432" y="227" text-anchor="middle" class="ink t mono">I</text>
+  <rect x="460" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="480" y="227" text-anchor="middle" class="ink t mono">J</text>
+  <rect x="508" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="528" y="227" text-anchor="middle" class="ink t mono">K</text>
+  <rect x="556" y="204" width="40" height="36" rx="6" class="safe-box"/>
+  <text x="576" y="227" text-anchor="middle" class="ink t mono">L</text>
+  <rect x="604" y="204" width="40" height="36" rx="6" class="lost-box"/>
+  <text x="624" y="227" text-anchor="middle" class="ink t mono">M</text>
+  <rect x="652" y="204" width="40" height="36" rx="6" class="box"/>
+  <text x="672" y="227" text-anchor="middle" class="ink t mono">N</text>
+  <path d="M276,212 L300,232 M300,212 L276,232" class="lost-s"/>
+  <text x="360" y="272" text-anchor="middle" class="ink n">Alice shares only F with Bob, so she loses one worker of three, not all of them.</text>
+</svg>

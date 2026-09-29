@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="305" viewBox="0 0 720 305" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+    <marker id="arrowlost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="lost"/>
+    </marker>
+  </defs>
+  <text x="15" y="30" class="ink t b">A request's path, and where it can be turned away</text>
+  <rect x="15" y="50" width="122" height="44" rx="6" class="box"/>
+  <text x="76.0" y="77" text-anchor="middle" class="ink t b">Client</text>
+  <line x1="137" y1="72" x2="156" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="76.0" y1="94" x2="76.0" y2="128" class="lost-s" stroke-width="2" style="stroke-width:2" marker-end="url(#arrowlost)"/>
+  <text x="82.0" y="116" class="lost n b">reject</text>
+  <text x="19" y="150" class="ink2 n">Client-side</text>
+  <text x="19" y="166" class="ink2 n">throttling: fails</text>
+  <text x="19" y="182" class="ink2 n">locally, costs the</text>
+  <text x="19" y="198" class="ink2 n">server nothing</text>
+  <rect x="157" y="50" width="122" height="44" rx="6" class="box"/>
+  <text x="218.0" y="77" text-anchor="middle" class="ink t b">Gateway or LB</text>
+  <line x1="279" y1="72" x2="298" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="218.0" y1="94" x2="218.0" y2="128" class="lost-s" stroke-width="2" style="stroke-width:2" marker-end="url(#arrowlost)"/>
+  <text x="224.0" y="116" class="lost n b">reject</text>
+  <text x="161" y="150" class="ink2 n">Rate, quota or</text>
+  <text x="161" y="166" class="ink2 n">priority limits.</text>
+  <text x="161" y="182" class="ink2 n">Cheap, but knows</text>
+  <text x="161" y="198" class="ink2 n">little about the</text>
+  <text x="161" y="214" class="ink2 n">server</text>
+  <rect x="299" y="50" width="122" height="44" rx="6" class="box"/>
+  <text x="360.0" y="77" text-anchor="middle" class="ink t b">Server door</text>
+  <line x1="421" y1="72" x2="440" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="360.0" y1="94" x2="360.0" y2="128" class="lost-s" stroke-width="2" style="stroke-width:2" marker-end="url(#arrowlost)"/>
+  <text x="366.0" y="116" class="lost n b">reject</text>
+  <text x="303" y="150" class="ink2 n">Too many in</text>
+  <text x="303" y="166" class="ink2 n">flight, or CPU</text>
+  <text x="303" y="182" class="ink2 n">too high: a</text>
+  <text x="303" y="198" class="ink2 n">fast 503</text>
+  <rect x="441" y="50" width="122" height="44" rx="6" class="box"/>
+  <text x="502.0" y="77" text-anchor="middle" class="ink t b">Queue</text>
+  <line x1="563" y1="72" x2="582" y2="72" class="line" marker-end="url(#arrow)"/>
+  <line x1="502.0" y1="94" x2="502.0" y2="128" class="lost-s" stroke-width="2" style="stroke-width:2" marker-end="url(#arrowlost)"/>
+  <text x="508.0" y="116" class="lost n b">reject</text>
+  <text x="445" y="150" class="ink2 n">Waited too long,</text>
+  <text x="445" y="166" class="ink2 n">or its deadline</text>
+  <text x="445" y="182" class="ink2 n">has passed: drop</text>
+  <text x="445" y="198" class="ink2 n">before any work</text>
+  <rect x="583" y="50" width="122" height="44" rx="6" class="box"/>
+  <text x="644.0" y="77" text-anchor="middle" class="ink t b">Worker</text>
+  <line x1="644.0" y1="94" x2="644.0" y2="128" class="lost-s" stroke-width="2" style="stroke-width:2" marker-end="url(#arrowlost)"/>
+  <text x="650.0" y="116" class="lost n b">reject</text>
+  <text x="587" y="150" class="ink2 n">The client gave</text>
+  <text x="587" y="166" class="ink2 n">up: stop the</text>
+  <text x="587" y="182" class="ink2 n">rest of the work</text>
+  <line x1="40" y1="245" x2="680" y2="245" class="line" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="40" y="270" class="ink n">Earlier: cheaper to reject, and</text>
+  <text x="40" y="286" class="ink n">nothing spent on the request yet</text>
+  <text x="680" y="270" text-anchor="end" class="ink n">Later: more is known (priority, deadline,</text>
+  <text x="680" y="286" text-anchor="end" class="ink n">real load), but more work is already spent</text>
+</svg>

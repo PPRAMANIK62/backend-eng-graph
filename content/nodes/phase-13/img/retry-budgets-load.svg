@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="236" viewBox="0 0 720 236" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="24" class="ink t b">Load on a datacenter that rejects most requests</text>
+  <text x="20" y="44" class="ink2 n">Requests the clients want to send = 1×. Numbers from Google’s worked example.</text>
+
+  <!-- scale: 1x = 150 px, bars start at x=250 -->
+  <text x="238" y="87" text-anchor="end" class="ink t">No retries</text>
+  <rect x="250" y="70" width="150" height="26" rx="6" class="box"/>
+  <text x="410" y="88" class="ink n">1×</text>
+
+  <text x="238" y="137" text-anchor="end" class="ink t">Up to 3 attempts</text>
+  <text x="238" y="153" text-anchor="end" class="ink2 n">per request</text>
+  <rect x="250" y="120" width="440" height="26" rx="6" class="lost"/>
+  <text x="680" y="138" text-anchor="end" class="ink n b">just under 3×</text>
+
+  <text x="238" y="197" text-anchor="end" class="ink t">3 attempts, plus</text>
+  <text x="238" y="213" text-anchor="end" class="ink2 n">retries under 10% of requests</text>
+  <rect x="250" y="180" width="165" height="26" rx="6" class="focus"/>
+  <text x="425" y="198" class="ink n b">about 1.1×</text>
+
+  <line x1="250" y1="60" x2="250" y2="224" class="line"/>
+</svg>

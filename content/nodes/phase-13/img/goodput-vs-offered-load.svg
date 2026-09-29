@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="390" viewBox="0 0 720 390" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .safe{fill:#1baf7a} .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .dash{stroke:#8a8984;stroke-width:1.5;fill:none;stroke-dasharray:6 5}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .safe{fill:#199e70} .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- axes -->
+  <line x1="90" y1="290" x2="660" y2="290" class="line" marker-end="url(#arrow)"/>
+  <line x1="90" y1="290" x2="90" y2="30" class="line" marker-end="url(#arrow)"/>
+  <text x="660" y="315" text-anchor="end" class="ink t">Offered load (requests sent per second)</text>
+  <text x="0" y="0" transform="translate(58,290) rotate(-90)" class="ink t">Goodput (answered in time)</text>
+
+  <!-- capacity marker -->
+  <line x1="330" y1="290" x2="330" y2="60" class="dash"/>
+  <text x="324" y="72" text-anchor="end" class="ink2 n">the server's capacity</text>
+
+  <!-- offered load = everything sent -->
+  <line x1="90" y1="290" x2="600" y2="40" class="dash"/>
+  <text x="596" y="28" text-anchor="end" class="ink2 n">every request sent</text>
+
+  <!-- without protection -->
+  <path d="M90,290 L318,178 C335,170 350,172 362,190 C382,222 400,262 425,288 L650,288" class="lost-s"/>
+  <text x="440" y="236" class="lost n b">Without protection</text>
+  <text x="440" y="252" class="ink2 n">replies arrive after the client gave up,</text>
+  <text x="440" y="267" class="ink2 n">retries add load, goodput falls to zero</text>
+
+  <!-- with load shedding -->
+  <path d="M90,290 L318,178 C330,172 340,171 360,171 L650,180" class="safe-s"/>
+  <text x="470" y="126" class="safe n b">With load shedding</text>
+  <text x="470" y="142" class="ink2 n">excess rejected, the rest stays fast,</text>
+  <text x="470" y="158" class="ink2 n">goodput holds near capacity</text>
+
+  <!-- legend -->
+  <line x1="90" y1="352" x2="120" y2="352" class="safe-s"/>
+  <text x="128" y="356" class="ink n">goodput with shedding</text>
+  <line x1="290" y1="352" x2="320" y2="352" class="lost-s"/>
+  <text x="328" y="356" class="ink n">goodput without</text>
+  <line x1="460" y1="352" x2="490" y2="352" class="dash"/>
+  <text x="498" y="356" class="ink n">throughput (all requests)</text>
+</svg>

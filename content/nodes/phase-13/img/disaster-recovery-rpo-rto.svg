@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="250" viewBox="0 0 720 250" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <line x1="30" y1="130" x2="700" y2="130" class="line" marker-end="url(#arrow)"/>
+  <text x="700" y="150" text-anchor="end" class="ink2 n">time</text>
+  <circle cx="110" cy="130" r="7" class="focus"/>
+  <text x="110" y="158" text-anchor="middle" class="ink t b">Last recovery point</text>
+  <text x="110" y="176" text-anchor="middle" class="ink2 n">newest backup or archived log</text>
+  <line x1="360" y1="70" x2="360" y2="138" class="lost-s"/>
+  <text x="360" y="158" text-anchor="middle" class="lost t b">Disaster</text>
+  <rect x="602" y="122" width="16" height="16" rx="3" class="safe-box"/>
+  <text x="610" y="158" text-anchor="middle" class="ink t b">Service restored</text>
+  <path d="M 114 100 L 114 90 L 356 90 L 356 100" class="focus-s" stroke-width="2"/>
+  <text x="235.0" y="60" text-anchor="middle" class="focus t b">RPO</text>
+  <text x="235.0" y="78" text-anchor="middle" class="ink2 n">data written here is lost</text>
+  <path d="M 364 100 L 364 90 L 606 90 L 606 100" class="focus-s" stroke-width="2"/>
+  <text x="485.0" y="60" text-anchor="middle" class="focus t b">RTO</text>
+  <text x="485.0" y="78" text-anchor="middle" class="ink2 n">the service is down</text>
+  <text x="395" y="214" text-anchor="middle" class="ink2 n">notice</text>
+  <text x="440" y="214" text-anchor="middle" class="ink2 n">page</text>
+  <text x="485" y="214" text-anchor="middle" class="ink2 n">decide</text>
+  <text x="535" y="214" text-anchor="middle" class="ink2 n">restore</text>
+  <text x="582" y="214" text-anchor="middle" class="ink2 n">check</text>
+  <path d="M 364 192 L 364 198 L 606 198 L 606 192" class="line"/>
+  <text x="485.0" y="234" text-anchor="middle" class="ink2 n">all of it counts against the RTO</text>
+</svg>

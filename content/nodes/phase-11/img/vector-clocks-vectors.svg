@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="404" viewBox="0 0 720 404" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="74" class="ink t b">P</text>
+  <text x="40" y="164" class="ink t b">Q</text>
+  <text x="40" y="254" class="ink t b">R</text>
+  <line x1="80" y1="70" x2="690" y2="70" class="line"/>
+  <line x1="80" y1="160" x2="690" y2="160" class="line"/>
+  <line x1="80" y1="250" x2="690" y2="250" class="line"/>
+  <text x="40" y="30" class="ink2 n">Each vector is [P, Q, R]</text>
+  <text x="690" y="30" text-anchor="end" class="ink2 n">time →</text>
+
+  <line x1="160" y1="74" x2="316" y2="155" class="line" marker-end="url(#arrow)"/>
+  <line x1="440" y1="165" x2="596" y2="245" class="line" marker-end="url(#arrow)"/>
+  <circle cx="160" cy="70" r="6" class="ink"/>
+  <text x="160" y="56" text-anchor="middle" class="ink n"><tspan class="mono">a</tspan> <tspan class="mono">[1,0,0]</tspan></text>
+  <circle cx="500" cy="70" r="6" class="focus"/>
+  <text x="500" y="56" text-anchor="middle" class="focus n b"><tspan class="mono">b</tspan> <tspan class="mono">[2,0,0]</tspan></text>
+  <circle cx="200" cy="160" r="6" class="ink"/>
+  <text x="200" y="188" text-anchor="middle" class="ink n"><tspan class="mono">c</tspan> <tspan class="mono">[0,1,0]</tspan></text>
+  <circle cx="320" cy="160" r="6" class="ink"/>
+  <text x="320" y="188" text-anchor="middle" class="ink n"><tspan class="mono">d</tspan> <tspan class="mono">[1,2,0]</tspan></text>
+  <circle cx="440" cy="160" r="6" class="focus"/>
+  <text x="440" y="146" text-anchor="middle" class="focus n b"><tspan class="mono">e</tspan> <tspan class="mono">[1,3,0]</tspan></text>
+  <circle cx="250" cy="250" r="6" class="ink"/>
+  <text x="250" y="278" text-anchor="middle" class="ink n"><tspan class="mono">f</tspan> <tspan class="mono">[0,0,1]</tspan></text>
+  <circle cx="600" cy="250" r="6" class="ink"/>
+  <text x="600" y="278" text-anchor="middle" class="ink n"><tspan class="mono">g</tspan> <tspan class="mono">[1,3,2]</tspan></text>
+
+  <text x="40" y="316" class="ink2 n">A process adds 1 to its own entry at each event. A message carries the whole vector,</text>
+  <text x="40" y="334" class="ink2 n">and the receiver takes the larger value in each position, then adds 1 to its own entry.</text>
+  <text x="40" y="360" class="ink n"><tspan class="mono">a [1,0,0] ≤ g [1,3,2]</tspan> in every position, so a happened before g.</text>
+  <text x="40" y="384" class="focus n b"><tspan class="mono">b [2,0,0]</tspan> and <tspan class="mono">e [1,3,0]</tspan>: each is bigger somewhere, so they're concurrent.</text>
+
+</svg>

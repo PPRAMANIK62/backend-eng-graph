@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="306" viewBox="0 0 720 306" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="180" y="26" text-anchor="middle" class="ink t b">Replica A</text>
+  <line x1="180" y1="76" x2="100" y2="114" class="line"/>
+  <line x1="180" y1="76" x2="260" y2="114" class="line"/>
+  <line x1="100" y1="146" x2="60" y2="184" class="line"/>
+  <line x1="100" y1="146" x2="140" y2="184" class="line"/>
+  <line x1="260" y1="146" x2="220" y2="184" class="line"/>
+  <line x1="260" y1="146" x2="300" y2="184" class="line"/>
+  <rect x="142" y="44" width="76" height="32" rx="6" class="box"/>
+  <text x="180" y="65" text-anchor="middle" class="lost n mono b">root: 7f..</text>
+  <rect x="62" y="114" width="76" height="32" rx="6" class="box"/>
+  <text x="100" y="135" text-anchor="middle" class="ink2 n mono">h12</text>
+  <rect x="222" y="114" width="76" height="32" rx="6" class="box"/>
+  <text x="260" y="135" text-anchor="middle" class="lost n mono b">h34</text>
+  <rect x="22" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="60" y="205" text-anchor="middle" class="ink2 n mono">h(k1)</text>
+  <text x="60" y="234" text-anchor="middle" class="ink n">k1</text>
+  <rect x="102" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="140" y="205" text-anchor="middle" class="ink2 n mono">h(k2)</text>
+  <text x="140" y="234" text-anchor="middle" class="ink n">k2</text>
+  <rect x="182" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="220" y="205" text-anchor="middle" class="ink2 n mono">h(k3)</text>
+  <text x="220" y="234" text-anchor="middle" class="ink n">k3</text>
+  <rect x="262" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="300" y="205" text-anchor="middle" class="lost n mono b">h(k4)</text>
+  <text x="300" y="234" text-anchor="middle" class="ink n">k4</text>
+  <text x="540" y="26" text-anchor="middle" class="ink t b">Replica B</text>
+  <line x1="540" y1="76" x2="460" y2="114" class="line"/>
+  <line x1="540" y1="76" x2="620" y2="114" class="line"/>
+  <line x1="460" y1="146" x2="420" y2="184" class="line"/>
+  <line x1="460" y1="146" x2="500" y2="184" class="line"/>
+  <line x1="620" y1="146" x2="580" y2="184" class="line"/>
+  <line x1="620" y1="146" x2="660" y2="184" class="line"/>
+  <rect x="502" y="44" width="76" height="32" rx="6" class="box"/>
+  <text x="540" y="65" text-anchor="middle" class="lost n mono b">root: c2..</text>
+  <rect x="422" y="114" width="76" height="32" rx="6" class="box"/>
+  <text x="460" y="135" text-anchor="middle" class="ink2 n mono">h12</text>
+  <rect x="582" y="114" width="76" height="32" rx="6" class="box"/>
+  <text x="620" y="135" text-anchor="middle" class="lost n mono b">h34'</text>
+  <rect x="382" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="420" y="205" text-anchor="middle" class="ink2 n mono">h(k1)</text>
+  <text x="420" y="234" text-anchor="middle" class="ink n">k1</text>
+  <rect x="462" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="500" y="205" text-anchor="middle" class="ink2 n mono">h(k2)</text>
+  <text x="500" y="234" text-anchor="middle" class="ink n">k2</text>
+  <rect x="542" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="580" y="205" text-anchor="middle" class="ink2 n mono">h(k3)</text>
+  <text x="580" y="234" text-anchor="middle" class="ink n">k3</text>
+  <rect x="622" y="184" width="76" height="32" rx="6" class="box"/>
+  <text x="660" y="205" text-anchor="middle" class="lost n mono b">h(k4')</text>
+  <text x="660" y="234" text-anchor="middle" class="ink n">k4</text>
+  <line x1="360" y1="40" x2="360" y2="236" class="line" stroke-dasharray="2 4"/>
+  <text x="360" y="272" text-anchor="middle" class="ink n">1. Roots differ.  2. Left children match, so k1 and k2 are skipped.  3. Right children differ.</text>
+  <text x="360" y="292" text-anchor="middle" class="ink n">4. k3 matches and <tspan class="lost b">k4 differs</tspan>, so only k4 is copied between the replicas.</text>
+
+</svg>

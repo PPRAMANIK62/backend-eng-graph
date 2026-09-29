@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="20" y="24" text-anchor="start" class="ink t b">Before: broker 3 stalls, still in the ISR</text>
+  <text x="170" y="57" text-anchor="end" class="ink n">Leader (broker 1)</text>
+  <rect x="182" y="38" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="57.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="38" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="57.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="38" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="57.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="38" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="362.0" y="56.0" text-anchor="middle" class="focus n b">3</text>
+  <rect x="390" y="38" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="414.0" y="56.0" text-anchor="middle" class="focus n b">4</text>
+  <rect x="442" y="38" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="466.0" y="56.0" text-anchor="middle" class="focus n b">5</text>
+  <text x="170" y="95" text-anchor="end" class="ink n">Follower (broker 2)</text>
+  <rect x="182" y="76" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="95.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="76" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="95.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="76" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="95.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="76" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="362.0" y="94.0" text-anchor="middle" class="focus n b">3</text>
+  <rect x="390" y="76" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="414.0" y="94.0" text-anchor="middle" class="focus n b">4</text>
+  <rect x="442" y="76" width="48" height="28" rx="6" class="focus-s"/>
+  <text x="466.0" y="94.0" text-anchor="middle" class="focus n b">5</text>
+  <text x="170" y="133" text-anchor="end" class="ink n">Follower (broker 3)</text>
+  <rect x="182" y="114" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="133.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="114" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="133.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="114" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="133.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="114" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <rect x="390" y="114" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <rect x="442" y="114" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="170" y="0" text-anchor="middle" class="ink2 n"></text>
+  <line x1="336" y1="32" x2="336" y2="148" class="focus-s" stroke-dasharray="3 3"/>
+  <text x="336" y="164" text-anchor="middle" class="focus n b">high watermark</text>
+  <text x="505" y="54" text-anchor="start" class="ink2 n">ISR:</text>
+  <text x="505" y="70" text-anchor="start" class="ink n b mono">{1, 2, 3}</text>
+  <text x="505" y="133" text-anchor="start" class="ink2 n">stalled at 2</text>
+  <text x="20" y="214" text-anchor="start" class="ink t b">After: broker 3 dropped from the ISR</text>
+  <text x="170" y="247" text-anchor="end" class="ink n">Leader (broker 1)</text>
+  <rect x="182" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="247.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="247.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="247.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="362.0" y="247.0" text-anchor="middle" class="ink n b">3</text>
+  <rect x="390" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="414.0" y="247.0" text-anchor="middle" class="ink n b">4</text>
+  <rect x="442" y="228" width="48" height="28" rx="6" class="box"/>
+  <text x="466.0" y="247.0" text-anchor="middle" class="ink n b">5</text>
+  <text x="170" y="285" text-anchor="end" class="ink n">Follower (broker 2)</text>
+  <rect x="182" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="285.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="285.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="285.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="362.0" y="285.0" text-anchor="middle" class="ink n b">3</text>
+  <rect x="390" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="414.0" y="285.0" text-anchor="middle" class="ink n b">4</text>
+  <rect x="442" y="266" width="48" height="28" rx="6" class="box"/>
+  <text x="466.0" y="285.0" text-anchor="middle" class="ink n b">5</text>
+  <text x="170" y="323" text-anchor="end" class="ink n">Follower (broker 3)</text>
+  <rect x="182" y="304" width="48" height="28" rx="6" class="box"/>
+  <text x="206.0" y="323.0" text-anchor="middle" class="ink n b">0</text>
+  <rect x="234" y="304" width="48" height="28" rx="6" class="box"/>
+  <text x="258.0" y="323.0" text-anchor="middle" class="ink n b">1</text>
+  <rect x="286" y="304" width="48" height="28" rx="6" class="box"/>
+  <text x="310.0" y="323.0" text-anchor="middle" class="ink n b">2</text>
+  <rect x="338" y="304" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <rect x="390" y="304" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <rect x="442" y="304" width="48" height="28" rx="6" class="line" stroke-dasharray="4 3"/>
+  <text x="170" y="0" text-anchor="middle" class="ink2 n"></text>
+  <line x1="492" y1="222" x2="492" y2="338" class="focus-s" stroke-dasharray="3 3"/>
+  <text x="492" y="354" text-anchor="middle" class="focus n b">high watermark</text>
+  <text x="505" y="244" text-anchor="start" class="ink2 n">ISR:</text>
+  <text x="505" y="260" text-anchor="start" class="ink n b mono">{1, 2}</text>
+  <text x="505" y="323" text-anchor="start" class="ink2 n">out of the ISR</text>
+  <rect x="20" y="392" width="22" height="16" rx="6" class="box"/>
+  <text x="50" y="405" text-anchor="start" class="ink2 n">committed, visible to consumers</text>
+  <rect x="290" y="392" width="22" height="16" rx="4" class="focus-s"/>
+  <text x="320" y="405" text-anchor="start" class="ink2 n">written, not committed yet</text>
+  <rect x="510" y="392" width="22" height="16" rx="4" class="line" stroke-dasharray="4 3"/>
+  <text x="540" y="405" text-anchor="start" class="ink2 n">missing</text>
+</svg>

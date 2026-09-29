@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="386" viewBox="0 0 720 386" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="94" class="ink t b">Node A</text>
+  <text x="40" y="110" class="ink2 n">clock ahead</text>
+  <text x="40" y="204" class="ink t b">Node B</text>
+  <text x="40" y="220" class="ink2 n">clock behind</text>
+  <line x1="130" y1="100" x2="690" y2="100" class="line"/>
+  <line x1="130" y1="210" x2="690" y2="210" class="line"/>
+  <text x="690" y="30" text-anchor="end" class="ink2 n">time →</text>
+  <text x="40" y="30" class="ink2 n">HLC timestamp = (l, c)</text>
+
+  <line x1="230" y1="104" x2="316" y2="204" class="line" marker-end="url(#arrow)"/>
+  <text x="290" y="140" class="ink2 n mono">(10, 0)</text>
+  <circle cx="230" cy="100" r="6" class="ink"/>
+  <text x="230" y="68" text-anchor="middle" class="ink2 n">wall clock 10</text>
+  <text x="230" y="86" text-anchor="middle" class="ink t mono">(10, 0)</text>
+  <circle cx="170" cy="210" r="6" class="ink"/>
+  <text x="170" y="238" text-anchor="middle" class="ink t mono">(6, 0)</text>
+  <text x="170" y="256" text-anchor="middle" class="ink2 n">wall clock 6</text>
+  <circle cx="320" cy="210" r="6" class="focus"/>
+  <text x="320" y="238" text-anchor="middle" class="focus t mono b">(10, 1)</text>
+  <text x="320" y="256" text-anchor="middle" class="ink2 n">wall clock 7</text>
+  <circle cx="470" cy="210" r="6" class="focus"/>
+  <text x="470" y="238" text-anchor="middle" class="focus t mono b">(10, 2)</text>
+  <text x="470" y="256" text-anchor="middle" class="ink2 n">wall clock 8</text>
+  <circle cx="620" cy="210" r="6" class="ink"/>
+  <text x="620" y="238" text-anchor="middle" class="ink t mono">(11, 0)</text>
+  <text x="620" y="256" text-anchor="middle" class="ink2 n">wall clock 11</text>
+
+  <path d="M320,286 V296 H470 V286" class="focus-s"/>
+  <text x="395" y="314" text-anchor="middle" class="focus n b">B takes A's larger l, and counts with c</text>
+  <text x="395" y="330" text-anchor="middle" class="focus n b">while its own clock is behind</text>
+  <text x="620" y="314" text-anchor="middle" class="ink n">B's clock passes 10:</text>
+  <text x="620" y="330" text-anchor="middle" class="ink n">l follows it, c resets</text>
+  <text x="40" y="366" class="ink2 n">l is the largest wall-clock time the node has heard of; c breaks ties when l doesn't move.</text>
+
+</svg>

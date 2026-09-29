@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="304" viewBox="0 0 720 304" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="180" y="28" text-anchor="middle" class="ink t b">Local index</text>
+  <text x="180" y="46" text-anchor="middle" class="ink2 n">each partition indexes its own rows</text>
+  <rect x="100" y="62" width="160" height="30" rx="6" class="box"/>
+  <text x="180" y="82" text-anchor="middle" class="focus n mono b">city = Oslo ?</text>
+  <rect x="20" y="160" width="100" height="82" rx="6" class="box"/>
+  <text x="70.0" y="180" text-anchor="middle" class="ink t b">P1</text>
+  <text x="70.0" y="200" text-anchor="middle" class="ink2 n mono">users 1–3</text>
+  <text x="70.0" y="217" text-anchor="middle" class="ink2 n mono">Oslo: 1</text>
+  <line x1="180" y1="94" x2="70" y2="156" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="130" y="160" width="100" height="82" rx="6" class="box"/>
+  <text x="180.0" y="180" text-anchor="middle" class="ink t b">P2</text>
+  <text x="180.0" y="200" text-anchor="middle" class="ink2 n mono">users 4–6</text>
+  <text x="180.0" y="217" text-anchor="middle" class="ink2 n mono">Oslo: 4</text>
+  <line x1="180" y1="94" x2="180" y2="156" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="240" y="160" width="100" height="82" rx="6" class="box"/>
+  <text x="290.0" y="180" text-anchor="middle" class="ink t b">P3</text>
+  <text x="290.0" y="200" text-anchor="middle" class="ink2 n mono">users 7–9</text>
+  <text x="290.0" y="217" text-anchor="middle" class="ink2 n mono">Oslo: 8</text>
+  <line x1="180" y1="94" x2="290" y2="156" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="180" y="270" text-anchor="middle" class="ink n">A read asks every partition.</text>
+  <text x="180" y="288" text-anchor="middle" class="ink2 n">A write touches one.</text>
+  <line x1="360" y1="20" x2="360" y2="300" class="line"/>
+  <text x="540" y="28" text-anchor="middle" class="ink t b">Global index</text>
+  <text x="540" y="46" text-anchor="middle" class="ink2 n">the index is partitioned by city</text>
+  <rect x="375" y="62" width="130" height="30" rx="6" class="box"/>
+  <text x="440" y="82" text-anchor="middle" class="focus n mono b">city = Oslo ?</text>
+  <rect x="380" y="160" width="130" height="82" rx="6" class="box"/>
+  <text x="445.0" y="180" text-anchor="middle" class="ink t b">Index A–M</text>
+  <text x="445.0" y="200" text-anchor="middle" class="ink2 n mono">Lima: 3, 5</text>
+  <rect x="570" y="160" width="130" height="82" rx="6" class="box"/>
+  <rect x="570" y="160" width="130" height="82" rx="6" class="focus-s"/>
+  <text x="635.0" y="180" text-anchor="middle" class="ink t b">Index N–Z</text>
+  <text x="635.0" y="200" text-anchor="middle" class="ink2 n mono">Oslo: 1, 4, 8</text>
+  <line x1="470" y1="94" x2="630" y2="156" class="focus-s" marker-end="url(#arrow)"/>
+  <rect x="540" y="58" width="170" height="46" rx="6" class="box"/>
+  <text x="625" y="77" text-anchor="middle" class="ink n mono">write user 4</text>
+  <text x="625" y="95" text-anchor="middle" class="ink2 n">row to P2, entry here</text>
+  <line x1="665" y1="106" x2="665" y2="156" class="line" marker-end="url(#arrow)"/>
+  <text x="540" y="270" text-anchor="middle" class="ink n">A read asks one index partition.</text>
+  <text x="540" y="288" text-anchor="middle" class="ink2 n">A write touches the row and the index.</text>
+</svg>

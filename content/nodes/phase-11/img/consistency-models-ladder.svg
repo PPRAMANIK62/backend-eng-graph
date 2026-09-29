@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- ladder of single-object models -->
+  <rect x="150" y="20" width="200" height="40" rx="6" class="lost-box"/>
+  <text x="250" y="45" text-anchor="middle" class="ink t b">Strict serializable</text>
+  <text x="366" y="45" class="ink2 n">+ multi-object transactions</text>
+
+  <rect x="150" y="90" width="200" height="40" rx="6" class="lost-box"/>
+  <text x="250" y="115" text-anchor="middle" class="ink t b">Linearizable</text>
+  <text x="366" y="115" class="ink2 n">one copy, real-time order</text>
+
+  <rect x="150" y="160" width="200" height="40" rx="6" class="lost-box"/>
+  <text x="250" y="185" text-anchor="middle" class="ink t b">Sequential</text>
+  <text x="366" y="185" class="ink2 n">one order for everyone, may lag behind</text>
+
+  <rect x="150" y="230" width="200" height="40" rx="6" class="focus-box"/>
+  <text x="250" y="255" text-anchor="middle" class="ink t b">Causal</text>
+  <text x="366" y="255" class="ink2 n">causes before effects</text>
+
+  <rect x="40" y="310" width="180" height="40" rx="6" class="focus-box"/>
+  <text x="130" y="335" text-anchor="middle" class="ink t b">PRAM</text>
+  <rect x="280" y="310" width="180" height="40" rx="6" class="safe-box"/>
+  <text x="370" y="335" text-anchor="middle" class="ink t b">Writes follow reads</text>
+
+  <rect x="10" y="385" width="140" height="40" rx="6" class="safe-box"/>
+  <text x="80" y="410" text-anchor="middle" class="ink t b">Monotonic reads</text>
+  <rect x="162" y="385" width="146" height="40" rx="6" class="safe-box"/>
+  <text x="235" y="410" text-anchor="middle" class="ink t b">Monotonic writes</text>
+  <rect x="320" y="385" width="150" height="40" rx="6" class="focus-box"/>
+  <text x="395" y="410" text-anchor="middle" class="ink t b">Read your writes</text>
+
+  <!-- implies arrows -->
+  <line x1="250" y1="61" x2="250" y2="88" class="line" marker-end="url(#arrow)"/>
+  <line x1="250" y1="131" x2="250" y2="158" class="line" marker-end="url(#arrow)"/>
+  <line x1="250" y1="201" x2="250" y2="228" class="line" marker-end="url(#arrow)"/>
+  <line x1="220" y1="271" x2="150" y2="308" class="line" marker-end="url(#arrow)"/>
+  <line x1="280" y1="271" x2="350" y2="308" class="line" marker-end="url(#arrow)"/>
+  <line x1="100" y1="351" x2="82" y2="383" class="line" marker-end="url(#arrow)"/>
+  <line x1="130" y1="351" x2="220" y2="383" class="line" marker-end="url(#arrow)"/>
+  <line x1="170" y1="351" x2="360" y2="383" class="line" marker-end="url(#arrow)"/>
+
+  <!-- legend -->
+  <text x="500" y="298" class="ink n b">Arrow: stronger → weaker</text>
+  <text x="500" y="314" class="ink2 n">(every history the upper one</text>
+  <text x="500" y="328" class="ink2 n">allows, the lower one allows)</text>
+  <rect x="500" y="344" width="16" height="16" rx="3" class="lost-box"/>
+  <text x="524" y="357" class="ink n">Unavailable in a partition</text>
+  <rect x="500" y="370" width="16" height="16" rx="3" class="focus-box"/>
+  <text x="524" y="383" class="ink n">Sticky: client stays on one server</text>
+  <rect x="500" y="396" width="16" height="16" rx="3" class="safe-box"/>
+  <text x="524" y="409" class="ink n">Totally available</text>
+</svg>

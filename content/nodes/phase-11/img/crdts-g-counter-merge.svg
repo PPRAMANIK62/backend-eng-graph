@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="416" viewBox="0 0 720 416" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+
+  <!-- lanes -->
+  <text x="190" y="30" text-anchor="middle" class="ink t b">Replica A</text>
+  <text x="530" y="30" text-anchor="middle" class="ink t b">Replica B</text>
+
+  <!-- row 1: start -->
+  <rect x="100" y="45" width="180" height="50" rx="6" class="box"/>
+  <text x="190" y="67" text-anchor="middle" class="ink t mono" xml:space="preserve">A:0  B:0</text>
+  <text x="190" y="85" text-anchor="middle" class="ink2 n">value 0</text>
+  <rect x="440" y="45" width="180" height="50" rx="6" class="box"/>
+  <text x="530" y="67" text-anchor="middle" class="ink t mono" xml:space="preserve">A:0  B:0</text>
+  <text x="530" y="85" text-anchor="middle" class="ink2 n">value 0</text>
+
+  <!-- increments -->
+  <line x1="190" y1="95" x2="190" y2="137" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="202" y="121" class="focus n b">increment: bump own slot</text>
+  <line x1="530" y1="95" x2="530" y2="137" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="542" y="121" class="focus n b">increment: bump own slot</text>
+
+  <!-- row 2 -->
+  <rect x="100" y="140" width="180" height="50" rx="6" class="box"/>
+  <text x="190" y="162" text-anchor="middle" class="t mono" xml:space="preserve"><tspan class="focus b">A:1</tspan><tspan class="ink">  B:0</tspan></text>
+  <text x="190" y="180" text-anchor="middle" class="ink2 n">value 1</text>
+  <rect x="440" y="140" width="180" height="50" rx="6" class="box"/>
+  <text x="530" y="162" text-anchor="middle" class="t mono" xml:space="preserve"><tspan class="ink">A:0  </tspan><tspan class="focus b">B:1</tspan></text>
+  <text x="530" y="180" text-anchor="middle" class="ink2 n">value 1</text>
+
+  <!-- exchange states -->
+  <line x1="190" y1="190" x2="190" y2="277" class="line" marker-end="url(#arrow)"/>
+  <line x1="530" y1="190" x2="530" y2="277" class="line" marker-end="url(#arrow)"/>
+  <line x1="240" y1="190" x2="480" y2="277" class="line" marker-end="url(#arrow)"/>
+  <line x1="480" y1="190" x2="240" y2="277" class="line" marker-end="url(#arrow)"/>
+  <text x="360" y="170" text-anchor="middle" class="ink2 n">swap whole states</text>
+
+  <!-- row 3: merged -->
+  <rect x="100" y="280" width="180" height="50" rx="6" class="safe-box"/>
+  <text x="190" y="302" text-anchor="middle" class="ink t mono" xml:space="preserve">A:1  B:1</text>
+  <text x="190" y="320" text-anchor="middle" class="ink n b">value 2</text>
+  <rect x="440" y="280" width="180" height="50" rx="6" class="safe-box"/>
+  <text x="530" y="302" text-anchor="middle" class="ink t mono" xml:space="preserve">A:1  B:1</text>
+  <text x="530" y="320" text-anchor="middle" class="ink n b">value 2</text>
+  <text x="360" y="310" text-anchor="middle" class="ink n">merge: max of each slot</text>
+
+  <!-- what goes wrong otherwise -->
+  <text x="40" y="370" class="n" xml:space="preserve"><tspan class="lost b">One plain number, merged with max: </tspan><tspan class="ink">max(1, 1) = 1, so one increment is lost.</tspan></text>
+  <text x="40" y="396" class="n" xml:space="preserve"><tspan class="lost b">One plain number, merged by adding: </tspan><tspan class="ink">the same state arriving twice is counted twice.</tspan></text>
+</svg>

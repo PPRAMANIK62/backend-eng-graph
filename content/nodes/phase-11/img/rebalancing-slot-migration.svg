@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <style>
+    .ink{fill:#0b0b0b} .ink2{fill:#52514e}
+    .box{fill:#f0efec;stroke:#8a8984;stroke-width:1.5}
+    .focus{fill:#2a78d6} .focus-s{stroke:#2a78d6;fill:none;stroke-width:1.5}
+    .lost{fill:#eb6834} .lost-s{stroke:#eb6834;fill:none;stroke-width:3}
+    .safe-box{fill:#1baf7a;fill-opacity:.18;stroke:#1baf7a;stroke-width:1.5}
+    .focus-box{fill:#2a78d6;fill-opacity:.14;stroke:#2a78d6;stroke-width:1.5}
+    .lost-box{fill:#eb6834;fill-opacity:.18;stroke:#eb6834;stroke-width:1.5}
+    .safe-s{stroke:#1baf7a;fill:none;stroke-width:3}
+    .old{fill:#b8b7b2}
+    .old-box{fill:none;stroke:#b8b7b2;stroke-width:1.5;stroke-dasharray:4 3}
+    .line{stroke:#8a8984;stroke-width:1.5;fill:none}
+    .arrowhead{fill:#8a8984}
+    .t{font-size:14px} .n{font-size:12px} .mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+    .b{font-weight:600}
+    @media (prefers-color-scheme: dark){
+      .ink{fill:#ffffff} .ink2{fill:#c3c2b7}
+      .box{fill:#2a2a28;stroke:#8a8984}
+      .focus{fill:#3987e5} .focus-s{stroke:#3987e5}
+      .lost{fill:#d95926} .lost-s{stroke:#d95926}
+      .safe-box{fill:#199e70;stroke:#199e70}
+      .focus-box{fill:#3987e5;stroke:#3987e5}
+      .lost-box{fill:#d95926;stroke:#d95926}
+      .safe-s{stroke:#199e70}
+      .old{fill:#5c5b57} .old-box{stroke:#5c5b57}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <text x="90" y="28" text-anchor="middle" class="ink t b">Client</text>
+  <text x="340" y="28" text-anchor="middle" class="ink t b">Node A</text>
+  <text x="340" y="46" text-anchor="middle" class="ink2 n">slot 8 MIGRATING</text>
+  <text x="560" y="28" text-anchor="middle" class="ink t b">Node B</text>
+  <text x="560" y="46" text-anchor="middle" class="ink2 n">slot 8 IMPORTING</text>
+  <line x1="90" y1="56" x2="90" y2="430" class="line"/>
+  <line x1="340" y1="56" x2="340" y2="430" class="line"/>
+  <line x1="560" y1="56" x2="560" y2="430" class="line"/>
+  <line x1="90" y1="86" x2="337" y2="86" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="79" text-anchor="middle" class="ink n mono">GET user:1</text>
+  <text x="350" y="90" text-anchor="start" class="ink2 n">still on A: answer it</text>
+  <line x1="340" y1="110" x2="93" y2="110" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="103" text-anchor="middle" class="ink n mono">value</text>
+  <line x1="340" y1="150" x2="557" y2="150" class="focus-s" marker-end="url(#arrow)"/>
+  <text x="450.0" y="143" text-anchor="middle" class="focus n mono">MIGRATE user:2 …</text>
+  <text x="570" y="146" text-anchor="start" class="ink2 n">keys copied over</text>
+  <text x="570" y="162" text-anchor="start" class="ink2 n">in batches, each one</text>
+  <text x="570" y="178" text-anchor="start" class="ink2 n">atomically</text>
+  <line x1="90" y1="206" x2="337" y2="206" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="199" text-anchor="middle" class="ink n mono">GET user:2</text>
+  <text x="350" y="210" text-anchor="start" class="ink2 n">gone from A</text>
+  <line x1="340" y1="230" x2="93" y2="230" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="223" text-anchor="middle" class="focus n mono">-ASK 8 node B</text>
+  <text x="350" y="234" text-anchor="start" class="ink2 n">ASK: send just this one to B</text>
+  <line x1="90" y1="266" x2="557" y2="266" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="259" text-anchor="middle" class="ink n mono">ASKING, GET user:2</text>
+  <line x1="560" y1="290" x2="93" y2="290" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="283" text-anchor="middle" class="ink n mono">value</text>
+  <line x1="30" y1="324" x2="700" y2="324" class="line"/>
+  <rect x="180" y="330" width="360" height="24" rx="6" class="box"/>
+  <text x="360" y="347" text-anchor="middle" class="ink n">All keys moved: slot 8 now belongs to B</text>
+  <line x1="90" y1="384" x2="337" y2="384" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="377" text-anchor="middle" class="ink n mono">GET user:1</text>
+  <line x1="340" y1="408" x2="93" y2="408" class="line" marker-end="url(#arrow)"/>
+  <text x="215.0" y="401" text-anchor="middle" class="focus n mono">-MOVED 8 node B</text>
+  <text x="350" y="412" text-anchor="start" class="ink2 n">MOVED: update your slot map</text>
+</svg>
